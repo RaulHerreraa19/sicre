@@ -1,0 +1,90 @@
+﻿@using VLCitas.DataLayer;
+@model Users
+@{
+    ViewBag.Title = "Consultorios";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    VLCitas.DataLayer.OfficesRepository.Offices_model office = (VLCitas.DataLayer.OfficesRepository.Offices_model)Session["office"];
+    DateTime today = office.configuration.Now.Date;
+    DateTime tomorrow = today.AddDays(1);
+
+}
+<link href="~/Content/robust/app-assets/css/pages/users.min.css" rel="stylesheet" />
+
+<div class="content-header row">
+    <div class="content-header-left col-md-8 col-12 mb-2 breadcrumb-new">
+        <h3 class="content-header-title mb-0 d-inline-block">@office.name</h3>
+        <div class="row breadcrumbs-top d-inline-block">
+            <div class="breadcrumb-wrapper col-12">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item">
+                        <a href="@Url.Action("Offices", "Login")"> @Resource.Clinic</a>
+                    </li>
+                    <li class="breadcrumb-item active">
+                        @Resource.ConsultingRooms
+                    </li>
+                </ol>
+            </div>
+        </div>
+    </div>
+    <div class="content-header-right col-md-4 col-12">
+        <div class="btn-group float-md-right">
+
+        </div>
+    </div>
+</div>
+
+<div class="content-body">
+    <div class="row">
+        <div class="col-12 mt-3 mb-1">
+            @*<h4 class="">@Resource.ChooseConsultory</h4>*@
+            <p>@Resource.ChooseConsultory</p>
+        </div>
+    </div>
+    <div class="row">
+        @foreach (var item in Model.Consultory.Where(x => x.office_uId == office.uId).OrderBy(c => c.name))
+        {
+            <div class="col-xl-4 col-md-6 col-12">
+                <div class="card profile-card-with-cover">
+                    <div class="card-content">
+                        <div class="img-fluid bg-cover height-200" style="background-color:#2594A7;"></div> @*<#3B5998 #4bb5db>*@
+                        <div class="card-profile-image">
+                            <img src="@Url.Content("~/"+item.image_url)" style="width: 110px;" class="rounded-circle img-border box-shadow-1" alt="@item.name">
+                        </div>
+                        <h1 class="pricing-card-title cover-center-title">@item.name</h1>
+                        <div class="profile-card-with-cover-content text-center">
+                            <div class="profile-details mt-2">
+                                <h4 class="card-title">@Resource.Doctors</h4>
+                                <h4 class="card-title">@string.Join(",", item.Users.Where(x => x.doctor_id != null).Select(x => x.first_name + " " + x.last_name).ToArray())</h4>
+                                <ul class="list-inline clearfix mt-2">
+                                    <li class="mr-2"><h2 class="block">@item.Citas.Where(x => x.status_id == 1 && x.cita_date >= today && x.cita_date <= tomorrow).Count()</h2> @Resource.Scheduled</li>
+                                    <li class="mr-2"><h2 class="block">@item.Citas.Where(x => x.status_id == 4 && x.cita_date >= today && x.cita_date <= tomorrow).Count()</h2> @Resource.Confirmed</li>
+                                    <li><h2 class="block">@item.Citas.Where(x => x.status_id == 3 && x.cita_date >= today && x.cita_date <= tomorrow).Count()</h2> @Resource.Completed</li>
+                                </ul>
+                            </div>
+                            <div class="card-body">
+                                <form method="POST" action="@Url.Action("Agenda","Citas")">
+                                    <input type="hidden" name="uId" value="@item.uId" />
+                                    <button type="submit" class="btn btn-social btn-min-width mr-1 mb-1 btn-facebook"><i class="fa fa-calendar"></i>@Resource.Calendar </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+
+
+</div>
+
+@section Scripts{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $(".btn_go_calendar").on("click", function () {
+                var uid = $(this).data("consultory_uid");
+                $(".btn_go_calendar").off("click");
+                $(".btn_select_calendar_" + uid).click();
+            });
+        });
+    </script>
+}

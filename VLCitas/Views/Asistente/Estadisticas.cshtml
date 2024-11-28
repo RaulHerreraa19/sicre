@@ -1,0 +1,384 @@
+﻿@using VLCitas.DataLayer;
+﻿@model IEnumerable<GetLastCitas_Result>
+@{
+    ViewBag.Title = "Estadisticas";
+    var offices = ViewBag.item;
+    var bussines = ViewBag.bussines;
+    var pay = ViewBag.pay;
+    var datapie = (IEnumerable<SPE_GananciaByMonthConsultory_Result>)ViewBag.datapie;
+    var month = (IEnumerable<GetMonthCitasByConsultory_Result>)ViewBag.monthd;
+    //var today = (SP_CitaHoy)ViewBag.today;
+    var status = (IEnumerable<GetCitasByStatusByConsultory_Result>)ViewBag.status;
+    var chart = (IEnumerable<SPR_GetLastDataThisMonth_Result>)ViewBag.chart;
+    //Chart lines by status
+    //var agendadas = (IEnumerable<SPE_GetTotalByStatusFechaDep_Result>)ViewBag.agendadas;
+    //var completadas = (IEnumerable<SPE_GetTotalByStatusFechaDep_Result>)ViewBag.completadas;
+    //var confirmadas = (IEnumerable<SPE_GetTotalByStatusFechaDep_Result>)ViewBag.confirmadas;
+    var last = ViewBag.last;
+    var treinta = ViewBag.treinta;
+    ViewBag.Title = "Home Page";
+}
+
+<link href="~/Content/introjs/bootstrap-responsive.min.css" rel="stylesheet" />
+<link href="~/Content/introjs/introjs.css" rel="stylesheet" />
+<link href="~/Content/introjs/custom.css" rel="stylesheet" />
+<link href="~/Content/css/Citas.css" rel="stylesheet" />
+<script src="~/Content/introjs/intro.js"></script>
+<link href="~/Content/buttons.css" rel="stylesheet" />
+@*<link href="https://cdn.datatables.net/buttons/1.5.1/css/buttons.bootstrap.min.css" rel="stylesheet" />*@
+
+
+<div class="app-content content container-fluid">
+    <div class="content-wrapper">
+        <div class="content-header row">
+            <div class="content-header-left col-md-4">
+                <h2 class="content-header-title mb-0">@Resource.Statistics</h2>
+            </div>
+            <div class="content-header-right col-md-5 ">
+            </div>
+            <div class="content-header-right col-md-2 ">
+
+            </div>
+        </div>
+        <br />
+        <div class="content-body">
+            <div style="display:none;">
+                <table id="datatable_six" class="table table-striped table-bordered hidden">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>@Resource.Unnattended</th>
+                            <th>@Resource.Completed</th>
+                            <th>@Resource.Canceled</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+            <!--Datatable-->
+            <div class="row match-height reports">
+                <div class="col-xl-12 col-lg-12">
+                    <section id="file-export">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="card" style="height: 442px;" data-step="6" data-intro="Las últimas citas!">
+                                    <div id="container_series" style="min-width: 310px; height: 100%; margin: 0 auto"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+            <div class="row match-height reports">
+                <div class="col-xl-12 col-lg-12">
+                    <!-- File export table -->
+                    <section id="file-export">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="card" style="height: 442px;" data-step="6" data-intro="Las últimas citas!">
+                                    <div id="container_six" style="min-width: 310px; height: 100%; margin: 0 auto"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+            <!-- Full calendar basic example section start -->
+            <section id="basic-examples">
+                <div class="row match-height">
+                    <div class="col-xl-2 col-lg-12" style="display:none;">
+                        <div class="card  card-inverse bg-primary" style="height: 438px;" data-step="7" data-intro="Las estadisticas de tu negocio!">
+                            <div class="card-body">
+                                <div class="card-block sales-growth-chart">
+                                    <div class="chart-title mb-1 text-xs-center">
+                                        <span class="white">Total monthly Sales.</span>
+                                    </div>
+                                    <div id="monthly-sales" class="height-250" style="position: relative; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);"><svg height="250" version="1.1" width="440" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="overflow: hidden; position: relative; left: -0.390625px; top: -0.796875px;"><desc style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">Created with Raphaël 2.1.2</desc><defs style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></defs><text x="42.84375" y="211" text-anchor="end" font-family="sans-serif" font-size="12px" stroke="none" fill="#ffffff" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: end; font-family: sans-serif; font-size: 12px; font-weight: normal;" font-weight="normal"><tspan dy="4" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">0</tspan></text><path fill="none" stroke="#ffffff" d="M55.34375,211H415" stroke-width="0.5" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></path><text x="42.84375" y="164.5" text-anchor="end" font-family="sans-serif" font-size="12px" stroke="none" fill="#ffffff" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: end; font-family: sans-serif; font-size: 12px; font-weight: normal;" font-weight="normal"><tspan dy="4" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">750</tspan></text><path fill="none" stroke="#ffffff" d="M55.34375,164.5H415" stroke-width="0.5" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></path><text x="42.84375" y="118" text-anchor="end" font-family="sans-serif" font-size="12px" stroke="none" fill="#ffffff" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: end; font-family: sans-serif; font-size: 12px; font-weight: normal;" font-weight="normal"><tspan dy="4" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">1,500</tspan></text><path fill="none" stroke="#ffffff" d="M55.34375,118H415" stroke-width="0.5" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></path><text x="42.84375" y="71.5" text-anchor="end" font-family="sans-serif" font-size="12px" stroke="none" fill="#ffffff" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: end; font-family: sans-serif; font-size: 12px; font-weight: normal;" font-weight="normal"><tspan dy="4" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">2,250</tspan></text><path fill="none" stroke="#ffffff" d="M55.34375,71.5H415" stroke-width="0.5" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></path><text x="42.84375" y="25" text-anchor="end" font-family="sans-serif" font-size="12px" stroke="none" fill="#ffffff" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: end; font-family: sans-serif; font-size: 12px; font-weight: normal;" font-weight="normal"><tspan dy="4" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">3,000</tspan></text><path fill="none" stroke="#ffffff" d="M55.34375,25H415" stroke-width="0.5" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></path><text x="400.0143229166667" y="223.5" text-anchor="middle" font-family="sans-serif" font-size="12px" stroke="none" fill="#ffffff" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: middle; font-family: sans-serif; font-size: 12px; font-weight: normal;" font-weight="normal" transform="matrix(1,0,0,1,0,7)"><tspan dy="4" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">Dec</tspan></text><text x="310.10026041666663" y="223.5" text-anchor="middle" font-family="sans-serif" font-size="12px" stroke="none" fill="#ffffff" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: middle; font-family: sans-serif; font-size: 12px; font-weight: normal;" font-weight="normal" transform="matrix(1,0,0,1,0,7)"><tspan dy="4" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">Sep</tspan></text><text x="220.18619791666666" y="223.5" text-anchor="middle" font-family="sans-serif" font-size="12px" stroke="none" fill="#ffffff" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: middle; font-family: sans-serif; font-size: 12px; font-weight: normal;" font-weight="normal" transform="matrix(1,0,0,1,0,7)"><tspan dy="4" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">Jun</tspan></text><text x="130.27213541666669" y="223.5" text-anchor="middle" font-family="sans-serif" font-size="12px" stroke="none" fill="#ffffff" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: middle; font-family: sans-serif; font-size: 12px; font-weight: normal;" font-weight="normal" transform="matrix(1,0,0,1,0,7)"><tspan dy="4" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">Mar</tspan></text><rect x="65.83372395833334" y="97.23" width="8.99140625" height="113.77" rx="0" ry="0" fill="#ffffff" stroke="none" fill-opacity="1" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); fill-opacity: 1;"></rect><rect x="95.80507812500001" y="64.928" width="8.99140625" height="146.072" rx="0" ry="0" fill="#ffffff" stroke="none" fill-opacity="1" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); fill-opacity: 1;"></rect><rect x="125.77643229166668" y="120.542" width="8.99140625" height="90.458" rx="0" ry="0" fill="#ffffff" stroke="none" fill-opacity="1" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); fill-opacity: 1;"></rect><rect x="155.74778645833334" y="131.082" width="8.99140625" height="79.918" rx="0" ry="0" fill="#ffffff" stroke="none" fill-opacity="1" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); fill-opacity: 1;"></rect><rect x="185.71914062500002" y="108.886" width="8.99140625" height="102.114" rx="0" ry="0" fill="#ffffff" stroke="none" fill-opacity="1" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); fill-opacity: 1;"></rect><rect x="215.69049479166668" y="77.328" width="8.99140625" height="133.672" rx="0" ry="0" fill="#ffffff" stroke="none" fill-opacity="1" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); fill-opacity: 1;"></rect><rect x="245.66184895833334" y="97.23" width="8.99140625" height="113.77" rx="0" ry="0" fill="#ffffff" stroke="none" fill-opacity="1" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); fill-opacity: 1;"></rect><rect x="275.633203125" y="64.928" width="8.99140625" height="146.072" rx="0" ry="0" fill="#ffffff" stroke="none" fill-opacity="1" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); fill-opacity: 1;"></rect><rect x="305.6045572916667" y="120.542" width="8.99140625" height="90.458" rx="0" ry="0" fill="#ffffff" stroke="none" fill-opacity="1" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); fill-opacity: 1;"></rect><rect x="335.57591145833334" y="131.082" width="8.99140625" height="79.918" rx="0" ry="0" fill="#ffffff" stroke="none" fill-opacity="1" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); fill-opacity: 1;"></rect><rect x="365.547265625" y="108.886" width="8.99140625" height="102.114" rx="0" ry="0" fill="#ffffff" stroke="none" fill-opacity="1" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); fill-opacity: 1;"></rect><rect x="395.5186197916667" y="77.328" width="8.99140625" height="133.672" rx="0" ry="0" fill="#ffffff" stroke="none" fill-opacity="1" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); fill-opacity: 1;"></rect></svg><div class="morris-hover morris-default-style" style="display: none;"></div></div>
+                                </div>
+                            </div>
+                            <div class="card-footer text-xs-center">
+                                <div class="chart-stats mt-1 white">
+                                    <a href="#" class="btn bg-primary bg-darken-3 mr-1 white">Statistics <i class="icon-bar-graph"></i></a> for the last year.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-6 col-md-12">
+                        <div class="card text-xs-center">
+                            <div class="card-body">
+                                <div id="container3" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-12">
+                        <div class="card text-xs-center">
+                            <div class="card-body">
+                                <div id="container2" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div style="display:none;">
+                    <table id="datatable2" style="display:none;">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>@Resource.MonthlyRevenue</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @*@foreach (var item in datapie)
+                                {
+                                    <tr>
+                                        <th>@item.name</th>
+                                        <td>@item.y</td>
+                                    </tr>
+                                }*@
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+            <!-- // Full calendar basic example section end -->
+        </div>
+    </div>
+</div>
+
+<!-- ////////////////////////////////////////////////////////////////////////////-->
+<script src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment.min.js'></script>
+<script src='https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.6/numeral.min.js"></script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        //datapie Highcharts
+        var pie = @Html.Raw(Json.Encode(datapie));
+        var chart_ = @Html.Raw(Json.Encode(chart));
+        var last = @Html.Raw(Json.Encode(last));
+        var pay =   @Html.Raw(Json.Encode(pay));
+        var treinta = @Html.Raw(Json.Encode(treinta));
+        console.log("Treinta.... "  + treinta);
+        //console.log("Last.... " + last);
+        //$.each(last, function (i, vl) {
+        //    console.log(last[i].mes);
+        //});
+
+        //console.log(pay[1].name);
+        pay[0].name = js_language[user_lang].Unattended;
+        pay[1].name = js_language[user_lang].Canceled;
+        pay[2].name = js_language[user_lang].Completed;
+        var tbl = $("#datatable2").DataTable({
+            "ordering": false
+        }
+            );
+        $.each(pie, function (i, vl) {
+            tbl.row.add([
+                  js_language[user_lang].monthNames[pie[i].name-1],
+                  pie[i].y
+            ]).draw(false);
+        });
+
+
+        Highcharts.setOptions({
+            lang: {
+                loading: 'Cargando...',
+                months: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+                weekdays: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
+                shortMonths: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
+                exportButtonTitle: "Exportar",
+                printButtonTitle: "Importar",
+                rangeSelectorFrom: "Desde",
+                rangeSelectorTo: "Hasta",
+                rangeSelectorZoom: "Período",
+                downloadPNG: 'Descargar imagen PNG',
+                downloadJPEG: 'Descargar imagen JPEG',
+                downloadPDF: 'Descargar imagen PDF',
+                downloadSVG: 'Descargar imagen SVG',
+                printChart: 'Imprimir',
+                resetZoom: 'Reiniciar zoom',
+                resetZoomTitle: 'Reiniciar zoom',
+                thousandsSep: ",",
+                decimalPoint: '.'
+            },
+            credits: {
+                enabled: false
+            }
+        });
+
+        //////////////////7
+        last.sort(function(a, b){return b-a});
+        //$.each(last, function (i, vl) {
+        //    console.log(last[i].mes);
+        //});
+        var months = [];
+        $.each(last, function (i, vl) {
+            months.push({
+                mes: js_language[user_lang].monthNames[last[i].mes-1],
+                agendadas: last[i].agendadas,
+                canceladas: last[i].canceladas,
+                completadas: last[i].completadas
+            });
+        });
+        var t6 = $('#datatable_six').DataTable( {
+            "ordering": false
+        } );
+
+        //$('#datatable_six').hide();
+        $.each(months, function (i, vl) {
+            //debugger;
+            t6.row.add([
+                             vl.mes,
+                             vl.agendadas,
+                             vl.completadas,
+                             vl.canceladas
+            ]).draw(false);
+        });
+        //Chart bars
+
+        Highcharts.chart('container_six', {
+            colors: ['#EEF526', '#8bbc21', '#FF0000'],
+            data: {
+                table: 'datatable_six'
+            },
+            chart: {
+                type: 'column'
+            },
+            title: {
+                text: js_language[user_lang].Last_SixMonths
+            },
+            yAxis: {
+                allowDecimals: false,
+                title: {
+                    text: js_language[user_lang].Quantity
+                }
+            },
+            tooltip: {
+                formatter: function () {
+                    return '<b>' + this.series.name + '</b><br/>' +
+                        this.point.y + ' ' + this.point.name.toLowerCase();
+                }
+            }
+        });
+
+
+        Highcharts.chart('container2', {
+            data: {
+                table: 'datatable2'
+            },
+            chart: {
+                type: 'line'
+            },
+            title: {
+                text: js_language[user_lang].Month_revenues
+            },
+            yAxis: {
+                allowDecimals: false,
+                title: {
+                    text: js_language[user_lang].Quantity
+                }
+            },
+            tooltip: {
+                formatter: function () {
+                    var nc = numeral(this.point.y).format('$ 0,0[.]00');
+                    return '<b>' + this.series.name + '</b><br/>' +
+                       nc  + ' ' + this.point.name.toLowerCase();
+                }
+            }
+        });
+        //////Payyyyyyy
+
+        // Build the chart
+        Highcharts.chart('container3', {
+            colors: ['#EEF526', '#FF0000', '#8bbc21'],
+            chart: {
+                plotBackgroundColor: null,
+                plotBorderWidth: null,
+                plotShadow: false,
+                type: 'pie'
+            },
+            title: {
+                text: js_language[user_lang].Percentage_citas
+            },
+            tooltip: {
+                pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+            },
+            plotOptions: {
+                pie: {
+                    allowPointSelect: true,
+                    cursor: 'pointer',
+                    dataLabels: {
+                        enabled: false
+                    },
+                    showInLegend: true
+                }
+            },
+            series: [{
+                name: 'Total',
+                colorByPoint: true,
+                data: pay
+            }]
+        });
+        //end pay
+
+
+        //30 dias
+        var dias = [];
+        var agendadas = [];
+        var completadas = [];
+        var canceladas = [];
+
+        $.each(treinta, function (i, vl) {
+            var date = moment(treinta[i].mes).format('DD-MM-YYYY');
+            dias.push(date);
+            agendadas.push(treinta[i].agendadas);
+            completadas.push(treinta[i].completadas);
+            canceladas.push(treinta[i].canceladas);
+        });
+        //
+        //dias.sort(function(a,b) {
+        //    a = a.split('-').reverse().join('');
+        //    b = b.split('-').reverse().join('');
+        //    return a > b ? 1 : a < b ? -1 : 0;
+        //    // return a.localeCompare(b);         // <-- alternative
+        //});
+        //$.each(dias, function (i, vl) {
+        //    console.log("ordenado .. " + dias[i]);
+        //});
+        Highcharts.chart('container_series', {
+            colors: ['#EEF526', '#8bbc21', '#FF0000'],
+            tooltip: {
+                formatter: function () {
+                    return this.x +
+                        '</b> <b>' + ':' + this.y + '</b>';
+                }
+            },
+            title: {
+                text: js_language[user_lang].Last30Days
+            },
+            subtitle: {
+                text: ''
+            },
+            xAxis: {
+                categories: dias
+            },
+            yAxis: {
+                title: {
+                    text: js_language[user_lang].Quantity
+                }
+            },
+            series: [{
+                name: js_language[user_lang].Unattended,
+                data: agendadas
+            },{
+                name: js_language[user_lang].Completed,
+                data: completadas
+            }, {
+                name: js_language[user_lang].Canceled,
+                data: canceladas
+            }]
+        });
+
+
+    });
+</script>

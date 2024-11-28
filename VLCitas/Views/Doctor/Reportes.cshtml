@@ -1,0 +1,147 @@
+﻿@using VLCitas.DataLayer;
+@model VLCitas.DataLayer.Roles
+@{
+    ViewBag.Title = "Reportes";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var Recurso = new GetResource();
+    var current_lang = (Languages)Session["userLanguage"];
+}
+<link href="~/Scripts/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet" />
+<div class="content-header row">
+    <div class="content-header-left col-md-8 col-12 mb-2 breadcrumb-new">
+        <h3 class="content-header-title mb-0 d-inline-block">@Resource.Reports</h3>
+        <div class="row breadcrumbs-top d-inline-block">
+            <div class="breadcrumb-wrapper col-12">
+                <ol class="breadcrumb"></ol>
+            </div>
+        </div>
+    </div>
+    <div class="content-header-right col-md-4 col-12">
+        <div class="btn-group float-md-right">
+
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <a class="heading-elements-toggle"><i class="ft-ellipsis-h font-medium-3"></i></a>
+                <div class="heading-elements">
+                    <ul class="list-inline mb-0"></ul>
+                </div>
+            </div>
+            <div class="card-content collapse show">
+                <div class="card-body">
+                    <div class="row">
+
+                        <div class="col-lg-4 col-md-6 mt-md-0 mt-4">
+                            <h5>@Resource.ChooseReport</h5>
+                            <div class="d-flex">
+                                <div class="wrapper">
+                                    <select class="form-control" id="report_type" style="min-width: 250px; font-size: 14px; font-weight: 400;">
+                                        @foreach (var item in Model.Reports)
+                                        {
+                                            <option value="@item.id"> @Recurso.getValueFromResouce(item.name, current_lang.LanguageCultureName) </option>
+                                        }
+
+                                    </select>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <div class="col-lg-4 col-md-6 mt-md-0 mt-4">
+                            <h5>@Resource.ChooseRangeDate</h5>
+                            <div class="d-flex">
+                                <div class="wrapper">
+                                    <div class="btn-group toolbar-item" role="group" aria-label="Basic example">
+                                        <div id="reportrange" style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc; width: 100%">
+                                            <i class="fa fa-calendar"></i>&nbsp;
+                                            <span></span> <i class="fa fa-caret-down"></i>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <div class="col-lg-4 col-md-6 mt-md-0 mt-4">
+                            <h5>@Resource.GenerateReport</h5>
+                            <div class="d-flex">
+                                <div class="wrapper">
+                                    <span class="btn btn-primary cursor-pointer" id="btn_getReport">@Resource.ShowReport</span>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<br />
+<div id="report_container"></div>
+
+@section Scripts{
+
+    <script src="~/Scripts/jquery.redirect.js"></script>
+    <script src="~/Scripts/bootstrap-daterangepicker/daterangepicker.js"></script>
+    <script src="~/Content/robust/app-assets/vendors/js/charts/chart.min.js"></script>
+    <script src="~/Scripts/Common.js"></script>
+    <script src="~/Scripts/citas/main_reports.js"></script>
+    <script type="text/javascript">
+     var customrange = {
+            customRangeLabel: "@Resource.Custom",
+            applyLabel: "@Resource.Apply",
+            cancelLabel: "@Resource.Cancel",
+            fromLabel: "@Resource.From",
+            toLabel: "@Resource.To",
+    };
+    var start = moment();
+    var end = moment();
+
+    function cb(start, end) {
+        CLReports.Settings.start_date = start.format().split("T")[0];
+        CLReports.Settings.end_date = end.format().split("T")[0];
+        console.log("start", start.format());
+        console.log("end", end.format());
+        $('#reportrange span').html(start.format('MM/DD/YYYY') + ' 12:00 AM - ' + end.format('MM/DD/YYYY') + ' 11:59 PM');
+    };
+
+        $(document).ready(function () {
+            var lang = user_lang.substring(0, 2);
+            moment.locale(lang);
+            $('#reportrange').daterangepicker({
+                //locale: lang,
+                locale: customrange,
+                ranges: {
+                    '@Resource.Today': [moment(), moment()],
+                    '@Resource.Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+                    '@Resource.Last_7_Days': [moment().subtract(6, 'days'), moment()],
+                    '@Resource.Last_30_Days': [moment().subtract(29, 'days'), moment()],
+                    '@Resource.ThisMonth': [moment().startOf('month'), moment().endOf('month')],
+                    '@Resource.LastMonth': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')],
+                }
+            }, cb);
+
+            cb(start, end);
+
+            $("body").on("click", ".btn_download_pdf", function () {
+                var url_pdf = "/Reports/getPdfReport";
+                $.redirect(url_pdf, null, "GET", "_blank");
+            });
+
+    });
+
+
+
+    </script>
+}

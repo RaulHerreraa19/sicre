@@ -1,0 +1,373 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\EntityFramework.6.4.0\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.0\build\EntityFramework.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{EF334916-0CE3-4637-B4B7-994699F6F520}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>VLCitas.DataLayer</RootNamespace>
+    <AssemblyName>VLCitas.DataLayer</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
+      <HintPath>..\packages\NLog.4.7.0\lib\net45\NLog.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.IO.Compression" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Adverstisement_Status.cs">
+      <DependentUpon>VL_Citas.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Advertisement.cs">
+      <DependentUpon>VL_Citas.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Citas.cs">
+      <DependentUpon>VL_Citas.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Citas_Attachments.cs">
+      <DependentUpon>VL_Citas.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Configs_Images.cs">
+      <DependentUpon>VL_Citas.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Consultory.cs">
+      <DependentUpon>VL_Citas.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Consultory_Status.cs">
+      <DependentUpon>VL_Citas.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Councils__Medical_Specialties.cs">
+      <DependentUpon>VL_Citas.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Customers.cs">
+      <DependentUpon>VL_Citas.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Customers_Status.cs">
+      <DependentUpon>VL_Citas.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Doctor_Configs.cs">
+      <DependentUpon>VL_Citas.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GetCalendarCitas_Result.cs">
+      <DependentUpon>VL_Citas.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GetCitasByConsultory_Result.cs">
+      <DependentUpon>VL_Citas.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GetCitasByDoctor_Result.cs">
+      <DependentUpon>VL_Citas.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GetCitasByStatusByConsultory_Result.cs">
+      <DependentUpon>VL_Citas.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GetCitasByStatus_Result.cs">
+      <DependentUpon>VL_Citas.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GetCountCitasByConsultory_Result.cs">
+      <DependentUpon>VL_Citas.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GetGananciaByMonthByConsultory_Result.cs">
+      <DependentUpon>VL_Citas.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GetGananciaByMonth_Result.cs">
+      <DependentUpon>VL_Citas.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GetInvoicesByOfficeConsultory_Result.cs">
+      <DependentUpon>VL_Citas.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GetInvoicesCitasByConsultory_Result.cs">
+      <DependentUpon>VL_Citas.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GetLastCitas_Result.cs">
+      <DependentUpon>VL_Citas.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GetMonthCitasByConsultory_Result.cs">
+      <DependentUpon>VL_Citas.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GetMonthCitas_Result.cs">
+      <DependentUpon>VL_Citas.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GetScheduleByConsultory_Result.cs">
+      <DependentUpon>VL_Citas.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GetScheduleByOfficeAndDoctor_Result.cs">
+      <DependentUpon>VL_Citas.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Get_TotalCitasByStatusxConsultories_Result.cs">
+      <DependentUpon>VL_Citas.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Image.cs">
+      <DependentUpon>VL_Citas.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Medicine_citas.cs">
+      <DependentUpon>VL_Citas.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Module.cs">
+      <DependentUpon>VL_Citas.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Offices.cs">
+      <DependentUpon>VL_Citas.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Offices_Configuration.cs">
+      <DependentUpon>VL_Citas.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Offices_Status.cs">
+      <DependentUpon>VL_Citas.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Offices_Users.cs">
+      <DependentUpon>VL_Citas.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Paciente.cs">
+      <DependentUpon>VL_Citas.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Patient_Prescriptions.cs">
+      <DependentUpon>VL_Citas.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Prescriptions.cs">
+      <DependentUpon>VL_Citas.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Reports.cs">
+      <DependentUpon>VL_Citas.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Reports_GetCitasByDays_Result.cs">
+      <DependentUpon>VL_Citas.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Reports_GetCitasByStatus_Result.cs">
+      <DependentUpon>VL_Citas.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Reports_GetSummaryHeader_Result.cs">
+      <DependentUpon>VL_Citas.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Reports_ServicesSummary_Result.cs">
+      <DependentUpon>VL_Citas.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Roles.cs">
+      <DependentUpon>VL_Citas.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Roles_Status.cs">
+      <DependentUpon>VL_Citas.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Schedule.cs">
+      <DependentUpon>VL_Citas.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Servicios.cs">
+      <DependentUpon>VL_Citas.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Sex.cs">
+      <DependentUpon>VL_Citas.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Specialties.cs">
+      <DependentUpon>VL_Citas.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_GananciaByMonthConsultory_Result.cs">
+      <DependentUpon>VL_Citas.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_GananciaXMes_Result.cs">
+      <DependentUpon>VL_Citas.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_LAST30DAYS_Result.cs">
+      <DependentUpon>VL_Citas.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_LASTSIXMONTHS_Result.cs">
+      <DependentUpon>VL_Citas.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPR_Ganancia_Mes_Result.cs">
+      <DependentUpon>VL_Citas.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPR_GetLastDataThisMonth_Result.cs">
+      <DependentUpon>VL_Citas.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPR_Servicio_Cantidad_Result.cs">
+      <DependentUpon>VL_Citas.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPR_TotalCYGanancia_Result.cs">
+      <DependentUpon>VL_Citas.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SP_Horario_By_Doctor_Office_Result.cs">
+      <DependentUpon>VL_Citas.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SP_Horario_DisponibleByDoctor_Result.cs">
+      <DependentUpon>VL_Citas.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Status_Citas.cs">
+      <DependentUpon>VL_Citas.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TimeZones.cs">
+      <DependentUpon>VL_Citas.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Users.cs">
+      <DependentUpon>VL_Citas.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Users_Status.cs">
+      <DependentUpon>VL_Citas.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Vacations.cs">
+      <DependentUpon>VL_Citas.tt</DependentUpon>
+    </Compile>
+    <Compile Include="wsLogClass.cs" />
+    <Compile Include="CitasRepository\CitaModel.cs" />
+    <Compile Include="CitasRepository\CitaRepository.cs" />
+    <Compile Include="CommonRepository\Common.cs" />
+    <Compile Include="CommonRepository\Settings.cs" />
+    <Compile Include="CommonRepository\TimeZones.cs" />
+    <Compile Include="ConsultoriesRepository\ConsultoryRepository.cs" />
+    <Compile Include="ConsultoriesRepository\Consultory_Model.cs" />
+    <Compile Include="DoctorsRepository\DoctorRepository.cs" />
+    <Compile Include="DoctorsRepository\Models.cs" />
+    <Compile Include="Models\Enums.cs" />
+    <Compile Include="Models\LanguageMang.cs" />
+    <Compile Include="Models\Models.cs" />
+    <Compile Include="Models\Translate.cs" />
+    <Compile Include="OfficesRepository\Configuration_model.cs" />
+    <Compile Include="OfficesRepository\Offices_model.cs" />
+    <Compile Include="PatientsRespository\Paciente.cs" />
+    <Compile Include="PatientsRespository\PatientModel.cs" />
+    <Compile Include="PatientsRespository\PatientRepositoy.cs" />
+    <Compile Include="PrescriptionsRepository\Model.cs" />
+    <Compile Include="PrescriptionsRepository\PrescriptionRepository.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ReportsRepository\ReportsRepository.cs" />
+    <Compile Include="Resource.Designer.cs">
+      <DependentUpon>Resource.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Resource.en.Designer.cs">
+      <DependentUpon>Resource.en.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Resource.es-Mx.Designer.cs">
+      <DependentUpon>Resource.es-Mx.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="SchedulesRepository\Schedule_Model.cs" />
+    <Compile Include="ServicesRepository\ServiceRepository.cs" />
+    <Compile Include="ServicesRepository\ServicioModel.cs" />
+    <Compile Include="Tools\Cryptography.cs" />
+    <Compile Include="Tools\EntityFactory.cs" />
+    <Compile Include="Tools\Repository.cs" />
+    <Compile Include="UsersRepository\Doctor_Prescriptions.cs" />
+    <Compile Include="UsersRepository\UserRepository.cs" />
+    <Compile Include="UsersRepository\User_model.cs" />
+    <Compile Include="VL_Citas.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>VL_Citas.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="VL_Citas.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>VL_Citas.tt</DependentUpon>
+    </Compile>
+    <Compile Include="VL_Citas.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>VL_Citas.edmx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EntityDeploy Include="VL_Citas.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>VL_Citas.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config" />
+    <None Include="packages.config" />
+    <None Include="VL_Citas.edmx.diagram">
+      <DependentUpon>VL_Citas.edmx</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="VL_Citas.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>VL_Citas.Context.cs</LastGenOutput>
+      <DependentUpon>VL_Citas.edmx</DependentUpon>
+    </Content>
+    <Content Include="VL_Citas.edmx.sql" />
+    <Content Include="VL_Citas.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>VL_Citas.edmx</DependentUpon>
+      <LastGenOutput>VL_Citas.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resource.en.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resource.en.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resource.es-Mx.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resource.es-Mx.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resource.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resource.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.0\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.0\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.0\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.0\build\EntityFramework.targets'))" />
+  </Target>
+  <Import Project="..\packages\EntityFramework.6.4.0\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.0\build\EntityFramework.targets')" />
+</Project>

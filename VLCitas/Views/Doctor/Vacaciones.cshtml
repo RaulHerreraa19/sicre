@@ -1,0 +1,149 @@
+﻿@using VLCitas.DataLayer;
+@model  Users
+@{
+    ViewBag.Title = "Profile";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs/jq-3.3.1/jszip-2.5.0/dt-1.10.20/b-1.6.1/b-colvis-1.6.1/b-flash-1.6.1/b-html5-1.6.1/b-print-1.6.1/kt-2.5.1/r-2.2.3/sl-1.3.1/datatables.min.css" />
+<link href="~/Scripts/editor/css/editor_old.css" rel="stylesheet" />
+
+<div class="content-header row">
+    <div class="content-header-left col-md-8 col-12 mb-2 breadcrumb-new">
+        <h3 class="content-header-title mb-0 d-inline-block">@Resource.Vacations</h3>
+        <div class="row breadcrumbs-top d-inline-block">
+            <div class="breadcrumb-wrapper col-12">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item">
+                        <a href="@Url.Action("Perfil", "Doctor")"> @Resource.Profile</a>
+                    </li>
+                    <li class="breadcrumb-item active">
+                        @Resource.Vacations
+                    </li>
+                </ol>
+            </div>
+        </div>
+    </div>
+    <div class="content-header-right col-md-4 col-12">
+        <div class="btn-group float-md-right">
+
+        </div>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-header">
+        <h3>@Resource.VacationTime </h3>
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="mycontainer">
+                    <table class="table table-striped table-bordered" id="table_vacation" style="width: 100%">
+                        <thead>
+                            <tr>
+                                <th style="max-width: 10px !important;"></th>
+                                <th>
+                                    @Resource.StartDate
+                                </th>
+                                <th>
+                                    @Resource.EndDate
+                                </th>
+                                <th>
+                                    @Resource.Reason
+                                </th>
+
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script type="text/javascript">
+    var editor;
+    $(document).ready(function () {
+
+
+
+        //zone for vacations
+        editor = new $.fn.dataTable.Editor({
+            ajax: "/Doctor/ManageVacations",
+            table: "#table_vacation",
+            i18n: js_language[user_lang].DTEditor,
+            fields: [
+                {
+                    label: "@Resource.StartDate",
+                    name: "Vacations.start_date",
+                    type: "datetime",
+                    format: 'YYYY-MM-DD HH:mm'
+                },{
+                    label: "@Resource.EndDate",
+                    name: "Vacations.end_date",
+                    type: "datetime",
+                    format: 'YYYY-MM-DD HH:mm'
+                },{
+                    label: "@Resource.Reason",
+                    name: "Vacations.reason"
+                },{
+                    label: "@Resource.User",
+                    name: "Vacations.user_uid",
+                    type: "select"
+                },
+            ]
+        });
+
+        $('#table_vacation').on('click', 'tbody td:not(:first-child)', function (e) {
+            editor.inline(this, {
+                submit: 'allIfChanged'
+            });
+        });
+
+        var table_vacation = $("#table_vacation").DataTable({
+            dom: "Bfrtip",
+            ajax: "/Doctor/ManageVacations",
+            orderCellsTop: true,
+            fixedHeader: true,
+            language: js_language[user_lang].DataTables,
+            columns: [
+                {
+                    data: null,
+                    defaultContent: '',
+                    className: 'select-checkbox',
+                    orderable: false
+                },
+                {
+                    data: "Vacations.start_date",
+                    type: "datetime",
+                    render: function (value) {
+                        var r = moment(value).format("YYYY-MM-DD HH:mm");
+                        return r;
+                    }
+                },
+                {
+                    data: "Vacations.end_date",
+                    type: "datetime",
+                    render: function (value) {
+                        var r = moment(value).format("YYYY-MM-DD HH:mm");
+                        return r;
+                    }
+                },
+                { data: "Vacations.reason" },
+
+            ],
+            select: {
+                style: 'os',
+                selector: 'td:first-child'
+            },
+            buttons: [
+                { extend: "create", editor: editor },
+                { extend: "edit", editor: editor },
+                { extend: "remove", editor: editor }
+            ]
+        });
+
+    });
+</script>

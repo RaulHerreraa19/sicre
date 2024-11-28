@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="93dc6e25b2894567bcd2d7f55a94d2d9" Name="Diagram1" ZoomLevel="88">
+        <EntityTypeShape EntityType="VL_CitasModel.Adverstisement_Status" Width="1.5" PointX="0.75" PointY="35.375" />
+        <EntityTypeShape EntityType="VL_CitasModel.Advertisement" Width="1.5" PointX="3" PointY="6" />
+        <EntityTypeShape EntityType="VL_CitasModel.Citas" Width="1.5" PointX="13.5" PointY="11.5" />
+        <EntityTypeShape EntityType="VL_CitasModel.Citas_Attachments" Width="1.5" PointX="15.75" PointY="17.625" />
+        <EntityTypeShape EntityType="VL_CitasModel.Configs_Images" Width="1.5" PointX="5.75" PointY="1.875" />
+        <EntityTypeShape EntityType="VL_CitasModel.Consultory" Width="1.5" PointX="3" PointY="0.75" />
+        <EntityTypeShape EntityType="VL_CitasModel.Consultory_Status" Width="1.5" PointX="0.75" PointY="7.625" />
+        <EntityTypeShape EntityType="VL_CitasModel.Councils__Medical_Specialties" Width="1.5" PointX="0.75" PointY="10.125" />
+        <EntityTypeShape EntityType="VL_CitasModel.Customers" Width="1.5" PointX="1.5" PointY="27.5" />
+        <EntityTypeShape EntityType="VL_CitasModel.Customers_Status" Width="1.5" PointX="1.5" PointY="32.375" />
+        <EntityTypeShape EntityType="VL_CitasModel.Doctor_Configs" Width="1.5" PointX="3" PointY="12.75" />
+        <EntityTypeShape EntityType="VL_CitasModel.Image" Width="1.5" PointX="0.75" PointY="13.875" />
+        <EntityTypeShape EntityType="VL_CitasModel.Module" Width="1.5" PointX="13.5" PointY="4" />
+        <EntityTypeShape EntityType="VL_CitasModel.Offices" Width="1.5" PointX="0.75" PointY="1.75" />
+        <EntityTypeShape EntityType="VL_CitasModel.Offices_Configuration" Width="1.5" PointX="1.5" PointY="21.625" />
+        <EntityTypeShape EntityType="VL_CitasModel.Offices_Status" Width="1.5" PointX="1.5" PointY="18.875" />
+        <EntityTypeShape EntityType="VL_CitasModel.Offices_Users" Width="1.5" PointX="10.5" PointY="13.625" />
+        <EntityTypeShape EntityType="VL_CitasModel.Paciente" Width="1.5" PointX="5.25" PointY="35" />
+        <EntityTypeShape EntityType="VL_CitasModel.Patient_Prescriptions" Width="1.5" PointX="7.5" PointY="11" />
+        <EntityTypeShape EntityType="VL_CitasModel.Prescriptions" Width="1.5" PointX="8.25" PointY="17.125" />
+        <EntityTypeShape EntityType="VL_CitasModel.Reports" Width="1.5" PointX="18" PointY="10.125" />
+        <EntityTypeShape EntityType="VL_CitasModel.Roles" Width="1.5" PointX="15.75" PointY="10" />
+        <EntityTypeShape EntityType="VL_CitasModel.Roles_Status" Width="1.5" PointX="13.5" PointY="8.375" />
+        <EntityTypeShape EntityType="VL_CitasModel.Schedule" Width="1.5" PointX="18.75" PointY="13.25" />
+        <EntityTypeShape EntityType="VL_CitasModel.Servicios" Width="1.5" PointX="15.75" PointY="13.75" />
+        <EntityTypeShape EntityType="VL_CitasModel.Sex" Width="1.5" PointX="3" PointY="36.375" />
+        <EntityTypeShape EntityType="VL_CitasModel.Specialties" Width="1.5" PointX="8.25" PointY="14.125" />
+        <EntityTypeShape EntityType="VL_CitasModel.Status_Citas" Width="1.5" PointX="11.25" PointY="10.125" />
+        <EntityTypeShape EntityType="VL_CitasModel.TimeZones" Width="1.5" PointX="1.5" PointY="24.375" />
+        <EntityTypeShape EntityType="VL_CitasModel.Users" Width="1.5" PointX="5.25" PointY="12.875" />
+        <EntityTypeShape EntityType="VL_CitasModel.Users_Status" Width="1.5" PointX="3" PointY="9.5" />
+        <EntityTypeShape EntityType="VL_CitasModel.Vacations" Width="1.5" PointX="7.5" PointY="21.125" />
+        <AssociationConnector Association="VL_CitasModel.FK__Advertise__statu__2CF2ADDF" />
+        <AssociationConnector Association="VL_CitasModel.FK__Advertise__offic__2BFE89A6" />
+        <AssociationConnector Association="VL_CitasModel.FK__Citas__consultor__2EDAF651" />
+        <AssociationConnector Association="VL_CitasModel.FK__Citas__doctor_ui__30C33EC3" />
+        <AssociationConnector Association="VL_CitasModel.FK__Citas__id_pacien__2FCF1A8A" />
+        <AssociationConnector Association="VL_CitasModel.FK__Citas__status_id__2DE6D218" />
+        <AssociationConnector Association="VL_CitasModel.FK__Citas_Att__cita___31B762FC" />
+        <AssociationConnector Association="VL_CitasModel.FK__Consultor__offic__3493CFA7" />
+        <AssociationConnector Association="VL_CitasModel.FK__Consultor__statu__3587F3E0" />
+        <AssociationConnector Association="VL_CitasModel.FK__Specialti__counc__5224328E" />
+        <AssociationConnector Association="VL_CitasModel.FK__Customers__statu__367C1819" />
+        <AssociationConnector Association="VL_CitasModel.FK__Offices__custome__40F9A68C" />
+        <AssociationConnector Association="VL_CitasModel.FK__Doctor_Co__logo1__37703C52" />
+        <AssociationConnector Association="VL_CitasModel.FK__Doctor_Co__logo2__3864608B" />
+        <AssociationConnector Association="VL_CitasModel.FK__Doctor_Co__logo3__3A4CA8FD" />
+        <AssociationConnector Association="VL_CitasModel.FK__Doctor_Co__logo4__395884C4" />
+        <AssociationConnector Association="VL_CitasModel.FK__Users__doctor_id__540C7B00" />
+        <AssociationConnector Association="VL_CitasModel.FK__Offices__configu__42E1EEFE" />
+        <AssociationConnector Association="VL_CitasModel.FK__Offices__status___41EDCAC5" />
+        <AssociationConnector Association="VL_CitasModel.FK__Offices_U__offic__44CA3770" />
+        <AssociationConnector Association="VL_CitasModel.FK__Schedule__oficin__503BEA1C" />
+        <AssociationConnector Association="VL_CitasModel.FK__Offices_C__time___43D61337" />
+        <AssociationConnector Association="VL_CitasModel.FK__Offices_U__presc__45BE5BA9" />
+        <AssociationConnector Association="VL_CitasModel.FK__Offices_U__user___46B27FE2" />
+        <AssociationConnector Association="VL_CitasModel.FK__Paciente__sex_id__47A6A41B" />
+        <AssociationConnector Association="VL_CitasModel.FK__Patient_P__patie__489AC854" />
+        <AssociationConnector Association="VL_CitasModel.FK__Patient_P__user___498EEC8D" />
+        <AssociationConnector Association="VL_CitasModel.FK__Reports__rol_id__4A8310C6" />
+        <AssociationConnector Association="VL_CitasModel.FK__Roles__status_id__4B7734FF" />
+        <AssociationConnector Association="VL_CitasModel.FK__Servicios__user___51300E55" />
+        <AssociationConnector Association="VL_CitasModel.FK__Users__status_id__531856C7" />
+        <AssociationConnector Association="VL_CitasModel.FK__Vacations__user___58D1301D" />
+        <AssociationConnector Association="VL_CitasModel.Citas_servicios" />
+        <AssociationConnector Association="VL_CitasModel.Doctor_Council_Certifications" />
+        <AssociationConnector Association="VL_CitasModel.Doctor_Specialties" />
+        <AssociationConnector Association="VL_CitasModel.Office_Users_Schedules" />
+        <AssociationConnector Association="VL_CitasModel.Roles_Module" />
+        <AssociationConnector Association="VL_CitasModel.Roles_Office_Users" />
+        <AssociationConnector Association="VL_CitasModel.Users_Consultories" />
+        <AssociationConnector Association="VL_CitasModel.Users_Customers" />
+<<<<<<< HEAD
+=======
+        
+        <AssociationConnector Association="VL_CitasModel.fk_MC_citas" />
+        <EntityTypeShape EntityType="VL_CitasModel.Medicine_citas" Width="1.5" PointX="9.0759112188014726" PointY="24.230455961185719" />
+        <AssociationConnector Association="VL_CitasModel.fk_MC_citas" />
+>>>>>>> added process to reate receta on detalle cita
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,49 @@
+﻿@using VLCitas.DataLayer;
+@{
+    Layout = null;
+    string path = ViewBag.Url == null ? "" : ViewBag.Url;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="@path/Content/robust/app-assets/css/vendors.min.css">
+    <link rel="stylesheet" type="text/css" href="@path/Content/robust/app-assets/vendors/css/charts/jquery-jvectormap-2.0.3.css">
+    <link rel="stylesheet" type="text/css" href="@path/Content/robust/app-assets/css/app.min.css">
+    <link rel="stylesheet" type="text/css" href="@path/Content/robust/app-assets/css/core/menu/menu-types/vertical-menu.min.css">
+    <link rel="stylesheet" type="text/css" href="@path/Content/robust/app-assets/css/core/colors/palette-gradient.min.css">
+
+    <!-- END Page Level CSS-->
+    <!-- BEGIN Custom CSS-->
+    <link rel="stylesheet" type="text/css" href="~/Content/robust/assets/css/style.css">
+
+    <!-- JS Section -->
+
+
+    <script src="@path/Content/robust/app-assets/js/core/libraries/jquery.min.js"></script>
+    <script src="@path/Content/robust/app-assets/vendors/js/charts/chart.min.js"></script>
+    <script src="@path/Scripts/citas/main_reports.js"></script>
+    <script src="@path/Scripts/Translations.js" type="text/javascript"></script>
+    <script>
+        var current_lang =  @Html.Raw(Json.Encode(Session["userLanguage"]));
+        var user_lang = current_lang.JavascriptName;
+    </script>
+
+    <meta name="viewport" content="width=device-width" />
+    <title></title>
+    <style>
+        .hide_on_pdf {
+            display: none !important;
+        }
+    </style>
+</head>
+<body>
+    <div class="">
+        @RenderBody()
+    </div>
+</body>
+</html>

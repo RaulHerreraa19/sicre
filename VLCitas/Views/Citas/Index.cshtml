@@ -1,0 +1,207 @@
+﻿@using VLCitas.DataLayer;
+@model IEnumerable<Get_TotalCitasByStatusxConsultories_Result>
+@{
+    var list = (IEnumerable<GetInvoicesByOfficeConsultory_Result>)ViewBag.item;
+    var statics = (IEnumerable<GetCountCitasByConsultory_Result>)ViewBag.statics;
+    var month = (IEnumerable<GetMonthCitas_Result>)ViewBag.month;
+    var status = (IEnumerable<GetCitasByStatus_Result>)ViewBag.status;
+    var offices = ViewBag.datapie;
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link href="~/Content/robust/assets/css/dashboard.css" rel="stylesheet" />
+
+
+<div class="app-content content container-fluid">
+    <div class="content-wrapper">
+        <div class="content-header row">
+        </div>
+        <div class="content-body">
+            <!-- most selling products -->
+            <div class="row">
+                @foreach (var item in Model)
+                {
+                    <div class="col-lg-3 col-md-12 btn_go_department" data-dep_uid="@item.uId">
+                        <div class="card text-xs-center">
+                            <div class="card-body">
+                                <img class="card-img-top img-fluid" style="height:30%; width:30%;" src="@Url.Content("~/"+item.image_url)" alt="Card image cap">
+                                <div class="card-block">
+                                    <h4 class="card-title">@item.name</h4>
+                                    <p class="card-text"><i class="fa fa-calendar-check-o" aria-hidden="true"></i> @Resource.Scheduled: @item.agendadas</p>
+                                    <p class="card-text"><i class="fa fa-check-circle" aria-hidden="true"></i> @Resource.Confirmed: @item.confirmadas</p>
+                                    @*<p class="card-text">Completadas: @item.completadas</p>
+                                        <p class="card-text">Canceladas: @item.canceladas</p>*@
+                                    <div class="btn-group" role="group" aria-label="Basic example">
+                                        <form method="POST" action="@Url.Action("Agenda","Citas")">
+                                            <input type="hidden" name="uId" value="@item.uId" />
+                                            <button type="submit" class="btn btn-outline-blue btn_select_dept_@item.uId"><i class="fa fa-eye" aria-hidden="true"></i> @Resource.View </button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+            <!--/ most selling products-->
+            <!-- Sales stats -->
+
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="card-block">
+                                <div class="row">
+                                    @foreach (var item in status)
+                                    {
+                                        switch (item.status)
+                                        {
+                                            case "COMPLETADA":
+                                                <div class="col-xl-3 col-lg-6 col-sm-12">
+                                                    <div class="media px-1">
+                                                        <div class="media-left media-middle">
+                                                            <i class="icon-check font-large-1 blue-grey"></i>
+                                                        </div>
+                                                        <div class="media-body text-xs-right">
+                                                            <span class="font-large-2 text-bold-300 success">@item.ncitas</span>
+                                                        </div>
+                                                        <p class="text-muted">@Resource.Completed<span class="success float-xs-right"><i class="icon-arrow-up4 success"></i> </span></p>
+                                                        <progress class="progress progress-sm progress-success" value="@item.ncitas" max="100"></progress>
+                                                    </div>
+                                                </div>
+                                                break;
+                                            case "CONFIRMADA":
+                                                <div class="col-xl-3 col-lg-6 col-sm-12">
+                                                    <div class="media px-1">
+                                                        <div class="media-left media-middle">
+                                                            <i class="icon-info-circle font-large-1 blue-grey"></i>
+                                                        </div>
+                                                        <div class="media-body text-xs-right">
+                                                            <span class="font-large-2 text-bold-300 success">@item.ncitas</span>
+                                                        </div>
+                                                        <p class="text-muted">@Resource.Confirmed<span class="success float-xs-right"><i class="icon-arrow-up4 success"></i> </span></p>
+                                                        <progress class="progress progress-sm progress-success" value="@item.ncitas" max="100"></progress>
+                                                    </div>
+                                                </div>
+                                                break;
+                                            case "CANCELADA":
+                                                <div class="col-xl-3 col-lg-6 col-sm-12 border-right-blue-grey border-right-lighten-5">
+                                                    <div class="media px-1">
+                                                        <div class="media-left media-middle">
+                                                            <i class="icon-times font-large-1 blue-grey"></i>
+                                                        </div>
+                                                        <div class="media-body text-xs-right">
+                                                            <span class="font-large-2 text-bold-300 danger">@item.ncitas</span>
+                                                        </div>
+                                                        <p class="text-muted">@Resource.Canceled<span class="danger float-xs-right"><i class="icon-arrow-down4 danger"></i> </span></p>
+                                                        <progress class="progress progress-sm progress-danger" value="@item.ncitas" max="100"></progress>
+                                                    </div>
+                                                </div>
+                                                break;
+                                            case "AGENDADA":
+                                                <div class="col-xl-3 col-lg-6 col-sm-12 border-right-blue-grey border-right-lighten-5">
+                                                    <div class="media px-1">
+                                                        <div class="media-left media-middle">
+                                                            <i class="icon-calendar-o font-large-1 blue-grey"></i>
+                                                        </div>
+                                                        <div class="media-body text-xs-right">
+                                                            <span class="font-large-2 text-bold-300 deep-blue">@item.ncitas</span>
+                                                        </div>
+                                                        <p class="text-muted">@Resource.Scheduled<span class="deep-blue float-xs-right"><i class="icon-arrow-up4 deep-blue"></i> </span></p>
+                                                        <progress class="progress progress-sm progress-deep-blue" value="@item.ncitas" max="100"></progress>
+                                                    </div>
+                                                </div>
+                                                break;
+                                            default:
+                                                <div class="col-xl-3 col-lg-6 col-sm-12 border-right-blue-grey border-right-lighten-5">
+                                                    <div class="media px-1">
+                                                        <div class="media-left media-middle">
+                                                            <i class="icon-box font-large-1 blue-grey"></i>
+                                                        </div>
+                                                        <div class="media-body text-xs-right">
+                                                            <span class="font-large-2 text-bold-300 info">@item.ncitas</span>
+                                                        </div>
+                                                        <p class="text-muted">@item.status <span class="info float-xs-right"><i class="icon-arrow-up4 info"></i> </span></p>
+                                                        <progress class="progress progress-sm progress-info" value="80" max="100"></progress>
+                                                    </div>
+                                                </div>
+                                                break;
+                                        }
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recent Orders -->
+            <div class="row">
+                <table id="datatable" style="display:none;">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>No. Citas</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        @foreach (var item in statics)
+                        {
+                            <tr>
+                                <th>@item.name</th>
+                                <td>@item.ncitas</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+                <table id="datatable2" style="display:none;">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>Citas por mes</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        @foreach (var item in month)
+                        {
+                            <tr>
+                                <th>@item.MonthName</th>
+                                <td>@item.ncitas</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+
+            </div>
+            <!--/ Recent Orders -->
+
+
+        </div>
+    </div>
+</div>
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        var locations = @Html.Raw(Json.Encode(offices));
+
+        $(".btn_go_department").on("click", function () {
+            var uid = $(this).data("dep_uid");
+            $(".btn_go_department").off("click");
+            $(".btn_select_dept_" + uid).click();
+        });
+
+        console.log(locations);
+
+
+    });
+</script>
+
+
+
+

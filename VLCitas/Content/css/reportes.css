@@ -1,0 +1,9 @@
+﻿button#search {
+    margin-top: 32px;
+}
+button#filter {
+    margin-top: 32px !important;
+}
+button#quit_filter {
+    margin-top: 32px !important;
+}

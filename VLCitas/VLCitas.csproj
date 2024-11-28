@@ -1,0 +1,1716 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{51A1BA31-3762-4346-B5CF-7A77E2B02BBD}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>VLCitas</RootNamespace>
+    <AssemblyName>VLCitas</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <Use64BitIISExpress />
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DataTables-Editor-Server, Version=1.9.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\DataTables-Editor-Server.1.9.2\lib\net45\DataTables-Editor-Server.dll</HintPath>
+    </Reference>
+    <Reference Include="HiQPdf, Version=11.4.0.0, Culture=neutral, PublicKeyToken=acd8b62594985b24, processorArchitecture=MSIL">
+      <HintPath>..\packages\hiqpdf.11.4.0\lib\net40\HiQPdf.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.Agent.Intercept, Version=2.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.Agent.Intercept.2.0.6\lib\net45\Microsoft.AI.Agent.Intercept.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.DependencyCollector, Version=2.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.DependencyCollector.2.2.0\lib\net45\Microsoft.AI.DependencyCollector.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.PerfCounterCollector, Version=2.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.PerfCounterCollector.2.2.0\lib\net45\Microsoft.AI.PerfCounterCollector.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.ServerTelemetryChannel, Version=2.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.2.2.0\lib\net45\Microsoft.AI.ServerTelemetryChannel.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.Web, Version=2.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.Web.2.2.0\lib\net45\Microsoft.AI.Web.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.WindowsServer, Version=2.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.2.2.0\lib\net45\Microsoft.AI.WindowsServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.ApplicationInsights, Version=2.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.2.2.0\lib\net45\Microsoft.ApplicationInsights.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Text.Encodings.Web, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Text.Encodings.Web.4.5.0\lib\netstandard1.0\System.Text.Encodings.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Http, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.3\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Owin">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Owin.2.2.1\lib\net45\Microsoft.AspNet.Identity.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.1\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin">
+      <HintPath>..\packages\Microsoft.Owin.3.0.1\lib\net45\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb">
+      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.3.0.1\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security">
+      <HintPath>..\packages\Microsoft.Owin.Security.3.0.1\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Facebook">
+      <HintPath>..\packages\Microsoft.Owin.Security.Facebook.3.0.1\lib\net45\Microsoft.Owin.Security.Facebook.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Cookies">
+      <HintPath>..\packages\Microsoft.Owin.Security.Cookies.3.0.1\lib\net45\Microsoft.Owin.Security.Cookies.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.OAuth">
+      <HintPath>..\packages\Microsoft.Owin.Security.OAuth.3.0.1\lib\net45\Microsoft.Owin.Security.OAuth.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Google">
+      <HintPath>..\packages\Microsoft.Owin.Security.Google.3.0.1\lib\net45\Microsoft.Owin.Security.Google.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Twitter">
+      <HintPath>..\packages\Microsoft.Owin.Security.Twitter.3.0.1\lib\net45\Microsoft.Owin.Security.Twitter.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.MicrosoftAccount">
+      <HintPath>..\packages\Microsoft.Owin.Security.MicrosoftAccount.3.0.1\lib\net45\Microsoft.Owin.Security.MicrosoftAccount.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\IdentityConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AdministradorController.cs" />
+    <Compile Include="Controllers\AsistenteController.cs" />
+    <Compile Include="Controllers\ConsultorioController.cs" />
+    <Compile Include="Controllers\CitasController.cs" />
+    <Compile Include="Controllers\DoctorController.cs" />
+    <Compile Include="Controllers\ErrorController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\NotificationsController.cs" />
+    <Compile Include="Controllers\PacientesController.cs" />
+    <Compile Include="Controllers\PrescriptionController.cs" />
+    <Compile Include="Controllers\ReportsController.cs" />
+    <Compile Include="Controllers\ServiciosController.cs" />
+    <Compile Include="Controllers\UploadsController.cs" />
+    <Compile Include="Defibrillator.aspx.cs">
+      <DependentUpon>Defibrillator.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Defibrillator.aspx.designer.cs">
+      <DependentUpon>Defibrillator.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="filters\DoctorFilter.cs" />
+    <Compile Include="filters\OperadorFilter.cs" />
+    <Compile Include="filters\Islogged.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="LanguageMang.cs" />
+    <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\DataTableClasses.cs" />
+    <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Pdf_Reports_Model.cs" />
+    <Compile Include="Models\Report.cs" />
+    <Compile Include="MyController.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Startup.cs" />
+    <Compile Include="Tools\ConvertHtmlToString.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Content\datetimepicker\en.json" />
+    <Content Include="Content\datetimepicker\extension.css" />
+    <Content Include="Content\datetimepicker\extension.js" />
+    <Content Include="Content\glyphicon.css" />
+    <Content Include="Content\bootstrap.min - Copy.css" />
+    <Content Include="Content\datetimepicker\datetimepicker.css" />
+    <Content Include="Content\datetimepicker\datetimepicker.js" />
+    <Content Include="Content\bootstrap-grid.css" />
+    <Content Include="Content\bootstrap-grid.min.css" />
+    <Content Include="Content\bootstrap-reboot.css" />
+    <Content Include="Content\bootstrap-reboot.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\buttons.css" />
+    <Content Include="Content\css\agenda.css" />
+    <Content Include="Content\css\Citas.css" />
+    <Content Include="Content\css\reportes.css" />
+    <Content Include="Content\error.css" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\fullcalendar.min.css" />
+    <Content Include="Content\images\assistant.jpg" />
+    <Content Include="Content\images\comming_soon.jpg" />
+    <Content Include="Content\images\consultory.jpg" />
+    <Content Include="Content\images\doctors.jpg" />
+    <Content Include="Content\images\loading2.gif" />
+    <Content Include="Content\images\logo.png" />
+    <Content Include="Content\images\logo_white.png" />
+    <Content Include="Content\images\main-logo.png" />
+    <Content Include="Content\images\main-logo_white.png" />
+    <Content Include="Content\images\sort_asc.png" />
+    <Content Include="Content\images\sort_both.png" />
+    <Content Include="Content\introjs\bootstrap-responsive.min.css" />
+    <Content Include="Content\introjs\custom.css" />
+    <Content Include="Content\introjs\intro.js" />
+    <Content Include="Content\introjs\introjs.css" />
+    <Content Include="Content\Prescriptions\Basic\img\RHP-BG.png" />
+    <Content Include="Content\Prescriptions\Basic\img\RHP-BG2.png" />
+    <Content Include="Content\Prescriptions\Basic\img\RHP-LINE.png" />
+    <Content Include="Content\Prescriptions\Basic\img\RHP-LOGO.png" />
+    <Content Include="Content\Prescriptions\Basic\img\RHPkt.jpg" />
+    <Content Include="Content\Prescriptions\Basic\style.css" />
+    <Content Include="Content\Prescriptions\bootstrap.min.css" />
+    <Content Include="Content\Prescriptions\Custom_1\img\blue-bar.png" />
+    <Content Include="Content\Prescriptions\Custom_1\img\cmcgp.png" />
+    <Content Include="Content\Prescriptions\Custom_1\img\correo.png" />
+    <Content Include="Content\Prescriptions\Custom_1\img\escudobuap.png" />
+    <Content Include="Content\Prescriptions\Custom_1\img\inter-blue.png" />
+    <Content Include="Content\Prescriptions\Custom_1\img\logo-gris.png" />
+    <Content Include="Content\Prescriptions\Custom_1\img\logo.png" />
+    <Content Include="Content\Prescriptions\Custom_1\img\logos.png" />
+    <Content Include="Content\Prescriptions\Custom_1\img\pin.png" />
+    <Content Include="Content\Prescriptions\Custom_1\img\wa-icon.png" />
+    <Content Include="Content\Prescriptions\Custom_1\style.css" />
+    <Content Include="Content\robust\app-assets\css\app.min.css" />
+    <Content Include="Content\robust\app-assets\css\bootstrap-extended.min.css" />
+    <Content Include="Content\robust\app-assets\css\bootstrap.min.css" />
+    <Content Include="Content\robust\app-assets\css\colors.min.css" />
+    <Content Include="Content\robust\app-assets\css\core\colors\palette-callout.min.css" />
+    <Content Include="Content\robust\app-assets\css\core\colors\palette-climacon.min.css" />
+    <Content Include="Content\robust\app-assets\css\core\colors\palette-gradient.min.css" />
+    <Content Include="Content\robust\app-assets\css\core\colors\palette-loader.min.css" />
+    <Content Include="Content\robust\app-assets\css\core\colors\palette-noui.min.css" />
+    <Content Include="Content\robust\app-assets\css\core\colors\palette-switch.min.css" />
+    <Content Include="Content\robust\app-assets\css\core\colors\palette-tooltip.min.css" />
+    <Content Include="Content\robust\app-assets\css\core\menu\menu-types\vertical-overlay-menu.min.css" />
+    <Content Include="Content\robust\app-assets\css\pages\coming-soon.min.css" />
+    <Content Include="Content\robust\app-assets\css\pages\error.min.css" />
+    <Content Include="Content\robust\app-assets\css\pages\gallery.min.css" />
+    <Content Include="Content\robust\app-assets\css\pages\invoice.min.css" />
+    <Content Include="Content\robust\app-assets\css\pages\login-register.min.css" />
+    <Content Include="Content\robust\app-assets\css\pages\project.min.css" />
+    <Content Include="Content\robust\app-assets\css\pages\search.min.css" />
+    <Content Include="Content\robust\app-assets\css\pages\timeline.min.css" />
+    <Content Include="Content\robust\app-assets\css\pages\under-maintenance.min.css" />
+    <Content Include="Content\robust\app-assets\css\pages\users.min.css" />
+    <Content Include="Content\robust\app-assets\css\plugins\animate\animate.min.css" />
+    <Content Include="Content\robust\app-assets\css\plugins\calendars\clndr.min.css" />
+    <Content Include="Content\robust\app-assets\css\plugins\calendars\fullcalendar.min.css" />
+    <Content Include="Content\robust\app-assets\css\plugins\charts\c3-chart.min.css" />
+    <Content Include="Content\robust\app-assets\css\plugins\extensions\noui-slider.min.css" />
+    <Content Include="Content\robust\app-assets\css\plugins\extensions\toastr.min.css" />
+    <Content Include="Content\robust\app-assets\css\plugins\file-uploaders\dropzone.min.css" />
+    <Content Include="Content\robust\app-assets\css\plugins\forms\checkboxes-radios.min.css" />
+    <Content Include="Content\robust\app-assets\css\plugins\forms\dual-listbox.min.css" />
+    <Content Include="Content\robust\app-assets\css\plugins\forms\extended\form-extended.min.css" />
+    <Content Include="Content\robust\app-assets\css\plugins\forms\selectBoxIt\selectBoxIt.min.css" />
+    <Content Include="Content\robust\app-assets\css\plugins\forms\selectivity\selectivity.min.css" />
+    <Content Include="Content\robust\app-assets\css\plugins\forms\selectize\selectize.min.css" />
+    <Content Include="Content\robust\app-assets\css\plugins\forms\switch.min.css" />
+    <Content Include="Content\robust\app-assets\css\plugins\forms\validation\form-validation.min.css" />
+    <Content Include="Content\robust\app-assets\css\plugins\forms\wizard.min.css" />
+    <Content Include="Content\robust\app-assets\css\plugins\images\cropper\cropper.min.css" />
+    <Content Include="Content\robust\app-assets\css\plugins\loaders\loaders.min.css" />
+    <Content Include="Content\robust\app-assets\css\plugins\pickers\colorpicker\colorpicker.min.css" />
+    <Content Include="Content\robust\app-assets\css\plugins\pickers\daterange\daterange.min.css" />
+    <Content Include="Content\robust\app-assets\css\plugins\tables\handsontable.min.css" />
+    <Content Include="Content\robust\app-assets\css\plugins\ui\jqueryui.min.css" />
+    <Content Include="Content\robust\app-assets\css\plugins\ui\shapes.min.css" />
+    <Content Include="Content\robust\app-assets\data\jqvmaps\jquery.vmap.sampledata.js" />
+    <Content Include="Content\robust\app-assets\data\jvector\gdp-data.js" />
+    <Content Include="Content\robust\app-assets\data\jvector\visitor-data.js" />
+    <Content Include="Content\robust\app-assets\fonts\flag-icon-css\css\flag-icon.min.css" />
+    <Content Include="Content\robust\app-assets\fonts\icomoon.css" />
+    <Content Include="Content\robust\app-assets\fonts\icomoon\icomoonc994.svg" />
+    <Content Include="Content\robust\app-assets\images\backgrounds\bg-12.jpg" />
+    <Content Include="Content\robust\app-assets\images\backgrounds\bg-14.jpg" />
+    <Content Include="Content\robust\app-assets\images\backgrounds\bg-2.jpg" />
+    <Content Include="Content\robust\app-assets\images\backgrounds\fb.jpg" />
+    <Content Include="Content\robust\app-assets\images\backgrounds\in.jpg" />
+    <Content Include="Content\robust\app-assets\images\backgrounds\snow_rain.gif" />
+    <Content Include="Content\robust\app-assets\images\backgrounds\tw.jpg" />
+    <Content Include="Content\robust\app-assets\images\backgrounds\wind_turbine.gif" />
+    <Content Include="Content\robust\app-assets\images\bootstrap-colorpicker\alpha-horizontal.png" />
+    <Content Include="Content\robust\app-assets\images\bootstrap-colorpicker\alpha.png" />
+    <Content Include="Content\robust\app-assets\images\bootstrap-colorpicker\hue-horizontal.png" />
+    <Content Include="Content\robust\app-assets\images\bootstrap-colorpicker\hue.png" />
+    <Content Include="Content\robust\app-assets\images\bootstrap-colorpicker\saturation.png" />
+    <Content Include="Content\robust\app-assets\images\carousel\01.jpg" />
+    <Content Include="Content\robust\app-assets\images\carousel\02.jpg" />
+    <Content Include="Content\robust\app-assets\images\carousel\03.jpg" />
+    <Content Include="Content\robust\app-assets\images\carousel\04.jpg" />
+    <Content Include="Content\robust\app-assets\images\carousel\05.jpg" />
+    <Content Include="Content\robust\app-assets\images\carousel\06.jpg" />
+    <Content Include="Content\robust\app-assets\images\carousel\07.jpg" />
+    <Content Include="Content\robust\app-assets\images\carousel\08.jpg" />
+    <Content Include="Content\robust\app-assets\images\carousel\09.jpg" />
+    <Content Include="Content\robust\app-assets\images\carousel\10.jpg" />
+    <Content Include="Content\robust\app-assets\images\carousel\11.jpg" />
+    <Content Include="Content\robust\app-assets\images\carousel\14.jpg" />
+    <Content Include="Content\robust\app-assets\images\carousel\15.jpg" />
+    <Content Include="Content\robust\app-assets\images\carousel\16.jpg" />
+    <Content Include="Content\robust\app-assets\images\carousel\17.jpg" />
+    <Content Include="Content\robust\app-assets\images\carousel\18.jpg" />
+    <Content Include="Content\robust\app-assets\images\carousel\22.jpg" />
+    <Content Include="Content\robust\app-assets\images\carousel\24.png" />
+    <Content Include="Content\robust\app-assets\images\carousel\25.jpg" />
+    <Content Include="Content\robust\app-assets\images\carousel\26.jpg" />
+    <Content Include="Content\robust\app-assets\images\carousel\29.png" />
+    <Content Include="Content\robust\app-assets\images\crop-pic.jpg" />
+    <Content Include="Content\robust\app-assets\images\datatables\resources\details_close.png" />
+    <Content Include="Content\robust\app-assets\images\datatables\resources\details_open.png" />
+    <Content Include="Content\robust\app-assets\images\elements\01.png" />
+    <Content Include="Content\robust\app-assets\images\elements\04.png" />
+    <Content Include="Content\robust\app-assets\images\elements\06.png" />
+    <Content Include="Content\robust\app-assets\images\elements\07.png" />
+    <Content Include="Content\robust\app-assets\images\elements\11.png" />
+    <Content Include="Content\robust\app-assets\images\elements\14.png" />
+    <Content Include="Content\robust\app-assets\images\gallery\1.jpg" />
+    <Content Include="Content\robust\app-assets\images\gallery\10.jpg" />
+    <Content Include="Content\robust\app-assets\images\gallery\11.jpg" />
+    <Content Include="Content\robust\app-assets\images\gallery\12.jpg" />
+    <Content Include="Content\robust\app-assets\images\gallery\13.jpg" />
+    <Content Include="Content\robust\app-assets\images\gallery\14.jpg" />
+    <Content Include="Content\robust\app-assets\images\gallery\15.jpg" />
+    <Content Include="Content\robust\app-assets\images\gallery\16.jpg" />
+    <Content Include="Content\robust\app-assets\images\gallery\17.jpg" />
+    <Content Include="Content\robust\app-assets\images\gallery\18.jpg" />
+    <Content Include="Content\robust\app-assets\images\gallery\19.jpg" />
+    <Content Include="Content\robust\app-assets\images\gallery\2.jpg" />
+    <Content Include="Content\robust\app-assets\images\gallery\20.jpg" />
+    <Content Include="Content\robust\app-assets\images\gallery\21.jpg" />
+    <Content Include="Content\robust\app-assets\images\gallery\23.jpg" />
+    <Content Include="Content\robust\app-assets\images\gallery\25.jpg" />
+    <Content Include="Content\robust\app-assets\images\gallery\26.jpg" />
+    <Content Include="Content\robust\app-assets\images\gallery\27.jpg" />
+    <Content Include="Content\robust\app-assets\images\gallery\28.jpg" />
+    <Content Include="Content\robust\app-assets\images\gallery\29.jpg" />
+    <Content Include="Content\robust\app-assets\images\gallery\3.jpg" />
+    <Content Include="Content\robust\app-assets\images\gallery\32.jpg" />
+    <Content Include="Content\robust\app-assets\images\gallery\33.jpg" />
+    <Content Include="Content\robust\app-assets\images\gallery\4.jpg" />
+    <Content Include="Content\robust\app-assets\images\gallery\5.jpg" />
+    <Content Include="Content\robust\app-assets\images\gallery\6.jpg" />
+    <Content Include="Content\robust\app-assets\images\gallery\7.jpg" />
+    <Content Include="Content\robust\app-assets\images\gallery\8.jpg" />
+    <Content Include="Content\robust\app-assets\images\gallery\9.jpg" />
+    <Content Include="Content\robust\app-assets\images\icons\browser.png" />
+    <Content Include="Content\robust\app-assets\images\icons\chrome.png" />
+    <Content Include="Content\robust\app-assets\images\icons\error.png" />
+    <Content Include="Content\robust\app-assets\images\icons\firefox.png" />
+    <Content Include="Content\robust\app-assets\images\icons\ie.png" />
+    <Content Include="Content\robust\app-assets\images\icons\img.png" />
+    <Content Include="Content\robust\app-assets\images\icons\loading.gif" />
+    <Content Include="Content\robust\app-assets\images\icons\opera.png" />
+    <Content Include="Content\robust\app-assets\images\icons\play-pause.png" />
+    <Content Include="Content\robust\app-assets\images\icons\progressbar.gif" />
+    <Content Include="Content\robust\app-assets\images\icons\safari.png" />
+    <Content Include="Content\robust\app-assets\images\icons\spinner.gif" />
+    <Content Include="Content\robust\app-assets\images\icons\textarea-expand.png" />
+    <Content Include="Content\robust\app-assets\images\icons\video-play.png" />
+    <Content Include="Content\robust\app-assets\images\ico\apple-icon-120.png" />
+    <Content Include="Content\robust\app-assets\images\ico\apple-icon-152.png" />
+    <Content Include="Content\robust\app-assets\images\ico\apple-icon-60.png" />
+    <Content Include="Content\robust\app-assets\images\ico\apple-icon-76.png" />
+    <Content Include="Content\robust\app-assets\images\ico\favicon-32.png" />
+    <Content Include="Content\robust\app-assets\images\jqueryui\ui-anim_basic_16x16.gif" />
+    <Content Include="Content\robust\app-assets\images\jqueryui\ui-icons_ffffff_256x240.png" />
+    <Content Include="Content\robust\app-assets\images\jvqmap\marker\blue.png" />
+    <Content Include="Content\robust\app-assets\images\jvqmap\marker\purple.png" />
+    <Content Include="Content\robust\app-assets\images\jvqmap\marker\red.png" />
+    <Content Include="Content\robust\app-assets\images\logo\robust-80x80.png" />
+    <Content Include="Content\robust\app-assets\images\logo\robust-logo-dark-big.png" />
+    <Content Include="Content\robust\app-assets\images\logo\robust-logo-dark.png" />
+    <Content Include="Content\robust\app-assets\images\logo\robust-logo-light-big.png" />
+    <Content Include="Content\robust\app-assets\images\logo\robust-logo-light.png" />
+    <Content Include="Content\robust\app-assets\images\pages\fitness-profile.jpg" />
+    <Content Include="Content\robust\app-assets\images\pages\fitness-slide-1.jpg" />
+    <Content Include="Content\robust\app-assets\images\pages\fitness-slide-2.jpg" />
+    <Content Include="Content\robust\app-assets\images\pages\fitness-slide-3.jpg" />
+    <Content Include="Content\robust\app-assets\images\pages\signature-scan.png" />
+    <Content Include="Content\robust\app-assets\images\portfolio\portfolio-1.jpg" />
+    <Content Include="Content\robust\app-assets\images\portfolio\width-1200\portfolio-1.jpg" />
+    <Content Include="Content\robust\app-assets\images\portfolio\width-1200\portfolio-2.jpg" />
+    <Content Include="Content\robust\app-assets\images\portfolio\width-1200\portfolio-3.jpg" />
+    <Content Include="Content\robust\app-assets\images\portfolio\width-600\portfolio-1.jpg" />
+    <Content Include="Content\robust\app-assets\images\portfolio\width-600\portfolio-10.jpg" />
+    <Content Include="Content\robust\app-assets\images\portfolio\width-600\portfolio-11.jpg" />
+    <Content Include="Content\robust\app-assets\images\portfolio\width-600\portfolio-14.jpg" />
+    <Content Include="Content\robust\app-assets\images\portfolio\width-600\portfolio-17.jpg" />
+    <Content Include="Content\robust\app-assets\images\portfolio\width-600\portfolio-18.jpg" />
+    <Content Include="Content\robust\app-assets\images\portfolio\width-600\portfolio-2.jpg" />
+    <Content Include="Content\robust\app-assets\images\portfolio\width-600\portfolio-21.jpg" />
+    <Content Include="Content\robust\app-assets\images\portfolio\width-600\portfolio-3.jpg" />
+    <Content Include="Content\robust\app-assets\images\portfolio\width-600\portfolio-4.jpg" />
+    <Content Include="Content\robust\app-assets\images\portfolio\width-600\portfolio-5.jpg" />
+    <Content Include="Content\robust\app-assets\images\portfolio\width-600\portfolio-6.jpg" />
+    <Content Include="Content\robust\app-assets\images\portfolio\width-600\portfolio-7.jpg" />
+    <Content Include="Content\robust\app-assets\images\portfolio\width-600\portfolio-8.jpg" />
+    <Content Include="Content\robust\app-assets\images\portfolio\width-600\portfolio-9.jpg" />
+    <Content Include="Content\robust\app-assets\images\portrait\medium\avatar-m-1.png" />
+    <Content Include="Content\robust\app-assets\images\portrait\medium\avatar-m-10.png" />
+    <Content Include="Content\robust\app-assets\images\portrait\medium\avatar-m-4.png" />
+    <Content Include="Content\robust\app-assets\images\portrait\medium\avatar-m-5.png" />
+    <Content Include="Content\robust\app-assets\images\portrait\medium\avatar-m-6.png" />
+    <Content Include="Content\robust\app-assets\images\portrait\medium\avatar-m-7.png" />
+    <Content Include="Content\robust\app-assets\images\portrait\medium\avatar-m-8.png" />
+    <Content Include="Content\robust\app-assets\images\portrait\small\avatar-s-1.png" />
+    <Content Include="Content\robust\app-assets\images\portrait\small\avatar-s-10.png" />
+    <Content Include="Content\robust\app-assets\images\portrait\small\avatar-s-11.png" />
+    <Content Include="Content\robust\app-assets\images\portrait\small\avatar-s-12.png" />
+    <Content Include="Content\robust\app-assets\images\portrait\small\avatar-s-13.png" />
+    <Content Include="Content\robust\app-assets\images\portrait\small\avatar-s-14.png" />
+    <Content Include="Content\robust\app-assets\images\portrait\small\avatar-s-15.png" />
+    <Content Include="Content\robust\app-assets\images\portrait\small\avatar-s-16.png" />
+    <Content Include="Content\robust\app-assets\images\portrait\small\avatar-s-17.png" />
+    <Content Include="Content\robust\app-assets\images\portrait\small\avatar-s-18.png" />
+    <Content Include="Content\robust\app-assets\images\portrait\small\avatar-s-19.png" />
+    <Content Include="Content\robust\app-assets\images\portrait\small\avatar-s-2.png" />
+    <Content Include="Content\robust\app-assets\images\portrait\small\avatar-s-20.png" />
+    <Content Include="Content\robust\app-assets\images\portrait\small\avatar-s-21.png" />
+    <Content Include="Content\robust\app-assets\images\portrait\small\avatar-s-22.png" />
+    <Content Include="Content\robust\app-assets\images\portrait\small\avatar-s-23.png" />
+    <Content Include="Content\robust\app-assets\images\portrait\small\avatar-s-24.png" />
+    <Content Include="Content\robust\app-assets\images\portrait\small\avatar-s-25.png" />
+    <Content Include="Content\robust\app-assets\images\portrait\small\avatar-s-3.png" />
+    <Content Include="Content\robust\app-assets\images\portrait\small\avatar-s-4.png" />
+    <Content Include="Content\robust\app-assets\images\portrait\small\avatar-s-5.png" />
+    <Content Include="Content\robust\app-assets\images\portrait\small\avatar-s-6.png" />
+    <Content Include="Content\robust\app-assets\images\portrait\small\avatar-s-7.png" />
+    <Content Include="Content\robust\app-assets\images\portrait\small\avatar-s-8.png" />
+    <Content Include="Content\robust\app-assets\images\portrait\small\avatar-s-9.png" />
+    <Content Include="Content\robust\app-assets\images\slider\slider-2.png" />
+    <Content Include="Content\robust\app-assets\images\slider\slider-5.png" />
+    <Content Include="Content\robust\app-assets\images\slider\slider-6.png" />
+    <Content Include="Content\robust\app-assets\js\core\app-menu.min.js" />
+    <Content Include="Content\robust\app-assets\js\core\app.min.js" />
+    <Content Include="Content\robust\app-assets\js\core\libraries\bootstrap.min.js" />
+    <Content Include="Content\robust\app-assets\js\core\libraries\jquery.min.js" />
+    <Content Include="Content\robust\app-assets\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.de-DE.min.html" />
+    <Content Include="Content\robust\app-assets\js\core\libraries\jquery_ui\globalize\cultures\globalize.culture.ja-JP.min.html" />
+    <Content Include="Content\robust\app-assets\js\core\libraries\jquery_ui\globalize\globalize.min.js" />
+    <Content Include="Content\robust\app-assets\js\core\libraries\jquery_ui\jquery-ui.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\animation\animation.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\buttons\button-ladda.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\cards\card-charts.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\cards\card-ecommerce.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\cards\card-interactive.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\cards\card-maps.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\cards\card-social.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\cards\card-statistics.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\cards\draggable.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\c3\axis\category-axis.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\c3\axis\rotated-axis.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\c3\axis\tick-culling.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\c3\axis\tick-fitting.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\c3\axis\timezone.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\c3\axis\y-axis-range.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\c3\axis\y-axis.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\c3\bar-pie\bar.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\c3\bar-pie\column.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\c3\bar-pie\donut.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\c3\bar-pie\pie.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\c3\bar-pie\stacked-bar.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\c3\bar-pie\stacked-column.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\c3\data\category-data.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\c3\data\column-oriented.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\c3\data\data-color.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\c3\data\data-from-url.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\c3\data\data-order.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\c3\data\row-oriented.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\c3\grid\grid-lines.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\c3\grid\x-grid-lines.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\c3\grid\y-grid-lines.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\c3\line\area.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\c3\line\line-region.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\c3\line\line.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\c3\line\multiple-xy.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\c3\line\simple-xy.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\c3\line\spline.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\c3\line\step.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\c3\other\combine.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\c3\other\guage.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\c3\other\scatter-plot.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\c3\other\sub.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\c3\other\timeseries.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\c3\other\zoom.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\c3\transform\to-area.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\c3\transform\to-bar.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\c3\transform\to-line.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\c3\transform\to-pie.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\c3\transform\to-scatter-plot.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\chartist\bar\bi-polar-bar.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\chartist\bar\distributed-series.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\chartist\bar\horizontal-bar.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\chartist\bar\multi-column.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\chartist\bar\peak-circles.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\chartist\bar\stacked-bar.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\chartist\line\area.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\chartist\line\bi-polar-area.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\chartist\line\holes-in-data.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\chartist\line\line-scatter.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\chartist\line\line.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\chartist\line\series-overrides.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\chartist\line\whole-numbers.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\chartist\pie\custom-labels.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\chartist\pie\donut.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\chartist\pie\gauge.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\chartist\pie\pie.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\chartjs\advance\bubble.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\chartjs\advance\combo-bar-line-data-label.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\chartjs\advance\combo-bar-line.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\chartjs\advance\different-point-sizes.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\chartjs\bar\bar-multi-axis.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\chartjs\bar\bar-stacked.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\chartjs\bar\bar.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\chartjs\bar\column-multi-axis.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\chartjs\bar\column-stacked.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\chartjs\bar\column.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\chartjs\line\line-area.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\chartjs\line\line-logarithmic.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\chartjs\line\line-multi-axis.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\chartjs\line\line-skip-points.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\chartjs\line\line-stacked-area.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\chartjs\line\line.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\chartjs\pie-doughnut\doughnut-simple.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\chartjs\pie-doughnut\doughnut.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\chartjs\pie-doughnut\pie-simple.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\chartjs\pie-doughnut\pie.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\chartjs\polar-radar\polar-skip-points.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\chartjs\polar-radar\polar.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\chartjs\polar-radar\radar-skip-points.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\chartjs\polar-radar\radar.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\chartjs\scatter\scatter-logX.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\chartjs\scatter\scatter-multi-axis.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\chartjs\scatter\scatter.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\d3\bar\bar-negative.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\d3\bar\bar.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\d3\bar\grouped-bar.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\d3\bar\normalized-stacked-bar.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\d3\bar\stacked-bar.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\d3\bar\stacked-to-grouped.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\d3\bar\stacked-to-multiples.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\d3\bar\waterfall.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\d3\circle\interactive-venn.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\d3\circle\intersection-tooltip-venn.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\d3\circle\medical-venn.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\d3\circle\sequences-sunburst.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\d3\circle\styled-venn.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\d3\circle\sunburst-distortion.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\d3\circle\sunburst-partition.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\d3\circle\venn-venn.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\d3\circle\weighted-venn.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\d3\circle\zoomable-sunburst.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\d3\line\area.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\d3\line\bivariate.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\d3\line\difference.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\d3\line\focus-context.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\d3\line\line-tension.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\d3\line\line.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\d3\line\multi-series-line.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\d3\line\stacked-area.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\d3\other\bubble.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\d3\other\chord-diagram-new.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\d3\other\gantt-chart.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\d3\other\streamgraph.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\d3\other\treemap.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\d3\other\vertical-sankey.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\d3\pie\3d-pie-donut.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\d3\pie\dispatch-events.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\d3\pie\donut-multiples-nesting.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\d3\pie\donut-multiples.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\d3\pie\donut.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\d3\pie\gradient-pie.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\d3\pie\pie-calendar.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\d3\pie\pie-multiples-nesting.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\d3\pie\pie-multiples.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\d3\pie\pie.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\d3\tree\bracket.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\d3\tree\collapsible.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\d3\tree\dendrogram.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\d3\tree\radial.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\d3\tree\tree.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\dimple\bar-column.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\dimple\bubble.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\dimple\line-area.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\dimple\pie-ring.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\dimple\scatter.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\dimple\step.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\echarts\advance\candlestick-multi-level-control.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\echarts\advance\dynamic-data.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\echarts\advance\event-river.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\echarts\advance\eventRiver2-data.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\echarts\advance\multiple-series-rainbow.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\echarts\advance\time-data.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\echarts\advance\timeline-options.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\echarts\advance\timeline.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\echarts\advance\tornado.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\echarts\advance\treemap.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\echarts\advance\word-cloud.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\echarts\bar-column\basic-bar.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\echarts\bar-column\basic-column.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\echarts\bar-column\change-waterfall.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\echarts\bar-column\column-multi-level-control.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\echarts\bar-column\irregular-bar.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\echarts\bar-column\stacked-bar.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\echarts\bar-column\stacked-clustered-column.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\echarts\bar-column\stacked-column.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\echarts\bar-column\stacked-floating-bar.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\echarts\bar-column\thermometer.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\echarts\combination\column-line.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\echarts\combination\column-pie.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\echarts\combination\multiple-combination.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\echarts\combination\scatter-line.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\echarts\combination\scatter-pie.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\echarts\funnel-gauges\angular-gauge.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\echarts\funnel-gauges\basic-gauge.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\echarts\funnel-gauges\customized-gauge.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\echarts\funnel-gauges\funnel-plot.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\echarts\funnel-gauges\funnel-pyramid.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\echarts\funnel-gauges\left-align-funnel.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\echarts\funnel-gauges\multiple-funnel1.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\echarts\funnel-gauges\multiple-funnel2.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\echarts\funnel-gauges\multiple-gauges.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\echarts\funnel-gauges\right-align-funnel.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\echarts\line-area\basic-area.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\echarts\line-area\basic-line.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\echarts\line-area\irregular-line-time-axis.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\echarts\line-area\irregular-line-two-value-axis.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\echarts\line-area\line-multilevel-control.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\echarts\line-area\stacked-area.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\echarts\line-area\stacked-line.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\echarts\pie-doughnut\basic-pie.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\echarts\pie-doughnut\doughnut-infographic.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\echarts\pie-doughnut\doughnut.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\echarts\pie-doughnut\lasagna.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\echarts\pie-doughnut\multiple-doughnut.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\echarts\pie-doughnut\nested-pie.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\echarts\pie-doughnut\nightingale-rose-labels.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\echarts\pie-doughnut\nightingale-rose.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\echarts\pie-doughnut\timeline.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\echarts\radar-chord\basic-chord.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\echarts\radar-chord\basic-filled-radar.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\echarts\radar-chord\basic-radar.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\echarts\radar-chord\chord-sorting.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\echarts\radar-chord\multiple-dimensions-chord.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\echarts\radar-chord\multiple-radars.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\echarts\radar-chord\non-ribbon-chord.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\echarts\radar-chord\radar-multi-level-control.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\echarts\radar-chord\wormhole.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\echarts\scatter\basic-bubble.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\echarts\scatter\basic-scatter.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\echarts\scatter\category-scatter.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\echarts\scatter\large-scale-scatter.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\echarts\scatter\scatter-multi-level-control.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\flot\bar\annotations.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\flot\bar\bar.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\flot\bar\error-bars.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\flot\bar\stacked-bar.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\flot\bar\thresholds.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\flot\line\line.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\flot\line\realtime.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\flot\line\series-types.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\flot\line\symbols.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\flot\line\tracking.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\flot\line\visitors.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\flot\pie\donut-hole.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\flot\pie\interactive-pie.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\flot\pie\label-formatter.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\flot\pie\pie.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\flot\pie\rectangular-pie.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\flot\pie\tilted-pie.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\gmaps\maps.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\gmaps\overlays.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\gmaps\routes.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\gmaps\services.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\gmaps\utils.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\google\bar\bar-intervals.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\google\bar\bar-stacked.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\google\bar\bar.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\google\bar\column.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\google\bar\combo.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\google\bar\histogram.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\google\bar\stacked-column.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\google\bubble\bubble-color.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\google\bubble\bubble.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\google\line\area-interval.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\google\line\area-stacked-stepped.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\google\line\area-stacked.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\google\line\area-stepped.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\google\line\area.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\google\line\line-interval.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\google\line\line.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\google\other\candlestick.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\google\other\diff.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\google\other\geo.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\google\other\guage.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\google\other\sankey.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\google\other\sticks-interval.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\google\other\treemap.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\google\other\trendlines.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\google\pie\3d-pie-exploded.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\google\pie\3d-pie.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\google\pie\donut-exploded.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\google\pie\donut-rotated.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\google\pie\donut.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\google\pie\pie-diff-border.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\google\pie\pie-diff-invert.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\google\pie\pie-diff-opacity.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\google\pie\pie-diff-radius.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\google\pie\pie-exploded.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\google\pie\pie-rotated.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\google\pie\pie.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\google\scatter\point-interval.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\google\scatter\scatter-diff.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\google\scatter\scatter-material.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\google\scatter\scatter.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\jqvmap\jqvmap.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\jvector\jvector.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\mapael\advance\afterInit-extend.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\mapael\advance\display-information.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\mapael\advance\links-between-plotted-cities.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\mapael\advance\multiple-legends-plotted-cities.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\mapael\advance\zoom-on-click.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\mapael\basic\horizontal-legend.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\mapael\basic\href-plotted-cities.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\mapael\basic\legend-images.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\mapael\basic\legend-plotted-cities.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\mapael\basic\zoom.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\morris\area.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\morris\bar.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\morris\donut.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\morris\line.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\morris\smooth-area.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\morris\smooth-line.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\rickshaw\area.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\rickshaw\bar.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\rickshaw\line.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\rickshaw\multiple-renderers.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\charts\rickshaw\scatter.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\coming-soon\coming-soon.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\dropdowns\dropdowns.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\editors\editor-ace.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\editors\editor-ckeditor.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\editors\editor-codemirror.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\editors\editor-quill.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\editors\editor-summernote.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\editors\editor-tinymce.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\extensions\block-ui.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\extensions\clndr.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\extensions\context-menu.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\extensions\date-time-dropper.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\extensions\drag-drop.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\extensions\dropzone.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\extensions\fullcalendar.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\extensions\image-cropper.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\extensions\internationalization\after-init.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\extensions\internationalization\fallback.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\extensions\internationalization\on-init.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\extensions\internationalization\query-string.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\extensions\internationalization\resources.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\extensions\internationalization\xhr-backend.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\extensions\jquery-file-upload.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\extensions\knob.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\extensions\list.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\extensions\long-press.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\extensions\noui-slider.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\extensions\offline.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\extensions\rating.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\extensions\sweet-alerts.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\extensions\toastr.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\extensions\toolbar.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\extensions\tree-view.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\extensions\unslider.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\forms\checkbox-radio.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\forms\extended\form-card.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\forms\extended\form-formatter.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\forms\extended\form-inputmask.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\forms\extended\form-maxlength.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\forms\extended\form-typeahead.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\forms\form-login-register.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\forms\form-repeater.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\forms\input-groups.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\forms\listbox\form-duallistbox.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\forms\select\form-select2.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\forms\select\form-selectBoxIt.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\forms\select\form-selectivity.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\forms\select\form-selectize.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\forms\switch.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\forms\switchery.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\forms\tags\tagging.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\forms\validation\form-validation.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\forms\wizard-steps.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\gallery\photo-swipe\photoswipe-script.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\modal\components-modal.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\navs\navs.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\pages\content-sidebar.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\pages\dashboard-analytics.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\pages\dashboard-crm.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\pages\dashboard-ecommerce.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\pages\dashboard-fitness.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\pages\dashboard-project.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\pages\invoice-sales-and-expenses.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\pages\invoice-top-expenses.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\pages\invoice-total-recievables.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\pages\invoices-list.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\pages\project-bug-list.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\pages\project-summary-bug.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\pages\project-summary-task.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\pages\project-task-list.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\pages\scrumboard.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\pages\timeline.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\pages\users-contacts.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\pagination\pagination.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\pickers\colorpicker\picker-color.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\pickers\dateTime\picker-date-time.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\popover\popover.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\tables\components\table-components.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\tables\datatables-extensions\datatable-autofill.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\tables\datatables-extensions\datatable-button\datatable-button-basic.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\tables\datatables-extensions\datatable-button\datatable-extensions-api.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\tables\datatables-extensions\datatable-button\datatable-flash.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\tables\datatables-extensions\datatable-button\datatable-html5.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\tables\datatables-extensions\datatable-button\datatable-print.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\tables\datatables-extensions\datatable-button\datatable-visibility.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\tables\datatables-extensions\datatable-colvis.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\tables\datatables-extensions\datatable-fixed-column.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\tables\datatables-extensions\datatable-fixed-header.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\tables\datatables-extensions\datatable-keytable.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\tables\datatables-extensions\datatable-responsive.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\tables\datatables-extensions\datatable-rowreorder.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\tables\datatables-extensions\datatable-select.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\tables\datatables-extensions\datatables-colreorder.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\tables\datatables-extensions\datatables-sources.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\tables\datatables\datatable-advanced.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\tables\datatables\datatable-api.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\tables\datatables\datatable-basic.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\tables\datatables\datatable-styling.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\tables\handsontable\handsontable-appearance.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\tables\handsontable\handsontable-cell-features.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\tables\handsontable\handsontable-cell-types.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\tables\handsontable\handsontable-columns-only.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\tables\handsontable\handsontable-data-operations.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\tables\handsontable\handsontable-integrations.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\tables\handsontable\handsontable-rows-columns.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\tables\handsontable\handsontable-rows-only.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\tables\handsontable\handsontable-utilities.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\tables\jsgrid\jsgrid.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\tooltip\tooltip.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\ui\breadcrumbs-with-stats.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\ui\fullscreenSearch.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\ui\jquery-ui\autocomplete.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\ui\jquery-ui\buttons-selects.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\ui\jquery-ui\date-pickers.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\ui\jquery-ui\dialog-tooltip.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\ui\jquery-ui\interactions.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\ui\jquery-ui\navigations.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\ui\jquery-ui\slider-spinner.min.js" />
+    <Content Include="Content\robust\app-assets\js\scripts\ui\scrollable.min.js" />
+    <Content Include="Content\robust\app-assets\vendors\css\buttons\ladda-themeless.min.css" />
+    <Content Include="Content\robust\app-assets\vendors\css\calendars\fullcalendar.min.css" />
+    <Content Include="Content\robust\app-assets\vendors\css\charts\c3.css" />
+    <Content Include="Content\robust\app-assets\vendors\css\charts\chartist-plugin-tooltip.css" />
+    <Content Include="Content\robust\app-assets\vendors\css\charts\chartist.css" />
+    <Content Include="Content\robust\app-assets\vendors\css\charts\d3.css" />
+    <Content Include="Content\robust\app-assets\vendors\css\charts\jquery-jvectormap-2.0.3.css" />
+    <Content Include="Content\robust\app-assets\vendors\css\charts\jqvmap.css" />
+    <Content Include="Content\robust\app-assets\vendors\css\charts\mapael.css" />
+    <Content Include="Content\robust\app-assets\vendors\css\charts\morris.css" />
+    <Content Include="Content\robust\app-assets\vendors\css\charts\rickshaw.css" />
+    <Content Include="Content\robust\app-assets\vendors\css\editors\addon\dialog\dialog.css" />
+    <Content Include="Content\robust\app-assets\vendors\css\editors\addon\fold\foldgutter.css" />
+    <Content Include="Content\robust\app-assets\vendors\css\editors\codemirror.css" />
+    <Content Include="Content\robust\app-assets\vendors\css\editors\quill\fonts\KaTeX_AMS-Regular-2.html" />
+    <Content Include="Content\robust\app-assets\vendors\css\editors\quill\fonts\KaTeX_AMS-Regular-3.html" />
+    <Content Include="Content\robust\app-assets\vendors\css\editors\quill\fonts\KaTeX_AMS-Regular-4.html" />
+    <Content Include="Content\robust\app-assets\vendors\css\editors\quill\fonts\KaTeX_AMS-Regular.html" />
+    <Content Include="Content\robust\app-assets\vendors\css\editors\quill\fonts\KaTeX_Caligraphic-Bold-2.html" />
+    <Content Include="Content\robust\app-assets\vendors\css\editors\quill\fonts\KaTeX_Caligraphic-Bold-3.html" />
+    <Content Include="Content\robust\app-assets\vendors\css\editors\quill\fonts\KaTeX_Caligraphic-Bold-4.html" />
+    <Content Include="Content\robust\app-assets\vendors\css\editors\quill\fonts\KaTeX_Caligraphic-Bold.html" />
+    <Content Include="Content\robust\app-assets\vendors\css\editors\quill\fonts\KaTeX_Caligraphic-Regular-2.html" />
+    <Content Include="Content\robust\app-assets\vendors\css\editors\quill\fonts\KaTeX_Caligraphic-Regular-3.html" />
+    <Content Include="Content\robust\app-assets\vendors\css\editors\quill\fonts\KaTeX_Caligraphic-Regular-4.html" />
+    <Content Include="Content\robust\app-assets\vendors\css\editors\quill\fonts\KaTeX_Caligraphic-Regular.html" />
+    <Content Include="Content\robust\app-assets\vendors\css\editors\quill\fonts\KaTeX_Fraktur-Bold-2.html" />
+    <Content Include="Content\robust\app-assets\vendors\css\editors\quill\fonts\KaTeX_Fraktur-Bold-3.html" />
+    <Content Include="Content\robust\app-assets\vendors\css\editors\quill\fonts\KaTeX_Fraktur-Bold-4.html" />
+    <Content Include="Content\robust\app-assets\vendors\css\editors\quill\fonts\KaTeX_Fraktur-Bold.html" />
+    <Content Include="Content\robust\app-assets\vendors\css\editors\quill\fonts\KaTeX_Fraktur-Regular-2.html" />
+    <Content Include="Content\robust\app-assets\vendors\css\editors\quill\fonts\KaTeX_Fraktur-Regular-3.html" />
+    <Content Include="Content\robust\app-assets\vendors\css\editors\quill\fonts\KaTeX_Fraktur-Regular-4.html" />
+    <Content Include="Content\robust\app-assets\vendors\css\editors\quill\fonts\KaTeX_Fraktur-Regular.html" />
+    <Content Include="Content\robust\app-assets\vendors\css\editors\quill\fonts\KaTeX_Main-Bold-2.html" />
+    <Content Include="Content\robust\app-assets\vendors\css\editors\quill\fonts\KaTeX_Main-Bold-3.html" />
+    <Content Include="Content\robust\app-assets\vendors\css\editors\quill\fonts\KaTeX_Main-Bold-4.html" />
+    <Content Include="Content\robust\app-assets\vendors\css\editors\quill\fonts\KaTeX_Main-Bold.html" />
+    <Content Include="Content\robust\app-assets\vendors\css\editors\quill\fonts\KaTeX_Main-Italic-2.html" />
+    <Content Include="Content\robust\app-assets\vendors\css\editors\quill\fonts\KaTeX_Main-Italic-3.html" />
+    <Content Include="Content\robust\app-assets\vendors\css\editors\quill\fonts\KaTeX_Main-Italic-4.html" />
+    <Content Include="Content\robust\app-assets\vendors\css\editors\quill\fonts\KaTeX_Main-Italic.html" />
+    <Content Include="Content\robust\app-assets\vendors\css\editors\quill\fonts\KaTeX_Main-Regular-2.html" />
+    <Content Include="Content\robust\app-assets\vendors\css\editors\quill\fonts\KaTeX_Main-Regular-3.html" />
+    <Content Include="Content\robust\app-assets\vendors\css\editors\quill\fonts\KaTeX_Main-Regular.html" />
+    <Content Include="Content\robust\app-assets\vendors\css\editors\quill\fonts\KaTeX_Math-Italic-2.html" />
+    <Content Include="Content\robust\app-assets\vendors\css\editors\quill\fonts\KaTeX_Math-Italic-3.html" />
+    <Content Include="Content\robust\app-assets\vendors\css\editors\quill\fonts\KaTeX_Math-Italic.html" />
+    <Content Include="Content\robust\app-assets\vendors\css\editors\quill\fonts\KaTeX_SansSerif-Regular-2.html" />
+    <Content Include="Content\robust\app-assets\vendors\css\editors\quill\fonts\KaTeX_SansSerif-Regular-3.html" />
+    <Content Include="Content\robust\app-assets\vendors\css\editors\quill\fonts\KaTeX_SansSerif-Regular-4.html" />
+    <Content Include="Content\robust\app-assets\vendors\css\editors\quill\fonts\KaTeX_SansSerif-Regular.html" />
+    <Content Include="Content\robust\app-assets\vendors\css\editors\quill\fonts\KaTeX_Script-Regular-2.html" />
+    <Content Include="Content\robust\app-assets\vendors\css\editors\quill\fonts\KaTeX_Script-Regular-3.html" />
+    <Content Include="Content\robust\app-assets\vendors\css\editors\quill\fonts\KaTeX_Script-Regular-4.html" />
+    <Content Include="Content\robust\app-assets\vendors\css\editors\quill\fonts\KaTeX_Script-Regular.html" />
+    <Content Include="Content\robust\app-assets\vendors\css\editors\quill\fonts\KaTeX_Size1-Regular-2.html" />
+    <Content Include="Content\robust\app-assets\vendors\css\editors\quill\fonts\KaTeX_Size1-Regular-3.html" />
+    <Content Include="Content\robust\app-assets\vendors\css\editors\quill\fonts\KaTeX_Size1-Regular-4.html" />
+    <Content Include="Content\robust\app-assets\vendors\css\editors\quill\fonts\KaTeX_Size1-Regular.html" />
+    <Content Include="Content\robust\app-assets\vendors\css\editors\quill\fonts\KaTeX_Size2-Regular-2.html" />
+    <Content Include="Content\robust\app-assets\vendors\css\editors\quill\fonts\KaTeX_Size2-Regular-3.html" />
+    <Content Include="Content\robust\app-assets\vendors\css\editors\quill\fonts\KaTeX_Size2-Regular-4.html" />
+    <Content Include="Content\robust\app-assets\vendors\css\editors\quill\fonts\KaTeX_Size2-Regular.html" />
+    <Content Include="Content\robust\app-assets\vendors\css\editors\quill\fonts\KaTeX_Size3-Regular-2.html" />
+    <Content Include="Content\robust\app-assets\vendors\css\editors\quill\fonts\KaTeX_Size3-Regular-3.html" />
+    <Content Include="Content\robust\app-assets\vendors\css\editors\quill\fonts\KaTeX_Size3-Regular-4.html" />
+    <Content Include="Content\robust\app-assets\vendors\css\editors\quill\fonts\KaTeX_Size3-Regular.html" />
+    <Content Include="Content\robust\app-assets\vendors\css\editors\quill\fonts\KaTeX_Size4-Regular-2.html" />
+    <Content Include="Content\robust\app-assets\vendors\css\editors\quill\fonts\KaTeX_Size4-Regular-3.html" />
+    <Content Include="Content\robust\app-assets\vendors\css\editors\quill\fonts\KaTeX_Size4-Regular-4.html" />
+    <Content Include="Content\robust\app-assets\vendors\css\editors\quill\fonts\KaTeX_Size4-Regular.html" />
+    <Content Include="Content\robust\app-assets\vendors\css\editors\quill\fonts\KaTeX_Typewriter-Regular-2.html" />
+    <Content Include="Content\robust\app-assets\vendors\css\editors\quill\fonts\KaTeX_Typewriter-Regular-3.html" />
+    <Content Include="Content\robust\app-assets\vendors\css\editors\quill\fonts\KaTeX_Typewriter-Regular-4.html" />
+    <Content Include="Content\robust\app-assets\vendors\css\editors\quill\fonts\KaTeX_Typewriter-Regular.html" />
+    <Content Include="Content\robust\app-assets\vendors\css\editors\quill\katex.min.css" />
+    <Content Include="Content\robust\app-assets\vendors\css\editors\quill\monokai-sublime.min.css" />
+    <Content Include="Content\robust\app-assets\vendors\css\editors\quill\quill.bubble.css" />
+    <Content Include="Content\robust\app-assets\vendors\css\editors\quill\quill.snow.css" />
+    <Content Include="Content\robust\app-assets\vendors\css\editors\quill\quill.table.css" />
+    <Content Include="Content\robust\app-assets\vendors\css\editors\summernote.css" />
+    <Content Include="Content\robust\app-assets\vendors\css\editors\theme\3024-day.css" />
+    <Content Include="Content\robust\app-assets\vendors\css\editors\theme\monokai.css" />
+    <Content Include="Content\robust\app-assets\vendors\css\editors\theme\night.css" />
+    <Content Include="Content\robust\app-assets\vendors\css\editors\tinymce\img\loader.html" />
+    <Content Include="Content\robust\app-assets\vendors\css\editors\tinymce\tinymce.min.css" />
+    <Content Include="Content\robust\app-assets\vendors\css\extensions\bgvideo\bigvideo.css" />
+    <Content Include="Content\robust\app-assets\vendors\css\extensions\bgvideo\bigvideo.png" />
+    <Content Include="Content\robust\app-assets\vendors\css\extensions\bgvideo\video-js.min.css" />
+    <Content Include="Content\robust\app-assets\vendors\css\extensions\bootstrap-treeview.min.css" />
+    <Content Include="Content\robust\app-assets\vendors\css\extensions\datedropper.min.css" />
+    <Content Include="Content\robust\app-assets\vendors\css\extensions\dd-icon\dd-icon.svg" />
+    <Content Include="Content\robust\app-assets\vendors\css\extensions\jquery.toolbar.css" />
+    <Content Include="Content\robust\app-assets\vendors\css\extensions\long-press.css" />
+    <Content Include="Content\robust\app-assets\vendors\css\extensions\nouislider.min.css" />
+    <Content Include="Content\robust\app-assets\vendors\css\extensions\offline\themes\offline-language-english.css" />
+    <Content Include="Content\robust\app-assets\vendors\css\extensions\offline\themes\offline-theme-slide.css" />
+    <Content Include="Content\robust\app-assets\vendors\css\extensions\pace.css" />
+    <Content Include="Content\robust\app-assets\vendors\css\extensions\raty\fonts\raty.svg" />
+    <Content Include="Content\robust\app-assets\vendors\css\extensions\raty\jquery.raty.css" />
+    <Content Include="Content\robust\app-assets\vendors\css\extensions\sweetalert.css" />
+    <Content Include="Content\robust\app-assets\vendors\css\extensions\timedropper.min.css" />
+    <Content Include="Content\robust\app-assets\vendors\css\extensions\toastr.css" />
+    <Content Include="Content\robust\app-assets\vendors\css\extensions\unslider.css" />
+    <Content Include="Content\robust\app-assets\vendors\css\extensions\zoom.css" />
+    <Content Include="Content\robust\app-assets\vendors\css\file-uploaders\blueimp-gallery.min.css" />
+    <Content Include="Content\robust\app-assets\vendors\css\file-uploaders\dropzone.min.css" />
+    <Content Include="Content\robust\app-assets\vendors\css\file-uploaders\jquery.fileupload-ui.css" />
+    <Content Include="Content\robust\app-assets\vendors\css\file-uploaders\jquery.fileupload.css" />
+    <Content Include="Content\robust\app-assets\vendors\css\forms\icheck\custom.css" />
+    <Content Include="Content\robust\app-assets\vendors\css\forms\icheck\flat\aero%402x.png" />
+    <Content Include="Content\robust\app-assets\vendors\css\forms\icheck\flat\aero.png" />
+    <Content Include="Content\robust\app-assets\vendors\css\forms\icheck\flat\blue%402x.png" />
+    <Content Include="Content\robust\app-assets\vendors\css\forms\icheck\flat\blue.png" />
+    <Content Include="Content\robust\app-assets\vendors\css\forms\icheck\flat\flat%402x.png" />
+    <Content Include="Content\robust\app-assets\vendors\css\forms\icheck\flat\flat.png" />
+    <Content Include="Content\robust\app-assets\vendors\css\forms\icheck\flat\green%402x.png" />
+    <Content Include="Content\robust\app-assets\vendors\css\forms\icheck\flat\green.png" />
+    <Content Include="Content\robust\app-assets\vendors\css\forms\icheck\flat\grey%402x.png" />
+    <Content Include="Content\robust\app-assets\vendors\css\forms\icheck\flat\grey.png" />
+    <Content Include="Content\robust\app-assets\vendors\css\forms\icheck\flat\orange%402x.png" />
+    <Content Include="Content\robust\app-assets\vendors\css\forms\icheck\flat\orange.png" />
+    <Content Include="Content\robust\app-assets\vendors\css\forms\icheck\flat\pink%402x.png" />
+    <Content Include="Content\robust\app-assets\vendors\css\forms\icheck\flat\pink.png" />
+    <Content Include="Content\robust\app-assets\vendors\css\forms\icheck\flat\purple%402x.png" />
+    <Content Include="Content\robust\app-assets\vendors\css\forms\icheck\flat\purple.png" />
+    <Content Include="Content\robust\app-assets\vendors\css\forms\icheck\flat\red%402x.png" />
+    <Content Include="Content\robust\app-assets\vendors\css\forms\icheck\flat\red.png" />
+    <Content Include="Content\robust\app-assets\vendors\css\forms\icheck\flat\yellow%402x.png" />
+    <Content Include="Content\robust\app-assets\vendors\css\forms\icheck\flat\yellow.png" />
+    <Content Include="Content\robust\app-assets\vendors\css\forms\icheck\flat\_all.css" />
+    <Content Include="Content\robust\app-assets\vendors\css\forms\icheck\futurico\futurico%402x.png" />
+    <Content Include="Content\robust\app-assets\vendors\css\forms\icheck\futurico\futurico.css" />
+    <Content Include="Content\robust\app-assets\vendors\css\forms\icheck\futurico\futurico.png" />
+    <Content Include="Content\robust\app-assets\vendors\css\forms\icheck\icheck.css" />
+    <Content Include="Content\robust\app-assets\vendors\css\forms\icheck\line\line%402x.png" />
+    <Content Include="Content\robust\app-assets\vendors\css\forms\icheck\line\line.png" />
+    <Content Include="Content\robust\app-assets\vendors\css\forms\icheck\line\_all.css" />
+    <Content Include="Content\robust\app-assets\vendors\css\forms\icheck\minimal\aero%402x.png" />
+    <Content Include="Content\robust\app-assets\vendors\css\forms\icheck\minimal\aero.png" />
+    <Content Include="Content\robust\app-assets\vendors\css\forms\icheck\minimal\blue%402x.png" />
+    <Content Include="Content\robust\app-assets\vendors\css\forms\icheck\minimal\blue.png" />
+    <Content Include="Content\robust\app-assets\vendors\css\forms\icheck\minimal\green%402x.png" />
+    <Content Include="Content\robust\app-assets\vendors\css\forms\icheck\minimal\green.png" />
+    <Content Include="Content\robust\app-assets\vendors\css\forms\icheck\minimal\grey%402x.png" />
+    <Content Include="Content\robust\app-assets\vendors\css\forms\icheck\minimal\grey.png" />
+    <Content Include="Content\robust\app-assets\vendors\css\forms\icheck\minimal\minimal%402x.png" />
+    <Content Include="Content\robust\app-assets\vendors\css\forms\icheck\minimal\minimal.png" />
+    <Content Include="Content\robust\app-assets\vendors\css\forms\icheck\minimal\orange%402x.png" />
+    <Content Include="Content\robust\app-assets\vendors\css\forms\icheck\minimal\orange.png" />
+    <Content Include="Content\robust\app-assets\vendors\css\forms\icheck\minimal\pink%402x.png" />
+    <Content Include="Content\robust\app-assets\vendors\css\forms\icheck\minimal\pink.png" />
+    <Content Include="Content\robust\app-assets\vendors\css\forms\icheck\minimal\purple%402x.png" />
+    <Content Include="Content\robust\app-assets\vendors\css\forms\icheck\minimal\purple.png" />
+    <Content Include="Content\robust\app-assets\vendors\css\forms\icheck\minimal\red%402x.png" />
+    <Content Include="Content\robust\app-assets\vendors\css\forms\icheck\minimal\red.png" />
+    <Content Include="Content\robust\app-assets\vendors\css\forms\icheck\minimal\yellow%402x.png" />
+    <Content Include="Content\robust\app-assets\vendors\css\forms\icheck\minimal\yellow.png" />
+    <Content Include="Content\robust\app-assets\vendors\css\forms\icheck\minimal\_all.css" />
+    <Content Include="Content\robust\app-assets\vendors\css\forms\icheck\polaris\polaris%402x.png" />
+    <Content Include="Content\robust\app-assets\vendors\css\forms\icheck\polaris\polaris.css" />
+    <Content Include="Content\robust\app-assets\vendors\css\forms\icheck\polaris\polaris.png" />
+    <Content Include="Content\robust\app-assets\vendors\css\forms\icheck\square\aero%402x.png" />
+    <Content Include="Content\robust\app-assets\vendors\css\forms\icheck\square\aero.png" />
+    <Content Include="Content\robust\app-assets\vendors\css\forms\icheck\square\blue%402x.png" />
+    <Content Include="Content\robust\app-assets\vendors\css\forms\icheck\square\blue.png" />
+    <Content Include="Content\robust\app-assets\vendors\css\forms\icheck\square\green%402x.png" />
+    <Content Include="Content\robust\app-assets\vendors\css\forms\icheck\square\green.png" />
+    <Content Include="Content\robust\app-assets\vendors\css\forms\icheck\square\grey%402x.png" />
+    <Content Include="Content\robust\app-assets\vendors\css\forms\icheck\square\grey.png" />
+    <Content Include="Content\robust\app-assets\vendors\css\forms\icheck\square\orange%402x.png" />
+    <Content Include="Content\robust\app-assets\vendors\css\forms\icheck\square\orange.png" />
+    <Content Include="Content\robust\app-assets\vendors\css\forms\icheck\square\pink%402x.png" />
+    <Content Include="Content\robust\app-assets\vendors\css\forms\icheck\square\pink.png" />
+    <Content Include="Content\robust\app-assets\vendors\css\forms\icheck\square\purple%402x.png" />
+    <Content Include="Content\robust\app-assets\vendors\css\forms\icheck\square\purple.png" />
+    <Content Include="Content\robust\app-assets\vendors\css\forms\icheck\square\red%402x.png" />
+    <Content Include="Content\robust\app-assets\vendors\css\forms\icheck\square\red.png" />
+    <Content Include="Content\robust\app-assets\vendors\css\forms\icheck\square\square%402x.png" />
+    <Content Include="Content\robust\app-assets\vendors\css\forms\icheck\square\square.png" />
+    <Content Include="Content\robust\app-assets\vendors\css\forms\icheck\square\yellow%402x.png" />
+    <Content Include="Content\robust\app-assets\vendors\css\forms\icheck\square\yellow.png" />
+    <Content Include="Content\robust\app-assets\vendors\css\forms\icheck\square\_all.css" />
+    <Content Include="Content\robust\app-assets\vendors\css\forms\listbox\bootstrap-duallistbox.min.css" />
+    <Content Include="Content\robust\app-assets\vendors\css\forms\selects\jquery.selectBoxIt.css" />
+    <Content Include="Content\robust\app-assets\vendors\css\forms\selects\select2.min.css" />
+    <Content Include="Content\robust\app-assets\vendors\css\forms\selects\selectivity-full.min.css" />
+    <Content Include="Content\robust\app-assets\vendors\css\forms\selects\selectize.css" />
+    <Content Include="Content\robust\app-assets\vendors\css\forms\selects\selectize.default.css" />
+    <Content Include="Content\robust\app-assets\vendors\css\forms\spinner\jquery.bootstrap-touchspin.css" />
+    <Content Include="Content\robust\app-assets\vendors\css\forms\tags\bootstrap-tagsinput.css" />
+    <Content Include="Content\robust\app-assets\vendors\css\forms\tags\tagging.css" />
+    <Content Include="Content\robust\app-assets\vendors\css\forms\toggle\bootstrap-switch.min.css" />
+    <Content Include="Content\robust\app-assets\vendors\css\forms\toggle\switchery.min.css" />
+    <Content Include="Content\robust\app-assets\vendors\css\pages\lobilist\lobilist.css" />
+    <Content Include="Content\robust\app-assets\vendors\css\pagination\bootstrap-datepaginator.min.css" />
+    <Content Include="Content\robust\app-assets\vendors\css\pickers\colorpicker\bootstrap-colorpicker.min.css" />
+    <Content Include="Content\robust\app-assets\vendors\css\pickers\daterange\daterangepicker.css" />
+    <Content Include="Content\robust\app-assets\vendors\css\pickers\datetime\bootstrap-datetimepicker.css" />
+    <Content Include="Content\robust\app-assets\vendors\css\pickers\miniColors\jquery.minicolors.css" />
+    <Content Include="Content\robust\app-assets\vendors\css\pickers\miniColors\jquery.minicolors.png" />
+    <Content Include="Content\robust\app-assets\vendors\css\pickers\pickadate\pickadate.css" />
+    <Content Include="Content\robust\app-assets\vendors\css\pickers\spectrum\spectrum.css" />
+    <Content Include="Content\robust\app-assets\vendors\css\sliders\slick\slick.css" />
+    <Content Include="Content\robust\app-assets\vendors\css\tables\datatable\buttons.bootstrap4.min.css" />
+    <Content Include="Content\robust\app-assets\vendors\css\tables\datatable\dataTables.bootstrap4.min.css" />
+    <Content Include="Content\robust\app-assets\vendors\css\tables\datatable\select.dataTables.min.css" />
+    <Content Include="Content\robust\app-assets\vendors\css\tables\extensions\autoFill.dataTables.min.css" />
+    <Content Include="Content\robust\app-assets\vendors\css\tables\extensions\buttons.dataTables.min.css" />
+    <Content Include="Content\robust\app-assets\vendors\css\tables\extensions\colReorder.dataTables.min.css" />
+    <Content Include="Content\robust\app-assets\vendors\css\tables\extensions\dataTables.colVis.css" />
+    <Content Include="Content\robust\app-assets\vendors\css\tables\extensions\fixedColumns.dataTables.min.css" />
+    <Content Include="Content\robust\app-assets\vendors\css\tables\extensions\fixedHeader.dataTables.min.css" />
+    <Content Include="Content\robust\app-assets\vendors\css\tables\extensions\keyTable.dataTables.min.css" />
+    <Content Include="Content\robust\app-assets\vendors\css\tables\extensions\responsive.dataTables.min.css" />
+    <Content Include="Content\robust\app-assets\vendors\css\tables\extensions\rowReorder.dataTables.min.css" />
+    <Content Include="Content\robust\app-assets\vendors\css\tables\handsontable\handsontable.full.min.css" />
+    <Content Include="Content\robust\app-assets\vendors\css\tables\handsontable\jsgrid-theme.min.css" />
+    <Content Include="Content\robust\app-assets\vendors\css\tables\handsontable\jsgrid.min.css" />
+    <Content Include="Content\robust\app-assets\vendors\css\tables\jsgrid\jsgrid-theme.min.css" />
+    <Content Include="Content\robust\app-assets\vendors\css\tables\jsgrid\jsgrid.min.css" />
+    <Content Include="Content\robust\app-assets\vendors\css\ui\dragula.min.css" />
+    <Content Include="Content\robust\app-assets\vendors\css\ui\images\ui-icons_444444_256x240.png" />
+    <Content Include="Content\robust\app-assets\vendors\css\ui\images\ui-icons_555555_256x240.png" />
+    <Content Include="Content\robust\app-assets\vendors\css\ui\images\ui-icons_777620_256x240.png" />
+    <Content Include="Content\robust\app-assets\vendors\css\ui\images\ui-icons_777777_256x240.png" />
+    <Content Include="Content\robust\app-assets\vendors\css\ui\images\ui-icons_cc0000_256x240.png" />
+    <Content Include="Content\robust\app-assets\vendors\css\ui\images\ui-icons_ffffff_256x240.png" />
+    <Content Include="Content\robust\app-assets\vendors\css\ui\jquery-ui-slider-pips.min.css" />
+    <Content Include="Content\robust\app-assets\vendors\css\ui\jquery-ui.min.css" />
+    <Content Include="Content\robust\app-assets\vendors\css\ui\prism.min.css" />
+    <Content Include="Content\robust\app-assets\vendors\css\weather-icons\climacons.min.css" />
+    <Content Include="Content\robust\app-assets\vendors\js\animation\jquery.appear.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\bgvideo\bigvideo.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\bgvideo\imagesloaded.pkgd.min.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\bgvideo\jquery.tubular.1.0.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\bgvideo\video.min.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\buttons\ladda.min.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\buttons\spin.min.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\charts\c3.min.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\charts\chart.min.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\charts\chartist-plugin-tooltip.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\charts\chartist.min.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\charts\d3-donut3D.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\charts\d3.min.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\charts\d3.tip.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\charts\dimple.min.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\charts\echarts\echarts.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\charts\echarts\funnel.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\charts\echarts\gauge.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\charts\echarts\pie.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\charts\flot\jquery.flot.categories.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\charts\flot\jquery.flot.errorbars.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\charts\flot\jquery.flot.min.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\charts\flot\jquery.flot.navigate.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\charts\flot\jquery.flot.pie.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\charts\flot\jquery.flot.resize.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\charts\flot\jquery.flot.selection.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\charts\flot\jquery.flot.stack.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\charts\flot\jquery.flot.symbol.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\charts\flot\jquery.flot.threshold.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\charts\flot\jquery.flot.time.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\charts\gantt-chart-d3.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\charts\gmaps.min.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\charts\gradient-pie-d3.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\charts\jquery.sparkline.min.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\charts\jqvmap\jquery.vmap.min.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\charts\jqvmap\maps\continents\jquery.vmap.africa.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\charts\jqvmap\maps\continents\jquery.vmap.asia.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\charts\jqvmap\maps\continents\jquery.vmap.australia.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\charts\jqvmap\maps\continents\jquery.vmap.europe.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\charts\jqvmap\maps\continents\jquery.vmap.north-america.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\charts\jqvmap\maps\continents\jquery.vmap.south-america.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\charts\jqvmap\maps\jquery.vmap.usa.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\charts\jqvmap\maps\jquery.vmap.world.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\charts\jvector\jquery-jvectormap-2.0.3.min.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\charts\jvector\jquery-jvectormap-de-merc.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\charts\jvector\jquery-jvectormap-us-aea.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\charts\jvector\jquery-jvectormap-us-lcc.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\charts\jvector\jquery-jvectormap-world-mill.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\charts\mapael\jquery.mapael.min.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\charts\mapael\maps\france_departments.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\charts\mapael\maps\usa_states.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\charts\mapael\maps\world_countries.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\charts\morris.min.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\charts\raphael-min.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\charts\rickshaw.min.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\charts\sankey.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\charts\venn.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\coming-soon\jquery.countdown.min.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\editors\ace\ace.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\editors\ace\ext-language_tools.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\editors\ckeditor\ckeditor.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\editors\codemirror\addon\comment\comment.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\editors\codemirror\addon\dialog\dialog.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\editors\codemirror\addon\display\rulers.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\editors\codemirror\addon\edit\closebrackets.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\editors\codemirror\addon\edit\matchbrackets.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\editors\codemirror\addon\fold\brace-fold.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\editors\codemirror\addon\fold\comment-fold.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\editors\codemirror\addon\fold\foldcode.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\editors\codemirror\addon\fold\foldgutter.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\editors\codemirror\addon\fold\markdown-fold.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\editors\codemirror\addon\fold\xml-fold.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\editors\codemirror\addon\mode\loadmode.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\editors\codemirror\addon\mode\simple.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\editors\codemirror\addon\scroll\annotatescrollbar.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\editors\codemirror\addon\search\match-highlighter.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\editors\codemirror\addon\search\matchesonscrollbar.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\editors\codemirror\addon\search\search.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\editors\codemirror\addon\search\searchcursor.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\editors\codemirror\addon\selection\active-line.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\editors\codemirror\addon\selection\mark-selection.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\editors\codemirror\addon\wrap\hardwrap.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\editors\codemirror\keymap\sublime.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\editors\codemirror\lib\codemirror.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\editors\codemirror\mode\css\css.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\editors\codemirror\mode\htmlmixed\htmlmixed.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\editors\codemirror\mode\javascript\javascript.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\editors\codemirror\mode\markdown\markdown.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\editors\codemirror\mode\meta.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\editors\codemirror\mode\xml\xml.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\editors\quill\highlight.min.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\editors\quill\katex.min.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\editors\quill\quill-table.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\editors\quill\quill.min.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\editors\summernote\summernote.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\editors\tinymce\tinymce.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\extensions\bootstrap-contextmenu.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\extensions\bootstrap-treeview.min.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\extensions\clndr.min.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\extensions\cropper.min.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\extensions\datedropper.min.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\extensions\dragula.min.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\extensions\dropzone.min.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\extensions\fullcalendar.min.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\extensions\gcal.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\extensions\i18next.min.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\extensions\i18nextBrowserLanguageDetector.min.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\extensions\i18nextXHRBackend.min.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\extensions\jquery-file-upload\jquery.fileupload-audio.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\extensions\jquery-file-upload\jquery.fileupload-image.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\extensions\jquery-file-upload\jquery.fileupload-process.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\extensions\jquery-file-upload\jquery.fileupload-ui.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\extensions\jquery-file-upload\jquery.fileupload-validate.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\extensions\jquery-file-upload\jquery.fileupload-video.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\extensions\jquery-file-upload\jquery.fileupload.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\extensions\jquery-file-upload\jquery.iframe-transport.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\extensions\jquery-file-upload\vendor\canvas-to-blob.min.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\extensions\jquery-file-upload\vendor\jquery.blueimp-gallery.min.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\extensions\jquery-file-upload\vendor\jquery.ui.widget.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\extensions\jquery-file-upload\vendor\load-image.all.min.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\extensions\jquery-file-upload\vendor\tmpl.min.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\extensions\jquery-i18next.min.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\extensions\jquery.knob.min.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\extensions\jquery.mousewheel.min.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\extensions\jquery.raty.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\extensions\jquery.steps.min.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\extensions\jquery.toolbar.min.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\extensions\lang-all.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\extensions\listjs\list.fuzzysearch.min.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\extensions\listjs\list.min.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\extensions\listjs\list.pagination.min.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\extensions\long-press\jquery.longpress.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\extensions\long-press\jquery.mousewheel.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\extensions\long-press\plugins.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\extensions\moment.min.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\extensions\nouislider.min.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\extensions\offline.min.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\extensions\pace.min.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\extensions\sweetalert.min.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\extensions\timedropper.min.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\extensions\toastr.min.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\extensions\transition.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\extensions\underscore-min.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\extensions\unslider-min.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\extensions\wNumb.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\extensions\zoom.min.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\forms\extended\card\jquery.card.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\forms\extended\formatter\formatter.min.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\forms\extended\inputmask\jquery.inputmask.bundle.min.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\forms\extended\maxlength\bootstrap-maxlength.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\forms\extended\typeahead\bloodhound.min.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\forms\extended\typeahead\handlebars.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\forms\extended\typeahead\typeahead.bundle.min.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\forms\icheck\icheck.min.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\forms\listbox\jquery.bootstrap-duallistbox.min.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\forms\repeater\jquery.repeater.min.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\forms\select\jquery.selectBoxIt.min.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\forms\select\select2.full.min.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\forms\select\select2.min.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\forms\select\selectivity-full.min.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\forms\select\selectize.min.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\forms\spinner\jquery.bootstrap-touchspin.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\forms\tags\bootstrap-tagsinput.min.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\forms\tags\form-field.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\forms\tags\tagging.min.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\forms\toggle\bootstrap-checkbox.min.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\forms\toggle\bootstrap-switch.min.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\forms\toggle\switchery.min.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\forms\validation\jqBootstrapValidation.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\forms\validation\jquery.validate.min.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\gallery\masonry\masonry.pkgd.min.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\gallery\photo-swipe\default-skin\default-skin.css" />
+    <Content Include="Content\robust\app-assets\vendors\js\gallery\photo-swipe\default-skin\default-skin.png" />
+    <Content Include="Content\robust\app-assets\vendors\js\gallery\photo-swipe\default-skin\default-skin.svg" />
+    <Content Include="Content\robust\app-assets\vendors\js\gallery\photo-swipe\default-skin\preloader.gif" />
+    <Content Include="Content\robust\app-assets\vendors\js\gallery\photo-swipe\photoswipe-ui-default.min.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\gallery\photo-swipe\photoswipe.css" />
+    <Content Include="Content\robust\app-assets\vendors\js\gallery\photo-swipe\photoswipe.min.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\pages\lobibox\lobibox.min.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\pages\lobilist\lobilist.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\pagination\bootstrap-datepaginator.min.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\pagination\datepicker.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\pagination\jquery.bootpag.min.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\pagination\jquery.twbsPagination.min.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\pagination\moment.min.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\pickers\colorpicker\bootstrap-colorpicker.min.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\pickers\daterange\daterangepicker.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\pickers\dateTime\bootstrap-datetimepicker.min.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\pickers\dateTime\moment-with-locales.min.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\pickers\miniColors\jquery.minicolors.min.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\pickers\pickadate\legacy.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\pickers\pickadate\picker.date.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\pickers\pickadate\picker.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\pickers\pickadate\picker.time.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\pickers\spectrum\spectrum.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\sliders\slick\slick.min.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\tables\buttons.colVis.min.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\tables\buttons.flash.min.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\tables\buttons.html5.min.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\tables\buttons.print.min.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\tables\datatable\buttons.bootstrap4.min.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\tables\datatable\dataTables.autoFill.min.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\tables\datatable\dataTables.bootstrap4.min.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\tables\datatable\dataTables.buttons.min.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\tables\datatable\dataTables.colReorder.min.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\tables\datatable\dataTables.colVis.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\tables\datatable\dataTables.fixedColumns.min.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\tables\datatable\dataTables.fixedHeader.min.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\tables\datatable\dataTables.keyTable.min.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\tables\datatable\dataTables.responsive.min.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\tables\datatable\dataTables.rowReorder.min.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\tables\datatable\dataTables.select.min.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\tables\handsontable\chroma.min.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\tables\handsontable\handsontable.full.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\tables\handsontable\jsgrid.min.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\tables\handsontable\languages.min.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\tables\jquery.dataTables.min.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\tables\jsgrid\griddata.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\tables\jsgrid\jquery.validate.min.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\tables\jsgrid\jsgrid.min.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\tables\jszip.min.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\tables\pdfmake.min.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\tables\vfs_fonts.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\timeline\horizontal-timeline.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\ui\blockUI.min.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\ui\headroom.min.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\ui\jquery-sliding-menu.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\ui\jquery-ui-slider-pips.min.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\ui\jquery.matchHeight-min.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\ui\jquery.sticky.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\ui\perfect-scrollbar.jquery.min.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\ui\prism.min.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\ui\screenfull.min.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\ui\tether.min.js" />
+    <Content Include="Content\robust\app-assets\vendors\js\ui\unison.min.js" />
+    <Content Include="Content\robust\assets\css\agenda.css" />
+    <Content Include="Content\robust\assets\css\dashboard.css" />
+    <Content Include="Content\robust\assets\css\layout.css" />
+    <Content Include="Content\robust\assets\css\login.css" />
+    <Content Include="Content\robust\assets\css\style.css" />
+    <Content Include="Content\simeditor\app.css" />
+    <Content Include="Content\simeditor\mobile.css" />
+    <Content Include="Content\simeditor\simditor.css" />
+    <Content Include="Content\sweet\sweetalert.css" />
+    <Content Include="Content\sweet\sweetalert.min.js" />
+    <Content Include="Content\theme\clndr.min.css" />
+    <Content Include="Content\theme\fullcalendar.min.css" />
+    <Content Include="Defibrillator.aspx" />
+    <Content Include="favicon.ico" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="Content\Site.css" />
+    <Content Include="img\404.png" />
+    <Content Include="img\500.png" />
+    <Content Include="img\agenda.jpg" />
+    <Content Include="img\agenda2.jpeg" />
+    <Content Include="img\agenda3.jpeg" />
+    <Content Include="img\agenda4.jpeg" />
+    <Content Include="img\avatar.jpg" />
+    <Content Include="img\avatar2.png" />
+    <Content Include="img\avatar3.png" />
+    <Content Include="img\back.jpg" />
+    <Content Include="img\back3.jpg" />
+    <Content Include="img\background.jpeg" />
+    <Content Include="img\bg.svg" />
+    <Content Include="img\bg1.jpg" />
+    <Content Include="img\bg2.jpg" />
+    <Content Include="img\bg3.jpg" />
+    <Content Include="img\bg4.jpg" />
+    <Content Include="img\bigplay.svg" />
+    <Content Include="img\controls.png" />
+    <Content Include="img\controls.svg" />
+    <Content Include="img\customers\customer_default.png" />
+    <Content Include="img\demo-video.png" />
+    <Content Include="img\departaments\departaments_default.png" />
+    <Content Include="img\departaments\hospital1.png" />
+    <Content Include="img\departaments\hospital2.png" />
+    <Content Include="img\departaments\hospital3.png" />
+    <Content Include="img\departaments\hospital4.png" />
+    <Content Include="img\departaments\southclinic.jpg" />
+    <Content Include="img\g3986.png" />
+    <Content Include="img\left-bg.png" />
+    <Content Include="img\left-bg2.png" />
+    <Content Include="img\loading.gif" />
+    <Content Include="Scripts\AppendGrid.js" />
+    <Content Include="Scripts\bootstrap-daterangepicker\date.js" />
+    <Content Include="Scripts\bootstrap-daterangepicker\daterangepicker.css" />
+    <Content Include="Scripts\bootstrap-daterangepicker\daterangepicker.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Content\robust\app-assets\fonts\icomoon\icomoonc994.eot" />
+    <Content Include="Content\robust\app-assets\fonts\icomoon\icomoonc994.ttf" />
+    <Content Include="Content\robust\app-assets\fonts\icomoon\icomoonc994.woff" />
+    <Content Include="Content\robust\app-assets\vendors\css\editors\quill\fonts\KaTeX_Main-Regular.woff2" />
+    <Content Include="Content\robust\app-assets\vendors\css\editors\quill\fonts\KaTeX_Math-Italic.woff2" />
+    <Content Include="Content\robust\app-assets\vendors\css\extensions\dd-icon\dd-icon.eot" />
+    <Content Include="Content\robust\app-assets\vendors\css\extensions\dd-icon\dd-icon.ttf" />
+    <Content Include="Content\robust\app-assets\vendors\css\extensions\dd-icon\dd-icon.woff" />
+    <Content Include="Content\robust\app-assets\vendors\css\extensions\dd-icon\dd-icond41d.eot" />
+    <Content Include="Content\robust\app-assets\vendors\css\extensions\raty\fonts\raty.eot" />
+    <Content Include="Content\robust\app-assets\vendors\css\extensions\raty\fonts\raty.ttf" />
+    <Content Include="Content\robust\app-assets\vendors\css\extensions\raty\fonts\raty.woff" />
+    <Content Include="Content\robust\app-assets\vendors\css\extensions\raty\fonts\ratyd41d.eot" />
+    <Content Include="img\Thumbs.db" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="Content\robust\app-assets\vendors\js\editors\quill\quill-table.js.map" />
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
+    <None Include="Properties\PublishProfiles\FolderProfile1.pubxml" />
+    <Content Include="Scripts\citas\main_reports.js" />
+    <Content Include="Scripts\Common.js" />
+    <Content Include="Scripts\editor\css\scss\bubble.scss" />
+    <Content Include="Scripts\editor\css\scss\datatable.scss" />
+    <Content Include="Scripts\editor\css\scss\datetime.scss" />
+    <Content Include="Scripts\editor\css\scss\envelope.scss" />
+    <Content Include="Scripts\editor\css\scss\fields.scss" />
+    <Content Include="Scripts\editor\css\scss\inline.scss" />
+    <Content Include="Scripts\editor\css\scss\lightbox.scss" />
+    <Content Include="Scripts\editor\css\scss\main.scss" />
+    <Content Include="Scripts\editor\css\scss\mixins.scss" />
+    <Content Include="Scripts\editor\css\scss\processing.scss" />
+    <Content Include="Scripts\editor\css\scss\upload.scss" />
+    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\citas\assistant.js" />
+    <Content Include="Scripts\citas\custom.js" />
+    <Content Include="Scripts\citas\self-doctor.js" />
+    <Content Include="Scripts\citas\appointment.js" />
+    <Content Include="Scripts\citas\doctor.js" />
+    <Content Include="Scripts\citas\reportes.js" />
+    <Content Include="Scripts\datatable_custom.js" />
+    <Content Include="Scripts\dropzone\basic.css" />
+    <Content Include="Scripts\dropzone\basic.min.css" />
+    <Content Include="Scripts\dropzone\dropzone-amd-module.js" />
+    <Content Include="Scripts\dropzone\dropzone-amd-module.min.js" />
+    <Content Include="Scripts\dropzone\dropzone.css" />
+    <Content Include="Scripts\dropzone\dropzone.js" />
+    <Content Include="Scripts\dropzone\dropzone.min.css" />
+    <Content Include="Scripts\dropzone\dropzone.min.js" />
+    <Content Include="Scripts\dropzone\theme\dropzone.min.css" />
+    <Content Include="Scripts\dropzone\theme\extension_dropzone.min.js" />
+    <Content Include="Scripts\dropzone\theme\vendor_dropzone.min.css" />
+    <Content Include="Scripts\dropzone\theme\vendor_dropzone.min.js" />
+    <Content Include="Scripts\editor\css\editor.bootstrap.css" />
+    <Content Include="Scripts\editor\css\editor.bootstrap.min.css" />
+    <Content Include="Scripts\editor\css\editor.bootstrap4.css" />
+    <Content Include="Scripts\editor\css\editor.bootstrap4.min.css" />
+    <Content Include="Scripts\editor\css\editor.dataTables.css" />
+    <Content Include="Scripts\editor\css\editor.dataTables.min.css" />
+    <Content Include="Scripts\editor\css\editor.foundation.css" />
+    <Content Include="Scripts\editor\css\editor.foundation.min.css" />
+    <Content Include="Scripts\editor\css\editor.jqueryui.css" />
+    <Content Include="Scripts\editor\css\editor.jqueryui.min.css" />
+    <Content Include="Scripts\editor\css\editor.semanticui.css" />
+    <Content Include="Scripts\editor\css\editor.semanticui.min.css" />
+    <Content Include="Scripts\editor\css\editor_old.css" />
+    <Content Include="Scripts\editor\js\dataTables.editor.js" />
+    <Content Include="Scripts\editor\js\dataTables.editor.min.js" />
+    <Content Include="Scripts\editor\js\editor.bootstrap.js" />
+    <Content Include="Scripts\editor\js\editor.bootstrap.min.js" />
+    <Content Include="Scripts\editor\js\editor.bootstrap4.js" />
+    <Content Include="Scripts\editor\js\editor.bootstrap4.min.js" />
+    <Content Include="Scripts\editor\js\editor.foundation.js" />
+    <Content Include="Scripts\editor\js\editor.foundation.min.js" />
+    <Content Include="Scripts\editor\js\editor.jqueryui.js" />
+    <Content Include="Scripts\editor\js\editor.jqueryui.min.js" />
+    <Content Include="Scripts\editor\js\editor.semanticui.js" />
+    <Content Include="Scripts\editor\js\editor.semanticui.min.js" />
+    <Content Include="Scripts\jquery-1.10.2.js" />
+    <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.PrintArea.js" />
+    <Content Include="Scripts\jquery.redirect.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\popper.min.js" />
+    <Content Include="Scripts\require.js" />
+    <Content Include="Scripts\respond.js" />
+    <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\simditor.js" />
+    <Content Include="Scripts\simeditor\hotkeys.js" />
+    <Content Include="Scripts\simeditor\jquery.min.js" />
+    <Content Include="Scripts\simeditor\mobilecheck.js" />
+    <Content Include="Scripts\simeditor\module.js" />
+    <Content Include="Scripts\simeditor\page-demo.js" />
+    <Content Include="Scripts\simeditor\page-doc.js" />
+    <Content Include="Scripts\simeditor\page-download.js" />
+    <Content Include="Scripts\simeditor\page-form.js" />
+    <Content Include="Scripts\simeditor\simditor.js" />
+    <Content Include="Scripts\simeditor\uploader.js" />
+    <Content Include="Scripts\Translations.js" />
+    <Content Include="Scripts\utilities.js" />
+    <Content Include="Scripts\_references.js" />
+    <Content Include="Views\Prescription\Basic.cshtml" />
+    <Content Include="Views\Login\Offices.cshtml" />
+    <Content Include="Views\Citas\Consultorios.cshtml" />
+    <Content Include="Views\Doctor\Calendario.cshtml" />
+    <Content Include="Views\Administrador\Catalogos.cshtml" />
+    <Content Include="Views\Administrador\Doctores.cshtml" />
+    <Content Include="Views\Administrador\Consultorios.cshtml" />
+    <Content Include="Views\Home\Proximamente.cshtml" />
+    <Content Include="Views\Doctor\Index.cshtml" />
+    <Content Include="Views\Pacientes\Expedientes.cshtml" />
+    <Content Include="Views\Pacientes\FindPaciente.cshtml" />
+    <Content Include="Views\Pacientes\Detalle.cshtml" />
+    <Content Include="Views\Doctor\Reportes.cshtml" />
+    <Content Include="Views\Citas\Status.cshtml" />
+    <Content Include="Views\Error\Generic.cshtml" />
+    <Content Include="Views\Doctor\Consultorio.cshtml" />
+    <None Include="Views\Prescription\Custom_1.cshtml" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
+    <Content Include="Views\Account\ConfirmEmail.cshtml" />
+    <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
+    <Content Include="Views\Account\ExternalLoginFailure.cshtml" />
+    <Content Include="Views\Account\ForgotPassword.cshtml" />
+    <Content Include="Views\Account\ForgotPasswordConfirmation.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\Account\ResetPassword.cshtml" />
+    <Content Include="Views\Account\ResetPasswordConfirmation.cshtml" />
+    <Content Include="Views\Account\SendCode.cshtml" />
+    <Content Include="Views\Account\VerifyCode.cshtml" />
+    <Content Include="Views\Manage\AddPhoneNumber.cshtml" />
+    <Content Include="Views\Manage\ChangePassword.cshtml" />
+    <Content Include="Views\Manage\Index.cshtml" />
+    <Content Include="Views\Manage\ManageLogins.cshtml" />
+    <Content Include="Views\Manage\SetPassword.cshtml" />
+    <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
+    <Content Include="Views\Shared\Lockout.cshtml" />
+    <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Login\Index.cshtml" />
+    <Content Include="Views\Asistente\Index.cshtml" />
+    <Content Include="Views\Asistente\Citas.cshtml" />
+    <Content Include="Views\Home\View.cshtml" />
+    <Content Include="Views\Error\Unauthorised.cshtml" />
+    <Content Include="Views\Asistente\Reports.cshtml" />
+    <Content Include="Views\Asistente\Estadisticas.cshtml" />
+    <Content Include="Views\Asistente\Reportes.cshtml" />
+    <Content Include="Views\Citas\Index.cshtml" />
+    <Content Include="Views\Citas\Agenda.cshtml" />
+    <Content Include="Views\Citas\Detalle.cshtml" />
+    <Content Include="Views\Servicios\Index.cshtml" />
+    <Content Include="Views\Servicios\Add.cshtml" />
+    <Content Include="Views\Servicios\Edit.cshtml" />
+    <Content Include="Views\Doctor\Perfil.cshtml" />
+    <Content Include="Views\Doctor\Vacaciones.cshtml" />
+    <Content Include="Views\Shared\menus\_options.cshtml" />
+    <Content Include="Views\Reports\ReportError.cshtml" />
+    <Content Include="Views\Reports\SummaryReport.cshtml" />
+    <Content Include="Views\Shared\_LayoutPDF.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="packages.config" />
+    <None Include="Project_Readme.html" />
+    <Content Include="Scripts\jquery-1.10.2.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\VLCitas.DataLayer\VLCitas.DataLayer.csproj">
+      <Project>{ef334916-0ce3-4637-b4b7-994699f6f520}</Project>
+      <Name>VLCitas.DataLayer</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>60007</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:60007/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>Este proyecto hace referencia a los paquetes NuGet que faltan en este equipo. Use la restauración de paquetes NuGet para descargarlos. Para obtener más información, consulte http://go.microsoft.com/fwlink/?LinkID=322105. El archivo que falta es {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.NETFramework.ReferenceAssemblies.net452.1.0.0\build\Microsoft.NETFramework.ReferenceAssemblies.net452.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.NETFramework.ReferenceAssemblies.net452.1.0.0\build\Microsoft.NETFramework.ReferenceAssemblies.net452.targets'))" />
+  </Target>
+  <Import Project="..\packages\Microsoft.NETFramework.ReferenceAssemblies.net452.1.0.0\build\Microsoft.NETFramework.ReferenceAssemblies.net452.targets" Condition="Exists('..\packages\Microsoft.NETFramework.ReferenceAssemblies.net452.1.0.0\build\Microsoft.NETFramework.ReferenceAssemblies.net452.targets')" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

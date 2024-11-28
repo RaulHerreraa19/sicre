@@ -1,0 +1,58 @@
+﻿#agendada {
+    width: 20px;
+    height: 20px;
+    background: #5858FA;
+    -moz-border-radius: 50px;
+    -webkit-border-radius: 50px;
+    border-radius: 50px;
+    margin-left: 26px;
+}
+h2#title {
+    margin-left: 1.6em;
+}
+#cancelada {
+    width: 20px;
+    height: 20px;
+    background: #FF0000;
+    -moz-border-radius: 50px;
+    -webkit-border-radius: 50px;
+    border-radius: 50px;
+    margin-left: 26px;
+}
+
+#completada {
+    width: 20px;
+    height: 20px;
+    background: #FFBF00;
+    -moz-border-radius: 50px;
+    -webkit-border-radius: 50px;
+    border-radius: 50px;
+    margin-left: 40px;
+}
+
+#confirmada {
+    width: 20px;
+    height: 20px;
+    background: #04B404;
+    -moz-border-radius: 50px;
+    -webkit-border-radius: 50px;
+    border-radius: 50px;
+    margin-left: 40px;
+}
+/* Cleaner, but slightly less support: use "50%" as value */
+
+body {
+    /*background-image: url('../../img/agenda4.jpeg');*/
+    /*background-position: center;*/
+    /*background-repeat: repeat-y;*/
+    background-repeat: no-repeat !important;
+    background-size: 100% 100% !important;
+}
+
+.card {
+    margin-bottom: 0 !important;
+}
+
+.pad-none{
+   padding:0 !important;
+}

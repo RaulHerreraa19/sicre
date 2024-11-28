@@ -1,0 +1,611 @@
+﻿@using VLCitas.DataLayer;
+@{
+    ViewBag.Title = "Home Page";
+    VLCitas.DataLayer.Models.UserRoles userRol = (VLCitas.DataLayer.Models.UserRoles)Session["rol"];
+    Users User = (Users)Session["user"];
+    VLCitas.DataLayer.Models.ListOfItems listOfItems = (VLCitas.DataLayer.Models.ListOfItems)ViewBag.ListOfItems;
+    VLCitas.DataLayer.Models.AdditinalInfo additionalInfo = (VLCitas.DataLayer.Models.AdditinalInfo)ViewBag.additinalInfo;
+    List<VLCitas.DataLayer.DoctorsRepository.CitasByDoctor> citas = (List<VLCitas.DataLayer.DoctorsRepository.CitasByDoctor>)ViewBag.citas;
+}
+<link href="@Url.Content("~/Content/introjs/bootstrap-responsive.min.css")" rel="stylesheet">
+<link href="@Url.Content("~/Content/introjs/introjs.css")" rel="stylesheet">
+<link href="@Url.Content("~/Content/introjs/custom.css")" rel="stylesheet">
+<link href="@Url.Content("~/Content/css/Citas.css")" rel="stylesheet">
+<link href="@Url.Content("~/Content/css/agenda.css")" rel="stylesheet">
+@Styles.Render("~/Content/calendarcss")
+<link href="~/Content/robust/app-assets/css/plugins/forms/wizard.min.css" rel="stylesheet" />
+<link href="~/Content/robust/app-assets/vendors/css/forms/selects/selectize.css" rel="stylesheet" />
+
+<div class="content-header row">
+    <div class="content-header-left col-md-8 col-12 mb-2 breadcrumb-new">
+        <h3 class="content-header-title mb-0 d-inline-block">@ViewBag.consultory_name</h3>
+        <div class="row breadcrumbs-top d-inline-block">
+            <div class="breadcrumb-wrapper col-12">
+                <ol class="breadcrumb">
+                    @{ if (User.Consultory.Count > 1)
+                        {
+                            if (User.Offices_Users.Count > 1)
+                            {
+                                <li class="breadcrumb-item">
+                                    <a href="@Url.Action("Offices", "Login")"> @Resource.Clinic</a>
+                                </li>
+                            }
+                            <li class="breadcrumb-item">
+                                <a href="@Url.Action("Consultorios", "Citas")"> @Resource.ConsultingRooms </a>
+                            </li>
+                        }
+                    }
+                    <li class="breadcrumb-item active">
+                        @Resource.Calendar
+                    </li>
+                </ol>
+            </div>
+        </div>
+    </div>
+    <div class="content-header-right col-md-4 col-12">
+        <div class="btn-group float-md-right">
+            <button class="btn btn-blue-gray dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="icon-eye mr-1"></i>@Resource.See</button>
+            <div class="dropdown-menu arrow">
+                <a id="see-list" class="dropdown-item" href="#"><i class="fa ft-menu mr-1"></i> @Resource.SeeList</a>
+                <a id="see-calendar" class="dropdown-item" href="#"><i class="fa fa-calendar mr-1"></i> @Resource.SeeCalendar</a>
+                @*<div class="dropdown-divider"></div><a class="dropdown-item" href="#"><i class="fa fa-cog mr-1"></i> Settings</a>*@
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="content-body">
+    <!-- Full calendar basic example section start -->
+    <section id="basic-examples">
+        <div class="row">
+            <div class="col-md-9">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 id="title-calendar" class="card-title"><a href="@Url.Action("Calendario", "Doctor")">@ViewBag.name</a></h4>
+
+                        
+                        <button id="add-appointment" class="btn btn-primary btn-sm" style="display:none;"><i class="icon-calendar white"></i> @Resource.AddAppointment</button>
+                        <a class="heading-elements-toggle"><i class="ft-ellipsis-h font-medium-3"></i></a>
+                        <div class="heading-elements">
+                            <button class="btn btn-info btn-sm"> @Resource.Scheduled</button>
+                            <button class="btn btn-success btn-sm"> @Resource.Confirmed</button>
+                            <button class="btn btn-blue-gray btn-sm"> @Resource.Completed</button>
+                            <button class="btn btn-warning btn-sm"> @Resource.Unnattended</button>
+                            <a class="btn btn-default btn-sm" data-action="reload" id="reload"><i class="icon-reload"></i></a>
+                        </div>
+                    </div>
+                    <div class="card-content collapse show">
+                        <div class="card-body">
+                            <div id="calendar" style="display:block;"></div>
+                            <div id="appointment-list" style="display:none;">
+                                <table class="table table-striped table-bordered verticalDisplay table-middle" id="table-appointments">
+                                    <thead>
+                                        <tr>
+                                            <th>
+                                                @Resource.Patient
+                                            </th>
+                                            <th>
+                                                @Resource.Date
+                                            </th>
+                                            <th>
+                                                @Resource.Cost
+                                            </th>
+                                            <th>
+                                                @Resource.Action
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @{ foreach (var cita in citas.Where(x=>x.doctor_uid == User.uId))
+                                            {
+                                                string btn = "";
+                                                switch (cita.status_id)
+                                                {
+                                                    case 1:
+                                                        btn = "btn-info";
+                                                        break;
+                                                    case 2:
+                                                        btn = "btn-danger";
+                                                        break;
+                                                    case 3:
+                                                        btn = "btn-blue-gray";
+                                                        break;
+                                                    case 4:
+                                                        btn = "btn-success";
+                                                        break;
+                                                    case 5:
+                                                        btn = "btn-warning";
+                                                        break;
+                                                    default:
+                                                        break;
+                                                }
+                                                <tr class="text-center">
+                                                    <td>
+                                                        @cita.title
+                                                    </td>
+                                                    <td>
+                                                        @cita.start_date
+                                                    </td>
+                                                    <td>
+                                                        @String.Format("{0:C2}", cita.precio)
+                                                    </td>
+                                                    <td>
+                                                        <a href="@cita.url" class="btn @btn"><i class="ft-eye"></i></a>
+                                                    </td>
+                                                </tr>
+                                            }
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-content">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-lg-12 col-sm-12">
+                                            <div class="media d-flex ">
+                                                <div class="align-self-center">
+                                                    <i class="icon-user font-large-1 blue-grey d-block mb-1"></i>
+                                                    <span class="text-muted text-right">@Resource.AppoinmentsToday</span>
+                                                </div>
+                                                <div class="media-body text-right">
+                                                    <span class="font-large-2 text-bold-300 blue-grey">@additionalInfo.today</span>
+                                                </div>
+                                            </div>
+                                            <div class="progress mt-1 mb-0" style="height: 7px;">
+                                                <div class="progress-bar blue-gray-custom" role="progressbar" style="width: @additionalInfo.progressToday%" aria-valuenow="@additionalInfo.progressToday" aria-valuemin="0" aria-valuemax="100"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card bg-gradient-directional-blue-grey">
+                            <div class="card-content">
+                                <div class="row">
+                                    <div class="col-lg-12 col-sm-12">
+                                        <div class="card-body text-center">
+                                            <h1 class="text-white"><text id="revenue-day">@additionalInfo.revenueToday</text></h1>
+                                            <span class="text-white">@Resource.RevenueToday</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-content">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-lg-12 col-sm-12">
+                                            <div class="media d-flex">
+                                                <div class="align-self-center">
+                                                    <i class="icon-user font-large-1 blue-grey d-block mb-1"></i>
+                                                    <span class="text-muted text-right">@Resource.AppointmentsMonth</span>
+                                                </div>
+                                                <div class="media-body text-right">
+                                                    <span class="font-large-2 text-bold-300 blue-grey">@additionalInfo.month</span>
+                                                </div>
+                                            </div>
+                                            <div class="progress mt-1 mb-0" style="height: 7px;">
+                                                <div class="progress-bar blue-gray-custom" role="progressbar" style="width: @additionalInfo.progressMonth%" aria-valuenow="@additionalInfo.progressMonth" aria-valuemin="0" aria-valuemax="100"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card bg-gradient-directional-blue-grey">
+                            <div class="card-content">
+                                <div class="row">
+                                    <div class="col-lg-12 col-sm-12">
+                                        <div class="card-body text-center">
+                                            <h1 class="text-white"> <text id="revenue-month">@additionalInfo.revenueMonth</text></h1>
+                                            <span class="text-white">@Resource.RevenueMonth</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+@*Modal para agregar cita*@
+<div id="AddCita" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="myModalLabel17">@Resource.AddNewDate</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <section id="number-tabs">
+                    <div class="row row-form">
+                        <div class="col-12">
+                            <div class="add-appointment-steps wizard-notification">
+                                <!-- Step Calendar -->
+                                <h6><i class="step-icon fa fa-calendar"></i><text data-category="calendar">@Resource.Calendar</text> </h6> @*@Resource.Calendar*@
+                                <fieldset>
+                                    <div id="calendar-warning-module">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="alert alert-icon-right alert-warning alert-dismissible mb-2" role="alert">
+                                                    <span class="alert-icon"><i class="fa fa-info"></i></span>
+                                                    <strong id="calendar-warning-message">@Resource.PleaseSelectDateForAppointment</strong>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div id="calendar-info-module">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="alert alert-icon-right alert-info alert-dismissible mb-2" role="alert">
+                                                    <span class="alert-icon"><i class="fa fa-info"></i></span>
+                                                    <strong id="calendar-info-message"></strong>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div id="show-date-selected">
+                                        <div class="form-group row">
+                                            <label class="col-md-3 label-control" for="dr-selected-time">@Resource.SelectDate</label>
+                                            <div class="col-md-9">
+                                                <input type="text" disabled id="dr-selected-time" class="form-control" name="dr-selected-time" value="">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div id="calendar-choose-appointment"></div>
+                                </fieldset>
+                                <!-- Step Patient -->
+                                <h6><i class="step-icon fa fa-user-circle-o"></i><text data-category="patient">@Resource.Patient</text></h6> @*@Resource.Patient*@
+                                <fieldset>
+                                    <div id="patient-warning-module">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="alert alert-icon-right alert-warning alert-dismissible mb-2" role="alert">
+                                                    <span class="alert-icon"><i class="fa fa-info"></i></span>
+                                                    <strong id="patient-warning-message">@Resource.PleaseSelectAPatientForAppointment</strong>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="row">
+                                        <div class="col-md-8">
+                                            <div class="form-group" id="">
+                                                <label for="search-patient">@Resource.SearchPatientByNamePhoneEmailOrID </label>
+                                                <input type="text" id="search-patient" minlength="2" class="form-control" placeholder="@Resource.IntroduceInformation" name="search-patient">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label style="visibility:hidden;">@Resource.OrAlso:</label><br />
+                                                <button type="button" id="search-patient-btn" style="width: 100%;" data-new="false" class="btn mr-1 mb-1 btn-outline-primary"><i class="fa fa-search"></i>&nbsp;@Resource.SearchPatient</button>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="row">
+                                        <div class="col-md-8">
+                                            <div class="form-group" id="select-patient-div">
+                                                <label for="select_patient_id">@Resource.SelectAPatient </label>
+                                                <select class="selectPatient" id="select_patient_id" style="width: 100%">
+                                                    <option value="" selected>@Resource.NoPatientsInTheSystem</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label style="visibility:hidden;">@Resource.OrAlso:</label><br />
+                                                <button type="button" id="patient-new" style="width: 100%;" data-new="false" class="btn mr-1 mb-1 btn-outline-primary"><i class="fa fa-plus-circle"></i>&nbsp;@Resource.AddNewPatient</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <form id="frm-patient" novalidate="novalidate">
+                                        <h4 class="form-section"><i class="ft-user"></i> @Resource.GeneralInformation</h4>
+                                        <div class="form-group row">
+                                            <label class="col-md-3 label-control" for="patient-name">@Resource.Name</label>
+                                            <div class="col-md-9">
+                                                <input type="text" required disabled id="patient-name" minlength="2" class="patient-data form-control" placeholder="@Resource.Name" name="patient-name">
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="patient-sex">@Resource.Sex</label>
+                                                    <select required disabled name="patient-sex" id="patient-sex" class="patient-data form-control">
+                                                        <option value="1">@Resource.Man</option>
+                                                        <option value="2">@Resource.Woman</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="patient-birth">@Resource.Dateofbirth</label>
+                                                    <div class="position-relative has-icon-left">
+                                                        <input disabled type="date" id="patient-birth" class="patient-data form-control" name="patient-birth">
+                                                        <div class="form-control-position">
+                                                            <i class="ft-clock"></i>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="patient-phone">@Resource.Phone</label>
+                                                    <input type="text" disabled id="patient-phone" class="patient-data form-control" placeholder="@Resource.Phone" name="patient-phone">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="patient-email">@Resource.Mail</label>
+                                                    <input type="email" disabled id="patient-email" class="patient-data form-control" placeholder="@Resource.Mail" name="patient-email">
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="patient-phone">@Resource.CURP</label>
+                                                    <input type="text" disabled id="patient-curp" class="patient-data form-control" placeholder="@Resource.CURP" name="patient-curp">
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </form>
+
+                                </fieldset>
+                                <!-- Step Resume -->
+                                <h6><i class="step-icon fa fa-list-alt"></i><text data-category="appointment">@Resource.Appointment</text></h6> @*@Resource.Appointment*@
+                                <fieldset>
+                                    <div class="form-group row">
+                                        <label class="col-md-3 label-control" for="dr-name">@Resource.Doctor</label>
+                                        <div class="col-md-9">
+                                            <input type="text" disabled id="dr-name" class="form-control" name="dr-name" value="@ViewBag.name">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-md-3 label-control" for="dr-selected-time2">@Resource.SelectedTime</label>
+                                        <div class="col-md-9">
+                                            <input type="hidden" name="appointment-start" id="appointment-start" value="" />
+                                            <input type="hidden" name="appointment-end" id="appointment-end" value="" />
+                                            <input type="hidden" name="appointment-format" id="appointment-format" value="" />
+                                            <input type="text" disabled id="dr-selected-time2" class="form-control" name="dr-selected-time2" value="">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-md-3 label-control" for="patient-name-selected">@Resource.Patient</label>
+                                        <div class="col-md-9">
+                                            <input type="hidden" name="patient_id" id="patient_id" value="" />
+                                            <input type="text" disabled id="patient-name-selected" class="form-control" name="patient-name-selected" value="">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-md-3 label-control" for="appointment-observations">@Resource.Observations</label>
+                                        <div class="col-md-9">
+                                            <textarea id="appointment-observations" rows="5" class="form-control" name="appointment-observations" placeholder="@Resource.Observations"></textarea>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--Modal-->
+<div id="DoctorDetails" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header " id="">
+                <h4 class="modal-title " id="myModalLabel">@Resource.GeneralInformation</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;  </button>
+            </div>
+            <div class="modal-body">
+                <div class="row row-form">
+                    <div class="col-12">
+                        <div class="form-group row">
+                            <label class="col-md-3 label-control" for="dr-details-speciality">@Resource.Name</label>
+                            <div class="col-md-9">
+                                <input type="text" disabled id="dr-details-name" class="form-control" placeholder="@Resource.Name" name="dr-details-name" value="">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-md-3 label-control" for="dr-details-speciality">@Resource.Speciality</label>
+                            <div class="col-md-9">
+                                <input type="text" disabled id="dr-details-speciality" class="form-control" placeholder="@Resource.Speciality" name="dr-details-speciality" value="">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-md-12">
+                                <table class="table table-striped table-bordered table-middle" id="table-dr-details-schedule">
+                                    <thead>
+                                        <tr>
+                                            <th>
+                                                @Resource.WorkDays
+                                            </th>
+                                            <th>
+                                                @Resource.StartHour
+                                            </th>
+                                            <th>
+                                                @Resource.EndHour
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="tbody-dr-details-schedule"></tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <h4 class="form-section"><i class="ft-clock"></i> @Resource.CitasToday</h4>
+                        <div class="form-group row">
+                            <div class="col-md-12">
+                                <table class="table table-striped table-bordered verticalDisplay table-middle" id="table-dr-appointments">
+                                    <thead>
+                                        <tr>
+                                            <th>
+                                                @Resource.Patient
+                                            </th>
+                                            <th>
+                                                @Resource.Date
+                                            </th>
+                                            <th>
+                                                @Resource.Cost
+                                            </th>
+                                            <th>
+                                                @Resource.Action
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="tbody-dr-appointments"></tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                @*<button type="button" class="btn btn-default" data-dismiss="modal">@Resource.Save</button>*@
+                <button type="button" class="btn btn-default" data-dismiss="modal">@Resource.Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="DetalleCita" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header " id="appointment-header">
+                <h4 class="modal-title " id="myModalLabel">@Resource.AppointmentDetails</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;  </button>
+            </div>
+            <div class="modal-body" id="modal-details">
+                <div class="form-group row row-form">
+                    <label class="col-md-3 label-control" for="dr-name">@Resource.Doctor</label>
+                    <div class="col-md-5">
+                        <input type="text" disabled id="details-dr-name" class="details-appointment form-control" name="details-dr-name" value="">
+                    </div>
+                    <label class="col-md-1 label-control" for="details-appointment-status">@Resource.Status</label>
+                    <div class="col-md-3">
+                        <input type="text" disabled id="details-appointment-status" class="details-appointment form-control" placeholder="@Resource.Status" name="details-appointment-status">
+                    </div>
+                </div>
+                <div class="form-group row row-form">
+                    <label class="col-md-3 label-control" for="details-appointment-consultory">@Resource.ConsultingRoom</label>
+                    <div class="col-md-9">
+                        <input type="text" disabled id="details-appointment-consultory" class="details-appointment form-control" name="details-appointment-consultory" value="">
+                    </div>
+                </div>
+                <div class="form-group row row-form">
+                    <label class="col-md-3 label-control" for="dr-selected-time2">@Resource.SelectedTime</label>
+                    <div class="col-md-9">
+                        <input type="text" disabled id="details-appointment-date" class="details-appointment form-control" name="details-appointment-date" value="">
+                    </div>
+                </div>
+                <div class="form-group row row-form">
+                    <label class="col-md-3 label-control" for="patient-name-selected">@Resource.Patient</label>
+                    <div class="col-md-9">
+                        <input type="text" disabled id="details-patient-name" class="details-appointment form-control" placeholder="@Resource.Patient" name="details-patient-name" value="">
+                    </div>
+                </div>
+
+                <div class="form-group row row-form">
+                    <label class="col-md-3 label-control" for="details-appointment-cost">@Resource.Cost</label>
+                    <div class="col-md-3">
+                        <input type="text" disabled id="details-appointment-cost" class="details-appointment form-control" placeholder="@Resource.Cost" name="details-appointment-cost">
+                    </div>
+                    <label class="col-md-2 label-control" for="details-appointment-phone">@Resource.Phone</label>
+                    <div class="col-md-4">
+                        <input type="text" disabled id="details-appointment-phone" class="details-appointment form-control" placeholder="@Resource.Phone" name="details-appointment-phone">
+                    </div>
+                </div>
+
+                <div class="form-group row row-form">
+                    <label class="col-md-3 label-control" for="details-appointment-observations-to-doctor">@Resource.ObservationsToDoctor</label>
+                    <div class="col-md-9">
+                        <textarea disabled id="details-appointment-observations-to-doctor" rows="5" class="form-control" name="details-appointment-observations-to-doctor" placeholder="@Resource.Observations"></textarea>
+                    </div>
+                </div>
+                <div class="form-group row row-form">
+                    <label class="col-md-3 label-control" for="details-appointment-observations-to-assistant">@Resource.ObservationsToAssistant</label>
+                    <div class="col-md-9">
+                        <textarea disabled id="details-appointment-observations-to-assistant" rows="5" class="form-control" name="details-appointment-observations-to-assistant" placeholder="@Resource.Observations"></textarea>
+                    </div>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" data-uId="" class="btn btn-success confirm-appointment" id="btn-confirm-appointment">@Resource.Confirm</button>
+                <button type="button" data-uId="" class="btn btn-danger delete-appointment" id="btn-delete-appointment">@Resource.Delete</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">@Resource.Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ////////////////////////////////////////////////////////////////////////////-->
+<script src="~/Content/robust/app-assets/js/core/libraries/jquery.min.js" type="text/javascript"></script>
+<script src="@Url.Content("~/Content/introjs/intro.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/Common.js")" type="text/javascript"></script>
+
+<script src="@Url.Content("~/Scripts/citas/self-doctor.js")" type="text/javascript"></script>
+
+@Scripts.Render("~/Bundles/vendorDataTables")
+<script src="~/Content/robust/app-assets/vendors/js/extensions/jquery.steps.min.js"></script>
+<script src="~/Content/robust/app-assets/vendors/js/forms/select/selectize.min.js"></script>
+<script src="~/Content/robust/app-assets/vendors/js/forms/validation/jquery.validate.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        clControl.doctor_uId = "@User.uId"
+        clControl.user_rol = "@userRol";
+        clControl.citas = @Html.Raw(Json.Encode(ViewBag.citas));
+        clControl.schedules = @Html.Raw(Json.Encode(ViewBag.schedules));
+        clControl.minTime = "@ViewBag.start";
+        clControl.maxTime = "@ViewBag.ended";
+        clControl.slotDuration = "@additionalInfo.slotDuration";
+        clControl.consultory_uId = "@ViewBag.consultory_uId";
+        clControl.doctors =@Html.Raw(Json.Encode(listOfItems));
+        clControl.Initialize();
+    });
+
+</script>

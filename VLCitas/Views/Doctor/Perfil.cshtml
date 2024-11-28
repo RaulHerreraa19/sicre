@@ -1,0 +1,630 @@
+﻿@using VLCitas.DataLayer;
+@model Users
+@{
+    ViewBag.Title = "Profile";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    VLCitas.DataLayer.OfficesRepository.Offices_model office = (VLCitas.DataLayer.OfficesRepository.Offices_model)Session["office"];
+    Offices_Users office_user = Model.Offices_Users.Where(x => x.office_uid == office.uId).FirstOrDefault();
+    var consultories = String.Join(",", Model.Consultory.Where(x => x.office_uId == office.uId).Select(y => y.name).ToArray());
+    decimal price_per_consult = 0;
+    price_per_consult = Math.Round(office_user.price_per_appoinment, 0);
+
+}
+
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs/jq-3.3.1/jszip-2.5.0/dt-1.10.20/b-1.6.1/b-colvis-1.6.1/b-flash-1.6.1/b-html5-1.6.1/b-print-1.6.1/kt-2.5.1/r-2.2.3/sl-1.3.1/datatables.min.css" />
+<link href="~/Scripts/editor/css/editor_old.css" rel="stylesheet" />
+<link rel="stylesheet" href="//cdn.materialdesignicons.com/4.5.95/css/materialdesignicons.min.css">
+
+<style>
+    tfoot {
+        display: none;
+    }
+</style>
+
+<div class="content-header row">
+    <div class="content-header-left col-md-8 col-12 mb-2 breadcrumb-new">
+        <h3 class="content-header-title mb-0 d-inline-block">@Resource.Profile</h3>
+        <div class="row breadcrumbs-top d-inline-block">
+            <div class="breadcrumb-wrapper col-12">
+                <ol class="breadcrumb"></ol>
+            </div>
+        </div>
+    </div>
+    <div class="content-header-right col-md-4 col-12">
+        <div class="btn-group float-md-right">
+            <a href="#" class="btn btn-info"> <i class="ft-file-text"></i> @Resource.Prescriptions</a> &nbsp;&nbsp;
+            <a href="@Url.Action("Vacaciones", "Doctor")" class="btn btn-info"><i class="fa fa-calendar mr-1"></i> @Resource.Vacations</a>
+            @*<button class="btn btn-info dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="icon-settings mr-1"></i>Mas</button>
+                <div class="dropdown-menu arrow">
+                    <a class="dropdown-item" href="#"><i class="fa fa-calendar mr-1"></i> @Resource.Vacations</a>
+                    <a class="dropdown-item" href="#"><i class="fa fa-cart-plus mr-1"></i> Cart</a>
+                    <a class="dropdown-item" href="#"><i class="fa fa-life-ring mr-1"></i> Support</a>
+                   <div class="dropdown-divider"></div><a class="dropdown-item" href="#"><i class="fa fa-cog mr-1"></i> Settings</a>
+                </div>*@
+        </div>
+    </div>
+</div>
+
+
+<div class="content-body">
+    <!-- Row separator layout section start -->
+    <section id="row-separator-form-layouts">
+
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title card_main_title" id="row-separator-basic-form">@Model.first_name @Model.last_name</h3>
+                        <a class="heading-elements-toggle"><i class="ft-ellipsis-h font-medium-3"></i></a>
+                        <div class="heading-elements">
+                            <ul class="list-inline mb-0">
+                                <li><a data-action="collapse"><i class="ft-minus"></i></a></li>
+                                <li><a data-action="expand"><i class="ft-maximize"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="card-content collapse show">
+                        <div class="card-body">
+                            <div class="card-text">
+                                <p>@Resource.AboutYouHelp</p>
+                            </div>
+                            <form class="form form-horizontal row-separator" id="aboutYouForm">
+                                <input type="hidden" name="uId" value="@Model.uId" />
+                                <div class="form-body">
+                                    <h4 class="form-section"><i class="fa fa-eye"></i> @Resource.AboutYou</h4>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group row">
+                                                <label class="col-md-3 label-control" for="userinput1">@Resource.Name</label>
+                                                <div class="col-md-9">
+                                                    <input type="text" id="first_name" class="form-control border-primary" name="first_name" value="@Model.first_name">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group row">
+                                                <label class="col-md-3 label-control" for="userinput2">@Resource.LastName</label>
+                                                <div class="col-md-9">
+                                                    <input type="text" id="last_name" class="form-control border-primary" name="last_name" value="@Model.last_name">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group row">
+                                                <label class="col-md-3 label-control" for="userinput3">@Resource.Address</label>
+                                                <div class="col-md-9">
+                                                    <input type="text" id="address" class="form-control border-primary" name="address" value="@Model.address">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group row">
+                                                <label class="col-md-3 label-control" for="userinput5">@Resource.Mail</label>
+                                                <div class="col-md-9">
+                                                    <input class="form-control border-primary" type="email" name="email" id="email" value="@Model.email">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group row last">
+                                                <label class="col-md-3 label-control" for="userinput3">@Resource.Phone</label>
+                                                <div class="col-md-9">
+                                                    <input type="text" id="phone" class="form-control border-primary" name="phone" value="@Model.phone">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group row last">
+                                                <label class="col-md-3 label-control" for="userinput3">@Resource.Cedula</label>
+                                                <div class="col-md-9">
+                                                    <input type="text" id="professional_license" class="form-control border-primary" name="professional_license" value="@Model.Doctor_Configs.professional_license">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <h4 class="form-section"><i class="fa fa-envelope"></i>@Resource.ContactBio</h4>
+
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group row">
+                                                <label class="col-md-3 label-control" for="userinput6">@Resource.WebSite</label>
+                                                <div class="col-md-9">
+                                                    <input class="form-control border-primary" type="url" name="webpage" id="webpage" value="@Model.Doctor_Configs.webpage">
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row">
+                                                <label class="col-md-3 label-control">Facebook</label>
+                                                <div class="col-md-9">
+                                                    <input class="form-control border-primary" type="url" value="@Model.Doctor_Configs.facebook" id="facebook" name="facebook">
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row">
+                                                <label class="col-md-3 label-control">Twitter</label>
+                                                <div class="col-md-9">
+                                                    <input class="form-control border-primary" type="url" value="@Model.Doctor_Configs.twitter" id="twitter" name="twitter">
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row last">
+                                                <label class="col-md-3 label-control">Instagram</label>
+                                                <div class="col-md-9">
+                                                    <input class="form-control border-primary" type="url" value="@Model.Doctor_Configs.instagram" id="instagram" name="instagram">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group row last">
+                                                <label class="col-md-3 label-control" for="userinput8">@Resource.Bio</label>
+                                                <div class="col-md-9">
+                                                    <textarea rows="12" class="form-control border-primary" name="resume" id="resume">@Model.Doctor_Configs.resume</textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-actions right">
+                                    @*<button type="button" class="btn btn-warning mr-1">
+                                            <i class="fa fa-remove"></i> @Resource.Cancel
+                                        </button>*@
+                                    <button class="btn btn-primary" id="SaveAboutYou">
+                                        <i class="fa fa-check"></i> @Resource.Save
+                                    </button>
+                                </div>
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <br />
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title card_main_title" id="row-separator-basic-form">@Resource.Specialities</h3>
+                        <a class="heading-elements-toggle"><i class="ft-ellipsis-h font-medium-3"></i></a>
+                        <div class="heading-elements">
+                            <ul class="list-inline mb-0">
+                                <li><a data-action="collapse"><i class="ft-minus"></i></a></li>
+                                @*<li><a data-action="expand"><i class="ft-maximize"></i></a></li>*@
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="card-content collapse show">
+                        <div class="card-body">
+                            <div class="card-text">
+                                <p>@Resource.SpecialitiesHelp</p>
+                            </div>
+                            <div class="row" style="margin-bottom: 3px;">
+                                <div class="col-md-6">
+                                    <h5 class="mb-0"></h5>
+
+                                </div>
+                                <div class="col-md-6 text-right">
+                                    <button type="button" id="btn_add_co" class="btn btn-primary main_btn"> @Resource.AddSpeciality </button>&nbsp;&nbsp;
+                                </div>
+                            </div>
+                            <table id="AGSpecialities"></table>
+                            <div class="form-actions right" style="float: right;">
+                                @*<button type="button" class="btn btn-warning mr-1">
+                                        <i class="fa fa-remove"></i> @Resource.Cancel
+                                    </button>*@
+                                <span class="btn btn-primary" id="UpdateSpecialities">
+                                    <i class="fa fa-check"></i> @Resource.Save
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <br />
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title" id="row-separator-icons">@Resource.ConfigAt @office.name</h4>
+                        <a class="heading-elements-toggle"><i class="ft-ellipsis-h font-medium-3"></i></a>
+                        <div class="heading-elements">
+                            <ul class="list-inline mb-0">
+                                <li><a data-action="collapse"><i class="ft-minus"></i></a></li>
+                                <li><a data-action="expand"><i class="ft-maximize"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="card-content collapse show">
+                        <div class="card-body">
+
+                            <div class="card-text">
+                                <p>@Resource.ConfigAtHelp</p>
+                            </div>
+
+                            <form class="form form-horizontal row-separator" id="formClinica">
+                                <input name="uId" value="@Model.uId" type="hidden" />
+                                <div class="form-body">
+                                    <div class="form-group row">
+                                        <label class="col-md-3 label-control">@Resource.RateByDate</label>
+                                        <div class="col-md-9">
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text">$</span>
+                                                </div>
+                                                <input type="number" class="form-control" value="@price_per_consult" name="price_per_appoinment" id="price_per_appoinment">
+                                                <div class="input-group-append">
+                                                    <span class="input-group-text">.00</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <label class="col-md-3 label-control" for="timesheetinput5">@Resource.TimeByDate (@Resource.Minutes)</label>
+                                        <div class="col-md-9">
+                                            <div class="position-relative has-icon-left">
+                                                <input type="number" id="medical_appointment_duration" class="form-control" name="medical_appointment_duration" value="@office_user.medical_appointment_duration">
+                                                <div class="form-control-position">
+                                                    <i class="fa fa-clock-o"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <label class="col-md-3 label-control" for="timesheetinput1">@Resource.ConsultingRooms</label>
+                                        <div class="col-md-9">
+                                            <div class="position-relative has-icon-left">
+                                                <input type="text" id="timesheetinput1" class="form-control" value="@consultories" readonly>
+                                                <div class="form-control-position">
+                                                    <i class="fa fa-user"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+
+                                <div class="form-actions right">
+
+                                    <button type="submit" class="btn btn-primary">
+                                        <i class="fa fa-check"></i> @Resource.Save
+                                    </button>
+                                </div>
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </section>
+    <!-- // Row separator layout section end -->
+</div>
+
+<!-- Modal -->
+<div class="modal fade bd-example-modal-lg" id="coModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">@Resource.ChooseSpeciality</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <input type="text" autofocus id="InputSearch" class="searchFlied" onkeyup="searchInTable('SpecialityTable', 'InputSearch')" placeholder="@Resource.Search">
+
+                        <table class="table table-striped" id="SpecialityTable">
+                            <thead>
+                                <tr>
+                                    <th>@Resource.Speciality</th>
+                                    <th>@Resource.Action</th>
+                                </tr>
+                            </thead>
+                            <tbody id="body_table_co"></tbody>
+                        </table>
+                    </div>
+
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">@Resource.Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="~/Scripts/utilities.js"></script>
+<script src="~/Scripts/Common.js"></script>
+<script src="~/Scripts/AppendGrid.js"></script>
+<script type="text/javascript">
+
+    var specilitiesCat = @Html.Raw(Json.Encode(ViewBag.Specialities));
+    var specilitiesCurrent = @Html.Raw(Json.Encode(Model.Doctor_Configs.Specialties.Select(x=> new { x.id, x.name}).ToList()));
+
+
+    var CLPerfil = {
+        uId: '@Model.uId',
+        initialize: function () {
+            CLPerfil.gridSpecialities();
+        },
+        specilitiesCat: specilitiesCat,
+        specilitiesCurrent: specilitiesCurrent,
+        gridSpecialities: function () {
+            specialitiesAppendGrid = new AppendGrid({
+                element: "AGSpecialities",
+                uiFramework: "bootstrap4",
+                iconFramework: "materialdesignicons3",
+                initRows: 0,
+                hideButtons: {
+                    // Hide the move up, insert and move down button on each row
+                    moveUp: true,
+                    moveDown: true,
+                    insert: true
+                },
+                i18n: js_language[user_lang].AppendGrid,
+                sectionClasses: {
+
+                },
+                afterRowInserted: function (caller, parentIndex, addedRows) {
+                },
+                afterRowRemoved: function (caller, rowIndex) {
+                },
+                afterRowAppended: function (caller, parentRowIndex, addedRowIndex) {
+                },
+                columns: [
+                    {
+                        name: "id",
+                        type: "hidden"
+                    },
+                    {
+                        name: "name",
+                        display: "@Resource.Speciality",
+                        type: "readonly"
+                    }
+
+                ],
+                // Optional CSS classes, to make table slimmer!
+                sectionClasses: {
+                    table: "",
+                    control: "form-control-sm",
+                    buttonGroup: "btn-group-sm"
+                }
+            });
+            $("#btn_add_co").click(function () {
+                CLPerfil.loadSpecialities();
+            });
+
+            $("#btn_remove_co").click(function () {
+                specialitiesAppendGrid.removeRow();
+            });
+            CLPerfil.checkDefaultSpecialities()
+        },
+        checkDefaultSpecialities: function () {
+            if (CLPerfil.specilitiesCurrent != null) {
+                var defaultValues = [];
+                $.each(CLPerfil.specilitiesCurrent, function () {
+                    if (this.id != "") {
+                        var co = getObjects(CLPerfil.specilitiesCat, "id", this.id);
+                        var obj = co[0];
+                        specialitiesAppendGrid.insertRow([
+                            {
+                                id: obj.id,
+                                name: obj.name
+                            }
+                        ]);
+                    }
+                });
+            }
+        },
+        loadSpecialities: function () {
+            var current_co = [];
+            $("#co_container").empty();
+            $("#body_table_co").html("");
+            var allData = specialitiesAppendGrid.getAllValue();
+            $.each(allData, function () {
+                var value = $(this)[0].name;
+                current_co.push(value);
+            });
+            $.each(CLPerfil.specilitiesCat, function () {
+                var ban = $.inArray(this.name, current_co);
+                if (ban == -1) {
+                    var tr = '<tr>' +
+                        '<td>' + this.name + '</td>' +
+                        '<td><span class="btn btn-primary AddCO" data-id="' + this.id + '">' + "@Resource.Add" + '</span>' +
+                        '</tr>';
+                    $("#body_table_co").append(tr);
+                }
+            });
+            $("#InputSearch").val("");
+            $("#coModal").modal("show");
+        },
+        saveAboutYou: function () {
+            var obj = formToObject("aboutYouForm");
+            obj_s = JSON.stringify({ model: obj });
+            show_Status_Modal_(null);
+            $.ajax({
+                type: "Post",
+                url: "/Doctor/UpdateAboutYou",
+                data: obj,
+                cache: false,
+                success: function (Result) {
+                    if (Result.TypeOfResponse == 0) {
+                        swal({
+                            title: js_language[user_lang].Ok,
+                            text: js_language[user_lang].OkResponse,
+                            type: "success",
+                            timer: 2000
+                        });
+                    } else {
+                        swal({
+                            title: "Error",
+                            text: js_language[user_lang].BadResponse,
+                            type: "warning",
+                            timer: 2000
+                        });
+                    }
+                    show_Status_Modal_close();
+                },
+                error: function (request, status, error) {
+                    console.error(request.responseText);
+                    swal({
+                        title: "Error",
+                        text: js_language[user_lang].BadResponse,
+                        type: "warning",
+                        timer: 2000
+                    });
+                    show_Status_Modal_close();
+                },
+                complete: function (xhr, status) {
+                    show_Status_Modal_close();
+                }
+            });
+        },
+        saveClinicInfo: function () {
+            var obj = formToObject("formClinica");
+            show_Status_Modal_(null);
+            $.ajax({
+                type: "Post",
+                url: "/Doctor/UpdateClinicInfo",
+                data: obj,
+                cache: false,
+                success: function (Result) {
+                    if (Result.TypeOfResponse == 0) {
+                        swal({
+                            title: js_language[user_lang].Ok,
+                            text: js_language[user_lang].OkResponse,
+                            type: "success",
+                            timer: 2000
+                        });
+                    } else {
+                        swal({
+                            title: "Error",
+                            text: js_language[user_lang].BadResponse,
+                            type: "warning",
+                            timer: 2000
+                        });
+                    }
+                    show_Status_Modal_close();
+                },
+                error: function (request, status, error) {
+                    console.error(request.responseText);
+                    swal({
+                        title: "Error",
+                        text: js_language[user_lang].BadResponse,
+                        type: "warning",
+                        timer: 2000
+                    });
+                    show_Status_Modal_close();
+                },
+                complete: function (xhr, status) {
+                    show_Status_Modal_close();
+                }
+            });
+        },
+        saveSpecialities: function () {
+            var allData = specialitiesAppendGrid.getAllValue();
+            obj = {
+                uId: CLPerfil.uId,
+                specialies: []
+            };
+            $.each(allData, function () {
+                var value = $(this)[0].id;
+                obj.specialies.push(value);
+            });
+            show_Status_Modal_(null);
+            $.ajax({
+                type: "Post",
+                url: "/Doctor/UpdateSpecialities",
+                data: obj,
+                cache: false,
+                success: function (Result) {
+                    if (Result.TypeOfResponse == 0) {
+                        swal({
+                            title: js_language[user_lang].Ok,
+                            text: js_language[user_lang].OkResponse,
+                            type: "success",
+                            timer: 2000
+                        });
+                    } else {
+                        swal({
+                            title: "Error",
+                            text: js_language[user_lang].BadResponse,
+                            type: "warning",
+                            timer: 2000
+                        });
+                    }
+                    show_Status_Modal_close();
+                },
+                error: function (request, status, error) {
+                    console.error(request.responseText);
+                    swal({
+                        title: "Error",
+                        text: js_language[user_lang].BadResponse,
+                        type: "warning",
+                        timer: 2000
+                    });
+                    show_Status_Modal_close();
+                },
+                complete: function (xhr, status) {
+                    show_Status_Modal_close();
+                }
+            });
+        }
+    };
+
+    $(document).ready(function () {
+        CLPerfil.initialize();
+
+        $("body").on("click", ".AddCO", function () {
+            var id = $(this).attr("data-id");
+            var co = getObjects(CLPerfil.specilitiesCat, "id", id);
+            var obj = co[0];
+            specialitiesAppendGrid.insertRow([
+                {
+                    id: obj.id,
+                    name: obj.name
+                }
+            ]);
+            $("#coModal").modal("hide");
+        });
+
+        $('.modal').on('shown.bs.modal', function () {
+            $(this).find('[autofocus]').focus();
+        });
+
+
+        $("#aboutYouForm").submit(function (event) {
+            event.preventDefault();
+            CLPerfil.saveAboutYou();
+        });
+
+        $("#formClinica").submit(function (event) {
+            event.preventDefault();
+            CLPerfil.saveClinicInfo();
+        });
+
+        $("#UpdateSpecialities").click(function () {
+            CLPerfil.saveSpecialities();
+        });
+    });
+</script>

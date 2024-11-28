@@ -1,0 +1,33 @@
+h1,h2,h3,h4,h5,p{
+    color: #174475;
+}
+h2 {
+    font-family: 'EB Garamond', serif !important;
+    font-style: italic;
+    font-weight: 600;
+}
+.logo-medic img {
+    height: 145px;
+    margin: 5px;
+}
+
+.line-x {
+    background-image: url("../Basic/img/RHP-LINE.png");
+    background-repeat: repeat-x;
+    height: 30px;
+}
+
+.space-x {
+    background-image: url(../Basic/img/RHP-BG.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 420px;
+    height: 372px;
+    margin: 0 auto;
+}
+
+.line2-x {
+  background-image: url("../Basic/img/RHP-LINE.png");
+  background-repeat: repeat-x;
+  height: 12px;
+}

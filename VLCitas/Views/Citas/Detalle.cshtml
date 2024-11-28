@@ -1,0 +1,572 @@
+﻿@using VLCitas.DataLayer;
+@model Citas
+
+@{
+    ViewBag.Title = "Detalle";
+    List<Servicios> servicios = ViewBag.servicios;
+    Users user = (Users)Session["user"];
+    Citas last_cita = (Citas)ViewBag.last_cita;
+    bool hasMoreOffices = (bool)ViewBag.HasMoreOffices;
+    bool hasPreComments = String.IsNullOrEmpty(Model.observacion_doctor) ? false : true;
+    string age = "";
+    if (Model.Paciente.fecha_nacimiento.HasValue)
+    {
+        var now = DateTime.Now;
+        var years = (now.Year - Model.Paciente.fecha_nacimiento.Value.Year);
+        if (now.DayOfYear < Model.Paciente.fecha_nacimiento.Value.DayOfYear)
+        {
+            years = years - 1;
+        }
+        age = years.ToString() + " " + Resource.Years;
+    }
+}
+
+<link href="@Url.Content("~/Content/introjs/introjs.css")" rel="stylesheet">
+<link href="@Url.Content("~/Content/introjs/custom.css")" rel="stylesheet">
+<link href="@Url.Content("~/Content/css/Citas.css")" rel="stylesheet">
+<script src="@Url.Content("~/Content/introjs/intro.js")"></script>
+<link href="@Url.Content("~/Content/simeditor/simditor.css")" rel="stylesheet">
+<link href="~/Content/robust/app-assets/vendors/css/pickers/pickadate/pickadate.css" rel="stylesheet" />
+<link href="~/Content/robust/app-assets/vendors/css/tables/datatable/datatables.min.css" rel="stylesheet" />
+<link rel="stylesheet" href="//cdn.materialdesignicons.com/4.5.95/css/materialdesignicons.min.css">
+@Styles.Render("~/Content/quill-editor")
+
+
+@{
+    if (user.Doctor_Configs.has_attachements)
+    {
+        @Styles.Render("~/Content/dropzonescss")
+        @Scripts.Render("~/Bundles/dropzonescripts")
+    }
+}
+<style>
+    .card {
+        height: auto !important;
+    }
+
+    tfoot {
+        display: none;
+    }
+    .table td, .table th {
+        padding: .2rem;
+    }
+</style>
+
+
+
+<div class="content-header row">
+    <div class="content-header-left col-md-8 col-12 mb-2 breadcrumb-new">
+        <h3 class="content-header-title mb-0 d-inline-block">@Resource.DetailsAppointment</h3>
+        <div class="row breadcrumbs-top d-inline-block">
+            <div class="breadcrumb-wrapper col-12">
+                <ol class="breadcrumb">
+                    @{ if (hasMoreOffices)
+                        {
+                            <li class="breadcrumb-item">
+                                <a href="@Url.Action("Offices", "Login")"> @Resource.Hospital </a>
+                            </li>
+                        }
+                    }
+                    <li class="breadcrumb-item">
+                        <a href="@Url.Action("Calendario", "Doctor")"> @Resource.Calendar </a>
+                    </li>
+                    <li class="breadcrumb-item active">
+                        @Resource.Appointment
+                    </li>
+                </ol>
+            </div>
+        </div>
+    </div>
+    <div class="content-header-right col-md-4 col-12">
+        <div class="btn-group float-md-right">
+            <form action="@Url.Action("Detalle", "Pacientes")" target="_blank" method="post">
+                <input type="hidden" value="@Model.id_paciente" name="id" />
+                <button type="submit" class="btn btn-info"><i class="fa fa-eye"></i> @Resource.See @Resource.MedicalRecord</button>
+            </form>
+            &nbsp; <button class="btn btn-info dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="icon-settings mr-1"></i>@Resource.MoreActions</button>
+            <div class="dropdown-menu arrow">
+                <a class="dropdown-item" href="#"><i class="ft-activity"></i> @Resource.WeightTracking</a>
+                <a class="dropdown-item" href="#"><i class="fa fa-tint mr-1"></i> @Resource.GlucoseTracking</a>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+
+@if (Model.status_id == 3)
+{
+    <br />
+    <div class="alert alert-danger mb-2" role="alert">
+        <strong>@Resource.Attention</strong> @Resource.FinishedAppointment
+    </div>
+}
+
+@if (hasPreComments)
+{
+    <br />
+    <div class="alert alert-info mb-2" role="alert">
+        <strong>@Resource.PreviousComments</strong> @Model.observacion_doctor
+    </div>
+}
+
+<div class="content-body">
+    <div class="row">
+        <div class="col-md-8">
+            <form id="frm_cita" action="#">
+                <input type="hidden" name="uId" value="@Model.uId" />
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="success card-title" style="font-size: 1.5rem;">@Model.Paciente.nombre</h3>
+                        <a class="heading-elements-toggle"><i class="ft-ellipsis-h font-medium-3"></i></a>
+                        <div class="heading-elements">
+                            <a class="btn btn-default btn-sm" data-action="" id=""><i class="icon-book-open"></i></a>
+                        </div>
+                    </div>
+
+                    <div class="card-content collapse show">
+                        <div class="card-body">
+                            <h4 class="card-title">@Resource.VitalSigns</h4>
+                            <div class="form-group row">
+                                <div class="col-md-4">
+                                    <label class="label-control" for="appointment-peso">@Resource.Weight</label>
+                                    <input type="number" id="appointment-peso" name="peso" class="form-control" value="@Model.peso" />
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="label-control" for="appointment-peso">@Resource.Height</label>
+                                    <input type="number" id="appointment-peso" name="altura" class="form-control" value="@Model.altura" />
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="label-control" for="appointment-temperature">@Resource.Temperature</label>
+                                    <input type="number" id="appointment-temperatura" name="temperatura" class="form-control" value="@Model.temperatura" />
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-md-4">
+                                    <label class="label-control" for="appointment-presion">@Resource.Pressure</label>
+                                    <input type="text" id="appointment-presion" name="presion" class="form-control" value="@Model.presion" />
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="label-control" for="appointment-presion">@Resource.Glucose (mg/dl)</label>
+                                    <input type="number" id="appointment-glucosa" name="glucosa" class="form-control" value="@Model.glucosa" />
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="label-control" for="appointment-presion">@Resource.HeartRate</label>
+                                    <input type="number" id="appointment-glucosa" name="ritmo_cardiaco" class="form-control" value="@Model.ritmo_cardiaco" />
+                                </div>
+                            </div>
+                            <hr />
+                            <h4 class="card-title">@Resource.AppointmentDetails</h4>
+                            <div class="form-group row">
+                                <label class="col-md-3 label-control" for="appointment-observations-to-doctor">@Resource.ReasonConsultation</label>
+                                <div class="col-md-9">
+                                    <div id="appointment-reason"><div class="editor">@Html.Raw(Model.motivo)</div></div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-md-3 label-control" for="appointment-observations-to-doctor">@Resource.Diagnosis</label>
+                                <div class="col-md-9">
+                                    <div id="appointment-diagnosis"><div class="editor">@Html.Raw(Model.diagnostico)</div></div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-md-3 label-control" for="appointment-observations-to-doctor">@Resource.MedicalNotes</label>
+                                <div class="col-md-9">
+                                    @*<textarea id="appointment-observations" rows="5" class="form-control" name="appointment-observations" placeholder="">@Model.observaciones</textarea>*@
+                                    <div id="appointment-observations"><div class="editor">@Html.Raw(Model.observaciones)</div></div>
+                                </div>
+                            </div>
+                            <hr />
+                            <div class="form-group row">
+                                <label class="col-md-3 label-control" for="appointment-observations-to-doctor">@Resource.ObservationsToAssistant</label>
+                                <div class="col-md-9">
+                                    <div id="appointment-observations-to-assitant"><div class="editor">@Html.Raw(Model.observaciones_asistente)</div></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-content collapse show">
+                        <div class="card-body">
+                            <label class="lb_cita"> @Resource.Prescription <i id="SavePrescription" class="icon-printer btn"></i></label>
+                            <div class="row" style="margin-bottom: 3px;">
+                                <div class="col-md-6">
+                                    <h5 class="mb-0"></h5>
+
+                                </div>
+                                <div class="col-md-6 text-right">
+                                    <button type="button" id="btn_add_medicine" class="btn btn-primary main_btn"> + @Resource.Add </button>&nbsp;&nbsp;
+                                </div>
+                            </div>
+                            <table id="" class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th style="width:80%">@Resource.Medicine</th>
+                                        <th style="width:20%">@Resource.Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="body_receta">
+
+                                </tbody>
+                            </table>
+                            @*<textarea rows="8" cols="50" id="appointment-precription" name="receta" class="form-control">@Model.receta </textarea>*@
+
+                        </div>
+                    </div>
+                </div>
+            </form>
+
+            @{
+                if (user.Doctor_Configs.has_attachements)
+                {
+
+                    <div class="card">
+                        <div class="card-header">
+                            <h4 class="success card-title">@Resource.Attachments.ToUpper()</h4>
+                            <a class="heading-elements-toggle"><i class="ft-ellipsis-h font-medium-3"></i></a>
+                            <div class="heading-elements">
+                                <a id="select-files" class="btn btn-default btn-sm" data-action=""><i class="ft-file"></i></a>
+                            </div>
+                        </div>
+                        <div class="card-content collapse show">
+                            <div class="card-body">
+                                @*<label class="lb_cita"> @Resource.Attachments <i class="icon-cloud-upload btn"></i></label>*@
+                                @*<button id="select-files" class="btn btn-primary mb-1"><i class="ft-file"></i> Click me to select files</button>*@
+                                <form action="~/Citas/SaveAttachments" method="post" enctype="multipart/form-data" class="dropzone dropzone-area" id="appointment-attachments">
+                                    <div class="dz-message">@Resource.DropFilesHereToUpload</div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                }
+            }
+
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title">@Resource.Services</h4>
+                    <a class="heading-elements-toggle"><i class="ft-ellipsis-h font-medium-3"></i></a>
+                    <div class="heading-elements">
+                        <a class="btn btn-default btn-sm" data-action="reload" id="reload"><i class="icon-reload"></i></a>
+                    </div>
+                </div>
+                <div class="card-content collapse show">
+                    <div class="card-body">
+                        <div class="form-group row">
+                            <div class="col-md-6">
+                                <span style="text-align:center"> @Resource.Applied </span>
+                                <div id="searchDIV">
+                                    <input type="text" id="InputSearchUsed" class="searchFlied" onkeyup="searchInTable('used_dt', 'InputSearchUsed')" placeholder="@Resource.Search">
+                                </div>
+                                <table class="table table-striped" id="used_dt">
+                                    <thead>
+                                        <tr>
+                                            <th>@Resource.Name</th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="used_body">
+                                        @foreach (var item in Model.Servicios.OrderBy(x => x.nombre))
+                                        {
+                                            <tr id="row_@item.id">
+                                                <td>@item.nombre</td>
+                                                <td><span class="btn btn_remove_servicio" data-id="@item.id" data-price="@item.precio" data-nombre="@item.nombre">@Resource.Remove</span></td>
+                                            </tr>
+                                        }
+                                    </tbody>
+
+                                </table>
+                            </div>
+                            <div class="col-md-6">
+                                <span style="text-align:center"> @Resource.Available </span>
+                                <div id="searchDIV">
+                                    <input type="text" id="InputSearchAv" class="searchFlied" onkeyup="searchInTable('available_dt', 'InputSearchAv')" placeholder="@Resource.Search">
+                                </div>
+                                <table class="table table-striped" id="available_dt">
+                                    <thead>
+                                        <tr>
+                                            <th>@Resource.Name</th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="available_body">
+                                        @foreach (var item in servicios)
+                                        {
+                                            <tr id="row_@item.id">
+                                                <td>@item.nombre</td>
+                                                <td><span class="btn btn_add_servicio" data-id="@item.id" data-price="@item.precio" data-nombre="@item.nombre">@Resource.Add <i class="icon-android-add"></i> </span></td>
+                                            </tr>
+                                        }
+                                    </tbody>
+
+                                </table>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-md-3 label-control" for="appointment-observations-to-doctor">@Resource.Cost</label>
+                            <div class="col-md-9">
+                                <input type="number" id="precio" name="precio" class="form-control" value="@Model.precio" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <input type="hidden" name="uId" id="uId" value="@Model.uId" />
+
+            @if (Model.status_id == 3)
+            {
+                <span class="btn btn-success" id="btnSave"> @Resource.Update </span>
+            }
+            else
+            {
+                <span class="btn btn-success" id="btnSave"> @Resource.Finish </span>
+            }
+        </div>
+
+        <div class="col-md-4" style="padding-left: 7px;">
+
+            <div class="card" id="citado">
+                <div class="card-header">
+                    <h4 class="success card-title">@Resource.PatientData</h4>
+                    <a class="heading-elements-toggle"><i class="ft-ellipsis-h font-medium-3"></i></a>
+                    <div class="heading-elements">
+                        <a class="btn btn-default btn-sm" data-action="" id=""><i class="icon-user"></i></a>
+                    </div>
+                </div>
+
+                <div class="card-body">
+                    <div class="card-block" data-step="3" data-intro="@Resource.PatientData">
+                        <div class="form-group row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label for="patient-birthday">@Resource.Sex</label><br />
+                                    @{
+                                        var sex = Model.Paciente.sex_id != null ? Model.Paciente.Sex.name : "N/A";
+                                    }
+                                    <div class="input-group">
+                                        <input type='text' disabled value="@sex" class="form-control" placeholder="" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label for="patient-birthday">@Resource.Age</label><br />
+                                    <div class="input-group">
+                                        <input type='text' disabled value="@age" class="form-control" placeholder="" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label for="patient-birthday">@Resource.Birthdate</label><br />
+                                    @{
+                                        string dateString = null;
+                                        if (Model.Paciente.fecha_nacimiento != null)
+                                        {
+                                            DateTime date = Convert.ToDateTime(Model.Paciente.fecha_nacimiento);
+                                            dateString = date.ToShortDateString();
+                                        }
+                                    }
+                                    <div class="input-group">
+                                        <input type='text' disabled value="@dateString" name="patient-birthday" id="patient-birthday" class="form-control" placeholder="" />
+                                        <div class="input-group-append patient-action" id="birthday-action" data-action="edit" data-field="birthday" style="cursor: pointer;">
+                                            <span class="input-group-text">
+                                                <span id="edit-birthday" class="fa fa-pencil success"></span>
+                                                <span id="save-birthday" style="display:none;" class="fa fa-floppy-o success"></span>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label for="patient-allergy">@Resource.Allergies</label><br />
+                                    <div class="input-group">
+                                        <textarea rows="2" cols="6" disabled class="form-control" id="patient-allergy">@Model.Paciente.alergias</textarea>
+                                        <div class="input-group-append patient-action" data-action="edit" data-field="allergy" style="cursor: pointer;">
+                                            <span class="input-group-text">
+                                                <span id="edit-allergy" class="fa fa-pencil success font-large-1 float-xs-center"></span>
+                                                <span id="save-allergy" style="display:none;" class="fa fa-floppy-o success font-large-1 float-xs-center"></span>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label for="email">@Resource.Surgeries</label><br />
+                                    <div class="input-group">
+                                        <textarea rows="2" cols="6" disabled style="padding-left: 15px;" class="form-control" id="patient-surgeries">@Model.Paciente.cirugias</textarea>
+                                        <div class="input-group-append patient-action" data-action="edit" data-field="surgeries" style="cursor: pointer;">
+                                            <span class="input-group-text">
+                                                <span id="edit-surgeries" class="fa fa-pencil success font-large-1 float-xs-center"></span>
+                                                <span id="save-surgeries" style="display:none;" class="fa fa-floppy-o success font-large-1 float-xs-center"></span>
+                                            </span>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            @if (Model.Paciente.Citas.Where(x => x.status_id == 3).Count() > 0)
+            {
+                <div class="card" id="last_citas">
+                    <div class="card-header">
+                        <h4 class="success card-title">@Resource.LastAppointments</h4>
+                        <a class="heading-elements-toggle"><i class="ft-ellipsis-h font-medium-3"></i></a>
+                        <div class="heading-elements">
+                            <a class="btn btn-default btn-sm" data-action="" id=""><i class="icon-calendar"></i></a>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="media-body text-xs-left">
+                            @foreach (var item in Model.Paciente.Citas.Where(x => x.status_id == 3).OrderByDescending(x => x.cita_date).Take(5))
+                            {
+                                var current_lang = (Languages)Session["userLanguage"];
+                                <span><b> @String.Format("{0:f}", item.cita_date, new System.Globalization.CultureInfo(current_lang.LanguageCultureName))</b></span><br />
+                                <span><b>@Resource.Weight:</b>@item.peso <b>@Resource.Temperature:</b>@item.temperatura <b>@Resource.Pressure:</b> @item.presion</span><br /><br />
+                                <span>@Html.Raw(item.observaciones)</span>
+                                <hr />
+                            }
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade bd-example-modal-lg" id="medicineModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">@Resource.AddMedicine</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+
+                <div class="row">
+                    <form action="#" id="addMedicineForm" class="form form-horizontal row-separator" style="width: 99%;">
+                        <input type="hidden" name="cita_uId" value="@Model.uId" />
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group row">
+                                    <label class="col-md-3 label-control" for="userinput6">@Resource.Medicine</label>
+                                    <div class="col-md-9">
+                                        <input class="form-control border-primary medicine_form" type="text" name="medicine" value="">
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label class="col-md-3 label-control">@Resource.Dose</label>
+                                    <div class="col-md-9">
+                                        <input class="form-control border-primary medicine_form" type="text" name="dose">
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label class="col-md-3 label-control">@Resource.Frequency</label>
+                                    <div class="col-md-9">
+                                        <input class="form-control border-primary medicine_form" type="url" value="" name="frequency">
+                                    </div>
+                                </div>
+
+                                <div class="form-group row last">
+                                    <label class="col-md-3 label-control">@Resource.Duration</label>
+                                    <div class="col-md-9">
+                                        <input class="form-control border-primary medicine_form" type="url" value="" name="duration">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group row last">
+                                    <label class="col-md-3 label-control" for="userinput8">@Resource.Notes</label>
+                                    <div class="col-md-9">
+                                        <textarea rows="12" class="form-control border-primary medicine_form" name="extra"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+               
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="btnAddMedicine" class="btn btn-primary">@Resource.Save</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@*<script src="~/Scripts/require.js"></script>*@
+@*<script src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment.min.js'></script>*@
+<script src="~/Scripts/Common.js"></script>
+<script src="@Url.Content("~/Scripts/simeditor/module.js")"></script>
+<script src="@Url.Content("~/Scripts/simeditor/uploader.js")"></script>
+<script src="@Url.Content("~/Scripts/simeditor/hotkeys.js")"></script>
+<script src="@Url.Content("~/Scripts/simeditor/mobilecheck.js")"></script>
+<script src="@Url.Content("~/Scripts/simeditor/simditor.js")"></script>
+<script src="~/Content/robust/app-assets/vendors/js/pickers/pickadate/picker.js"></script>
+<script src="~/Content/robust/app-assets/vendors/js/pickers/pickadate/picker.date.js"></script>
+<script src="~/Scripts/AppendGrid.js"></script>
+
+@Scripts.Render("~/Bundles/quill-editor")
+
+<script src="~/Scripts/citas/appointment.js"></script>
+<script type="text/javascript">
+
+    var medicines = @Html.Raw(Json.Encode(Model.Medicine_citas.Select(x=> new { x.id, x.sentence}).ToList()));
+
+    $(document).ready(function () {
+    clAppointment.appointment_uId = "@Model.uId";
+    clAppointment.id_patient = "@Model.id_paciente";
+    clAppointment.Initialize();
+
+    $("#btn_add_medicine").click(function () {
+        $(".medicine_form").val("");
+        $("#medicineModal").modal("show");
+
+    });
+
+    $("body").on("click", "#btnAddMedicine", function () {
+        clAppointment.AddMedicine();
+    });
+
+    $("body").on("click", ".btn_delete_medicine", function () {
+        var id = $(this).attr("data-id");
+        clAppointment.RemoveMedicine(id);
+        $("#row_" + id).remove();
+    });
+
+        new Dropzone(document.body, { url: "#", previewsContainer: "#appointment-attachments", clickable: "#select-files" }),
+        Dropzone.options.dropzoneForm = {
+            init: function () {
+                this.on("complete", function (data) {
+                    console.log(data);
+                    var res = JSON.parse(data.xhr.responseText);
+                });
+            }
+        };
+
+});
+</script>

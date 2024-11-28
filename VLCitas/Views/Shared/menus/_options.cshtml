@@ -1,0 +1,26 @@
+﻿@using VLCitas.DataLayer;
+@{
+    List<Module> modules = new List<Module>();
+    var Resource = new GetResource();
+    if (Session["Modules"] != null)
+    {
+        modules = (List<Module>)Session["Modules"];
+    }
+    var current_lang = (Languages)Session["userLanguage"];
+    if (current_lang == null)
+    {
+        current_lang = new Languages(1);
+    }
+}
+
+@foreach (var item in modules.OrderBy(x => x.ordernumber))
+{
+    <li class=" nav-item">
+        <a href="@Url.Action(item.menuaction,item.menucontrolador)">
+            @Html.Raw(item.menuicon != null ? item.menuicon : "")
+            <span class="menu-title">
+                @Resource.getValueFromResouce(item.codemodules, current_lang.LanguageCultureName)
+            </span>
+        </a>
+    </li>
+}

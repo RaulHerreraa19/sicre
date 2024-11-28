@@ -1,0 +1,903 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Add" xml:space="preserve">
+    <value>Add</value>
+  </data>
+  <data name="AddNewDate" xml:space="preserve">
+    <value>Add new date</value>
+  </data>
+  <data name="Allergy" xml:space="preserve">
+    <value>Allergy</value>
+  </data>
+  <data name="AppName" xml:space="preserve">
+    <value>Medical Appointment System</value>
+  </data>
+  <data name="AppointmentDate" xml:space="preserve">
+    <value>Date appointment</value>
+  </data>
+  <data name="AssistantObservations" xml:space="preserve">
+    <value>Assistant observations</value>
+  </data>
+  <data name="AvailableSchedule" xml:space="preserve">
+    <value>Available schedule</value>
+  </data>
+  <data name="Back" xml:space="preserve">
+    <value>Back</value>
+  </data>
+  <data name="Birthdate" xml:space="preserve">
+    <value>Birthdate</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="Canceled" xml:space="preserve">
+    <value>Canceled</value>
+  </data>
+  <data name="CitasMonth" xml:space="preserve">
+    <value>Appointments this month</value>
+  </data>
+  <data name="CitasToday" xml:space="preserve">
+    <value>Appointments for today</value>
+  </data>
+  <data name="Close" xml:space="preserve">
+    <value>Close</value>
+  </data>
+  <data name="Comments" xml:space="preserve">
+    <value>Comments</value>
+  </data>
+  <data name="CommentsAssistant" xml:space="preserve">
+    <value>Comments for the assistant</value>
+  </data>
+  <data name="Completed" xml:space="preserve">
+    <value>Completed</value>
+  </data>
+  <data name="Confirmed" xml:space="preserve">
+    <value>Confirmed</value>
+  </data>
+  <data name="Cost" xml:space="preserve">
+    <value>Cost</value>
+  </data>
+  <data name="CURP" xml:space="preserve">
+    <value>ID</value>
+  </data>
+  <data name="Dashboard" xml:space="preserve">
+    <value>Dashboard</value>
+  </data>
+  <data name="Dateofbirth" xml:space="preserve">
+    <value>Date of birth</value>
+  </data>
+  <data name="EndDate" xml:space="preserve">
+    <value>End date</value>
+  </data>
+  <data name="FilterByUser" xml:space="preserve">
+    <value>Filter by user</value>
+  </data>
+  <data name="Day" xml:space="preserve">
+    <value>Day</value>
+  </data>
+  <data name="Details" xml:space="preserve">
+    <value>Details</value>
+  </data>
+  <data name="DetailsAppointment" xml:space="preserve">
+    <value>Appointment Details</value>
+  </data>
+  <data name="Finish" xml:space="preserve">
+    <value>Finish</value>
+  </data>
+  <data name="FinishedAppointment" xml:space="preserve">
+    <value>Finished Appointment</value>
+  </data>
+  <data name="Finalize" xml:space="preserve">
+    <value>Finalize</value>
+  </data>
+  <data name="Go" xml:space="preserve">
+    <value>Go!</value>
+  </data>
+  <data name="Help" xml:space="preserve">
+    <value>Help</value>
+  </data>
+  <data name="LastAppointments" xml:space="preserve">
+    <value>Last appointments</value>
+  </data>
+  <data name="LastName" xml:space="preserve">
+    <value>Last Name</value>
+  </data>
+  <data name="Login" xml:space="preserve">
+    <value>Login</value>
+  </data>
+  <data name="Mail" xml:space="preserve">
+    <value>E-Mail</value>
+  </data>
+  <data name="MyCitas" xml:space="preserve">
+    <value>Appointments</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="Nopreviousappointmentsfound" xml:space="preserve">
+    <value>No previous appointments found</value>
+  </data>
+  <data name="Observations" xml:space="preserve">
+    <value>Observations</value>
+  </data>
+  <data name="Newdate" xml:space="preserve">
+    <value>Choose a new date</value>
+  </data>
+  <data name="NoAppointments" xml:space="preserve">
+    <value>No previous appointments found</value>
+  </data>
+  <data name="Password" xml:space="preserve">
+    <value>Password</value>
+  </data>
+  <data name="Price" xml:space="preserve">
+    <value>Price</value>
+  </data>
+  <data name="Reason" xml:space="preserve">
+    <value>Reason</value>
+  </data>
+  <data name="RemoveFilter" xml:space="preserve">
+    <value>Remove filter</value>
+  </data>
+  <data name="Patient" xml:space="preserve">
+    <value>Patient</value>
+  </data>
+  <data name="Phone" xml:space="preserve">
+    <value>Phone</value>
+  </data>
+  <data name="PutDate" xml:space="preserve">
+    <value>Put date</value>
+  </data>
+  <data name="Reports" xml:space="preserve">
+    <value>Reports</value>
+  </data>
+  <data name="Rights" xml:space="preserve">
+    <value>All rights reserved</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="Scheduled" xml:space="preserve">
+    <value>Scheduled</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>Search</value>
+  </data>
+  <data name="SelectUser" xml:space="preserve">
+    <value>Select user</value>
+  </data>
+  <data name="StartDate" xml:space="preserve">
+    <value>Start date</value>
+  </data>
+  <data name="SearchPatient" xml:space="preserve">
+    <value>Search Patient</value>
+  </data>
+  <data name="Statistics" xml:space="preserve">
+    <value>Statistics</value>
+  </data>
+  <data name="Status" xml:space="preserve">
+    <value>Status</value>
+  </data>
+  <data name="Surgery" xml:space="preserve">
+    <value>Surgery</value>
+  </data>
+  <data name="Title" xml:space="preserve">
+    <value>Title</value>
+  </data>
+  <data name="TotalRevenue" xml:space="preserve">
+    <value>Total revenues</value>
+  </data>
+  <data name="Update" xml:space="preserve">
+    <value>Update</value>
+  </data>
+  <data name="User" xml:space="preserve">
+    <value>User</value>
+  </data>
+  <data name="View" xml:space="preserve">
+    <value>View</value>
+  </data>
+  <data name="Welcome" xml:space="preserve">
+    <value>Welcome</value>
+  </data>
+  <data name="WelcomeTo" xml:space="preserve">
+    <value>Welcome to</value>
+  </data>
+  <data name="Prescription" xml:space="preserve">
+    <value>Prescription</value>
+  </data>
+  <data name="Pressure" xml:space="preserve">
+    <value>Pressure</value>
+  </data>
+  <data name="Temperature" xml:space="preserve">
+    <value>Temperature (Fº)</value>
+  </data>
+  <data name="Weight" xml:space="preserve">
+    <value>Weight (Lb)</value>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="Services" xml:space="preserve">
+    <value>Services</value>
+  </data>
+  <data name="FieldRequired" xml:space="preserve">
+    <value>This field is required</value>
+  </data>
+  <data name="Applied" xml:space="preserve">
+    <value>Applied</value>
+  </data>
+  <data name="Available" xml:space="preserve">
+    <value>Available</value>
+  </data>
+  <data name="Edit" xml:space="preserve">
+    <value>Edit</value>
+  </data>
+  <data name="Remove" xml:space="preserve">
+    <value>Remove</value>
+  </data>
+  <data name="Book" xml:space="preserve">
+    <value>Booking</value>
+  </data>
+  <data name="AllUsers" xml:space="preserve">
+    <value>All</value>
+  </data>
+  <data name="Fortnight" xml:space="preserve">
+    <value>Fortnight</value>
+  </data>
+  <data name="Listappointments" xml:space="preserve">
+    <value>List appointments</value>
+  </data>
+  <data name="MakeReport" xml:space="preserve">
+    <value>Generate report</value>
+  </data>
+  <data name="Month" xml:space="preserve">
+    <value>Month</value>
+  </data>
+  <data name="MonthlyRevenue" xml:space="preserve">
+    <value>Monthly Revenue</value>
+  </data>
+  <data name="Quantity" xml:space="preserve">
+    <value>Quantity</value>
+  </data>
+  <data name="ReportsByService" xml:space="preserve">
+    <value>Reports by service</value>
+  </data>
+  <data name="Report_created" xml:space="preserve">
+    <value>Report created correctly from the</value>
+  </data>
+  <data name="Revenues" xml:space="preserve">
+    <value>Revenues</value>
+  </data>
+  <data name="TotalAppointments" xml:space="preserve">
+    <value>Total appointments</value>
+  </data>
+  <data name="Unnattended" xml:space="preserve">
+    <value>Unnattended</value>
+  </data>
+  <data name="Until" xml:space="preserve">
+    <value>until</value>
+  </data>
+  <data name="Profile" xml:space="preserve">
+    <value>Profile</value>
+  </data>
+  <data name="Address" xml:space="preserve">
+    <value>Address</value>
+  </data>
+  <data name="Cedula" xml:space="preserve">
+    <value>Professional License</value>
+  </data>
+  <data name="Speciality" xml:space="preserve">
+    <value>Speciality</value>
+  </data>
+  <data name="VacationTime" xml:space="preserve">
+    <value>Vacation or absence time</value>
+  </data>
+  <data name="Vacations" xml:space="preserve">
+    <value>Vacations</value>
+  </data>
+  <data name="Resume" xml:space="preserve">
+    <value>Resume</value>
+  </data>
+  <data name="String1" xml:space="preserve">
+    <value>Job description</value>
+  </data>
+  <data name="AccessTo" xml:space="preserve">
+    <value>You have access to the following places, please select one</value>
+  </data>
+  <data name="ChooseConsultory" xml:space="preserve">
+    <value>Please choose a consulting room</value>
+  </data>
+  <data name="LoginError" xml:space="preserve">
+    <value>An error occurred, verify your username and / or password</value>
+  </data>
+  <data name="NoOfficeError" xml:space="preserve">
+    <value>You do not have an assigned workspace consult your administrator</value>
+  </data>
+  <data name="YourCalendar" xml:space="preserve">
+    <value>Your Calendar</value>
+  </data>
+  <data name="Assistants" xml:space="preserve">
+    <value>Assistants</value>
+  </data>
+  <data name="Catalogs" xml:space="preserve">
+    <value>Catalogs</value>
+  </data>
+  <data name="Clinic" xml:space="preserve">
+    <value>Medical Clinic</value>
+  </data>
+  <data name="ConsultingRooms" xml:space="preserve">
+    <value>Consulting Rooms</value>
+  </data>
+  <data name="Doctors" xml:space="preserve">
+    <value>Doctors</value>
+  </data>
+  <data name="Manage" xml:space="preserve">
+    <value>Manage</value>
+  </data>
+  <data name="Role" xml:space="preserve">
+    <value>Role</value>
+  </data>
+  <data name="ChooseADoctor" xml:space="preserve">
+    <value>Please select one doctor</value>
+  </data>
+  <data name="EditProfile" xml:space="preserve">
+    <value>Edit Profile</value>
+  </data>
+  <data name="MyInbox" xml:space="preserve">
+    <value>My Inbox</value>
+  </data>
+  <data name="Attachments" xml:space="preserve">
+    <value>Attachments</value>
+  </data>
+  <data name="Calendar" xml:space="preserve">
+    <value>Calendar</value>
+  </data>
+  <data name="CurrentWeather" xml:space="preserve">
+    <value>The current weather!</value>
+  </data>
+  <data name="YourAppointmentForMonth" xml:space="preserve">
+    <value>These are the total of your appointments this month!</value>
+  </data>
+  <data name="YourAppointmentForToday" xml:space="preserve">
+    <value>These are the appointments scheduled for today!</value>
+  </data>
+  <data name="WorkAs" xml:space="preserve">
+    <value>Work as:</value>
+  </data>
+  <data name="Today" xml:space="preserve">
+    <value>Today</value>
+  </data>
+  <data name="Year" xml:space="preserve">
+    <value>Year</value>
+  </data>
+  <data name="Appointments" xml:space="preserve">
+    <value>Appointments</value>
+  </data>
+  <data name="AppoinmentsToday" xml:space="preserve">
+    <value>Appointments Today</value>
+  </data>
+  <data name="AppointmentsMonth" xml:space="preserve">
+    <value>Appointments per month</value>
+  </data>
+  <data name="Revenue" xml:space="preserve">
+    <value>Revenue</value>
+  </data>
+  <data name="RevenueMonth" xml:space="preserve">
+    <value>Revenue per Month</value>
+  </data>
+  <data name="RevenueToday" xml:space="preserve">
+    <value>Revenue Today</value>
+  </data>
+  <data name="AboutYou" xml:space="preserve">
+    <value>About you</value>
+  </data>
+  <data name="AboutYouHelp" xml:space="preserve">
+    <value>Here is your personal and contact information</value>
+  </data>
+  <data name="Active" xml:space="preserve">
+    <value>Active</value>
+  </data>
+  <data name="Bio" xml:space="preserve">
+    <value>Bio</value>
+  </data>
+  <data name="ConfigAt" xml:space="preserve">
+    <value>Your config at</value>
+  </data>
+  <data name="ConfigAtHelp" xml:space="preserve">
+    <value>Here are the settings you have for this clinic</value>
+  </data>
+  <data name="ContactBio" xml:space="preserve">
+    <value>Contact Info &amp; Bio</value>
+  </data>
+  <data name="Hhmm" xml:space="preserve">
+    <value>(Hour:minute)</value>
+  </data>
+  <data name="PersonalInfo" xml:space="preserve">
+    <value>Personal info</value>
+  </data>
+  <data name="Prescriptions" xml:space="preserve">
+    <value>Prescriptions</value>
+  </data>
+  <data name="RateByDate" xml:space="preserve">
+    <value>Cost per appointment</value>
+  </data>
+  <data name="Records" xml:space="preserve">
+    <value>Records</value>
+  </data>
+  <data name="TimeByDate" xml:space="preserve">
+    <value>Average appointment time</value>
+  </data>
+  <data name="WebSite" xml:space="preserve">
+    <value>Web Site</value>
+  </data>
+  <data name="Doctor" xml:space="preserve">
+    <value>Doctor</value>
+  </data>
+  <data name="SeeList" xml:space="preserve">
+    <value>See List</value>
+  </data>
+  <data name="Action" xml:space="preserve">
+    <value>Action</value>
+  </data>
+  <data name="Date" xml:space="preserve">
+    <value>Date</value>
+  </data>
+  <data name="AddSpeciality" xml:space="preserve">
+    <value>+ Add Speciality</value>
+  </data>
+  <data name="ChooseSpeciality" xml:space="preserve">
+    <value>Choose Speciality</value>
+  </data>
+  <data name="Minutes" xml:space="preserve">
+    <value>Minutes</value>
+  </data>
+  <data name="Specialities" xml:space="preserve">
+    <value>Specialities</value>
+  </data>
+  <data name="SpecialitiesHelp" xml:space="preserve">
+    <value>Here you can configure your specialties</value>
+  </data>
+  <data name="See" xml:space="preserve">
+    <value>See</value>
+  </data>
+  <data name="SeeCalendar" xml:space="preserve">
+    <value>See Calendar</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="AddAppointment" xml:space="preserve">
+    <value>Add Appointment</value>
+  </data>
+  <data name="FirstName" xml:space="preserve">
+    <value>First Name</value>
+  </data>
+  <data name="FullName" xml:space="preserve">
+    <value>Full Name</value>
+  </data>
+  <data name="Results" xml:space="preserve">
+    <value>Results</value>
+  </data>
+  <data name="SearchRecord" xml:space="preserve">
+    <value>Search Record</value>
+  </data>
+  <data name="SearchRecordHelp" xml:space="preserve">
+    <value>Search your patients by name or cell number</value>
+  </data>
+  <data name="Age" xml:space="preserve">
+    <value>Age</value>
+  </data>
+  <data name="DataFrom" xml:space="preserve">
+    <value>Data from</value>
+  </data>
+  <data name="Height" xml:space="preserve">
+    <value>Height</value>
+  </data>
+  <data name="HereditaryFamily" xml:space="preserve">
+    <value>Hereditary family history</value>
+  </data>
+  <data name="IMC" xml:space="preserve">
+    <value>Body mass index</value>
+  </data>
+  <data name="MedicalNotes" xml:space="preserve">
+    <value>Medical notes</value>
+  </data>
+  <data name="MedicalRecord" xml:space="preserve">
+    <value>Medical Record</value>
+  </data>
+  <data name="NonPathological" xml:space="preserve">
+    <value>Non-pathological personal history</value>
+  </data>
+  <data name="Normal" xml:space="preserve">
+    <value>Normal</value>
+  </data>
+  <data name="Obesity" xml:space="preserve">
+    <value>Obesity</value>
+  </data>
+  <data name="Overweight" xml:space="preserve">
+    <value>Overweight</value>
+  </data>
+  <data name="PathologicalPersonal" xml:space="preserve">
+    <value>Pathological personal history</value>
+  </data>
+  <data name="PatientData" xml:space="preserve">
+    <value>Patient data</value>
+  </data>
+  <data name="RecentPatients" xml:space="preserve">
+    <value>Recent patients</value>
+  </data>
+  <data name="SeacrhResults" xml:space="preserve">
+    <value>Seacrh results</value>
+  </data>
+  <data name="Sex" xml:space="preserve">
+    <value>Sex</value>
+  </data>
+  <data name="UnderWeight" xml:space="preserve">
+    <value>Under weight</value>
+  </data>
+  <data name="Years" xml:space="preserve">
+    <value>Years</value>
+  </data>
+  <data name="Schedule" xml:space="preserve">
+    <value>Schedule</value>
+  </data>
+  <data name="Friday" xml:space="preserve">
+    <value>Friday</value>
+  </data>
+  <data name="Monday" xml:space="preserve">
+    <value>Monday</value>
+  </data>
+  <data name="Saturday" xml:space="preserve">
+    <value>Saturday</value>
+  </data>
+  <data name="Sunday" xml:space="preserve">
+    <value>Sunday</value>
+  </data>
+  <data name="Thursday" xml:space="preserve">
+    <value>Thursday</value>
+  </data>
+  <data name="Tuesday" xml:space="preserve">
+    <value>Tuesday</value>
+  </data>
+  <data name="Wednesday" xml:space="preserve">
+    <value>Wednesday</value>
+  </data>
+  <data name="WorkDays" xml:space="preserve">
+    <value>Work Days</value>
+  </data>
+  <data name="EndHour" xml:space="preserve">
+    <value>End Hour</value>
+  </data>
+  <data name="StartHour" xml:space="preserve">
+    <value>Start Hour</value>
+  </data>
+  <data name="SelectedTime" xml:space="preserve">
+    <value>Selected time</value>
+  </data>
+  <data name="PleaseSelectDateForAppointment" xml:space="preserve">
+    <value>Please select one date for the appointment</value>
+  </data>
+  <data name="SelectAPatient" xml:space="preserve">
+    <value>Select a patient</value>
+  </data>
+  <data name="PleaseSelectAPatientForAppointment" xml:space="preserve">
+    <value>Please select a patient for the appointment</value>
+  </data>
+  <data name="Appointment" xml:space="preserve">
+    <value>Appointment</value>
+  </data>
+  <data name="NewPatient" xml:space="preserve">
+    <value>New patient</value>
+  </data>
+  <data name="PatientDoesNotExist" xml:space="preserve">
+    <value>The patient does not exist in the system</value>
+  </data>
+  <data name="SelectDate" xml:space="preserve">
+    <value>Select a date</value>
+  </data>
+  <data name="NoPatientsInTheSystem" xml:space="preserve">
+    <value>There are no patients in the system</value>
+  </data>
+  <data name="Apply" xml:space="preserve">
+    <value>Apply</value>
+  </data>
+  <data name="ChooseRangeDate" xml:space="preserve">
+    <value>Choose a range date</value>
+  </data>
+  <data name="ChooseReport" xml:space="preserve">
+    <value>Choose report</value>
+  </data>
+  <data name="Custom" xml:space="preserve">
+    <value>Custom</value>
+  </data>
+  <data name="DatesReport" xml:space="preserve">
+    <value>Report by Appointment</value>
+  </data>
+  <data name="From" xml:space="preserve">
+    <value>From</value>
+  </data>
+  <data name="GenerateReport" xml:space="preserve">
+    <value>Generate report</value>
+  </data>
+  <data name="LastMonth" xml:space="preserve">
+    <value>Last month</value>
+  </data>
+  <data name="Last_30_Days" xml:space="preserve">
+    <value>Last 30 days</value>
+  </data>
+  <data name="Last_7_Days" xml:space="preserve">
+    <value>Last 7 days</value>
+  </data>
+  <data name="ShowReport" xml:space="preserve">
+    <value>Show report</value>
+  </data>
+  <data name="Summary" xml:space="preserve">
+    <value>Summary</value>
+  </data>
+  <data name="ThisMonth" xml:space="preserve">
+    <value>This month</value>
+  </data>
+  <data name="To" xml:space="preserve">
+    <value>To</value>
+  </data>
+  <data name="Yesterday" xml:space="preserve">
+    <value>Yesterday</value>
+  </data>
+  <data name="NoPatientSelected" xml:space="preserve">
+    <value>No patient selected</value>
+  </data>
+  <data name="GeneralInformation" xml:space="preserve">
+    <value>General Information</value>
+  </data>
+  <data name="OrAlso" xml:space="preserve">
+    <value>Or also</value>
+  </data>
+  <data name="Man" xml:space="preserve">
+    <value>Man</value>
+  </data>
+  <data name="Woman" xml:space="preserve">
+    <value>Woman</value>
+  </data>
+  <data name="AppointmentHasBeenScheduled" xml:space="preserve">
+    <value>The appointment has been scheduled correctly</value>
+  </data>
+  <data name="Message_AgendarCita" xml:space="preserve">
+    <value>Hello {0}! An appointment has been scheduled on day {1} at the {2} office</value>
+  </data>
+  <data name="Message_AgendarYConfirmarCita" xml:space="preserve">
+    <value>Hello {0}! An appointment has been scheduled for day {1} at the {2} office. We ask you to confirm your attendance or, if applicable, cancel it at the following link {3}</value>
+  </data>
+  <data name="ConsultingRoom" xml:space="preserve">
+    <value>Consulting Room</value>
+  </data>
+  <data name="ObservationsToAssistant" xml:space="preserve">
+    <value>Observation to the assistant</value>
+  </data>
+  <data name="ObservationsToDoctor" xml:space="preserve">
+    <value>Observations to the doctor</value>
+  </data>
+  <data name="AppointmentDetails" xml:space="preserve">
+    <value>Appointment Details</value>
+  </data>
+  <data name="IntroduceInformation" xml:space="preserve">
+    <value>Introduce Information</value>
+  </data>
+  <data name="SearchPatientByNamePhoneEmailOrID" xml:space="preserve">
+    <value>Buscar Paciente por Nombre, Tél, Correo o Curp</value>
+  </data>
+  <data name="Confirm" xml:space="preserve">
+    <value>Confirm</value>
+  </data>
+  <data name="ToSchedule" xml:space="preserve">
+    <value>Schedule</value>
+  </data>
+  <data name="String2" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="UnAttended" xml:space="preserve">
+    <value>Not attended</value>
+  </data>
+  <data name="Hospital" xml:space="preserve">
+    <value>Hospital</value>
+  </data>
+  <data name="EnterFollowingData" xml:space="preserve">
+    <value>Enter the following data</value>
+  </data>
+  <data name="CitasByStatus" xml:space="preserve">
+    <value>Appointments by status</value>
+  </data>
+  <data name="Download" xml:space="preserve">
+    <value>Download</value>
+  </data>
+  <data name="Allergies" xml:space="preserve">
+    <value>Allergies</value>
+  </data>
+  <data name="Surgeries" xml:space="preserve">
+    <value>Surgeries</value>
+  </data>
+  <data name="Days" xml:space="preserve">
+    <value>Days</value>
+  </data>
+  <data name="DistributionByDay" xml:space="preserve">
+    <value>Distribution by day</value>
+  </data>
+  <data name="PreviousComments" xml:space="preserve">
+    <value>Pre-appointment comments</value>
+  </data>
+  <data name="Glucose" xml:space="preserve">
+    <value>Glucose</value>
+  </data>
+  <data name="GlucoseTracking" xml:space="preserve">
+    <value>Glucose tracking</value>
+  </data>
+  <data name="MoreActions" xml:space="preserve">
+    <value>More actions</value>
+  </data>
+  <data name="WeightTracking" xml:space="preserve">
+    <value>Weight tracking</value>
+  </data>
+  <data name="Diagnosis" xml:space="preserve">
+    <value>Diagnosis</value>
+  </data>
+  <data name="HeartRate" xml:space="preserve">
+    <value>Heart rate</value>
+  </data>
+  <data name="ReasonConsultation" xml:space="preserve">
+    <value>Reason for consultation</value>
+  </data>
+  <data name="VitalSigns" xml:space="preserve">
+    <value>Vital Signs</value>
+  </data>
+  <data name="MyCalendar" xml:space="preserve">
+    <value>My Calendar</value>
+  </data>
+  <data name="DropFilesHereToUpload" xml:space="preserve">
+    <value>Drop Files Here To Upload</value>
+  </data>
+  <data name="Attention" xml:space="preserve">
+    <value>Attention</value>
+  </data>
+  <data name="SelectYourProfileToWork" xml:space="preserve">
+    <value>Select the profile you want to work with</value>
+  </data>
+  <data name="AddMedicine" xml:space="preserve">
+    <value>Add medicine</value>
+  </data>
+  <data name="Dose" xml:space="preserve">
+    <value>Dose</value>
+  </data>
+  <data name="Duration" xml:space="preserve">
+    <value>Duration</value>
+  </data>
+  <data name="Frequency" xml:space="preserve">
+    <value>Frequency</value>
+  </data>
+  <data name="Medicine" xml:space="preserve">
+    <value>Medicine</value>
+  </data>
+  <data name="Notes" xml:space="preserve">
+    <value>Notes</value>
+  </data>
+  <data name="During" xml:space="preserve">
+    <value>during</value>
+  </data>
+  <data name="Each" xml:space="preserve">
+    <value>each</value>
+  </data>
+</root>

@@ -1,0 +1,86 @@
+﻿@using VLCitas.DataLayer;
+@model Users
+@{
+    ViewBag.Title = "Offices";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link href="~/Content/robust/app-assets/css/pages/users.min.css" rel="stylesheet" />
+<div class="content-header row">
+    <div class="content-header-left col-md-8 col-12 mb-2">
+        <h3 class="content-header-title mb-0 d-inline-block">@Resource.Welcome @Model.first_name @Model.last_name</h3>
+    </div>
+    <div class="content-header-right col-md-4 col-12">
+        <div class="btn-group float-md-right">
+            @*<button class="btn btn-info dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="icon-settings mr-1"></i>Action</button>
+                <div class="dropdown-menu arrow">
+                    <a class="dropdown-item" href="#"><i class="fa fa-calendar mr-1"></i> Calender</a><a class="dropdown-item" href="#"><i class="fa fa-cart-plus mr-1"></i> Cart</a><a class="dropdown-item" href="#"><i class="fa fa-life-ring mr-1"></i> Support</a>
+                    <div class="dropdown-divider"></div><a class="dropdown-item" href="#"><i class="fa fa-cog mr-1"></i> Settings</a>
+                </div>*@
+        </div>
+    </div>
+</div>
+
+
+
+<div class="content-body">
+    <div class="row">
+        <div class="col-12 mt-3 mb-1">
+            @*<h4 class="text-uppercase">Social Cards</h4>*@
+            <p>@Resource.AccessTo</p>
+        </div>
+    </div>
+
+    <!-- most selling products -->
+    <div class="row">
+
+        @foreach (var item in Model.Offices_Users.GroupBy(x => x.Offices))
+        {
+
+            <div class="col-xl-4 col-md-6 col-12">
+                <div class="card profile-card-with-cover">
+                    <div class="card-content">
+                        <div class="img-fluid bg-cover height-200" style="background-color:#003A70;"></div> @*<#3B5998 #4bb5db>*@
+                        <div class="card-profile-image">
+                            <img src="@Url.Content("~/"+item.Key.image_url)" style="width: 110px;" class="rounded-circle img-border box-shadow-1" alt="@item.Key.name">
+                        </div>
+                        <h1 class="pricing-card-title cover-center-title">@item.Key.name</h1>
+                        <div class="profile-card-with-cover-content text-center">
+                            <div class="profile-details mt-2">
+                                @*<h4 class="card-title">@Resource.Address</h4>*@
+                                <h4 class="card-title">@item.Key.address</h4>
+                                <ul class="list-inline clearfix mt-2">
+                                    <li class="ml-4 mr-4"><h2 class="block">@item.Key.Consultory.Where(x=>x.status_id == 1).Count()</h2> @Resource.ConsultingRooms</li>
+                                    <li class="mr-4"><h2 class="block">@item.Key.Offices_Users.Where(x => x.Users.status_id == 1).Count()</h2>@Resource.Doctors</li>
+                                    @*<li><h2 class="block">7</h2> @Resource.Completed</li>*@
+                                </ul>
+                            </div>
+                            <div class="card-body">
+                                <p>@Resource.SelectYourProfileToWork</p>
+
+                                @foreach (var role in Model.Offices_Users.Where(x => x.office_uid == item.Key.uId).FirstOrDefault().Roles)
+                                {
+                                    VLCitas.DataLayer.Models.UserRoles rol = (VLCitas.DataLayer.Models.UserRoles)role.id;
+                                <form method="POST" action="@Url.Action("GoOffice","Login")">
+                                    <input type="hidden" name="office_uid" value="@item.Key.uId" />
+                                    <input type="hidden" name="rol_id" value="@role.id" />
+                                    @if (rol == VLCitas.DataLayer.Models.UserRoles.Doctor)
+                                    {
+                                        @*<button type="submit" class="btn btn-outline-danger btn-md btn-round mr-1"><i class="fa fa-heartbeat"></i> @role.name</button>*@
+                                        <button type="submit" class="btn btn-social btn-min-width mr-1 mb-1 btn-facebook"><i class="fa fa-heartbeat"></i>@role.name </button>
+                                    }
+                                    else
+                                    {
+                                        <button type="submit" class="btn btn-social btn-min-width mr-1 mb-1 btn-facebook"><i class="fa fa-user-circle"></i>@role.name </button>
+                                        @*<button type="submit" class="btn btn-outline-primary btn-md btn-round mr-1"><i class="fa fa-user-circle"></i> @role.name</button>*@
+                                    }
+                                </form>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+

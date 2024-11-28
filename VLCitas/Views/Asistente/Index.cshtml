@@ -1,0 +1,411 @@
+﻿@using VLCitas.DataLayer;
+@model IEnumerable<Get_TotalCitasByStatusxConsultories_Result>
+@{
+    var total = 0;
+    var list = (IEnumerable<GetInvoicesByOfficeConsultory_Result>)ViewBag.item;
+    var statics = (IEnumerable<GetCountCitasByConsultory_Result>)ViewBag.statics;
+    var month = (IEnumerable<GetMonthCitas_Result>)ViewBag.month;
+    var status = (IEnumerable<GetCitasByStatus_Result>)ViewBag.status;
+    var offices = ViewBag.datapie;
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<div class="app-content content container-fluid">
+    <div class="content-wrapper">
+        <div class="content-header row">
+        </div>
+        <div class="content-body">
+            <!-- most selling products -->
+            <div class="row">
+                @foreach (var item in Model)
+                {
+                    <div class="col-lg-2 col-md-12">
+                        <div class="card text-xs-center">
+                            <div class="card-body">
+                                <img class="card-img-top img-fluid" style="height:30%; width:30%;" src="@item.image_url" alt="Card image cap">
+                                <div class="card-block">
+                                    <h4 class="card-title">@item.name</h4>
+                                    <p class="card-text"><i class="fa fa-calendar-check-o" aria-hidden="true"></i> Agendadas: @item.agendadas</p>
+                                    <p class="card-text"><i class="fa fa-check-circle" aria-hidden="true"></i> Confirmadas: @item.confirmadas</p>
+                                    @*<p class="card-text">Completadas: @item.completadas</p>
+                                        <p class="card-text">Canceladas: @item.canceladas</p>*@
+                                    <div class="btn-group" role="group" aria-label="Basic example">
+                                        <form method="POST" action="@Url.Action("Citas","Asistente")">
+                                            <input type="hidden" name="uId" value="@item.uId" />
+                                            <button type="submit" class="btn btn-outline-blue"><i class="fa fa-eye" aria-hidden="true"></i> Ver </button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+            <!--/ most selling products-->
+            <!-- Sales stats -->
+
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="card-block">
+                                <div class="row">
+                                    @foreach (var item in status)
+                                    {
+                                        switch (item.status)
+                                        {
+                                            case "COMPLETADA":
+                                                <div class="col-xl-3 col-lg-6 col-sm-12">
+                                                    <div class="media px-1">
+                                                        <div class="media-left media-middle">
+                                                            <i class="icon-check font-large-1 blue-grey"></i>
+                                                        </div>
+                                                        <div class="media-body text-xs-right">
+                                                            <span class="font-large-2 text-bold-300 success">@item.ncitas</span>
+                                                        </div>
+                                                        <p class="text-muted">@item.status<span class="success float-xs-right"><i class="icon-arrow-up4 success"></i> </span></p>
+                                                        <progress class="progress progress-sm progress-success" value="@item.ncitas" max="100"></progress>
+                                                    </div>
+                                                </div>
+                                                break;
+                                            case "CONFIRMADA":
+                                                <div class="col-xl-3 col-lg-6 col-sm-12">
+                                                    <div class="media px-1">
+                                                        <div class="media-left media-middle">
+                                                            <i class="icon-info-circle font-large-1 blue-grey"></i>
+                                                        </div>
+                                                        <div class="media-body text-xs-right">
+                                                            <span class="font-large-2 text-bold-300 success">@item.ncitas</span>
+                                                        </div>
+                                                        <p class="text-muted">@item.status<span class="success float-xs-right"><i class="icon-arrow-up4 success"></i> </span></p>
+                                                        <progress class="progress progress-sm progress-success" value="@item.ncitas" max="100"></progress>
+                                                    </div>
+                                                </div>
+                                                break;
+                                            case "CANCELADA":
+                                                <div class="col-xl-3 col-lg-6 col-sm-12 border-right-blue-grey border-right-lighten-5">
+                                                    <div class="media px-1">
+                                                        <div class="media-left media-middle">
+                                                            <i class="icon-times font-large-1 blue-grey"></i>
+                                                        </div>
+                                                        <div class="media-body text-xs-right">
+                                                            <span class="font-large-2 text-bold-300 danger">@item.ncitas</span>
+                                                        </div>
+                                                        <p class="text-muted">@item.status<span class="danger float-xs-right"><i class="icon-arrow-down4 danger"></i> </span></p>
+                                                        <progress class="progress progress-sm progress-danger" value="@item.ncitas" max="100"></progress>
+                                                    </div>
+                                                </div>
+                                                break;
+                                            case "AGENDADA":
+                                                <div class="col-xl-3 col-lg-6 col-sm-12 border-right-blue-grey border-right-lighten-5">
+                                                    <div class="media px-1">
+                                                        <div class="media-left media-middle">
+                                                            <i class="icon-calendar-o font-large-1 blue-grey"></i>
+                                                        </div>
+                                                        <div class="media-body text-xs-right">
+                                                            <span class="font-large-2 text-bold-300 deep-blue">@item.ncitas</span>
+                                                        </div>
+                                                        <p class="text-muted">@item.status<span class="deep-blue float-xs-right"><i class="icon-arrow-up4 deep-blue"></i> </span></p>
+                                                        <progress class="progress progress-sm progress-deep-blue" value="@item.ncitas" max="100"></progress>
+                                                    </div>
+                                                </div>
+                                                break;
+                                            default:
+                                                <div class="col-xl-3 col-lg-6 col-sm-12 border-right-blue-grey border-right-lighten-5">
+                                                    <div class="media px-1">
+                                                        <div class="media-left media-middle">
+                                                            <i class="icon-box font-large-1 blue-grey"></i>
+                                                        </div>
+                                                        <div class="media-body text-xs-right">
+                                                            <span class="font-large-2 text-bold-300 info">@item.ncitas</span>
+                                                        </div>
+                                                        <p class="text-muted">@item.status <span class="info float-xs-right"><i class="icon-arrow-up4 info"></i> </span></p>
+                                                        <progress class="progress progress-sm progress-info" value="80" max="100"></progress>
+                                                    </div>
+                                                </div>
+                                                break;
+                                        }
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recent Orders -->
+            <div class="row">
+                <table id="datatable" style="display:none;">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>No. Citas</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        @foreach (var item in statics)
+                        {
+                            <tr>
+                                <th>@item.name</th>
+                                <td>@item.ncitas</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+                <table id="datatable2" style="display:none;">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>Citas por mes</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        @foreach (var item in month)
+                        {
+                            <tr>
+                                <th>@item.MonthName</th>
+                                <td>@item.ncitas</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+
+            </div>
+            <!--/ Recent Orders -->
+
+
+        </div>
+    </div>
+</div>
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script>
+    $(document).ready(function () {
+        var locations = @Html.Raw(Json.Encode(offices));
+        console.log(locations);
+        Highcharts.setOptions({
+            lang: {
+                loading: 'Cargando...',
+                months: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+                weekdays: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
+                shortMonths: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
+                exportButtonTitle: "Exportar",
+                printButtonTitle: "Importar",
+                rangeSelectorFrom: "Desde",
+                rangeSelectorTo: "Hasta",
+                rangeSelectorZoom: "Período",
+                downloadPNG: 'Descargar imagen PNG',
+                downloadJPEG: 'Descargar imagen JPEG',
+                downloadPDF: 'Descargar imagen PDF',
+                downloadSVG: 'Descargar imagen SVG',
+                printChart: 'Imprimir',
+                resetZoom: 'Reiniciar zoom',
+                resetZoomTitle: 'Reiniciar zoom',
+                thousandsSep: ",",
+                decimalPoint: '.'
+            },
+            credits: {
+            enabled: false
+        }
+        });
+
+
+        Highcharts.chart('container', {
+            data: {
+                table: 'datatable'
+            },
+            chart: {
+                type: 'column'
+            },
+            title: {
+                text: 'Citas por departamento'
+            },
+            yAxis: {
+                allowDecimals: false,
+                title: {
+                    text: 'Cantidad'
+                }
+            },
+            tooltip: {
+                formatter: function () {
+                    return '<b>' + this.series.name + '</b><br/>' +
+                        this.point.y + ' ' + this.point.name.toLowerCase();
+                }
+            }
+        });
+        Highcharts.chart('container2', {
+            data: {
+                table: 'datatable2'
+            },
+            chart: {
+                type: 'line'
+            },
+            title: {
+                text: 'Citas por mes'
+            },
+            yAxis: {
+                allowDecimals: false,
+                title: {
+                    text: 'Cantidad'
+                }
+            },
+            tooltip: {
+                formatter: function () {
+                    return '<b>' + this.series.name + '</b><br/>' +
+                        this.point.y + ' ' + this.point.name.toLowerCase();
+                }
+            }
+        });
+        Highcharts.chart('container3', {
+            chart: {
+                plotBackgroundColor: null,
+                plotBorderWidth: null,
+                plotShadow: false,
+                type: 'pie'
+            },
+            title: {
+                text: 'Ganancia por mes'
+            },
+            tooltip: {
+                pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+            },
+            plotOptions: {
+                pie: {
+                    allowPointSelect: true,
+                    cursor: 'pointer',
+                    dataLabels: {
+                        enabled: true,
+                        format: '<b>{point.name}</b>: {point.percentage:.1f}% <br> <b>Total: ${point.y}.00</b>',
+                        style: {
+                            color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
+                        }
+                    }
+                }
+            },
+            series: [{
+                name: 'Brands',
+                colorByPoint: true,
+                data: locations
+            }]
+        });
+
+
+        $(".buttons-copy, .buttons-csv, .buttons-print, .buttons-pdf, .buttons-excel, .buttons-collection").addClass("btn btn-primary mr-1");
+        $("th.sorting_asc").click(function () {
+            alert("Handler for .click() called.");
+        });
+
+        var table = $('#example1').DataTable({
+            dom: 'Bfrtip',
+            buttons: [
+           {
+               extend: 'copy',
+               text: 'Copiar',
+               exportOptions: {
+                   columns: ':visible'
+               }
+           },
+            {
+                title: 'Sistema Integral de Citas',
+                extend: 'csv',
+                text: 'Csv',
+                exportOptions: {
+                    columns: ':visible'
+                }
+            }
+            ,
+            {
+                title: 'Sistema Integral de Citas',
+                extend: 'excel',
+                text: 'Excel',
+                exportOptions: {
+                    columns: ':visible'
+                }
+            }
+            ,
+            {
+                extend: 'pdfHtml5',
+                message: 'REPORTE DE CITAS EN OFICINA:  @ViewBag.name',
+                text: 'PDF',
+                title: 'Sistema Integral de Citas',
+                //customize: function (doc) {
+                //    // Splice the image in after the header, but before the table
+                //    doc.content.splice(1, 0, {
+                //        margin: [0, 0, 0, 12],
+                //        alignment: 'center',
+                //        image: image_url,
+                //    });
+                //},
+                //orientation: 'landscape',
+                //pageSize: 'LEGAL',
+                exportOptions: {
+                    columns: ':visible'
+                }
+                //},
+                //message: 'Sistema Control de Turnos'
+            }
+            ,
+            {
+                extend: 'print',
+                message: 'REPORTE DE CITAS EN OFICINA:  @ViewBag.name',
+                title: 'Sistema Integral de Citas',
+                text: 'Imprimir',
+                exportOptions: {
+                    columns: ':visible'
+                },
+
+            },
+              {
+                  extend: 'colvis',
+                  text: 'Seleccionar',
+
+              }
+            ],
+            "language": {
+                "sProcessing": "Procesando...",
+                "sLengthMenu": "Mostrar _MENU_ registros",
+                "sZeroRecords": "No se encontraron resultados",
+                "sEmptyTable": "Ningún dato disponible en esta tabla",
+                "sInfo": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+                "sInfoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
+                "sInfoFiltered": "(filtrado de un total de _MAX_ registros)",
+                "sInfoPostFix": "",
+                "sSearch": "Buscar:",
+                "sUrl": "",
+                "sInfoThousands": ",",
+                "sLoadingRecords": "Cargando...",
+                "oPaginate": {
+                    "sFirst": "Primero",
+                    "sLast": "Último",
+                    "sNext": "Siguiente",
+                    "sPrevious": "Anterior"
+                },
+                buttons: {
+                    copyTitle: 'Copiado al portapapeles',
+                    copySuccess: {
+                        _: 'Copiadas %d filas',
+                        1: 'Copiada 1 fila'
+                    }
+                },
+                "oAria": {
+                    "sSortAscending": ": Activar para ordenar la columna de manera ascendente",
+                    "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+                }
+
+            }
+        });
+
+        table.buttons().container()
+            .appendTo('#example_wrapper .col-md-6:eq(0)');
+        $(".buttons-collection").addClass("btn btn-primary mr-1");
+    });
+</script>
+
+
+

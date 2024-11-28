@@ -1,0 +1,82 @@
+﻿@using VLCitas.DataLayer;
+@{
+    ViewBag.Title = "Catalogos";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<style>
+    .card-body {
+        padding: 15px;
+        text-align: center;
+    }
+
+    h3 {
+        text-decoration-color: #fff;
+    }
+
+    i {
+        color: #fff;
+    }
+</style>
+
+<div class="app-content content container-fluid">
+    <div class="content-wrapper">
+
+        <div class="content-header row">
+            <div class="content-header-left col-md-8 col-12 mb-2 breadcrumb-new">
+                <h3 class="content-header-title mb-0 d-inline-block">@Resource.Catalogs</h3>
+
+            </div>
+            <div class="content-header-right col-md-4 col-12">
+                <div class="btn-group float-md-right">
+
+                </div>
+            </div>
+        </div>
+
+        <div class="content-body">
+            <h2></h2>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card" style="width: 100%;">
+                        <img class="card-img-top img-fluid" src="~/Content/images/doctors.jpg" alt="Card image cap">
+                        <div class="card-body" style="text-align:center;">
+                            <h3>@Resource.Doctors</h3>
+                            <a href="@Url.Action("Doctores","Administrador")">
+                                <button type="button" class="btn btn-info btn-md btn-round"> @Resource.Manage</button>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card" style="width: 100%;">
+                        <img class="card-img-top img-fluid" src="~/Content/images/assistant.jpg" alt="Card image cap">
+                        <div class="card-body" style="text-align:center;">
+                            <h3>@Resource.Assistants</h3>
+                            <a href="#">
+                                <button type="button" class="btn btn-info btn-md btn-round"> @Resource.Manage</button>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card" style="width: 100%;">
+                        <img class="card-img-top img-fluid" src="~/Content/images/consultory.jpg" alt="Card image cap">
+                        <div class="card-body" style="text-align:center;">
+                            <h3>@Resource.ConsultingRooms</h3>
+                            <a href="@Url.Action("Consultorios", "Administrador")">
+                                <button type="button" class="btn btn-info btn-md btn-round"> @Resource.Manage</button>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+
+
+

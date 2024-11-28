@@ -1,0 +1,70 @@
+﻿@using VLCitas.DataLayer;
+@model Servicios
+
+@{
+    Layout = null;
+}
+
+<form name="frm_add" id="frm_add">
+    <div class="form-group">
+        <span>@Resource.Name:</span> <input type="text" class="form-control" name="nombre" id="nombre" data-rule-required="true" data-msg-required="@Resource.FieldRequired" />
+    </div>
+    <div class="form-group">
+        <span>@Resource.Description:</span> <input type="text" class="form-control" name="descripcion" id="descripcion" data-rule-required="true" data-msg-required="@Resource.FieldRequired" />
+    </div>
+    <div class="form-group">
+        <span>@Resource.Cost:</span> <input type="number" class="form-control" name="precio" id="precio" data-rule-required="true" data-rule-number="true" data-msg-required="@Resource.FieldRequired" />
+    </div>
+</form>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/jquery.validate.js"></script>
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        //$("#frm_add").validate();
+
+        //$("#btnsave").click(function () {
+        //    if ($("#frm_add").valid()) {
+        //        var obj = $("#frm_add").serializeArray();
+        //        var data = objectifyForm(obj);
+
+        //        $.ajax({
+        //            type: "Post",
+        //            datatype: "html",
+        //            url: "/Servicios/AddService",
+        //            data: data,
+        //            cache: false,
+        //            success: function (Result) {
+        //                if (Result["TypeOfResponse"] == 0) {
+        //                    swal({
+        //                        title: js_language[user_lang].Ok,
+        //                        text: js_language[user_lang].OkResponse,
+        //                        type: "success",
+        //                        timer: 2000
+        //                    });
+
+
+        //                }
+        //                if (Result["TypeOfResponse"] == 1) {
+        //                    swal("Oops..!", js_language[user_lang].BadResponse, "error");
+        //                }
+        //                setTimeout(function () {// wait for 5 secs(2)
+        //                    location.reload(true); // then reload the page.(3)
+        //                }, 2000);
+
+        //            },
+        //            error: function (request, status, error) {
+        //                console.error(request.responseText);
+        //                //alert(request.responseText);
+        //            },
+        //            complete: function (xhr, status) {
+        //                //show_Status_Modal_close_(null);
+        //            }
+        //        });
+
+        //    }
+        //});
+
+    });
+
+</script>

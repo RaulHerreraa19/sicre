@@ -1,0 +1,334 @@
+﻿@using VLCitas.DataLayer;
+@model Paciente
+@{
+    ViewBag.Title = "Detalle";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    string age = "N/A";
+    string height = "N/A";
+    string weight = "N/A";
+    string imc = "N/A";
+    double weight_n = 0;
+    double height_n = 0;
+    double imc_n = 0;
+    string imc_help = "";
+    string sex = "N/A";
+    string bird_date = "N/A";
+    if (Model.sex_id != null)
+    {
+        sex = Model.Sex.name;
+    }
+    if (Model.fecha_nacimiento.HasValue)
+    {
+        var now = DateTime.Now;
+        var years = (now.Year - Model.fecha_nacimiento.Value.Year);
+        if (now.DayOfYear < Model.fecha_nacimiento.Value.DayOfYear)
+        {
+            years = years - 1;
+        }
+        age = years.ToString();
+
+        bird_date = Model.fecha_nacimiento.Value.ToShortDateString();
+
+
+    }
+    if (Model.Citas.OrderByDescending(x => x.cita_date).FirstOrDefault().peso.HasValue)
+    {
+        weight_n = Model.Citas.OrderByDescending(x => x.cita_date).FirstOrDefault().peso.Value;
+        weight = weight_n.ToString();
+    }
+    if (Model.Citas.OrderByDescending(x => x.cita_date).FirstOrDefault().altura.HasValue)
+    {
+        height_n = Model.Citas.OrderByDescending(x => x.cita_date).FirstOrDefault().altura.Value;
+        height = height_n.ToString();
+    }
+    if (height_n > 0 && weight_n > 0)
+    {
+        imc_n = Math.Round((weight_n / (height_n * height_n)), 2);
+        imc = imc_n.ToString();
+    }
+    if (imc_n > 0)
+    {
+        if (imc_n < 18.59)
+        {
+            imc_help = Resource.UnderWeight;
+        }
+        else if (imc_n >= 18.5 && imc_n <= 24.99)
+        {
+            imc_help = Resource.Normal;
+        }
+        else if (imc_n >= 25 && imc_n <= 29.99)
+        {
+            imc_help = Resource.Overweight;
+        }
+        else if (imc_n > 30)
+        {
+            imc_help = Resource.Obesity;
+        }
+    }
+}
+
+<div class="content-header row">
+    <div class="content-header-left col-md-8 col-12 mb-2 breadcrumb-new">
+        <h3 class="content-header-title mb-0 d-inline-block">@Resource.MedicalRecord</h3>
+        <div class="row breadcrumbs-top d-inline-block">
+            <div class="breadcrumb-wrapper col-12">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item">
+                        <a href="@Url.Action("Expedientes", "Pacientes")"> @Resource.Records</a>
+                    </li>
+                    <li class="breadcrumb-item active">
+                        @Model.nombre
+                    </li>
+                </ol>
+            </div>
+        </div>
+    </div>
+    <div class="content-header-right col-md-4 col-12">
+        <div class="btn-group float-md-right">
+            <a href="#" class="btn btn-info"> <i class="ft-file-text"></i> @Resource.Update</a>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title card_main_title" id="row-separator-basic-form">@Model.nombre</h3>
+                <a class="heading-elements-toggle"><i class="ft-ellipsis-h font-medium-3"></i></a>
+                <div class="heading-elements">
+                    <ul class="list-inline mb-0">
+                        <li><a data-action="collapse"><i class="ft-minus"></i></a></li>
+                        <li><a data-action="expand"><i class="ft-maximize"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="card-content collapse show">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-xl-3 col-lg-6 col-md-12 border-right-grey border-right-lighten-3 clearfix">
+                            <div class="float-left pl-2">
+                                <span class="grey darken-1 block">@Resource.Age</span>
+                                <span class="font-large-3 line-height-1 text-bold-300">@age</span>
+                            </div>
+                            <div class="float-left mt-2">
+                                <span class="grey darken-1 block">@Resource.Years</span>
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-lg-6 col-md-12 border-right-grey border-right-lighten-3 clearfix">
+                            <div class="float-left pl-2">
+                                <span class="grey darken-1 block">@Resource.Height</span>
+                                <span class="font-large-3 line-height-1 text-bold-300">@height</span>
+                            </div>
+                            <div class="float-left mt-2">
+                                <span class="grey darken-1 block">mts</span>
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-lg-6 col-md-12 border-right-grey border-right-lighten-3 clearfix">
+                            <div class="float-left pl-2">
+                                <span class="grey darken-1 block">@Resource.Weight</span>
+                                <span class="font-large-3 line-height-1 text-bold-300">@weight</span>
+                            </div>
+                            <div class="float-left mt-2">
+                                <span class="grey darken-1 block">Kg</span>
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-lg-6 col-md-12 clearfix">
+                            <div class="float-left pl-2">
+                                <span class="grey darken-1 block">@Resource.IMC</span>
+                                <span class="font-large-3 line-height-1 text-bold-300">@imc</span>
+                            </div>
+                            <div class="float-left mt-2">
+                                <span class="grey darken-1 block">Kg/m</span>
+                                <span class="block">@imc_help</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<br />
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title card_main_title" id="row-separator-basic-form">@Resource.PatientData</h3>
+                <a class="heading-elements-toggle"><i class="ft-ellipsis-h font-medium-3"></i></a>
+                <div class="heading-elements">
+                    <ul class="list-inline mb-0">
+                        <li><a data-action="collapse"><i class="ft-minus"></i></a></li>
+                        <li><a data-action="expand"><i class="ft-maximize"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="card-content collapse show">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <table class="table table-striped table-bordered zero-configuration">
+                                <tr>
+                                    <td style="width: 5%;"><i class="ft-user"></i></td>
+                                    <td style="width: 30%;"><b>@Resource.Name:</b></td>
+                                    <td style="width: 65%;">@Model.nombre</td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 5%;"><i class="ft-calendar"></i></td>
+                                    <td style="width: 30%;"><b>@Resource.Birthdate:</b></td>
+                                    <td style="width: 65%;">@bird_date</td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 5%;"><i class="ft-phone"></i></td>
+                                    <td style="width: 30%;"><b>@Resource.Phone:</b></td>
+                                    <td style="width: 65%;">@Model.telefono</td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 5%;"><i class="ft-info"></i></td>
+                                    <td style="width: 30%;"><b>@Resource.Sex:</b></td>
+                                    <td style="width: 65%;">@sex</td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="col-md-6">
+                            <h4 class="card-title">@Resource.Allergy</h4>
+                            <p>@Model.alergias</p>
+                            <br />
+                            <h4 class="card-title">@Resource.Surgery</h4>
+                            <p>@Model.cirugias</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<br />
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title card_main_title" id="row-separator-basic-form">@Resource.HereditaryFamily</h3>
+                <a class="heading-elements-toggle"><i class="ft-ellipsis-h font-medium-3"></i></a>
+                <div class="heading-elements">
+                    <ul class="list-inline mb-0">
+                        <li><a data-action="collapse"><i class="ft-minus"></i></a></li>
+                        <li><a data-action="expand"><i class="ft-maximize"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="card-content collapse show">
+                <div class="card-body">
+                    <p>@Model.heredofamiliares</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<br />
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title card_main_title" id="row-separator-basic-form">@Resource.NonPathological</h3>
+                <a class="heading-elements-toggle"><i class="ft-ellipsis-h font-medium-3"></i></a>
+                <div class="heading-elements">
+                    <ul class="list-inline mb-0">
+                        <li><a data-action="collapse"><i class="ft-minus"></i></a></li>
+                        <li><a data-action="expand"><i class="ft-maximize"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="card-content collapse show">
+                <div class="card-body">
+                    <p>@Model.antecedentes_no_patologicos</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title card_main_title" id="row-separator-basic-form">@Resource.PathologicalPersonal</h3>
+                <a class="heading-elements-toggle"><i class="ft-ellipsis-h font-medium-3"></i></a>
+                <div class="heading-elements">
+                    <ul class="list-inline mb-0">
+                        <li><a data-action="collapse"><i class="ft-minus"></i></a></li>
+                        <li><a data-action="expand"><i class="ft-maximize"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="card-content collapse show">
+                <div class="card-body">
+                    <p>@Model.antecedentes_patologicos</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<br />
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title card_main_title" id="row-separator-basic-form">@Resource.MedicalNotes</h3>
+                <a class="heading-elements-toggle"><i class="ft-ellipsis-h font-medium-3"></i></a>
+                <div class="heading-elements">
+                    <ul class="list-inline mb-0">
+                        <li><a data-action="collapse"><i class="ft-minus"></i></a></li>
+                        <li><a data-action="expand"><i class="ft-maximize"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="card-content collapse show">
+                <div class="card-body">
+                    @foreach (var item in Model.Citas.Where(x => x.status_id == 3).OrderByDescending(x => x.cita_date))
+                    {
+                        <h4 class="">@item.cita_date</h4>
+                        <b>@Resource.Pressure:</b><span>@item.presion</span><span>|</span>
+                        <b>@Resource.Weight:</b><span>@item.peso</span><span>|</span>
+                        <b>@Resource.Height:</b><span>@item.altura</span><span>|</span>
+                        <b>@Resource.Temperature:</b><span>@item.temperatura</span>
+                        <br />
+                        <br />
+                        <p>@item.observaciones</p>
+                        <div class="card-footer text-muted">
+                            <span>Dr. @item.Users.first_name @item.Users.last_name</span>
+                            <span class="float-right">@Resource.Cedula: @item.Users.Doctor_Configs.professional_license</span>
+                        </div>
+                        <hr style="color: black !important;border-top: 2px solid #000;" />
+                        <br />
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<br />
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title card_main_title" id="row-separator-basic-form">Estudios</h3>
+                <a class="heading-elements-toggle"><i class="ft-ellipsis-h font-medium-3"></i></a>
+                <div class="heading-elements">
+                    <ul class="list-inline mb-0">
+                        <li><a data-action="collapse"><i class="ft-minus"></i></a></li>
+                        <li><a data-action="expand"><i class="ft-maximize"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="card-content collapse show">
+                <div class="card-body">
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

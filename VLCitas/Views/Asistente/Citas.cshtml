@@ -1,0 +1,1020 @@
+﻿@using VLCitas.DataLayer;
+﻿@model IEnumerable<GetInvoicesCitasByConsultory_Result>
+@{
+
+    var offices = ViewBag.item;
+    var bussines = ViewBag.bussines;
+    //var today = (Citas.Models.SP_CitaHoy)ViewBag.today;
+    ViewBag.Title = "Home Page";
+    var total = 0;
+}
+@*<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />*@
+
+<link href="~/Content/introjs/bootstrap-responsive.min.css" rel="stylesheet" />
+<link href="~/Content/introjs/introjs.css" rel="stylesheet" />
+<link href="~/Content/introjs/custom.css" rel="stylesheet" />
+<link href="~/Content/css/Citas.css" rel="stylesheet" />
+<script src="~/Content/introjs/intro.js"></script>
+
+
+<div class="app-content content container-fluid">
+    <div class="content-wrapper">
+        <div class="content-header row">
+            <div class="content-header-left col-md-4">
+                <a href="@Url.Action("Index","Asistente")" style="font-size: 25px;"><i class="fa fa-arrow-circle-o-left" aria-hidden="true"></i><span class="">Regresar</span></a>
+                <h2 class="content-header-title mb-0"> @ViewBag.name</h2>
+            </div>
+            <div class="content-header-right col-md-5 ">
+            </div>
+            <div class="content-header-right col-md-2 ">
+                <fieldset class="form-group relative has-icon-left col-md-5 col-xs-12 float-xs-right p-0">
+                    <a class="btn btn-large btn-success" href="javascript:void(0);" onclick="javascript:introJs().start();">Ayuda <i class="icon-info-circle" aria-hidden="true"></i></a>
+                </fieldset>
+            </div>
+        </div>
+        <div class="content-body">
+            <!-- Full calendar basic example section start -->
+            <section id="basic-examples">
+                <div class="row">
+                    <div class="col-md-10">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4 class="card-title">Mis citas</h4>
+                                <a class="heading-elements-toggle"><i class="icon-ellipsis font-medium-3"></i></a>
+                                <div class="heading-elements">
+                                    <ul class="list-inline mb-0">
+                                        <li><a data-action="collapse"><i class="icon-minus4"></i></a></li>
+                                        <li><a data-action="reload"><i class="icon-reload"></i></a></li>
+                                        <li><a data-action="close"><i class="icon-cross2"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="card-body collapse in">
+                                <div class="card-block" data-step="1" data-intro="Este es tu calendario!">
+                                    @*<p class="card-text">FullCalendar has a number of different "views", or ways of displaying days and events. The following 5 views are all built in to FullCalendar: <code>month, basicWeek, basicDay, agendaWeek, agendaDay</code>. You can set the initial view of the calendar with the <code>defaultView</code> option. The following example demonstrates <code>agenda</code> views and the <code>defaultView</code> option is set to <code>agendaWeek</code>.</p>*@
+                                    <div id="calendar"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="card-block" data-step="3" data-intro="Estas son las citas programadas para el día de hoy!">
+                                    <div class="media">
+                                        <div class="media-body text-xs-left">
+                                            <h3 class="success">@ViewBag.ncitas</h3>
+                                            <span>Citas para el día de hoy</span>
+                                        </div>
+                                        <div class="media-right media-middle">
+                                            <i class="icon-clock-o success font-large-2 float-xs-right"></i>
+                                        </div>
+                                    </div>
+                                    <progress class="progress progress-sm progress-success mt-1 mb-0" value="@ViewBag.ncitas" max="100"></progress>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="card-block" data-step="4" data-intro="Estos son el total de tus citas este mes!">
+                                    <div class="media">
+                                        <div class="media-body text-xs-left">
+                                            <h3 class="info">@ViewBag.month</h3>
+                                            <span>Total de citas este mes</span>
+                                        </div>
+                                        <div class="media-right media-middle">
+                                            <i class="icon-calendar-o success font-large-2 float-xs-right"></i>
+                                        </div>
+                                    </div>
+                                    <progress class="progress progress-sm progress-deep-orange mt-1 mb-0" value="@ViewBag.month" max="100"></progress>
+                                </div>
+                            </div>
+                        </div>
+                        <hr />
+                        <!--Clima-->
+                        <div class="card no-border box-shadow-0" style="height: 305px;">
+                            <div class="card-body collapse in" data-step="5" data-intro="El clima actual!">
+                                <div class="weather-date position-relative">
+                                    <div class="date-info position-absolute bg-grey bg-lighten-1 white mt-3 p-1 text-xs-center">
+                                        <span class="date block" id="date_block">@DateTime.Now.Day</span>
+                                        <span class="month">@System.Globalization.CultureInfo.CurrentCulture.DateTimeFormat.GetAbbreviatedMonthName(DateTime.Now.Month).ToUpper()</span>
+                                    </div>
+                                </div>
+                                <div class="card-block bg-grey bg-lighten-2">
+                                    <ul class="list-inline text-xs-right">
+                                        <li><a data-action="reload"><i class="icon-reload font-medium-4 grey"></i></a></li>
+                                    </ul>
+                                    <div class="animated-weather-icons text-xs-center">
+                                        <img id="img_clima" class="climacon climacon_cloudHailAlt climacon-grey  climacon-darken-2 height-80 img-responsive" viewBox="15 15 70 70">
+
+                                    </div>
+                                    <div class="weather-details text-xs-center">
+                                        <span class="mt-2 block grey darken-1" id="status_wheater"></span>
+                                        <span class="font-medium-4 text-bold-500 grey darken-4" id="place"></span>
+                                    </div>
+                                </div>
+                                <div class="card-footer bg-grey bg-darken-3 py-3 no-border">
+                                    <div class="row">
+                                        <div class="col-xs-4 text-xs-center display-table-cell">
+                                            <i class="icon-wind font-large-1 white lighten-3 valign-middle"></i> <span class="white valign-middle">2MPH</span>
+                                        </div>
+                                        <div class="col-xs-4 text-xs-center display-table-cell">
+                                            <i class="icon-sun2 font-large-1 white lighten-3 valign-middle"></i> <span class="white valign-middle">2%</span>
+                                        </div>
+                                        <div class="col-xs-4 text-xs-center display-table-cell">
+                                            <i class="icon-thermometer font-large-1 white lighten-3 valign-middle"></i> <span class="white valign-middle" id="grados"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--end clima-->
+                    </div>
+                </div>
+
+
+
+            </section>
+            <!-- // Full calendar basic example section end -->
+        </div>
+    </div>
+</div>
+
+<!-- ////////////////////////////////////////////////////////////////////////////-->
+<script src='https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment.min.js'></script>
+
+<script>
+    var citas_calendar;
+
+    $(document).ready(function () {
+        //
+        //$('.js-example-basic-single').select2();
+        $(".pad").hide();
+        //Temp uId event
+        var eventid;
+        //Api wheater
+        var temp_c;
+        var temp;
+        console.log("ready clima!");
+        //Carga cuando entra
+        $.ajax({
+            type: "GET",
+            url: "http://api.openweathermap.org/data/2.5/weather?zip=28000,mx&appid=380ff3fdbcbceb1adf17ff563bab7e56&lang=es",
+            dataType: "json",
+            success: function (data) {
+                console.log("data --> : " + data);
+                temp_c = data.main.temp - 273.15;
+                $("#grados").text(Math.round(temp_c).toFixed(0) + "°");
+                var icon = data.weather[0].icon;
+                $("#img_clima").attr('src', "http://openweathermap.org/img/w/" + icon + ".png");
+                $('#place').text(data.name, data.sys.country);
+                $("#status_wheater").text(data.weather[0].description);
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                alert(errorThrown);
+            }
+        });
+
+        //reload
+        var clear_interval = setInterval(function () {
+            $.ajax({
+                type: "GET",
+                url: "http://api.openweathermap.org/data/2.5/weather?zip=28000,mx&appid=380ff3fdbcbceb1adf17ff563bab7e56&lang=es",
+                dataType: "json",
+                success: function (data) {
+                    console.log("data --> : " + data);
+                    temp_c = data.main.temp - 273.15;
+                    $("#grados").text(Math.round(temp_c).toFixed(0) + "°");
+                    var icon = data.weather[0].icon;
+                    $("#img_clima").attr('src', "http://openweathermap.org/img/w/" + icon + ".png");
+                    $('#place').text(data.name, data.sys.country);
+                    $("#status_wheater").text(data.weather[0].description);
+
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    alert(errorThrown);
+                }
+            });
+        }, 300000)
+
+
+        //datapie Highcharts
+        @*var pie = @Html.Raw(Json.Encode(datapie));
+        console.log("pie : " + pie);
+
+        Highcharts.setOptions({
+            lang: {
+                loading: 'Cargando...',
+                months: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+                weekdays: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
+                shortMonths: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
+                exportButtonTitle: "Exportar",
+                printButtonTitle: "Importar",
+                rangeSelectorFrom: "Desde",
+                rangeSelectorTo: "Hasta",
+                rangeSelectorZoom: "Período",
+                downloadPNG: 'Descargar imagen PNG',
+                downloadJPEG: 'Descargar imagen JPEG',
+                downloadPDF: 'Descargar imagen PDF',
+                downloadSVG: 'Descargar imagen SVG',
+                printChart: 'Imprimir',
+                resetZoom: 'Reiniciar zoom',
+                resetZoomTitle: 'Reiniciar zoom',
+                thousandsSep: ",",
+                decimalPoint: '.'
+            },
+            credits: {
+                enabled: false
+            }
+        });
+        Highcharts.chart('container2', {
+            data: {
+                table: 'datatable2'
+            },
+            chart: {
+                type: 'line'
+            },
+            title: {
+                text: 'Citas por mes'
+            },
+            yAxis: {
+                allowDecimals: false,
+                title: {
+                    text: 'Cantidad'
+                }
+            },
+            tooltip: {
+                formatter: function () {
+                    return '<b>' + this.series.name + '</b><br/>' +
+                        this.point.y + ' ' + this.point.name.toLowerCase();
+                }
+            }
+        });
+        Highcharts.chart('container3', {
+            chart: {
+                plotBackgroundColor: null,
+                plotBorderWidth: null,
+                plotShadow: false,
+                type: 'pie'
+            },
+            title: {
+                text: 'Ganancia por mes'
+            },
+            tooltip: {
+                pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+            },
+            plotOptions: {
+                pie: {
+                    allowPointSelect: true,
+                    cursor: 'pointer',
+                    dataLabels: {
+                        enabled: true,
+                        format: '<b>{point.name}</b>: {point.percentage:.1f}% <br> <b>Total: ${point.y}.00</b>',
+                        style: {
+                            color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
+                        }
+                    }
+                }
+            },
+            series: [{
+                name: 'Brands',
+                colorByPoint: true,
+                data: pie
+            }]
+        });*@
+
+        //change
+        $('#day').change(function() {
+            var date = $("#day").val();
+            console.log(date, 'change')
+            $.ajax({
+                type: "Post",
+                datatype: "html",
+                url: "/Asistente/GetCalendar",
+                data: {
+                    uId: "@ViewBag.uId",
+                    date: date
+                },
+                cache: false,
+                success: function (Result) {
+                    debugger;
+                    console.log(Result);
+                    $.each(Result, function (i,vl) {
+                        console.log(vl['hora']);
+                        //Outputs the img url
+                        if (vl['minutos'] < 10) {
+                            $("#hour").append('<option value="' + vl['hora']+":0"+vl['minutos'] + '">' +
+                                                    vl['hora']+":0"+vl['minutos'] + '</option>');
+                        }
+                        if(vl['minutos'] >= 10){
+                            $("#hour").append('<option value="' + vl['hora']+":"+vl['minutos'] + '">' +
+                                 vl['hora']+":"+vl['minutos'] + '</option>');
+                        }
+                    });
+                },
+                error: function (request, status, error) {
+                    console.error(request.responseText);
+                    alert(request.responseText);
+                },
+                complete: function (xhr, status) {
+                    //show_Status_Modal_close_(null);
+                }
+            });
+        });
+
+
+        //onclick registrar paciente
+        //muestra el formulario que ocupamos para agregar una cita
+        $("#btnAddPa").click(function () {
+            console.log("Registrar paciente");
+            $('.pad').show();
+            $('.sele').hide();
+        });
+        //
+
+        //Add title to the chita
+        $("#pa_select").on("change", function () {
+            var title = $("#pa_select option:selected").text();
+            $("#ci_titulo").val(title);
+        });
+
+        //btn add cita
+        //hace el procedimiento para agregar una cita
+        $("#btnAddCita").click(function () {
+            console.log("Agregar cita");
+            debugger;
+            if ($("#pa_select").val() === null) {
+                //Si no entonces va registrar
+                if ($("#pa_nombre").val() != '' && $("#pa_apellidos").val() != '' ) {
+                    debugger;
+                    console.log("case 2, si puso datos y va registrar");
+                    var data = {
+                        departaments_uId:  "@ViewBag.uId",
+                        title: $("#pa_nombre").val() + " " + $("#pa_apellidos").val(), //$("#pa_titulo").val(),
+                        cita_date: $("#format").val(),
+                        status_id: 1,
+                        Code: 1,
+                        nombre: $("#pa_nombre").val(),
+                        apellidos: $("#pa_apellidos").val(),
+                        telefono_paciente: $("#pa_telefono").val(),
+                        curp: $("#pa_curp").val()
+                    };
+                    $.ajax({
+                        type: "Post",
+                        datatype: "html",
+                        url: "/Citas/AddCitaRegister",
+                        data: data,
+                        cache: false,
+                        success: function (Result) {
+                            //debugger;
+                            if (Result["TypeOfResponse"] == 0) {
+                                //muestra mensaje
+                                $('#AddCita').modal('hide');
+                                swal({
+                                    title: "Listo!",
+                                    text: "La cita se ha guardado correctamente",
+                                    type: "success",
+                                    timer: 2000
+                                });
+                                console.log("Entro al success case 2");
+                                citas_calendar.fullCalendar('renderEvent', Result.Objeto, 'stick');
+                                //setTimeout(function(){// wait for 5 secs(2)
+                                //    location.reload(true); // then reload the page.(3)
+                                //}, 2000);
+                            }
+                            if (Result["TypeOfResponse"] == 1) {
+                                swal("Oops..!", Result["Message"], "error")
+                            }
+                        },
+                        error: function (request, status, error) {
+                            console.error(request.responseText);
+
+                        }
+                    });
+
+                }
+                    //no coloco los campos necesarios
+                else{
+                    swal(
+                          'Error!',
+                          'No has llenado los campos requeridos.',
+                          'error'
+                        )
+                }
+            }
+                //busco uno
+            else{
+
+
+                    console.log("case search 1");
+                    debugger;
+                    var data = {
+                        departaments_uId:  "@ViewBag.uId",
+                        title: $("#pa_select option:selected").text(), //$("#ci_titulo").val(),
+                        cita_date: $("#format").val(),
+                        status_id: 1,
+                        Code: 1,
+                        id_paciente: $("#pa_select").val()
+                    };
+                    $.ajax({
+                        type: "Post",
+                        datatype: "html",
+                        url: "/Citas/AddCita",
+                        data: data,
+                        cache: false,
+                        success: function (Result) {
+                            //debugger;
+                            if (Result["TypeOfResponse"] == 0) {
+                                //muestra mensaje
+                                $('#AddCita').modal('hide');
+                                swal({
+                                    title: "Listo!",
+                                    text: "La cita se ha guardado correctamente",
+                                    type: "success",
+                                    timer: 2000
+                                });
+                                console.log("Entro al success case 1");
+                                console.log(Result.Objeto);
+                                citas_calendar.fullCalendar('renderEvent', Result.Objeto, 'stick');
+                            }
+                            if (Result["TypeOfResponse"] == 1) {
+                                swal("Oops..!", Result["Message"], "error")
+                            }
+                        },
+                        error: function (request, status, error) {
+                            console.error(request.responseText);
+                        }
+                    });
+                }
+
+        });
+
+        //Buscar pacientes
+
+        $("#btnSearch").click(function () {
+            //debugger;
+            console.log("btn search");
+            $('.pad').hide();
+            $('.sele').show();
+            $('select option').remove();
+            $.ajax({
+                type: "Post",
+                datatype: "html",
+                url: "/Asistente/GetPacientes",
+                data: {
+                    data: $("#paciente").val()
+                },
+                cache: false,
+                success: function (Result) {
+                    //debugger;
+                    console.log("success pacientes search " + Result);
+                    $.each(Result, function (i,vl) {
+                        $("#pa_select").append('<option value="' + vl['id'] +'">' +
+                             vl['nombre']+" "+vl['apellidos'] + '</option>');
+
+                    });
+                },
+                error: function (request, status, error) {
+                    console.error(request.responseText);
+                    alert(request.responseText);
+                },
+                complete: function (xhr, status) {
+                    //show_Status_Modal_close_(null);
+                }
+            });
+        });
+
+
+        ///////////////
+
+
+        //onclick modal
+        $("#btnReagenda").click(function () {
+            debugger;
+            $.ajax({
+                type: "Post",
+                datatype: "html",
+                url: "/Asistente/ReAgenda",
+                data: {
+                    uId : $("#bookId").val(),
+                    departaments_uId : "@ViewBag.uId",
+                    day: $("#day").val(),
+                    hour: $("#hour").val()
+                },
+                cache: false,
+                success: function (Result) {
+                    console.log(Result);
+                    if (Result["TypeOfResponse"] == 0) {
+                        swal("Bien!", Result["Message"] , "success")
+                        setTimeout(function(){// wait for 5 secs(2)
+                            location.reload(); // then reload the page.(3)
+                        }, 5000);
+                    }
+                    if (Result["TypeOfResponse"] == 1) {
+                        swal("Oops..!", Result["Message"], "error")
+                        setTimeout(function(){// wait for 5 secs(2)
+                            location.reload(); // then reload the page.(3)
+                        }, 5000);
+                    }
+
+                },
+                error: function (request, status, error) {
+                    console.error(request.responseText);
+                    alert(request.responseText);
+                },
+                complete: function (xhr, status) {
+                    //show_Status_Modal_close_(null);
+                }
+            });
+        })
+
+
+
+
+        /////////////////////////
+
+        var dt = new Date();
+        var today = dt.getFullYear() + "-" + (dt.getMonth() + 1) + "-" + dt.getDate();
+        var locations = @Html.Raw(Json.Encode(offices));
+        console.log("locations --> " + locations);
+
+        if (locations == "") {
+            console.log("Entro al if");
+            var startd = $.fullCalendar.moment().format("YYYY-MM-DD");
+            var test = $.fullCalendar.moment().format();
+            var endede = $.fullCalendar.moment().format("YYYY-MM-DD");
+            startd = startd + "T10:00:00";
+            endede = endede + "T10:30:00";
+            console.log("inicia " +  startd);
+            console.log("Termina " + endede);
+            console.log("test " + test);
+            locations =  [
+                  {
+                      id: 5,
+                      title: 'Ejemplo',
+                      start: startd,
+                      end: endede,
+                  }]
+        }
+        //debugger;
+        var dias =  [];
+
+        var bussines = @Html.Raw(Json.Encode(bussines));
+        console.log("bussines from db --> " + bussines);
+        for (var i = 0; i < bussines.length; i++) {
+            console.log(bussines[i]);
+            //Do
+            var dow_ = [];
+            if (bussines[i].domingo == true) {
+                dow_.push(0);
+            }
+            if (bussines[i].lunes == true) {
+                dow_.push(1);
+            }
+            if (bussines[i].martes == true) {
+                dow_.push(2);
+            }
+            if (bussines[i].miercoles == true) {
+                dow_.push(3);
+            }
+            if (bussines[i].jueves == true) {
+                dow_.push(4);
+            }
+            if (bussines[i].viernes == true) {
+                dow_.push(5);
+            }
+            if (bussines[i].sabado == true) {
+                dow_.push(6);
+            }
+            console.log("down --> # "+ i + " ..." + dow_);
+            var obj = {dow: dow_, start: bussines[i].start_hour, end: bussines[i].end_hour};
+            dias.push(obj);
+
+        }
+
+
+        //console.log("dias al final del for --> " + dias);
+        //var bussines_hours =  [ // specify an array instead
+        //           {
+        //               dow: [ 0, 1, 2, 3, 4, 5, 6 ], // 0 = domingo, lunes 1, martes, 2
+        //               start: '08:00:00', // 8am
+        //               end: '14:00:00' // 6pm
+        //           }
+        //];
+        //console.log("bussines original hours -- " + bussines_hours);
+        citas_calendar = $('#calendar').fullCalendar({
+            //delete
+            eventRender: function (event, element, view) {
+                element.attr('data-step', '2');
+                element.attr('data-intro', 'Estas son tus citas, <br> para agregar una nueva solo da click en un espacio vacio <br> o para borrarla solo da click en una cita');
+                console.log(element);
+            },
+            eventColor: '#0174DF',
+            eventClick: function (calEvent, jsEvent, view) {
+                var myBookId = $(this).data('id');
+                $(".modal-body #bookId").val(calEvent.id);
+                swal({
+                    title: '¿Que desea realizar?',
+                    type: 'warning',
+                    html: "" +
+                        "<br>" +
+                        '<button type="button" role="button" tabindex="0" class="SwalBtn1 customSwalBtn1">' + '<i class="icon-check-circle" data-toggle="modal" xmlvalue='+calEvent.id+'  data-target="#OKCita"> Completar</i>'  + '</button>' +
+                        '<button type="button" role="button" tabindex="0" class="SwalBtn2 swal-btn-red">'+ '<i class="icon-trash2"> Eliminar</i>'   + '</button>' + '<br>' +
+                        '<button type="button" id="btnreg" name="ctrl_CustomerType" role="button" tabindex="0" data-toggle="modal" xmlvalue='+calEvent.id+' data-target="#GSCCModal" class="SwalBtn4 customSwalBtn4">' + '<i class="icon-calendar-o"> Re agendar</i>'  + '</button>' +
+                        '<button type="button" role="button" tabindex="0" class="SwalBtn3 customSwalBtn3">' + '<i class="icon-times"> Cancelar</i>'  + '</button>',
+                    showCancelButton: false,
+                    showConfirmButton: false
+                });
+                $(document).on('click', '.SwalBtn1', function() {
+                    //Some code 1
+                    console.log('Completar cita');
+                    swal.close();
+                    //event id a borrar.
+                    $(".modal-body #eventId").val(calEvent.id);
+                    $('#OKCita').modal('show');
+                    $("#btnOKCita").click(function () {
+                        console.log("Click btn OK CITA")
+                        //Puede tener o no observaciones pero un precio debe poner si o si
+                        if ($("#ok_precio").val() != '') {
+                            $.ajax({
+                                type: "Post",
+                                datatype: "html",
+                                url: "/Citas/CompleteCita",
+                                data: {
+                                    uId: calEvent.id,
+                                    precio: $("#ok_precio").val(),
+                                    observaciones: $("#ok_observacion").val()
+                                },
+                                cache: false,
+                                success: function (Result) {
+                                    if (Result["TypeOfResponse"] == 0) {
+                                        console.log(calEvent.id);
+                                        $('#calendar').fullCalendar('removeEvents', calEvent.id);
+                                        swal({
+                                            title: "Listo!",
+                                            text: Result["Message"],
+                                            type: "success",
+                                            timer: 2000
+                                        });
+                                        $('#OKCita').modal('hide');
+                                    }
+                                    if (Result["TypeOfResponse"] == 1) {
+                                        swal("Oops..!", Result["Message"], "error")
+                                    }
+                                },
+                                error: function (request, status, error) {
+                                    console.error(request.responseText);
+                                    alert(request.responseText);
+                                },
+                                complete: function (xhr, status) {
+                                    //show_Status_Modal_close_(null);
+                                }
+                            });
+                        }
+                        else{
+                            swal(
+                                  'Error!',
+                                  'No has introducido un precio.',
+                                  'error'
+                                )
+                        }
+                    });
+
+                });
+                $(document).on('click', '.SwalBtn2', function() {
+                    //Some code 2
+                    console.log('Eliminar');
+                    swal({
+                        title: 'Razón o motivo',
+                        input: 'text',
+                        showCancelButton: true,
+                        cancelButtonText: 'Cancelar',
+                        confirmButtonText: 'Aceptar',
+                        showLoaderOnConfirm: true,
+                        preConfirm: (text) => {
+                            return new Promise((resolve) => {
+                                setTimeout(() => {
+                                    if (text === '') {
+                                        swal.showValidationError(
+                                          'Ingresa un motivo'
+                                        )
+                                    }
+                                    resolve()
+                                }, 2000)
+                            })
+                        },
+                        allowOutsideClick: true
+                    }).then((result) => {
+                        if (result.value) {
+                            $.ajax({
+                                type: "Post",
+                                datatype: "html",
+                                url: "/Citas/DeleteCita",
+                                data: {
+                                    uId: calEvent.id,
+                                    razon: result.value
+                                },
+                                cache: false,
+                                success: function (Result) {
+                                    if (Result["TypeOfResponse"] == 0) {
+                                        console.log(calEvent.id);
+                                        $('#calendar').fullCalendar('removeEvents', calEvent.id);
+                                        swal({
+                                            title: "Listo!",
+                                            text: Result["Message"],
+                                            type: "success",
+                                            timer: 2000
+                                        });
+                                    }
+                                    if (Result["TypeOfResponse"] == 1) {
+                                        swal("Oops..!", Result["Message"], "error")
+                                    }
+                                },
+                                error: function (request, status, error) {
+                                    console.error(request.responseText);
+                                    alert(request.responseText);
+                                },
+                                complete: function (xhr, status) {
+                                    //show_Status_Modal_close_(null);
+                                }
+                            });
+                        }
+                    })
+
+                });
+                $(document).on('click', '.SwalBtn3', function() {
+                    //Some code 2
+                    console.log('Cancelar');
+                    swal(
+                         'Cancelado',
+                         'No hemos hecho ninguna acción.',
+                         'error'
+                       )
+                });
+                $(document).on('click', '.SwalBtn4', function() {
+                    //Some code 2
+                    console.log('Modal');
+                    swal.close();
+                });
+            },
+
+            eventOverlap: false,
+            eventDrop: function (event, delta, revertFunc) {
+                swal({
+                    title: "¿Estás seguro?",
+                    text: event.title + " será reagendado el " + event.start.format().replace("T", " "),
+                    type: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: "Si",
+                    cancelButtonText: "No",
+                }).then((result) => {
+                    if (result.value) {
+                        reagendarCita(event);
+                        swal("Bien!", "La cita se reagendo con éxito", "success");
+                    } else {
+                        revertFunc();
+                        swal("Cancelado", "La cita no se ha reagendado", "error");
+                    }
+                });
+            },
+            allDaySlot: false,
+            businessHours: dias,
+            selectConstraint: 'businessHours',
+            //minTime: "08:00:00",
+            //maxTime: "20:00:00",
+            minTime: "@ViewBag.start",
+            maxTime: "@ViewBag.ended",
+            slotDuration: '00:' + @ViewBag.duration + ':00',
+            header: {
+                left: 'prev,next today',
+                center: 'title',
+                right: 'month,agendaWeek,agendaDay'
+            },
+            buttonText: {
+                today: 'Hoy',
+                month: 'Mes',
+                week : 'Semana',
+                day  : 'Dia'
+            },
+            monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+            monthNamesShort: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
+            dayNames: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
+            dayNamesShort: ['Dom', 'Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb'],
+            lang: 'es',
+            defaultDate: $.fullCalendar.moment(),
+            defaultView: 'agendaWeek',
+            editable: true,
+
+            //START AGREGAR NUEVA CITA
+            selectable: true,
+            selectHelper: true,
+            editable: true,
+            select: function (start, end) {
+                //debugger;
+                end = $.fullCalendar.moment(start);
+                var start_ = start;
+                var end_ =  end.add(@ViewBag.duration, 'minutes');
+                var format_ = start.format();
+                $("#start_").val(start_);
+                $("#end_").val(end_);
+                $("#format").val(format_);
+                console.log("start nuevo -- " + start_);
+                console.log("end nuevo -- " + end_);
+                console.log("start normal --> " + start);
+                console.log("start format --> " + start.format());
+                $('#AddCita').modal('show');
+                //end select
+                $('#calendar').fullCalendar('unselect');
+
+            },
+            ////////end nueva cita///////////////
+
+
+            //Events
+
+            events: locations,
+
+
+            //{
+            //    id: 3,
+            //    title: 'Repeating Event',
+            //    start: '2017-12-09T16:00:00',
+            //    end: '2017-12-09T16:30:00'
+            //},
+            //{
+            //    id: 4,
+            //    title: 'Repeating Event',
+            //    start: '2017-12-09T17:00:00',
+            //    end: '2017-12-09T17:30:00'
+            //},
+            //{
+            //    id: 5,
+            //    title: 'Repeating Event',
+            //    start: '2017-12-09T18:00:00',
+            //    end: '2017-12-09T18:30:00'
+            //}
+
+        });
+
+        function reagendarCita(event) {
+            console.log(event);
+            debugger;
+            $.ajax({
+                type: "Post",
+                url: "/Citas/Reagenda",
+                data: {
+                    uId: event.id,
+                    cita_date: event.start.format()
+                },
+                cache: false,
+                success: function (Result) {
+                    console.log(Result);
+                    if (Result["TypeOfResponse"] == 0) {
+                        //to do
+                    }
+                    if (Result["TypeOfResponse"] == 1) {
+                       //to do
+                    }
+
+                },
+                error: function (request, status, error) {
+                    console.error(request.responseText);
+                    alert(request.responseText);
+                },
+                complete: function (xhr, status) {
+                    //show_Status_Modal_close_(null);
+                }
+            });
+        }
+    });
+
+</script>
+<!--Modal-->
+<div id="GSCCModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;  </button>
+                <h4 class="modal-title" id="myModalLabel">Elige nueva fecha</h4>
+            </div>
+            <div class="modal-body">
+                <form role="form">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Día</label>
+                        <input type="date" class="form-control"
+                               id="day" name="day" placeholder="Ingresa la fecha" />
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Horarios disponibles</label>
+                        <select id="hour" class="form-control" name="hour" placeholder="Horario disponible"></select>
+                    </div>
+                    <input type="hidden" name="bookId" id="bookId" value="" />
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                <button type="button" id="btnReagenda" class="btn btn-primary">Guardar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@*Modal para agregar cita*@
+<div id="AddCita" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;  </button>
+                <h4 class="modal-title" id="myModalLabel">Agregar Nueva Cita</h4>
+            </div>
+            <div class="modal-body">
+                <form role="form">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Buscar Citado</label>
+                        <input type="text" name="paciente" id="paciente" class="form-control" value="" />
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">Citado</label>
+                            <select id="pa_select" class="form-control js-example-basic-single" style="width: 100% !important;" name="pa_select" placeholder="Selecciona paciente"></select>
+
+                        </div>
+                        <br>
+                        <div class="btn-group">
+                            <button type="button" id="btnSearch" class="btn btn-primary">Buscar</button>
+                            <button type="button" id="btnAddPa" class="btn btn-success">Agregar Nuevo</button>
+                        </div>
+                    </div>
+                    <div class="sele">
+                        <div class="form-group">
+                            @*<label for="exampleInputPassword1">Titulo</label>*@
+                            <input type="hidden" name="ci_titulo" id="ci_titulo" class="form-control" value="" />
+                        </div>
+
+                    </div>
+                    <hr>
+                    <div class="pad">
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Nombre</label>
+                            <input type="text" name="pa_nombre" id="pa_nombre" class="form-control" value="" />
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Apellidos</label>
+                            <input type="text" name="pa_apellidos" id="pa_apellidos" class="form-control" value="" />
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Telefono</label>
+                            <input type="text" name="pa_telefono" id="pa_telefono" class="form-control" value="" />
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">CURP</label>
+                            <input type="text" name="pa_curp" id="pa_curp" class="form-control" value="" />
+                        </div>
+                        <div class="form-group">
+                            <input type="hidden" name="pa_titulo" id="pa_titulo" class="form-control" value="" />
+                        </div>
+                    </div>
+                    <input type="hidden" name="start_" id="start_" value="" />
+                    <input type="hidden" name="end_" id="end_" value="" />
+                    <input type="hidden" name="format" id="format" value="" />
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                <button type="button" id="btnAddCita" class="btn btn-primary">Guardar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@*Modal para completar cita*@
+<div id="OKCita" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;  </button>
+                <h4 class="modal-title" id="myModalLabel">Detalle de Cita</h4>
+            </div>
+            <div class="modal-body">
+                <form role="form">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Precio</label>
+                        <input type="number" min="0" name="ok_precio" id="ok_precio" readonly class="form-control" required placeholder="Ingresa el precio de la cita" value="" />
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Observaciones</label>
+                        <textarea name="ok_observacion" id="ok_observacion" readonly required placeholder="ingresa las observaciones" class="form-control"></textarea>
+                    </div>
+                    <input type="hidden" name="eventId" id="eventId" value="" />
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                @*<button type="button" id="btnOKCita" class="btn btn-primary">Guardar</button>*@
+            </div>
+        </div>
+    </div>
+</div>

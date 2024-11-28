@@ -1,0 +1,946 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="VL_CitasModelStoreContainer" CdmEntityContainer="VL_CitasEntities">
+    <FunctionImportMapping FunctionImportName="Get_TotalCitasByStatusxConsultories" FunctionName="VL_CitasModel.Store.Get_TotalCitasByStatusxConsultories">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="VL_CitasModel.Get_TotalCitasByStatusxConsultories_Result">
+          <ScalarProperty Name="uId" ColumnName="uId" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="image_url" ColumnName="image_url" />
+          <ScalarProperty Name="agendadas" ColumnName="agendadas" />
+          <ScalarProperty Name="canceladas" ColumnName="canceladas" />
+          <ScalarProperty Name="completadas" ColumnName="completadas" />
+          <ScalarProperty Name="confirmadas" ColumnName="confirmadas" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetCalendarCitas" FunctionName="VL_CitasModel.Store.GetCalendarCitas">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="VL_CitasModel.GetCalendarCitas_Result">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="start" ColumnName="start" />
+          <ScalarProperty Name="end" ColumnName="end" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetCitasByStatus" FunctionName="VL_CitasModel.Store.GetCitasByStatus">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="VL_CitasModel.GetCitasByStatus_Result">
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="ncitas" ColumnName="ncitas" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetCitasByStatusByConsultory" FunctionName="VL_CitasModel.Store.GetCitasByStatusByConsultory">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="VL_CitasModel.GetCitasByStatusByConsultory_Result">
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="y" ColumnName="y" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetCountCitasByConsultory" FunctionName="VL_CitasModel.Store.GetCountCitasByConsultory">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="VL_CitasModel.GetCountCitasByConsultory_Result">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="ncitas" ColumnName="ncitas" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetGananciaByMonth" FunctionName="VL_CitasModel.Store.GetGananciaByMonth">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="VL_CitasModel.GetGananciaByMonth_Result">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="y" ColumnName="y" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetGananciaByMonthByConsultory" FunctionName="VL_CitasModel.Store.GetGananciaByMonthByConsultory">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="VL_CitasModel.GetGananciaByMonthByConsultory_Result">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="y" ColumnName="y" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetInvoicesByOfficeConsultory" FunctionName="VL_CitasModel.Store.GetInvoicesByOfficeConsultory">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="VL_CitasModel.GetInvoicesByOfficeConsultory_Result">
+          <ScalarProperty Name="cita_uId" ColumnName="cita_uId" />
+          <ScalarProperty Name="dep_name" ColumnName="dep_name" />
+          <ScalarProperty Name="dep_uId" ColumnName="dep_uId" />
+          <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="status_id" ColumnName="status_id" />
+          <ScalarProperty Name="cita_date" ColumnName="cita_date" />
+          <ScalarProperty Name="precio" ColumnName="precio" />
+          <ScalarProperty Name="razon" ColumnName="razon" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetInvoicesCitasByConsultory" FunctionName="VL_CitasModel.Store.GetInvoicesCitasByConsultory">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="VL_CitasModel.GetInvoicesCitasByConsultory_Result">
+          <ScalarProperty Name="cita_uId" ColumnName="cita_uId" />
+          <ScalarProperty Name="dep_uId" ColumnName="dep_uId" />
+          <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="status_id" ColumnName="status_id" />
+          <ScalarProperty Name="cita_date" ColumnName="cita_date" />
+          <ScalarProperty Name="precio" ColumnName="precio" />
+          <ScalarProperty Name="razon" ColumnName="razon" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetLastCitas" FunctionName="VL_CitasModel.Store.GetLastCitas">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="VL_CitasModel.GetLastCitas_Result">
+          <ScalarProperty Name="cita_uId" ColumnName="cita_uId" />
+          <ScalarProperty Name="dep_uId" ColumnName="dep_uId" />
+          <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="status_id" ColumnName="status_id" />
+          <ScalarProperty Name="cita_date" ColumnName="cita_date" />
+          <ScalarProperty Name="precio" ColumnName="precio" />
+          <ScalarProperty Name="razon" ColumnName="razon" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetMonthCitas" FunctionName="VL_CitasModel.Store.GetMonthCitas">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="VL_CitasModel.GetMonthCitas_Result">
+          <ScalarProperty Name="MonthName" ColumnName="MonthName" />
+          <ScalarProperty Name="ncitas" ColumnName="ncitas" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetMonthCitasByConsultory" FunctionName="VL_CitasModel.Store.GetMonthCitasByConsultory">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="VL_CitasModel.GetMonthCitasByConsultory_Result">
+          <ScalarProperty Name="MonthName" ColumnName="MonthName" />
+          <ScalarProperty Name="ncitas" ColumnName="ncitas" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetScheduleByConsultory" FunctionName="VL_CitasModel.Store.GetScheduleByConsultory">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="VL_CitasModel.GetScheduleByConsultory_Result">
+          <ScalarProperty Name="lunes" ColumnName="lunes" />
+          <ScalarProperty Name="martes" ColumnName="martes" />
+          <ScalarProperty Name="miercoles" ColumnName="miercoles" />
+          <ScalarProperty Name="jueves" ColumnName="jueves" />
+          <ScalarProperty Name="viernes" ColumnName="viernes" />
+          <ScalarProperty Name="sabado" ColumnName="sabado" />
+          <ScalarProperty Name="domingo" ColumnName="domingo" />
+          <ScalarProperty Name="start_hour" ColumnName="start_hour" />
+          <ScalarProperty Name="end_hour" ColumnName="end_hour" />
+          <ScalarProperty Name="office_uId" ColumnName="office_uId" />
+          <ScalarProperty Name="office_name" ColumnName="office_name" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetScheduleByOfficeAndDoctor" FunctionName="VL_CitasModel.Store.GetScheduleByOfficeAndDoctor">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="VL_CitasModel.GetScheduleByOfficeAndDoctor_Result">
+          <ScalarProperty Name="lunes" ColumnName="lunes" />
+          <ScalarProperty Name="martes" ColumnName="martes" />
+          <ScalarProperty Name="miercoles" ColumnName="miercoles" />
+          <ScalarProperty Name="jueves" ColumnName="jueves" />
+          <ScalarProperty Name="viernes" ColumnName="viernes" />
+          <ScalarProperty Name="sabado" ColumnName="sabado" />
+          <ScalarProperty Name="domingo" ColumnName="domingo" />
+          <ScalarProperty Name="start_hour" ColumnName="start_hour" />
+          <ScalarProperty Name="end_hour" ColumnName="end_hour" />
+          <ScalarProperty Name="office_uId" ColumnName="office_uId" />
+          <ScalarProperty Name="office_name" ColumnName="office_name" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Reports_GetCitasByDays" FunctionName="VL_CitasModel.Store.Reports_GetCitasByDays">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="VL_CitasModel.Reports_GetCitasByDays_Result">
+          <ScalarProperty Name="dia" ColumnName="dia" />
+          <ScalarProperty Name="count" ColumnName="count" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Reports_GetCitasByStatus" FunctionName="VL_CitasModel.Store.Reports_GetCitasByStatus">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="VL_CitasModel.Reports_GetCitasByStatus_Result">
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="count" ColumnName="count" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Reports_GetSummaryHeader" FunctionName="VL_CitasModel.Store.Reports_GetSummaryHeader">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="VL_CitasModel.Reports_GetSummaryHeader_Result">
+          <ScalarProperty Name="revenue" ColumnName="revenue" />
+          <ScalarProperty Name="citas" ColumnName="citas" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Reports_ServicesSummary" FunctionName="VL_CitasModel.Store.Reports_ServicesSummary">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="VL_CitasModel.Reports_ServicesSummary_Result">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="quantity" ColumnName="quantity" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SP_Horario_By_Doctor_Office" FunctionName="VL_CitasModel.Store.SP_Horario_By_Doctor_Office">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="VL_CitasModel.SP_Horario_By_Doctor_Office_Result">
+          <ScalarProperty Name="MyHour" ColumnName="MyHour" />
+          <ScalarProperty Name="OrderCount" ColumnName="OrderCount" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SP_Horario_DisponibleByDoctor" FunctionName="VL_CitasModel.Store.SP_Horario_DisponibleByDoctor">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="VL_CitasModel.SP_Horario_DisponibleByDoctor_Result">
+          <ScalarProperty Name="MyHour" ColumnName="MyHour" />
+          <ScalarProperty Name="OrderCount" ColumnName="OrderCount" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SPE_GananciaByMonthConsultory" FunctionName="VL_CitasModel.Store.SPE_GananciaByMonthConsultory">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="VL_CitasModel.SPE_GananciaByMonthConsultory_Result">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="y" ColumnName="y" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SPE_GananciaXMes" FunctionName="VL_CitasModel.Store.SPE_GananciaXMes">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="VL_CitasModel.SPE_GananciaXMes_Result">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="y" ColumnName="y" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SPE_LAST30DAYS" FunctionName="VL_CitasModel.Store.SPE_LAST30DAYS">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="VL_CitasModel.SPE_LAST30DAYS_Result">
+          <ScalarProperty Name="fecha" ColumnName="fecha" />
+          <ScalarProperty Name="Agendadas" ColumnName="Agendadas" />
+          <ScalarProperty Name="Completadas" ColumnName="Completadas" />
+          <ScalarProperty Name="Canceladas" ColumnName="Canceladas" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SPE_LASTSIXMONTHS" FunctionName="VL_CitasModel.Store.SPE_LASTSIXMONTHS">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="VL_CitasModel.SPE_LASTSIXMONTHS_Result">
+          <ScalarProperty Name="MES" ColumnName="MES" />
+          <ScalarProperty Name="Agendadas" ColumnName="Agendadas" />
+          <ScalarProperty Name="Completadas" ColumnName="Completadas" />
+          <ScalarProperty Name="Canceladas" ColumnName="Canceladas" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SPR_Ganancia_Mes" FunctionName="VL_CitasModel.Store.SPR_Ganancia_Mes">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="VL_CitasModel.SPR_Ganancia_Mes_Result">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="y" ColumnName="y" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SPR_GetLastDataThisMonth" FunctionName="VL_CitasModel.Store.SPR_GetLastDataThisMonth">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="VL_CitasModel.SPR_GetLastDataThisMonth_Result">
+          <ScalarProperty Name="fecha" ColumnName="fecha" />
+          <ScalarProperty Name="ncitas" ColumnName="ncitas" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SPR_Servicio_Cantidad" FunctionName="VL_CitasModel.Store.SPR_Servicio_Cantidad">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="VL_CitasModel.SPR_Servicio_Cantidad_Result">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="total" ColumnName="total" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SPR_TotalCYGanancia" FunctionName="VL_CitasModel.Store.SPR_TotalCYGanancia">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="VL_CitasModel.SPR_TotalCYGanancia_Result">
+          <ScalarProperty Name="fecha" ColumnName="fecha" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="status_id" ColumnName="status_id" />
+          <ScalarProperty Name="observaciones" ColumnName="observaciones" />
+          <ScalarProperty Name="observaciones_asistente" ColumnName="observaciones_asistente" />
+          <ScalarProperty Name="precio" ColumnName="precio" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <EntitySetMapping Name="Consultory">
+      <EntityTypeMapping TypeName="VL_CitasModel.Consultory">
+        <MappingFragment StoreEntitySet="Consultory">
+          <ScalarProperty Name="allow_multiple" ColumnName="allow_multiple" />
+          <ScalarProperty Name="time_prom" ColumnName="time_prom" />
+          <ScalarProperty Name="allow_turn" ColumnName="allow_turn" />
+          <ScalarProperty Name="allow_citas" ColumnName="allow_citas" />
+          <ScalarProperty Name="serie" ColumnName="serie" />
+          <ScalarProperty Name="update_date" ColumnName="update_date" />
+          <ScalarProperty Name="create_date" ColumnName="create_date" />
+          <ScalarProperty Name="image_url" ColumnName="image_url" />
+          <ScalarProperty Name="status_id" ColumnName="status_id" />
+          <ScalarProperty Name="alias" ColumnName="alias" />
+          <ScalarProperty Name="office_uId" ColumnName="office_uId" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="uId" ColumnName="uId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Consultory_Status">
+      <EntityTypeMapping TypeName="VL_CitasModel.Consultory_Status">
+        <MappingFragment StoreEntitySet="Consultory_Status">
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Customers">
+      <EntityTypeMapping TypeName="VL_CitasModel.Customers">
+        <MappingFragment StoreEntitySet="Customers">
+          <ScalarProperty Name="update_date" ColumnName="update_date" />
+          <ScalarProperty Name="create_date" ColumnName="create_date" />
+          <ScalarProperty Name="status_id" ColumnName="status_id" />
+          <ScalarProperty Name="phone" ColumnName="phone" />
+          <ScalarProperty Name="website" ColumnName="website" />
+          <ScalarProperty Name="image_url" ColumnName="image_url" />
+          <ScalarProperty Name="alias" ColumnName="alias" />
+          <ScalarProperty Name="address" ColumnName="address" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="uId" ColumnName="uId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Customers_Status">
+      <EntityTypeMapping TypeName="VL_CitasModel.Customers_Status">
+        <MappingFragment StoreEntitySet="Customers_Status">
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Doctor_Configs">
+      <EntityTypeMapping TypeName="VL_CitasModel.Doctor_Configs">
+        <MappingFragment StoreEntitySet="Doctor_Configs">
+          <ScalarProperty Name="has_attachements" ColumnName="has_attachements" />
+          <ScalarProperty Name="webpage" ColumnName="webpage" />
+          <ScalarProperty Name="instagram" ColumnName="instagram" />
+          <ScalarProperty Name="twitter" ColumnName="twitter" />
+          <ScalarProperty Name="facebook" ColumnName="facebook" />
+          <ScalarProperty Name="logo4" ColumnName="logo4" />
+          <ScalarProperty Name="logo3" ColumnName="logo3" />
+          <ScalarProperty Name="logo2" ColumnName="logo2" />
+          <ScalarProperty Name="logo1" ColumnName="logo1" />
+          <ScalarProperty Name="job_description" ColumnName="job_description" />
+          <ScalarProperty Name="resume" ColumnName="resume" />
+          <ScalarProperty Name="professional_license" ColumnName="professional_license" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Module">
+      <EntityTypeMapping TypeName="VL_CitasModel.Module">
+        <MappingFragment StoreEntitySet="Module">
+          <ScalarProperty Name="menucontrolador" ColumnName="menucontrolador" />
+          <ScalarProperty Name="menuaction" ColumnName="menuaction" />
+          <ScalarProperty Name="menuicon" ColumnName="menuicon" />
+          <ScalarProperty Name="menuurl" ColumnName="menuurl" />
+          <ScalarProperty Name="ordernumber" ColumnName="ordernumber" />
+          <ScalarProperty Name="parentmenuid" ColumnName="parentmenuid" />
+          <ScalarProperty Name="namemodules" ColumnName="namemodules" />
+          <ScalarProperty Name="codemodules" ColumnName="codemodules" />
+          <ScalarProperty Name="idmodules" ColumnName="idmodules" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Offices">
+      <EntityTypeMapping TypeName="VL_CitasModel.Offices">
+        <MappingFragment StoreEntitySet="Offices">
+          <ScalarProperty Name="phone_2" ColumnName="phone 2" />
+          <ScalarProperty Name="phone" ColumnName="phone" />
+          <ScalarProperty Name="configuration_id" ColumnName="configuration_id" />
+          <ScalarProperty Name="longitud" ColumnName="longitud" />
+          <ScalarProperty Name="latitud" ColumnName="latitud" />
+          <ScalarProperty Name="update_date" ColumnName="update_date" />
+          <ScalarProperty Name="create_date" ColumnName="create_date" />
+          <ScalarProperty Name="alias" ColumnName="alias" />
+          <ScalarProperty Name="image_url" ColumnName="image_url" />
+          <ScalarProperty Name="customer_uId" ColumnName="customer_uId" />
+          <ScalarProperty Name="status_id" ColumnName="status_id" />
+          <ScalarProperty Name="address" ColumnName="address" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="uId" ColumnName="uId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Offices_Configuration">
+      <EntityTypeMapping TypeName="VL_CitasModel.Offices_Configuration">
+        <MappingFragment StoreEntitySet="Offices_Configuration">
+          <ScalarProperty Name="time_zone_id" ColumnName="time_zone_id" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Offices_Status">
+      <EntityTypeMapping TypeName="VL_CitasModel.Offices_Status">
+        <MappingFragment StoreEntitySet="Offices_Status">
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Offices_Users">
+      <EntityTypeMapping TypeName="VL_CitasModel.Offices_Users">
+        <MappingFragment StoreEntitySet="Offices_Users">
+          <ScalarProperty Name="price_per_appoinment" ColumnName="price_per_appoinment" />
+          <ScalarProperty Name="uid" ColumnName="uid" />
+          <ScalarProperty Name="medical_appointment_duration" ColumnName="medical_appointment_duration" />
+          <ScalarProperty Name="prescription_id" ColumnName="prescription_id" />
+          <ScalarProperty Name="user_uid" ColumnName="user_uid" />
+          <ScalarProperty Name="office_uid" ColumnName="office_uid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Paciente">
+      <EntityTypeMapping TypeName="VL_CitasModel.Paciente">
+        <MappingFragment StoreEntitySet="Paciente">
+          <ScalarProperty Name="doctor_uid" ColumnName="doctor_uid" />
+          <ScalarProperty Name="created_date" ColumnName="created_date" />
+          <ScalarProperty Name="antecedentes_no_patologicos" ColumnName="antecedentes_no_patologicos" />
+          <ScalarProperty Name="antecedentes_patologicos" ColumnName="antecedentes_patologicos" />
+          <ScalarProperty Name="heredofamiliares" ColumnName="heredofamiliares" />
+          <ScalarProperty Name="sex_id" ColumnName="sex_id" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="cirugias" ColumnName="cirugias" />
+          <ScalarProperty Name="alergias" ColumnName="alergias" />
+          <ScalarProperty Name="fecha_nacimiento" ColumnName="fecha_nacimiento" />
+          <ScalarProperty Name="curp" ColumnName="curp" />
+          <ScalarProperty Name="telefono" ColumnName="telefono" />
+          <ScalarProperty Name="apellidos" ColumnName="apellidos" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Patient_Prescriptions">
+      <EntityTypeMapping TypeName="VL_CitasModel.Patient_Prescriptions">
+        <MappingFragment StoreEntitySet="Patient_Prescriptions">
+          <ScalarProperty Name="user_uid" ColumnName="user_uid" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="date" ColumnName="date" />
+          <ScalarProperty Name="patient_id" ColumnName="patient_id" />
+          <ScalarProperty Name="uid" ColumnName="uid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Prescriptions">
+      <EntityTypeMapping TypeName="VL_CitasModel.Prescriptions">
+        <MappingFragment StoreEntitySet="Prescriptions">
+          <ScalarProperty Name="is_template" ColumnName="is_template" />
+          <ScalarProperty Name="path" ColumnName="path" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Reports">
+      <EntityTypeMapping TypeName="VL_CitasModel.Reports">
+        <MappingFragment StoreEntitySet="Reports">
+          <ScalarProperty Name="rol_id" ColumnName="rol_id" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Roles">
+      <EntityTypeMapping TypeName="VL_CitasModel.Roles">
+        <MappingFragment StoreEntitySet="Roles">
+          <ScalarProperty Name="status_id" ColumnName="status_id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Roles_Status">
+      <EntityTypeMapping TypeName="VL_CitasModel.Roles_Status">
+        <MappingFragment StoreEntitySet="Roles_Status">
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Schedule">
+      <EntityTypeMapping TypeName="VL_CitasModel.Schedule">
+        <MappingFragment StoreEntitySet="Schedule">
+          <ScalarProperty Name="schedule_name" ColumnName="schedule_name" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="oficina_uId" ColumnName="oficina_uId" />
+          <ScalarProperty Name="end_hour" ColumnName="end_hour" />
+          <ScalarProperty Name="start_hour" ColumnName="start_hour" />
+          <ScalarProperty Name="domingo" ColumnName="domingo" />
+          <ScalarProperty Name="sabado" ColumnName="sabado" />
+          <ScalarProperty Name="viernes" ColumnName="viernes" />
+          <ScalarProperty Name="jueves" ColumnName="jueves" />
+          <ScalarProperty Name="miercoles" ColumnName="miercoles" />
+          <ScalarProperty Name="martes" ColumnName="martes" />
+          <ScalarProperty Name="lunes" ColumnName="lunes" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Sex">
+      <EntityTypeMapping TypeName="VL_CitasModel.Sex">
+        <MappingFragment StoreEntitySet="Sex">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Specialties">
+      <EntityTypeMapping TypeName="VL_CitasModel.Specialties">
+        <MappingFragment StoreEntitySet="Specialties">
+          <ScalarProperty Name="council_medical_specialty_id" ColumnName="council_medical_specialty_id" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Status_Citas">
+      <EntityTypeMapping TypeName="VL_CitasModel.Status_Citas">
+        <MappingFragment StoreEntitySet="Status_Citas">
+          <ScalarProperty Name="translate" ColumnName="translate" />
+          <ScalarProperty Name="color" ColumnName="color" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TimeZones">
+      <EntityTypeMapping TypeName="VL_CitasModel.TimeZones">
+        <MappingFragment StoreEntitySet="TimeZones">
+          <ScalarProperty Name="BaseUtcOffset" ColumnName="BaseUtcOffset" />
+          <ScalarProperty Name="StandardName" ColumnName="StandardName" />
+          <ScalarProperty Name="DisplayName" ColumnName="DisplayName" />
+          <ScalarProperty Name="DaylightName" ColumnName="DaylightName" />
+          <ScalarProperty Name="TimeZoneId" ColumnName="TimeZoneId" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="VL_CitasModel.Users">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="doctor_id" ColumnName="doctor_id" />
+          <ScalarProperty Name="profile_picture" ColumnName="profile_picture" />
+          <ScalarProperty Name="phone" ColumnName="phone" />
+          <ScalarProperty Name="address" ColumnName="address" />
+          <ScalarProperty Name="status_id" ColumnName="status_id" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="last_name" ColumnName="last_name" />
+          <ScalarProperty Name="first_name" ColumnName="first_name" />
+          <ScalarProperty Name="uId" ColumnName="uId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users_Status">
+      <EntityTypeMapping TypeName="VL_CitasModel.Users_Status">
+        <MappingFragment StoreEntitySet="Users_Status">
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Vacations">
+      <EntityTypeMapping TypeName="VL_CitasModel.Vacations">
+        <MappingFragment StoreEntitySet="Vacations">
+          <ScalarProperty Name="reason" ColumnName="reason" />
+          <ScalarProperty Name="end_date" ColumnName="end_date" />
+          <ScalarProperty Name="start_date" ColumnName="start_date" />
+          <ScalarProperty Name="user_uid" ColumnName="user_uid" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Vw_Doctor_Information">
+      <EntityTypeMapping TypeName="VL_CitasModel.Vw_Doctor_Information">
+        <MappingFragment StoreEntitySet="Vw_Doctor_Information">
+          <ScalarProperty Name="office_uId" ColumnName="office_uId" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="consultory_uid" ColumnName="consultory_uid" />
+          <ScalarProperty Name="job_description" ColumnName="job_description" />
+          <ScalarProperty Name="resume" ColumnName="resume" />
+          <ScalarProperty Name="professional_license" ColumnName="professional_license" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="last_name" ColumnName="last_name" />
+          <ScalarProperty Name="first_name" ColumnName="first_name" />
+          <ScalarProperty Name="uId" ColumnName="uId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VW_Doctor_Schedules">
+      <EntityTypeMapping TypeName="VL_CitasModel.VW_Doctor_Schedules">
+        <MappingFragment StoreEntitySet="VW_Doctor_Schedules">
+          <ScalarProperty Name="schedule_name" ColumnName="schedule_name" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="end_hour" ColumnName="end_hour" />
+          <ScalarProperty Name="start_hour" ColumnName="start_hour" />
+          <ScalarProperty Name="domingo" ColumnName="domingo" />
+          <ScalarProperty Name="sabado" ColumnName="sabado" />
+          <ScalarProperty Name="viernes" ColumnName="viernes" />
+          <ScalarProperty Name="jueves" ColumnName="jueves" />
+          <ScalarProperty Name="miercoles" ColumnName="miercoles" />
+          <ScalarProperty Name="martes" ColumnName="martes" />
+          <ScalarProperty Name="lunes" ColumnName="lunes" />
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="schedule_id" ColumnName="schedule_id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="office_uid" ColumnName="office_uid" />
+          <ScalarProperty Name="last_name" ColumnName="last_name" />
+          <ScalarProperty Name="first_name" ColumnName="first_name" />
+          <ScalarProperty Name="uId" ColumnName="uId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VW_User_Office_Rol">
+      <EntityTypeMapping TypeName="VL_CitasModel.VW_User_Office_Rol">
+        <MappingFragment StoreEntitySet="VW_User_Office_Rol">
+          <ScalarProperty Name="rol_name" ColumnName="rol_name" />
+          <ScalarProperty Name="office_users_uid" ColumnName="office_users_uid" />
+          <ScalarProperty Name="roles_id" ColumnName="roles_id" />
+          <ScalarProperty Name="office_name" ColumnName="office_name" />
+          <ScalarProperty Name="office_uid" ColumnName="office_uid" />
+          <ScalarProperty Name="last_name" ColumnName="last_name" />
+          <ScalarProperty Name="first_name" ColumnName="first_name" />
+          <ScalarProperty Name="user_uid" ColumnName="user_uid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VW_User_Roles">
+      <EntityTypeMapping TypeName="VL_CitasModel.VW_User_Roles">
+        <MappingFragment StoreEntitySet="VW_User_Roles">
+          <ScalarProperty Name="rol_name" ColumnName="rol_name" />
+          <ScalarProperty Name="address" ColumnName="address" />
+          <ScalarProperty Name="office_name" ColumnName="office_name" />
+          <ScalarProperty Name="rol_id" ColumnName="rol_id" />
+          <ScalarProperty Name="office_uid" ColumnName="office_uid" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="uId" ColumnName="uId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="Office_Users_Schedules" TypeName="VL_CitasModel.Office_Users_Schedules" StoreEntitySet="Office_Users_Schedules">
+      <EndProperty Name="Offices_Users">
+        <ScalarProperty Name="uid" ColumnName="office_user_uid" />
+      </EndProperty>
+      <EndProperty Name="Schedule">
+        <ScalarProperty Name="id" ColumnName="schedule_id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="Roles_Module" TypeName="VL_CitasModel.Roles_Module" StoreEntitySet="Roles_Module">
+      <EndProperty Name="Module">
+        <ScalarProperty Name="idmodules" ColumnName="idmodules" />
+      </EndProperty>
+      <EndProperty Name="Roles">
+        <ScalarProperty Name="id" ColumnName="roles_id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="Roles_Office_Users" TypeName="VL_CitasModel.Roles_Office_Users" StoreEntitySet="Roles_Office_Users">
+      <EndProperty Name="Offices_Users">
+        <ScalarProperty Name="uid" ColumnName="office_users_uid" />
+      </EndProperty>
+      <EndProperty Name="Roles">
+        <ScalarProperty Name="id" ColumnName="roles_id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="Users_Consultories" TypeName="VL_CitasModel.Users_Consultories" StoreEntitySet="Users_Consultories">
+      <EndProperty Name="Users">
+        <ScalarProperty Name="uId" ColumnName="user_uid" />
+      </EndProperty>
+      <EndProperty Name="Consultory">
+        <ScalarProperty Name="uId" ColumnName="consultory_uid" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="Users_Customers" TypeName="VL_CitasModel.Users_Customers" StoreEntitySet="Users_Customers">
+      <EndProperty Name="Users">
+        <ScalarProperty Name="uId" ColumnName="Users_uId" />
+      </EndProperty>
+      <EndProperty Name="Customers">
+        <ScalarProperty Name="uId" ColumnName="Customers_uId" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="Doctor_Specialties" TypeName="VL_CitasModel.Doctor_Specialties" StoreEntitySet="Doctor_Specialties">
+      <EndProperty Name="Doctor_Configs">
+        <ScalarProperty Name="id" ColumnName="doctor_id" />
+      </EndProperty>
+      <EndProperty Name="Specialties">
+        <ScalarProperty Name="id" ColumnName="speciality_id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <EntitySetMapping Name="Citas">
+      <EntityTypeMapping TypeName="VL_CitasModel.Citas">
+        <MappingFragment StoreEntitySet="Citas">
+          <ScalarProperty Name="assitant_uid" ColumnName="assitant_uid" />
+          <ScalarProperty Name="ritmo_cardiaco" ColumnName="ritmo_cardiaco" />
+          <ScalarProperty Name="diagnostico" ColumnName="diagnostico" />
+          <ScalarProperty Name="motivo" ColumnName="motivo" />
+          <ScalarProperty Name="glucosa" ColumnName="glucosa" />
+          <ScalarProperty Name="observacion_doctor" ColumnName="observacion_doctor" />
+          <ScalarProperty Name="altura" ColumnName="altura" />
+          <ScalarProperty Name="doctor_uid" ColumnName="doctor_uid" />
+          <ScalarProperty Name="confirm_date" ColumnName="confirm_date" />
+          <ScalarProperty Name="complete_date" ColumnName="complete_date" />
+          <ScalarProperty Name="cancel_date" ColumnName="cancel_date" />
+          <ScalarProperty Name="receta" ColumnName="receta" />
+          <ScalarProperty Name="presion" ColumnName="presion" />
+          <ScalarProperty Name="temperatura" ColumnName="temperatura" />
+          <ScalarProperty Name="peso" ColumnName="peso" />
+          <ScalarProperty Name="observaciones_asistente" ColumnName="observaciones_asistente" />
+          <ScalarProperty Name="id_paciente" ColumnName="id_paciente" />
+          <ScalarProperty Name="observaciones" ColumnName="observaciones" />
+          <ScalarProperty Name="precio" ColumnName="precio" />
+          <ScalarProperty Name="razon" ColumnName="razon" />
+          <ScalarProperty Name="telefono" ColumnName="telefono" />
+          <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="status_id" ColumnName="status_id" />
+          <ScalarProperty Name="cita_date" ColumnName="cita_date" />
+          <ScalarProperty Name="create_date" ColumnName="create_date" />
+          <ScalarProperty Name="consultory_uId" ColumnName="consultory_uId" />
+          <ScalarProperty Name="uId" ColumnName="uId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Medicine_citas">
+      <EntityTypeMapping TypeName="VL_CitasModel.Medicine_citas">
+        <MappingFragment StoreEntitySet="Medicine_citas">
+          <ScalarProperty Name="extra" ColumnName="extra" />
+          <ScalarProperty Name="duration" ColumnName="duration" />
+          <ScalarProperty Name="frequency" ColumnName="frequency" />
+          <ScalarProperty Name="sentence" ColumnName="sentence" />
+          <ScalarProperty Name="dose" ColumnName="dose" />
+          <ScalarProperty Name="medicine" ColumnName="medicine" />
+          <ScalarProperty Name="cita_uid" ColumnName="cita_uid" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Servicios">
+      <EntityTypeMapping TypeName="VL_CitasModel.Servicios">
+        <MappingFragment StoreEntitySet="Servicios">
+          <ScalarProperty Name="default" ColumnName="default" />
+          <ScalarProperty Name="user_uId" ColumnName="user_uId" />
+          <ScalarProperty Name="activo" ColumnName="activo" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="precio" ColumnName="precio" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="Citas_servicios" TypeName="VL_CitasModel.Citas_servicios" StoreEntitySet="Citas_servicios">
+      <EndProperty Name="Servicios">
+        <ScalarProperty Name="id" ColumnName="servicios_id" />
+      </EndProperty>
+      <EndProperty Name="Citas">
+        <ScalarProperty Name="uId" ColumnName="Citas_uId" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <FunctionImportMapping FunctionImportName="GetCitasByDoctor" FunctionName="VL_CitasModel.Store.GetCitasByDoctor">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="VL_CitasModel.GetCitasByDoctor_Result">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="start" ColumnName="start" />
+          <ScalarProperty Name="end" ColumnName="end" />
+          <ScalarProperty Name="precio" ColumnName="precio" />
+          <ScalarProperty Name="status_id" ColumnName="status_id" />
+          <ScalarProperty Name="color" ColumnName="color" />
+          <ScalarProperty Name="office_uId" ColumnName="office_uId" />
+          <ScalarProperty Name="consultory_uid" ColumnName="consultory_uid" />
+          <ScalarProperty Name="assitant_uid" ColumnName="assitant_uid" />
+          <ScalarProperty Name="doctor_name" ColumnName="doctor_name" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetCitasByConsultory" FunctionName="VL_CitasModel.Store.GetCitasByConsultory">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="VL_CitasModel.GetCitasByConsultory_Result">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="start" ColumnName="start" />
+          <ScalarProperty Name="end" ColumnName="end" />
+          <ScalarProperty Name="precio" ColumnName="precio" />
+          <ScalarProperty Name="status_id" ColumnName="status_id" />
+          <ScalarProperty Name="color" ColumnName="color" />
+          <ScalarProperty Name="doctor_uid" ColumnName="doctor_uid" />
+          <ScalarProperty Name="assitant_uid" ColumnName="assitant_uid" />
+          <ScalarProperty Name="doctor_name" ColumnName="doctor_name" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <EntitySetMapping Name="payment_types">
+      <EntityTypeMapping TypeName="VL_CitasModel.payment_types">
+        <MappingFragment StoreEntitySet="payment_types">
+          <ScalarProperty Name="codigo_sat" ColumnName="codigo_sat" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="payments">
+      <EntityTypeMapping TypeName="VL_CitasModel.payments">
+        <MappingFragment StoreEntitySet="payments">
+          <ScalarProperty Name="notes" ColumnName="notes" />
+          <ScalarProperty Name="payment_type_id" ColumnName="payment_type_id" />
+          <ScalarProperty Name="cita_uid" ColumnName="cita_uid" />
+          <ScalarProperty Name="date" ColumnName="date" />
+          <ScalarProperty Name="uid" ColumnName="uid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="SPR_HistorialAsistente" FunctionName="VL_CitasModel.Store.SPR_HistorialAsistente">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="VL_CitasModel.SPR_HistorialAsistente_Result">
+          <ScalarProperty Name="uId" ColumnName="uId" />
+          <ScalarProperty Name="consultory_uId" ColumnName="consultory_uId" />
+          <ScalarProperty Name="create_date" ColumnName="create_date" />
+          <ScalarProperty Name="cita_date" ColumnName="cita_date" />
+          <ScalarProperty Name="status_id" ColumnName="status_id" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="telefono" ColumnName="telefono" />
+          <ScalarProperty Name="razon" ColumnName="razon" />
+          <ScalarProperty Name="precio" ColumnName="precio" />
+          <ScalarProperty Name="observaciones" ColumnName="observaciones" />
+          <ScalarProperty Name="id_paciente" ColumnName="id_paciente" />
+          <ScalarProperty Name="observaciones_asistente" ColumnName="observaciones_asistente" />
+          <ScalarProperty Name="peso" ColumnName="peso" />
+          <ScalarProperty Name="temperatura" ColumnName="temperatura" />
+          <ScalarProperty Name="presion" ColumnName="presion" />
+          <ScalarProperty Name="receta" ColumnName="receta" />
+          <ScalarProperty Name="cancel_date" ColumnName="cancel_date" />
+          <ScalarProperty Name="complete_date" ColumnName="complete_date" />
+          <ScalarProperty Name="confirm_date" ColumnName="confirm_date" />
+          <ScalarProperty Name="doctor_uid" ColumnName="doctor_uid" />
+          <ScalarProperty Name="altura" ColumnName="altura" />
+          <ScalarProperty Name="observacion_doctor" ColumnName="observacion_doctor" />
+          <ScalarProperty Name="glucosa" ColumnName="glucosa" />
+          <ScalarProperty Name="motivo" ColumnName="motivo" />
+          <ScalarProperty Name="diagnostico" ColumnName="diagnostico" />
+          <ScalarProperty Name="ritmo_cardiaco" ColumnName="ritmo_cardiaco" />
+          <ScalarProperty Name="assitant_uid" ColumnName="assitant_uid" />
+          <ScalarProperty Name="consultorio" ColumnName="consultorio" />
+          <ScalarProperty Name="doctor" ColumnName="doctor" />
+          <ScalarProperty Name="asistente" ColumnName="asistente" />
+          <ScalarProperty Name="status" ColumnName="status" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Reports_GetSummaryHeaderAsistente" FunctionName="VL_CitasModel.Store.Reports_GetSummaryHeaderAsistente">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="VL_CitasModel.Reports_GetSummaryHeaderAsistente_Result">
+          <ScalarProperty Name="revenue" ColumnName="revenue" />
+          <ScalarProperty Name="citas" ColumnName="citas" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SP_Reportes_AdmByStatus" FunctionName="VL_CitasModel.Store.SP_Reportes_AdmByStatus">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="VL_CitasModel.SP_Reportes_AdmByStatus_Result">
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="color" ColumnName="color" />
+          <ScalarProperty Name="quantity" ColumnName="quantity" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SP_Reportes_AdmSumamry" FunctionName="VL_CitasModel.Store.SP_Reportes_AdmSumamry">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="VL_CitasModel.SP_Reportes_AdmSumamry_Result">
+          <ScalarProperty Name="revenue" ColumnName="revenue" />
+          <ScalarProperty Name="citas" ColumnName="citas" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SP_Reportes_AdmByAsistente" FunctionName="VL_CitasModel.Store.SP_Reportes_AdmByAsistente">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="VL_CitasModel.SP_Reportes_AdmByAsistente_Result">
+          <ScalarProperty Name="doctor" ColumnName="doctor" />
+          <ScalarProperty Name="quantity" ColumnName="quantity" />
+          <ScalarProperty Name="revenue" ColumnName="revenue" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SP_Reportes_AdmByDoctor" FunctionName="VL_CitasModel.Store.SP_Reportes_AdmByDoctor">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="VL_CitasModel.SP_Reportes_AdmByDoctor_Result">
+          <ScalarProperty Name="doctor" ColumnName="doctor" />
+          <ScalarProperty Name="quantity" ColumnName="quantity" />
+          <ScalarProperty Name="revenue" ColumnName="revenue" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SP_Reportes_RevenueAssistByDoctor" FunctionName="VL_CitasModel.Store.SP_Reportes_RevenueAssistByDoctor">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="VL_CitasModel.SP_Reportes_RevenueAssistByDoctor_Result">
+          <ScalarProperty Name="doctor" ColumnName="doctor" />
+          <ScalarProperty Name="quantity" ColumnName="quantity" />
+          <ScalarProperty Name="revenue" ColumnName="revenue" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SP_Reportes_RevenueAssistByPaymentMethod" FunctionName="VL_CitasModel.Store.SP_Reportes_RevenueAssistByPaymentMethod">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="VL_CitasModel.SP_Reportes_RevenueAssistByPaymentMethod_Result">
+          <ScalarProperty Name="tipo_pago" ColumnName="tipo_pago" />
+          <ScalarProperty Name="quantity" ColumnName="quantity" />
+          <ScalarProperty Name="revenue" ColumnName="revenue" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SP_Reportes_RevenueTodayAssitant" FunctionName="VL_CitasModel.Store.SP_Reportes_RevenueTodayAssitant" />
+    <FunctionImportMapping FunctionImportName="SP_Reportes_RevenueTodayDoctor" FunctionName="VL_CitasModel.Store.SP_Reportes_RevenueTodayDoctor" />
+    <FunctionImportMapping FunctionImportName="SP_Reportes_Detalles" FunctionName="VL_CitasModel.Store.SP_Reportes_Detalles">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="VL_CitasModel.SP_Reportes_Detalles_Result">
+          <ScalarProperty Name="uid" ColumnName="uid" />
+          <ScalarProperty Name="cita_date" ColumnName="cita_date" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="consultory" ColumnName="consultory" />
+          <ScalarProperty Name="patient" ColumnName="patient" />
+          <ScalarProperty Name="assistant" ColumnName="assistant" />
+          <ScalarProperty Name="doctor" ColumnName="doctor" />
+          <ScalarProperty Name="payment_date" ColumnName="payment_date" />
+          <ScalarProperty Name="amount" ColumnName="amount" />
+          <ScalarProperty Name="payment_type" ColumnName="payment_type" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <EntitySetMapping Name="Citas_History">
+      <EntityTypeMapping TypeName="VL_CitasModel.Citas_History">
+        <MappingFragment StoreEntitySet="Citas_History">
+          <ScalarProperty Name="date" ColumnName="date" />
+          <ScalarProperty Name="status_id" ColumnName="status_id" />
+          <ScalarProperty Name="user_uid" ColumnName="user_uid" />
+          <ScalarProperty Name="cita_uid" ColumnName="cita_uid" />
+          <ScalarProperty Name="uid" ColumnName="uid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

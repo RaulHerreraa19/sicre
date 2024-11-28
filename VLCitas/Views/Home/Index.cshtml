@@ -1,0 +1,524 @@
+﻿@using VLCitas.DataLayer;
+@{
+    var offices = ViewBag.item;
+    //var today = (Citas.Models.SP_CitaHoy)ViewBag.today;
+    ViewBag.Title = "Home Page";
+}
+
+<div class="app-content content container-fluid">
+    <div class="content-wrapper">
+        <div class="content-header row">
+            <div class="content-header-left col-md-4">
+                <h2 class="content-header-title mb-0"> Dashboard</h2>
+            </div>
+            <div class="content-header-right col-md-5 ">
+
+            </div>
+            <div class="content-header-right col-md-2 ">
+                <fieldset class="form-group relative has-icon-left col-md-5 col-xs-12 float-xs-right p-0">
+                    <button type="button" class="btn btn-success btn-min-width btn-square mr-1 mb-1"><i class="icon-file-add"></i> Nueva</button>
+                </fieldset>
+            </div>
+        </div>
+        <div class="content-body">
+            <!-- Full calendar basic example section start -->
+            <section id="basic-examples">
+                <div class="row">
+                    <div class="col-md-10">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4 class="card-title">Mis citas</h4>
+                                <a class="heading-elements-toggle"><i class="icon-ellipsis font-medium-3"></i></a>
+                                <div class="heading-elements">
+                                    <ul class="list-inline mb-0">
+                                        <li><a data-action="collapse"><i class="icon-minus4"></i></a></li>
+                                        <li><a data-action="reload"><i class="icon-reload"></i></a></li>
+                                        <li><a data-action="close"><i class="icon-cross2"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="card-body collapse in">
+                                <div class="card-block">
+                                    @*<p class="card-text">FullCalendar has a number of different "views", or ways of displaying days and events. The following 5 views are all built in to FullCalendar: <code>month, basicWeek, basicDay, agendaWeek, agendaDay</code>. You can set the initial view of the calendar with the <code>defaultView</code> option. The following example demonstrates <code>agenda</code> views and the <code>defaultView</code> option is set to <code>agendaWeek</code>.</p>*@
+                                    @*<div id='fc-agenda-views'></div>*@
+                                    <div id='calendar'></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+
+
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="card-block">
+                                    <div class="media">
+                                        <div class="media-body text-xs-left">
+                                            <h3 class="success">@ViewBag.today</h3>
+                                            <span>Citas para el día de hoy</span>
+                                        </div>
+                                        <div class="media-right media-middle">
+                                            <i class="icon-clock-o success font-large-2 float-xs-right"></i>
+                                        </div>
+                                    </div>
+                                    <progress class="progress progress-sm progress-success mt-1 mb-0" value="80" max="100"></progress>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="card-block">
+                                    <div class="media">
+                                        <div class="media-body text-xs-left">
+                                            <h3 class="deep-orange">@ViewBag.month</h3>
+                                            <span>Citas este mes</span>
+                                        </div>
+                                        <div class="media-right media-middle">
+                                            <i class="icon-signal deep-orange font-large-2 float-xs-right"></i>
+                                        </div>
+                                    </div>
+                                    <progress class="progress progress-sm progress-deep-orange mt-1 mb-0" value="35" max="100"></progress>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="card-block">
+                                    <div class="media">
+                                        <div class="media-body text-xs-left">
+                                            <h3 class="info">121</h3>
+                                            <span>Total de clientes</span>
+                                        </div>
+                                        <div class="media-right media-middle">
+                                            <i class="icon-user5 info font-large-2 float-xs-right"></i>
+                                        </div>
+                                    </div>
+                                    <progress class="progress progress-sm progress-info mt-1 mb-0" value="35" max="100"></progress>
+                                </div>
+                            </div>
+                        </div>
+                        <hr />
+                        <!--Clima-->
+                        <div class="card no-border box-shadow-0" style="height: 505px;">
+                            <div class="card-body collapse in">
+                                <div class="weather-date position-relative">
+                                    <div class="date-info position-absolute bg-grey bg-lighten-1 white mt-3 p-1 text-xs-center">
+                                        <span class="date block">14</span>
+                                        <span class="month">Nov</span>
+                                    </div>
+                                </div>
+                                <div class="card-block bg-grey bg-lighten-2">
+                                    <ul class="list-inline text-xs-right">
+                                        <li><a data-action="reload"><i class="icon-reload font-medium-4 grey"></i></a></li>
+                                    </ul>
+                                    <div class="animated-weather-icons text-xs-center">
+                                        <svg version="1.1" id="cloudHailAlt" class="climacon climacon_cloudHailAlt climacon-grey climacon-darken-2 height-200" viewBox="15 15 70 70">
+                                            <g class="climacon_iconWrap climacon_iconWrap-cloudHailAlt">
+                                                <g class="climacon_wrapperComponent climacon_wrapperComponent-hailAlt">
+                                                    <g class="climacon_component climacon_component-stroke climacon_component-stroke_hailAlt climacon_component-stroke_hailAlt-left">
+                                                        <circle cx="42" cy="65.498" r="2"></circle>
+                                                    </g>
+                                                    <g class="climacon_component climacon_component-stroke climacon_component-stroke_hailAlt climacon_component-stroke_hailAlt-middle">
+                                                        <circle cx="49.999" cy="65.498" r="2"></circle>
+                                                    </g>
+                                                    <g class="climacon_component climacon_component-stroke climacon_component-stroke_hailAlt climacon_component-stroke_hailAlt-right">
+                                                        <circle cx="57.998" cy="65.498" r="2"></circle>
+                                                    </g>
+                                                    <g class="climacon_component climacon_component-stroke climacon_component-stroke_hailAlt climacon_component-stroke_hailAlt-left">
+                                                        <circle cx="42" cy="65.498" r="2"></circle>
+                                                    </g>
+                                                    <g class="climacon_component climacon_component-stroke climacon_component-stroke_hailAlt climacon_component-stroke_hailAlt-middle">
+                                                        <circle cx="49.999" cy="65.498" r="2"></circle>
+                                                    </g>
+                                                    <g class="climacon_component climacon_component-stroke climacon_component-stroke_hailAlt climacon_component-stroke_hailAlt-right">
+                                                        <circle cx="57.998" cy="65.498" r="2"></circle>
+                                                    </g>
+                                                </g>
+                                                <g class="climacon_wrapperComponent climacon_wrapperComponent-cloud">
+                                                    <path class="climacon_component climacon_component-stroke climacon_component-stroke_cloud" d="M63.999,64.941v-4.381c2.39-1.384,3.999-3.961,3.999-6.92c0-4.417-3.581-8-7.998-8c-1.602,0-3.084,0.48-4.334,1.291c-1.23-5.317-5.974-9.29-11.665-9.29c-6.626,0-11.998,5.372-11.998,11.998c0,3.549,1.55,6.728,3.999,8.924v4.916c-4.776-2.768-7.998-7.922-7.998-13.84c0-8.835,7.162-15.997,15.997-15.997c6.004,0,11.229,3.311,13.966,8.203c0.663-0.113,1.336-0.205,2.033-0.205c6.626,0,11.998,5.372,11.998,12C71.998,58.863,68.656,63.293,63.999,64.941z"></path>
+                                                </g>
+                                            </g>
+                                        </svg>
+                                    </div>
+                                    <div class="weather-details text-xs-center">
+                                        <span class="mt-2 block grey darken-1">Soleado</span>
+                                        <span class="font-medium-4 text-bold-500 grey darken-4">Colima, MX</span>
+                                    </div>
+                                </div>
+                                <div class="card-footer bg-grey bg-darken-3 py-3 no-border">
+                                    <div class="row">
+                                        <div class="col-xs-4 text-xs-center display-table-cell">
+                                            <i class="icon-wind font-large-1 white lighten-3 valign-middle"></i> <span class="white valign-middle">2MPH</span>
+                                        </div>
+                                        <div class="col-xs-4 text-xs-center display-table-cell">
+                                            <i class="icon-sun2 font-large-1 white lighten-3 valign-middle"></i> <span class="white valign-middle">2%</span>
+                                        </div>
+                                        <div class="col-xs-4 text-xs-center display-table-cell">
+                                            <i class="icon-thermometer font-large-1 white lighten-3 valign-middle"></i> <span class="white valign-middle">13.0°</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--end clima-->
+
+                    </div>
+                </div>
+
+
+                <div class="row match-height">
+                    <div class="col-xl-8 col-lg-12">
+                        <div class="card" style="height: 442px;">
+                            <div class="card-header">
+                                <h4 class="card-title">Últimas citas</h4>
+                                <a class="heading-elements-toggle"><i class="icon-ellipsis font-medium-3"></i></a>
+                                <div class="heading-elements">
+                                    <ul class="list-inline mb-0">
+                                        <li><a data-action="reload"><i class="icon-reload"></i></a></li>
+                                        <li><a data-action="expand"><i class="icon-expand2"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <div class="card-block">
+                                    <p>Total paid invoices 240, unpaid 150. <span class="float-xs-right"><a href="project-summary.html" target="_blank">Invoice Summary <i class="icon-arrow-right2"></i></a></span></p>
+                                </div>
+                                <div class="table-responsive">
+                                    <table class="table table-hover mb-0">
+                                        <thead>
+                                            <tr>
+                                                <th>Invoice#</th>
+                                                <th>Customer Name</th>
+                                                <th>Status</th>
+                                                <th>Due</th>
+                                                <th>Amount</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td class="text-truncate"><a href="#">INV-001001</a></td>
+                                                <td class="text-truncate">Elizabeth W.</td>
+                                                <td class="text-truncate"><span class="tag tag-default tag-success">Paid</span></td>
+                                                <td class="text-truncate">10/05/2016</td>
+                                                <td class="text-truncate">$ 1200.00</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-truncate"><a href="#">INV-001012</a></td>
+                                                <td class="text-truncate">Andrew D.</td>
+                                                <td class="text-truncate"><span class="tag tag-default tag-success">Paid</span></td>
+                                                <td class="text-truncate">20/07/2016</td>
+                                                <td class="text-truncate">$ 152.00</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-truncate"><a href="#">INV-001401</a></td>
+                                                <td class="text-truncate">Megan S.</td>
+                                                <td class="text-truncate"><span class="tag tag-default tag-success">Paid</span></td>
+                                                <td class="text-truncate">16/11/2016</td>
+                                                <td class="text-truncate">$ 1450.00</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-truncate"><a href="#">INV-01112</a></td>
+                                                <td class="text-truncate">Doris R.</td>
+                                                <td class="text-truncate"><span class="tag tag-default tag-warning">Overdue</span></td>
+                                                <td class="text-truncate">11/12/2016</td>
+                                                <td class="text-truncate">$ 5685.00</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-truncate"><a href="#">INV-008101</a></td>
+                                                <td class="text-truncate">Walter R.</td>
+                                                <td class="text-truncate"><span class="tag tag-default tag-warning">Overdue</span></td>
+                                                <td class="text-truncate">18/05/2016</td>
+                                                <td class="text-truncate">$ 685.00</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-lg-12">
+                        <div class="card  card-inverse bg-primary" style="height: 438px;">
+                            <div class="card-body">
+                                <div class="card-block sales-growth-chart">
+                                    <div class="chart-title mb-1 text-xs-center">
+                                        <span class="white">Total monthly Sales.</span>
+                                    </div>
+                                    <div id="monthly-sales" class="height-250" style="position: relative; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);"><svg height="250" version="1.1" width="440" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="overflow: hidden; position: relative; left: -0.390625px; top: -0.796875px;"><desc style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">Created with Raphaël 2.1.2</desc><defs style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></defs><text x="42.84375" y="211" text-anchor="end" font-family="sans-serif" font-size="12px" stroke="none" fill="#ffffff" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: end; font-family: sans-serif; font-size: 12px; font-weight: normal;" font-weight="normal"><tspan dy="4" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">0</tspan></text><path fill="none" stroke="#ffffff" d="M55.34375,211H415" stroke-width="0.5" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></path><text x="42.84375" y="164.5" text-anchor="end" font-family="sans-serif" font-size="12px" stroke="none" fill="#ffffff" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: end; font-family: sans-serif; font-size: 12px; font-weight: normal;" font-weight="normal"><tspan dy="4" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">750</tspan></text><path fill="none" stroke="#ffffff" d="M55.34375,164.5H415" stroke-width="0.5" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></path><text x="42.84375" y="118" text-anchor="end" font-family="sans-serif" font-size="12px" stroke="none" fill="#ffffff" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: end; font-family: sans-serif; font-size: 12px; font-weight: normal;" font-weight="normal"><tspan dy="4" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">1,500</tspan></text><path fill="none" stroke="#ffffff" d="M55.34375,118H415" stroke-width="0.5" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></path><text x="42.84375" y="71.5" text-anchor="end" font-family="sans-serif" font-size="12px" stroke="none" fill="#ffffff" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: end; font-family: sans-serif; font-size: 12px; font-weight: normal;" font-weight="normal"><tspan dy="4" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">2,250</tspan></text><path fill="none" stroke="#ffffff" d="M55.34375,71.5H415" stroke-width="0.5" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></path><text x="42.84375" y="25" text-anchor="end" font-family="sans-serif" font-size="12px" stroke="none" fill="#ffffff" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: end; font-family: sans-serif; font-size: 12px; font-weight: normal;" font-weight="normal"><tspan dy="4" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">3,000</tspan></text><path fill="none" stroke="#ffffff" d="M55.34375,25H415" stroke-width="0.5" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></path><text x="400.0143229166667" y="223.5" text-anchor="middle" font-family="sans-serif" font-size="12px" stroke="none" fill="#ffffff" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: middle; font-family: sans-serif; font-size: 12px; font-weight: normal;" font-weight="normal" transform="matrix(1,0,0,1,0,7)"><tspan dy="4" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">Dec</tspan></text><text x="310.10026041666663" y="223.5" text-anchor="middle" font-family="sans-serif" font-size="12px" stroke="none" fill="#ffffff" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: middle; font-family: sans-serif; font-size: 12px; font-weight: normal;" font-weight="normal" transform="matrix(1,0,0,1,0,7)"><tspan dy="4" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">Sep</tspan></text><text x="220.18619791666666" y="223.5" text-anchor="middle" font-family="sans-serif" font-size="12px" stroke="none" fill="#ffffff" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: middle; font-family: sans-serif; font-size: 12px; font-weight: normal;" font-weight="normal" transform="matrix(1,0,0,1,0,7)"><tspan dy="4" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">Jun</tspan></text><text x="130.27213541666669" y="223.5" text-anchor="middle" font-family="sans-serif" font-size="12px" stroke="none" fill="#ffffff" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: middle; font-family: sans-serif; font-size: 12px; font-weight: normal;" font-weight="normal" transform="matrix(1,0,0,1,0,7)"><tspan dy="4" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">Mar</tspan></text><rect x="65.83372395833334" y="97.23" width="8.99140625" height="113.77" rx="0" ry="0" fill="#ffffff" stroke="none" fill-opacity="1" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); fill-opacity: 1;"></rect><rect x="95.80507812500001" y="64.928" width="8.99140625" height="146.072" rx="0" ry="0" fill="#ffffff" stroke="none" fill-opacity="1" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); fill-opacity: 1;"></rect><rect x="125.77643229166668" y="120.542" width="8.99140625" height="90.458" rx="0" ry="0" fill="#ffffff" stroke="none" fill-opacity="1" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); fill-opacity: 1;"></rect><rect x="155.74778645833334" y="131.082" width="8.99140625" height="79.918" rx="0" ry="0" fill="#ffffff" stroke="none" fill-opacity="1" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); fill-opacity: 1;"></rect><rect x="185.71914062500002" y="108.886" width="8.99140625" height="102.114" rx="0" ry="0" fill="#ffffff" stroke="none" fill-opacity="1" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); fill-opacity: 1;"></rect><rect x="215.69049479166668" y="77.328" width="8.99140625" height="133.672" rx="0" ry="0" fill="#ffffff" stroke="none" fill-opacity="1" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); fill-opacity: 1;"></rect><rect x="245.66184895833334" y="97.23" width="8.99140625" height="113.77" rx="0" ry="0" fill="#ffffff" stroke="none" fill-opacity="1" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); fill-opacity: 1;"></rect><rect x="275.633203125" y="64.928" width="8.99140625" height="146.072" rx="0" ry="0" fill="#ffffff" stroke="none" fill-opacity="1" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); fill-opacity: 1;"></rect><rect x="305.6045572916667" y="120.542" width="8.99140625" height="90.458" rx="0" ry="0" fill="#ffffff" stroke="none" fill-opacity="1" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); fill-opacity: 1;"></rect><rect x="335.57591145833334" y="131.082" width="8.99140625" height="79.918" rx="0" ry="0" fill="#ffffff" stroke="none" fill-opacity="1" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); fill-opacity: 1;"></rect><rect x="365.547265625" y="108.886" width="8.99140625" height="102.114" rx="0" ry="0" fill="#ffffff" stroke="none" fill-opacity="1" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); fill-opacity: 1;"></rect><rect x="395.5186197916667" y="77.328" width="8.99140625" height="133.672" rx="0" ry="0" fill="#ffffff" stroke="none" fill-opacity="1" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); fill-opacity: 1;"></rect></svg><div class="morris-hover morris-default-style" style="display: none;"></div></div>
+                                </div>
+                            </div>
+                            <div class="card-footer text-xs-center">
+                                <div class="chart-stats mt-1 white">
+                                    <a href="#" class="btn bg-primary bg-darken-3 mr-1 white">Statistics <i class="icon-bar-graph"></i></a> for the last year.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+            </section>
+            <!-- // Full calendar basic example section end -->
+        </div>
+    </div>
+</div>
+<style>
+    /*.fc-event {
+        height: 60px !important;
+    }*/
+    .fc-agendaWeek-view tr {
+        height: 50px !important;
+    }
+
+    .fc-agendaDay-view tr {
+        height: 50px !important;
+    }
+</style>
+<!-- ////////////////////////////////////////////////////////////////////////////-->
+<script src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment.min.js'></script>
+<script src='https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+
+
+<script>
+
+    $(document).ready(function () {
+
+
+        var dt = new Date();
+        var today = dt.getFullYear() + "-" + (dt.getMonth() + 1) + "-" + dt.getDate();
+        var locations = @Html.Raw(Json.Encode(offices));
+        console.log(locations);
+        $('#calendar').fullCalendar({
+            //delete
+            eventRender: function (event, element, view) {
+                element.append("<span class='closeon'>X</span>");
+            },
+            /////////////DELETE CITA///////////////
+            eventClick: function (calEvent, jsEvent, view) {
+                swal({
+                    title: '¿Estas seguro?',
+                    text: "No podras recuperar esta cita!",
+                    type: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    cancelButtonText: 'Cancelar',
+                    confirmButtonText: '¡Si, borrarlo!'
+                }).then((result) => {
+                    if (result.value) {
+                        swal({
+                            title: 'Razón o motivo',
+                            input: 'text',
+                            showCancelButton: true,
+                            cancelButtonText: 'Cancelar',
+                            confirmButtonText: 'Aceptar',
+                            showLoaderOnConfirm: true,
+                            preConfirm: (text) => {
+                                return new Promise((resolve) => {
+                                    setTimeout(() => {
+                                        if (text === '') {
+                                            swal.showValidationError(
+                                              'Ingresa un motivo'
+                                            )
+                                        }
+                                        resolve()
+                                    }, 2000)
+                                })
+                            },
+                            allowOutsideClick: true
+                        }).then((result) => {
+                            if (result.value) {
+                                $.ajax({
+                                    type: "Post",
+                                    datatype: "html",
+                                    url: "/Citas/DeleteCita",
+                                    data: {
+                                        uId: calEvent.id,
+                                        razon: result.value
+                                    },
+                                    cache: false,
+                                    success: function (Result) {
+                                        if (Result["TypeOfResponse"] == 0) {
+                                            console.log(calEvent.id);
+                                            $('#calendar').fullCalendar('removeEvents', calEvent.id);
+                                            swal("Bien!", 'La cita de ' + result.value + '<br>' + Result.message , "success")
+                                        }
+                                        if (Result["TypeOfResponse"] == 1) {
+                                            swal("Oops..!", Result["Message"], "error")
+                                        }
+                                    },
+                                    error: function (request, status, error) {
+                                        console.error(request.responseText);
+                                        alert(request.responseText);
+                                    },
+                                    complete: function (xhr, status) {
+                                        //show_Status_Modal_close_(null);
+                                    }
+                                });
+                            }
+                        })
+                    }
+                    else if (result.dismiss === 'cancel') {
+                        swal(
+                          'Cancelado',
+                          'No hemos eliminado tu cita.',
+                          'error'
+                        )
+                    }
+                })
+            },
+            /////////////////DELETE CITA//////////////
+
+
+            allDaySlot: false,
+            minTime: "@ViewBag.start",
+            maxTime: "@ViewBag.end",
+            slotDuration: '00:' + @ViewBag.duration + ':00',
+            header: {
+                left: 'prev,next today',
+                center: 'title',
+                right: 'month,agendaWeek,agendaDay'
+            },
+            monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+            monthNamesShort: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
+            dayNames: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
+            dayNamesShort: ['Dom', 'Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb'],
+            lang: 'es',
+            defaultDate: today,
+            defaultView: 'agendaWeek',
+            editable: true,
+
+            //START AGREGAR NUEVA CITA
+            selectable: true,
+            selectHelper: true,
+            editable: true,
+            select: function (start, end) {
+                end = $.fullCalendar.moment(start);
+                //alert(start.format());
+                //alert(end.format());
+
+                //prompt
+                swal.setDefaults({
+                    input: 'text',
+                    confirmButtonText: 'Siguiente &rarr;',
+                    showCancelButton: true,
+                    cancelButtonText: 'Cancelar',
+                    progressSteps: ['1', '2']
+                })
+
+                var steps = [
+                  {
+                      title: 'Ingresa el nombre',
+                      text: 'Agendar nueva cita'
+                  },
+                  'Ingresa el telefono'
+                ]
+
+                swal.queue(steps).then((result) => {
+                    swal.resetDefaults()
+                    if (result.value[0] === "" || result.value[1] === "" ) {
+                        swal(
+                          'Error!',
+                          'No has llenado los campos requeridos.',
+                          'error'
+                        )
+                        return false;
+                        // result.dismiss can be 'cancel', 'overlay',
+                        // 'close', and 'timer'
+                    }
+                    if (result.value) {
+                        //Ajax
+                        console.log(JSON.stringify(result.value));
+                        //////////ajax/////
+                        console.log("start normal --> " + start);
+                        console.log("start format --> " + start.format())
+                        var data = {
+                            telefono: result.value[1],
+                            title: result.value[0],
+                            cita_date: start.format(),
+                            status_id: 1,
+                            Code: 1
+                        };
+
+                        $.ajax({
+                            type: "Post",
+                            datatype: "html",
+                            url: "/Citas/AddCita",
+                            data: data,
+                            cache: false,
+                            success: function (Result) {
+                                //debugger;
+                                if (Result["TypeOfResponse"] == 0) {
+                                    //Crea el objeto
+                                    console.log(Result["Data"]);
+                                    end.add(@ViewBag.duration, 'minutes');
+
+                                    $('#calendar').fullCalendar('renderEvent',
+                                    {
+                                        id: Result.Objeto.uId,
+                                        title: result.value[0],
+                                        start: start,
+                                        end: end,
+                                        allDay: false
+                                    },
+                                        true // stick the event
+                                    );
+                                    //muestra mensaje
+                                    swal({
+                                        type: 'success',
+                                        title: 'La cita se ha hecho correctamente!',
+                                        timer: 3000,
+                                        html: 'Nombre: ' + Result.Objeto.title +'<br>' + 'Telefono: ' + Result.Objeto.telefono
+                                    })
+                                }
+                                if (Result["TypeOfResponse"] == 1) {
+                                    swal("Oops..!", Result["Message"], "error")
+                                }
+                            },
+                            error: function (request, status, error) {
+                                console.error(request.responseText);
+                                alert(request.responseText);
+                            },
+                            complete: function (xhr, status) {
+                                //show_Status_Modal_close_(null);
+                            }
+                        });
+                    }
+                })
+                //
+                //end select
+                $('#calendar').fullCalendar('unselect');
+            },
+            ////////end nueva cita///////////////
+
+
+            //Events
+
+            events: locations,
+
+
+            //{
+            //    id: 3,
+            //    title: 'Repeating Event',
+            //    start: '2017-12-09T16:00:00',
+            //    end: '2017-12-09T16:30:00'
+            //},
+            //{
+            //    id: 4,
+            //    title: 'Repeating Event',
+            //    start: '2017-12-09T17:00:00',
+            //    end: '2017-12-09T17:30:00'
+            //},
+            //{
+            //    id: 5,
+            //    title: 'Repeating Event',
+            //    start: '2017-12-09T18:00:00',
+            //    end: '2017-12-09T18:30:00'
+            //}
+
+    });
+
+    });
+
+</script>

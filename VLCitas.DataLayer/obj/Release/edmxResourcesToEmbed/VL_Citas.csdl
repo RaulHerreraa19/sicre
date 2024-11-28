@@ -1,0 +1,1455 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="VL_CitasModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="VL_CitasEntities" annotation:LazyLoadingEnabled="true">
+    <FunctionImport Name="Get_TotalCitasByStatusxConsultories" ReturnType="Collection(VL_CitasModel.Get_TotalCitasByStatusxConsultories_Result)">
+      <Parameter Name="off_uId" Mode="In" Type="Guid" />
+    </FunctionImport>
+    <FunctionImport Name="GetCalendarCitas" ReturnType="Collection(VL_CitasModel.GetCalendarCitas_Result)">
+      <Parameter Name="Office_uid" Mode="In" Type="Guid" />
+    </FunctionImport>
+    <FunctionImport Name="GetCitasByStatus" ReturnType="Collection(VL_CitasModel.GetCitasByStatus_Result)">
+      <Parameter Name="off_uId" Mode="In" Type="Guid" />
+    </FunctionImport>
+    <FunctionImport Name="GetCitasByStatusByConsultory" ReturnType="Collection(VL_CitasModel.GetCitasByStatusByConsultory_Result)">
+      <Parameter Name="consultory_uId" Mode="In" Type="Guid" />
+    </FunctionImport>
+    <FunctionImport Name="GetCountCitasByConsultory" ReturnType="Collection(VL_CitasModel.GetCountCitasByConsultory_Result)">
+      <Parameter Name="off_uId" Mode="In" Type="Guid" />
+    </FunctionImport>
+    <FunctionImport Name="GetGananciaByMonth" ReturnType="Collection(VL_CitasModel.GetGananciaByMonth_Result)">
+      <Parameter Name="off_uId" Mode="In" Type="Guid" />
+    </FunctionImport>
+    <FunctionImport Name="GetGananciaByMonthByConsultory" ReturnType="Collection(VL_CitasModel.GetGananciaByMonthByConsultory_Result)">
+      <Parameter Name="dep_uId" Mode="In" Type="Guid" />
+    </FunctionImport>
+    <FunctionImport Name="GetInvoicesByOfficeConsultory" ReturnType="Collection(VL_CitasModel.GetInvoicesByOfficeConsultory_Result)">
+      <Parameter Name="off_uId" Mode="In" Type="Guid" />
+    </FunctionImport>
+    <FunctionImport Name="GetInvoicesCitasByConsultory" ReturnType="Collection(VL_CitasModel.GetInvoicesCitasByConsultory_Result)">
+      <Parameter Name="consultory_uId" Mode="In" Type="Guid" />
+    </FunctionImport>
+    <FunctionImport Name="GetLastCitas" ReturnType="Collection(VL_CitasModel.GetLastCitas_Result)">
+      <Parameter Name="consultory_uId" Mode="In" Type="Guid" />
+    </FunctionImport>
+    <FunctionImport Name="GetMonthCitas" ReturnType="Collection(VL_CitasModel.GetMonthCitas_Result)">
+      <Parameter Name="off_uId" Mode="In" Type="Guid" />
+    </FunctionImport>
+    <FunctionImport Name="GetMonthCitasByConsultory" ReturnType="Collection(VL_CitasModel.GetMonthCitasByConsultory_Result)">
+      <Parameter Name="consultory_uId" Mode="In" Type="Guid" />
+    </FunctionImport>
+    <FunctionImport Name="GetScheduleByConsultory" ReturnType="Collection(VL_CitasModel.GetScheduleByConsultory_Result)">
+      <Parameter Name="consultory_uId" Mode="In" Type="Guid" />
+      <Parameter Name="office_uid" Mode="In" Type="Guid" />
+    </FunctionImport>
+    <FunctionImport Name="GetScheduleByOfficeAndDoctor" ReturnType="Collection(VL_CitasModel.GetScheduleByOfficeAndDoctor_Result)">
+      <Parameter Name="user_uId" Mode="In" Type="Guid" />
+    </FunctionImport>
+    <FunctionImport Name="Reports_GetCitasByDays" ReturnType="Collection(VL_CitasModel.Reports_GetCitasByDays_Result)">
+      <Parameter Name="off_uId" Mode="In" Type="Guid" />
+      <Parameter Name="doctor_uId" Mode="In" Type="Guid" />
+      <Parameter Name="start_date" Mode="In" Type="DateTime" />
+      <Parameter Name="end_date" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="Reports_GetCitasByStatus" ReturnType="Collection(VL_CitasModel.Reports_GetCitasByStatus_Result)">
+      <Parameter Name="off_uId" Mode="In" Type="Guid" />
+      <Parameter Name="doctor_uId" Mode="In" Type="Guid" />
+      <Parameter Name="start_date" Mode="In" Type="DateTime" />
+      <Parameter Name="end_date" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="Reports_GetSummaryHeader" ReturnType="Collection(VL_CitasModel.Reports_GetSummaryHeader_Result)">
+      <Parameter Name="off_uId" Mode="In" Type="Guid" />
+      <Parameter Name="doctor_uId" Mode="In" Type="Guid" />
+      <Parameter Name="start_date" Mode="In" Type="DateTime" />
+      <Parameter Name="end_date" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="Reports_ServicesSummary" ReturnType="Collection(VL_CitasModel.Reports_ServicesSummary_Result)">
+      <Parameter Name="off_uId" Mode="In" Type="Guid" />
+      <Parameter Name="doctor_uId" Mode="In" Type="Guid" />
+      <Parameter Name="start_date" Mode="In" Type="DateTime" />
+      <Parameter Name="end_date" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="SP_Horario_By_Doctor_Office" ReturnType="Collection(VL_CitasModel.SP_Horario_By_Doctor_Office_Result)">
+      <Parameter Name="user_uId" Mode="In" Type="Guid" />
+      <Parameter Name="office_uId" Mode="In" Type="Guid" />
+      <Parameter Name="fecha" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="SP_Horario_DisponibleByDoctor" ReturnType="Collection(VL_CitasModel.SP_Horario_DisponibleByDoctor_Result)">
+      <Parameter Name="offie_uId" Mode="In" Type="Guid" />
+      <Parameter Name="doctor_uId" Mode="In" Type="Guid" />
+      <Parameter Name="fecha" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="SPE_GananciaByMonthConsultory" ReturnType="Collection(VL_CitasModel.SPE_GananciaByMonthConsultory_Result)">
+      <Parameter Name="con_uId" Mode="In" Type="Guid" />
+    </FunctionImport>
+    <FunctionImport Name="SPE_GananciaXMes" ReturnType="Collection(VL_CitasModel.SPE_GananciaXMes_Result)">
+      <Parameter Name="consultory_uId" Mode="In" Type="Guid" />
+    </FunctionImport>
+    <FunctionImport Name="SPE_LAST30DAYS" ReturnType="Collection(VL_CitasModel.SPE_LAST30DAYS_Result)">
+      <Parameter Name="consultory_uId" Mode="In" Type="Guid" />
+    </FunctionImport>
+    <FunctionImport Name="SPE_LASTSIXMONTHS" ReturnType="Collection(VL_CitasModel.SPE_LASTSIXMONTHS_Result)">
+      <Parameter Name="consultory_uId" Mode="In" Type="Guid" />
+    </FunctionImport>
+    <FunctionImport Name="SPR_Ganancia_Mes" ReturnType="Collection(VL_CitasModel.SPR_Ganancia_Mes_Result)">
+      <Parameter Name="consultory_uId" Mode="In" Type="Guid" />
+      <Parameter Name="start" Mode="In" Type="DateTime" />
+      <Parameter Name="ended" Mode="In" Type="DateTime" />
+      <Parameter Name="id_user" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="SPR_GetLastDataThisMonth" ReturnType="Collection(VL_CitasModel.SPR_GetLastDataThisMonth_Result)">
+      <Parameter Name="consultory_uId" Mode="In" Type="Guid" />
+    </FunctionImport>
+    <FunctionImport Name="SPR_Servicio_Cantidad" ReturnType="Collection(VL_CitasModel.SPR_Servicio_Cantidad_Result)">
+      <Parameter Name="consultory_uId" Mode="In" Type="Guid" />
+      <Parameter Name="start" Mode="In" Type="DateTime" />
+      <Parameter Name="ended" Mode="In" Type="DateTime" />
+      <Parameter Name="id_user" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="SPR_TotalCYGanancia" ReturnType="Collection(VL_CitasModel.SPR_TotalCYGanancia_Result)">
+      <Parameter Name="consultory_uId" Mode="In" Type="Guid" />
+      <Parameter Name="start" Mode="In" Type="DateTime" />
+      <Parameter Name="ended" Mode="In" Type="DateTime" />
+      <Parameter Name="id_user" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <EntitySet Name="Consultory" EntityType="VL_CitasModel.Consultory" />
+    <EntitySet Name="Consultory_Status" EntityType="VL_CitasModel.Consultory_Status" />
+    <EntitySet Name="Customers" EntityType="VL_CitasModel.Customers" />
+    <EntitySet Name="Customers_Status" EntityType="VL_CitasModel.Customers_Status" />
+    <EntitySet Name="Doctor_Configs" EntityType="VL_CitasModel.Doctor_Configs" />
+    <EntitySet Name="Module" EntityType="VL_CitasModel.Module" />
+    <EntitySet Name="Offices" EntityType="VL_CitasModel.Offices" />
+    <EntitySet Name="Offices_Configuration" EntityType="VL_CitasModel.Offices_Configuration" />
+    <EntitySet Name="Offices_Status" EntityType="VL_CitasModel.Offices_Status" />
+    <EntitySet Name="Offices_Users" EntityType="VL_CitasModel.Offices_Users" />
+    <EntitySet Name="Paciente" EntityType="VL_CitasModel.Paciente" />
+    <EntitySet Name="Patient_Prescriptions" EntityType="VL_CitasModel.Patient_Prescriptions" />
+    <EntitySet Name="Prescriptions" EntityType="VL_CitasModel.Prescriptions" />
+    <EntitySet Name="Reports" EntityType="VL_CitasModel.Reports" />
+    <EntitySet Name="Roles" EntityType="VL_CitasModel.Roles" />
+    <EntitySet Name="Roles_Status" EntityType="VL_CitasModel.Roles_Status" />
+    <EntitySet Name="Schedule" EntityType="VL_CitasModel.Schedule" />
+    <EntitySet Name="Sex" EntityType="VL_CitasModel.Sex" />
+    <EntitySet Name="Specialties" EntityType="VL_CitasModel.Specialties" />
+    <EntitySet Name="Status_Citas" EntityType="VL_CitasModel.Status_Citas" />
+    <EntitySet Name="TimeZones" EntityType="VL_CitasModel.TimeZones" />
+    <EntitySet Name="Users" EntityType="VL_CitasModel.Users" />
+    <EntitySet Name="Users_Status" EntityType="VL_CitasModel.Users_Status" />
+    <EntitySet Name="Vacations" EntityType="VL_CitasModel.Vacations" />
+    <EntitySet Name="Vw_Doctor_Information" EntityType="VL_CitasModel.Vw_Doctor_Information" />
+    <EntitySet Name="VW_Doctor_Schedules" EntityType="VL_CitasModel.VW_Doctor_Schedules" />
+    <EntitySet Name="VW_User_Office_Rol" EntityType="VL_CitasModel.VW_User_Office_Rol" />
+    <EntitySet Name="VW_User_Roles" EntityType="VL_CitasModel.VW_User_Roles" />
+    <AssociationSet Name="FK__Departame__offic__5EBF139D" Association="VL_CitasModel.FK__Departame__offic__5EBF139D">
+      <End Role="Offices" EntitySet="Offices" />
+      <End Role="Consultory" EntitySet="Consultory" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Departame__statu__5FB337D6" Association="VL_CitasModel.FK__Departame__statu__5FB337D6">
+      <End Role="Consultory_Status" EntitySet="Consultory_Status" />
+      <End Role="Consultory" EntitySet="Consultory" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Customers__statu__5DCAEF64" Association="VL_CitasModel.FK__Customers__statu__5DCAEF64">
+      <End Role="Customers_Status" EntitySet="Customers_Status" />
+      <End Role="Customers" EntitySet="Customers" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Offices__custome__6383C8BA" Association="VL_CitasModel.FK__Offices__custome__6383C8BA">
+      <End Role="Customers" EntitySet="Customers" />
+      <End Role="Offices" EntitySet="Offices" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Users_Doctor_id" Association="VL_CitasModel.FK_Users_Doctor_id">
+      <End Role="Doctor_Configs" EntitySet="Doctor_Configs" />
+      <End Role="Users" EntitySet="Users" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Departame__ofici__60A75C0F" Association="VL_CitasModel.FK__Departame__ofici__60A75C0F">
+      <End Role="Offices" EntitySet="Offices" />
+      <End Role="Schedule" EntitySet="Schedule" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Offices__status___6477ECF3" Association="VL_CitasModel.FK__Offices__status___6477ECF3">
+      <End Role="Offices_Status" EntitySet="Offices_Status" />
+      <End Role="Offices" EntitySet="Offices" />
+    </AssociationSet>
+    <AssociationSet Name="Fk_office_configuration_id" Association="VL_CitasModel.Fk_office_configuration_id">
+      <End Role="Offices_Configuration" EntitySet="Offices_Configuration" />
+      <End Role="Offices" EntitySet="Offices" />
+    </AssociationSet>
+    <AssociationSet Name="FK_office_user_uid" Association="VL_CitasModel.FK_office_user_uid">
+      <End Role="Offices" EntitySet="Offices" />
+      <End Role="Offices_Users" EntitySet="Offices_Users" />
+    </AssociationSet>
+    <AssociationSet Name="FK_config_time_zone_id" Association="VL_CitasModel.FK_config_time_zone_id">
+      <End Role="TimeZones" EntitySet="TimeZones" />
+      <End Role="Offices_Configuration" EntitySet="Offices_Configuration" />
+    </AssociationSet>
+    <AssociationSet Name="FK_prescription_id" Association="VL_CitasModel.FK_prescription_id">
+      <End Role="Prescriptions" EntitySet="Prescriptions" />
+      <End Role="Offices_Users" EntitySet="Offices_Users" />
+    </AssociationSet>
+    <AssociationSet Name="FK_user_office_uid" Association="VL_CitasModel.FK_user_office_uid">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Offices_Users" EntitySet="Offices_Users" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Patient_Prescription" Association="VL_CitasModel.FK_Patient_Prescription">
+      <End Role="Paciente" EntitySet="Paciente" />
+      <End Role="Patient_Prescriptions" EntitySet="Patient_Prescriptions" />
+    </AssociationSet>
+    <AssociationSet Name="fk_sex_patient" Association="VL_CitasModel.fk_sex_patient">
+      <End Role="Sex" EntitySet="Sex" />
+      <End Role="Paciente" EntitySet="Paciente" />
+    </AssociationSet>
+    <AssociationSet Name="FK_User_Prescription" Association="VL_CitasModel.FK_User_Prescription">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Patient_Prescriptions" EntitySet="Patient_Prescriptions" />
+    </AssociationSet>
+    <AssociationSet Name="fk_repotrs_roles" Association="VL_CitasModel.fk_repotrs_roles">
+      <End Role="Roles" EntitySet="Roles" />
+      <End Role="Reports" EntitySet="Reports" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Roles__status_id__656C112C" Association="VL_CitasModel.FK__Roles__status_id__656C112C">
+      <End Role="Roles_Status" EntitySet="Roles_Status" />
+      <End Role="Roles" EntitySet="Roles" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Users__status_id__73BA3083" Association="VL_CitasModel.FK__Users__status_id__73BA3083">
+      <End Role="Users_Status" EntitySet="Users_Status" />
+      <End Role="Users" EntitySet="Users" />
+    </AssociationSet>
+    <AssociationSet Name="fk_vacations_usr" Association="VL_CitasModel.fk_vacations_usr">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Vacations" EntitySet="Vacations" />
+    </AssociationSet>
+    <AssociationSet Name="Office_Users_Schedules" Association="VL_CitasModel.Office_Users_Schedules">
+      <End Role="Schedule" EntitySet="Schedule" />
+      <End Role="Offices_Users" EntitySet="Offices_Users" />
+    </AssociationSet>
+    <AssociationSet Name="Roles_Module" Association="VL_CitasModel.Roles_Module">
+      <End Role="Roles" EntitySet="Roles" />
+      <End Role="Module" EntitySet="Module" />
+    </AssociationSet>
+    <AssociationSet Name="Roles_Office_Users" Association="VL_CitasModel.Roles_Office_Users">
+      <End Role="Roles" EntitySet="Roles" />
+      <End Role="Offices_Users" EntitySet="Offices_Users" />
+    </AssociationSet>
+    <AssociationSet Name="Users_Consultories" Association="VL_CitasModel.Users_Consultories">
+      <End Role="Consultory" EntitySet="Consultory" />
+      <End Role="Users" EntitySet="Users" />
+    </AssociationSet>
+    <AssociationSet Name="Users_Customers" Association="VL_CitasModel.Users_Customers">
+      <End Role="Customers" EntitySet="Customers" />
+      <End Role="Users" EntitySet="Users" />
+    </AssociationSet>
+    <AssociationSet Name="Doctor_Specialties" Association="VL_CitasModel.Doctor_Specialties">
+      <End Role="Specialties" EntitySet="Specialties" />
+      <End Role="Doctor_Configs" EntitySet="Doctor_Configs" />
+    </AssociationSet>
+    <EntitySet Name="Citas" EntityType="VL_CitasModel.Citas" />
+    <EntitySet Name="Medicine_citas" EntityType="VL_CitasModel.Medicine_citas" />
+    <EntitySet Name="Servicios" EntityType="VL_CitasModel.Servicios" />
+    <AssociationSet Name="FK__Citas__status_id__06CD04F7" Association="VL_CitasModel.FK__Citas__status_id__06CD04F7">
+      <End Role="Status_Citas" EntitySet="Status_Citas" />
+      <End Role="Citas" EntitySet="Citas" />
+    </AssociationSet>
+    <AssociationSet Name="fk_cita_departament" Association="VL_CitasModel.fk_cita_departament">
+      <End Role="Consultory" EntitySet="Consultory" />
+      <End Role="Citas" EntitySet="Citas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Citas_Paciente_id" Association="VL_CitasModel.FK_Citas_Paciente_id">
+      <End Role="Paciente" EntitySet="Paciente" />
+      <End Role="Citas" EntitySet="Citas" />
+    </AssociationSet>
+    <AssociationSet Name="fk_citas_uiddoctor" Association="VL_CitasModel.fk_citas_uiddoctor">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Citas" EntitySet="Citas" />
+    </AssociationSet>
+    <AssociationSet Name="fk_mc_cita" Association="VL_CitasModel.fk_mc_cita">
+      <End Role="Citas" EntitySet="Citas" />
+      <End Role="Medicine_citas" EntitySet="Medicine_citas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_servicios_usuario" Association="VL_CitasModel.FK_servicios_usuario">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Servicios" EntitySet="Servicios" />
+    </AssociationSet>
+    <AssociationSet Name="Citas_servicios" Association="VL_CitasModel.Citas_servicios">
+      <End Role="Citas" EntitySet="Citas" />
+      <End Role="Servicios" EntitySet="Servicios" />
+    </AssociationSet>
+    <FunctionImport Name="GetCitasByDoctor" ReturnType="Collection(VL_CitasModel.GetCitasByDoctor_Result)">
+      <Parameter Name="user_uId" Mode="In" Type="Guid" />
+    </FunctionImport>
+    <FunctionImport Name="GetCitasByConsultory" ReturnType="Collection(VL_CitasModel.GetCitasByConsultory_Result)">
+      <Parameter Name="consultory_uId" Mode="In" Type="Guid" />
+    </FunctionImport>
+    <EntitySet Name="payment_types" EntityType="VL_CitasModel.payment_types" />
+    <EntitySet Name="payments" EntityType="VL_CitasModel.payments" />
+    <AssociationSet Name="fk_pc_cita" Association="VL_CitasModel.fk_pc_cita">
+      <End Role="Citas" EntitySet="Citas" />
+      <End Role="payments" EntitySet="payments" />
+    </AssociationSet>
+    <AssociationSet Name="fk_pc_type" Association="VL_CitasModel.fk_pc_type">
+      <End Role="payment_types" EntitySet="payment_types" />
+      <End Role="payments" EntitySet="payments" />
+    </AssociationSet>
+    <FunctionImport Name="SPR_HistorialAsistente" ReturnType="Collection(VL_CitasModel.SPR_HistorialAsistente_Result)">
+      <Parameter Name="user_uid" Mode="In" Type="Guid" />
+      <Parameter Name="startdt" Mode="In" Type="DateTime" />
+      <Parameter Name="enddt" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="Reports_GetSummaryHeaderAsistente" ReturnType="Collection(VL_CitasModel.Reports_GetSummaryHeaderAsistente_Result)">
+      <Parameter Name="off_uId" Mode="In" Type="Guid" />
+      <Parameter Name="assistant_uId" Mode="In" Type="Guid" />
+      <Parameter Name="start_date" Mode="In" Type="DateTime" />
+      <Parameter Name="end_date" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="SP_Reportes_AdmByStatus" ReturnType="Collection(VL_CitasModel.SP_Reportes_AdmByStatus_Result)">
+      <Parameter Name="off_uId" Mode="In" Type="Guid" />
+      <Parameter Name="start_date" Mode="In" Type="DateTime" />
+      <Parameter Name="end_date" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="SP_Reportes_AdmSumamry" ReturnType="Collection(VL_CitasModel.SP_Reportes_AdmSumamry_Result)">
+      <Parameter Name="off_uId" Mode="In" Type="Guid" />
+      <Parameter Name="start_date" Mode="In" Type="DateTime" />
+      <Parameter Name="end_date" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="SP_Reportes_AdmByAsistente" ReturnType="Collection(VL_CitasModel.SP_Reportes_AdmByAsistente_Result)">
+      <Parameter Name="off_uId" Mode="In" Type="Guid" />
+      <Parameter Name="start_date" Mode="In" Type="DateTime" />
+      <Parameter Name="end_date" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="SP_Reportes_AdmByDoctor" ReturnType="Collection(VL_CitasModel.SP_Reportes_AdmByDoctor_Result)">
+      <Parameter Name="off_uId" Mode="In" Type="Guid" />
+      <Parameter Name="start_date" Mode="In" Type="DateTime" />
+      <Parameter Name="end_date" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <AssociationSet Name="fk_pd_user_uid" Association="VL_CitasModel.fk_pd_user_uid">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Paciente" EntitySet="Paciente" />
+    </AssociationSet>
+    <FunctionImport Name="SP_Reportes_RevenueAssistByDoctor" ReturnType="Collection(VL_CitasModel.SP_Reportes_RevenueAssistByDoctor_Result)">
+      <Parameter Name="assistant_uId" Mode="In" Type="Guid" />
+      <Parameter Name="start_date" Mode="In" Type="DateTime" />
+      <Parameter Name="end_date" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="SP_Reportes_RevenueAssistByPaymentMethod" ReturnType="Collection(VL_CitasModel.SP_Reportes_RevenueAssistByPaymentMethod_Result)">
+      <Parameter Name="assistant_uId" Mode="In" Type="Guid" />
+      <Parameter Name="start_date" Mode="In" Type="DateTime" />
+      <Parameter Name="end_date" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="SP_Reportes_RevenueTodayAssitant" ReturnType="Collection(Decimal)">
+      <Parameter Name="assistant_uId" Mode="In" Type="Guid" />
+      <Parameter Name="start_date" Mode="In" Type="DateTime" />
+      <Parameter Name="end_date" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="SP_Reportes_RevenueTodayDoctor" ReturnType="Collection(Decimal)">
+      <Parameter Name="doctor_uId" Mode="In" Type="Guid" />
+      <Parameter Name="start_date" Mode="In" Type="DateTime" />
+      <Parameter Name="end_date" Mode="In" Type="DateTime" />
+    </FunctionImport>
+  </EntityContainer>
+  <ComplexType Name="Get_TotalCitasByStatusxConsultories_Result">
+    <Property Type="Guid" Name="uId" Nullable="false" />
+    <Property Type="String" Name="name" Nullable="true" MaxLength="60" />
+    <Property Type="String" Name="image_url" Nullable="true" MaxLength="255" />
+    <Property Type="Int32" Name="agendadas" Nullable="true" />
+    <Property Type="Int32" Name="canceladas" Nullable="true" />
+    <Property Type="Int32" Name="completadas" Nullable="true" />
+    <Property Type="Int32" Name="confirmadas" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="GetCalendarCitas_Result">
+    <Property Type="Guid" Name="id" Nullable="false" />
+    <Property Type="String" Name="title" Nullable="true" MaxLength="255" />
+    <Property Type="DateTime" Name="start" Nullable="true" Precision="23" />
+    <Property Type="DateTime" Name="end" Nullable="true" Precision="23" />
+  </ComplexType>
+  <ComplexType Name="GetCitasByStatus_Result">
+    <Property Type="String" Name="status" Nullable="true" MaxLength="100" />
+    <Property Type="Int32" Name="ncitas" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="GetCitasByStatusByConsultory_Result">
+    <Property Type="String" Name="status" Nullable="true" MaxLength="100" />
+    <Property Type="Int32" Name="y" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="GetCountCitasByConsultory_Result">
+    <Property Type="String" Name="name" Nullable="true" MaxLength="60" />
+    <Property Type="Int32" Name="ncitas" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="GetGananciaByMonth_Result">
+    <Property Type="String" Name="name" Nullable="true" MaxLength="30" />
+    <Property Type="Decimal" Name="y" Nullable="true" Precision="19" />
+  </ComplexType>
+  <ComplexType Name="GetGananciaByMonthByConsultory_Result">
+    <Property Type="String" Name="name" Nullable="true" MaxLength="30" />
+    <Property Type="Decimal" Name="y" Nullable="true" Precision="19" />
+  </ComplexType>
+  <ComplexType Name="GetInvoicesByOfficeConsultory_Result">
+    <Property Type="Guid" Name="cita_uId" Nullable="false" />
+    <Property Type="String" Name="dep_name" Nullable="true" MaxLength="60" />
+    <Property Type="Guid" Name="dep_uId" Nullable="false" />
+    <Property Type="String" Name="title" Nullable="true" MaxLength="255" />
+    <Property Type="Int32" Name="status_id" Nullable="true" />
+    <Property Type="DateTime" Name="cita_date" Nullable="true" Precision="23" />
+    <Property Type="Decimal" Name="precio" Nullable="true" Precision="19" />
+    <Property Type="String" Name="razon" Nullable="true" MaxLength="255" />
+  </ComplexType>
+  <ComplexType Name="GetInvoicesCitasByConsultory_Result">
+    <Property Type="Guid" Name="cita_uId" Nullable="false" />
+    <Property Type="Guid" Name="dep_uId" Nullable="false" />
+    <Property Type="String" Name="title" Nullable="true" MaxLength="255" />
+    <Property Type="Int32" Name="status_id" Nullable="true" />
+    <Property Type="DateTime" Name="cita_date" Nullable="true" Precision="23" />
+    <Property Type="Decimal" Name="precio" Nullable="true" Precision="19" />
+    <Property Type="String" Name="razon" Nullable="true" MaxLength="255" />
+  </ComplexType>
+  <ComplexType Name="GetLastCitas_Result">
+    <Property Type="Guid" Name="cita_uId" Nullable="false" />
+    <Property Type="Guid" Name="dep_uId" Nullable="true" />
+    <Property Type="String" Name="title" Nullable="true" MaxLength="255" />
+    <Property Type="Int32" Name="status_id" Nullable="true" />
+    <Property Type="DateTime" Name="cita_date" Nullable="true" Precision="23" />
+    <Property Type="Decimal" Name="precio" Nullable="false" Precision="19" />
+    <Property Type="String" Name="razon" Nullable="false" MaxLength="255" />
+  </ComplexType>
+  <ComplexType Name="GetMonthCitas_Result">
+    <Property Type="String" Name="MonthName" Nullable="true" MaxLength="30" />
+    <Property Type="Int32" Name="ncitas" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="GetMonthCitasByConsultory_Result">
+    <Property Type="String" Name="MonthName" Nullable="true" MaxLength="30" />
+    <Property Type="Int32" Name="ncitas" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="GetScheduleByConsultory_Result">
+    <Property Type="Boolean" Name="lunes" Nullable="true" />
+    <Property Type="Boolean" Name="martes" Nullable="true" />
+    <Property Type="Boolean" Name="miercoles" Nullable="true" />
+    <Property Type="Boolean" Name="jueves" Nullable="true" />
+    <Property Type="Boolean" Name="viernes" Nullable="true" />
+    <Property Type="Boolean" Name="sabado" Nullable="true" />
+    <Property Type="Boolean" Name="domingo" Nullable="true" />
+    <Property Type="Time" Name="start_hour" Nullable="true" />
+    <Property Type="Time" Name="end_hour" Nullable="true" />
+    <Property Type="Guid" Name="office_uId" Nullable="false" />
+    <Property Type="String" Name="office_name" Nullable="true" MaxLength="60" />
+  </ComplexType>
+  <ComplexType Name="GetScheduleByOfficeAndDoctor_Result">
+    <Property Type="Boolean" Name="lunes" Nullable="true" />
+    <Property Type="Boolean" Name="martes" Nullable="true" />
+    <Property Type="Boolean" Name="miercoles" Nullable="true" />
+    <Property Type="Boolean" Name="jueves" Nullable="true" />
+    <Property Type="Boolean" Name="viernes" Nullable="true" />
+    <Property Type="Boolean" Name="sabado" Nullable="true" />
+    <Property Type="Boolean" Name="domingo" Nullable="true" />
+    <Property Type="Time" Name="start_hour" Nullable="true" />
+    <Property Type="Time" Name="end_hour" Nullable="true" />
+    <Property Type="Guid" Name="office_uId" Nullable="false" />
+    <Property Type="String" Name="office_name" Nullable="true" MaxLength="60" />
+  </ComplexType>
+  <ComplexType Name="Reports_GetCitasByDays_Result">
+    <Property Type="String" Name="dia" Nullable="true" MaxLength="10" />
+    <Property Type="Int32" Name="count" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="Reports_GetCitasByStatus_Result">
+    <Property Type="String" Name="status" Nullable="true" MaxLength="255" />
+    <Property Type="Int32" Name="count" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="Reports_GetSummaryHeader_Result">
+    <Property Type="Decimal" Name="revenue" Nullable="true" Precision="19" />
+    <Property Type="Int32" Name="citas" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="Reports_ServicesSummary_Result">
+    <Property Type="String" Name="name" Nullable="true" MaxLength="255" />
+    <Property Type="Int32" Name="quantity" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="SP_Horario_By_Doctor_Office_Result">
+    <Property Type="Time" Name="MyHour" Nullable="true" />
+    <Property Type="Int32" Name="OrderCount" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="SP_Horario_DisponibleByDoctor_Result">
+    <Property Type="Time" Name="MyHour" Nullable="true" />
+    <Property Type="Int32" Name="OrderCount" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="SPE_GananciaByMonthConsultory_Result">
+    <Property Type="Int32" Name="name" Nullable="true" />
+    <Property Type="Decimal" Name="y" Nullable="false" Precision="19" />
+  </ComplexType>
+  <ComplexType Name="SPE_GananciaXMes_Result">
+    <Property Type="String" Name="name" Nullable="true" MaxLength="100" />
+    <Property Type="Int32" Name="y" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="SPE_LAST30DAYS_Result">
+    <Property Type="DateTime" Name="fecha" Nullable="true" Precision="23" />
+    <Property Type="Int32" Name="Agendadas" Nullable="true" />
+    <Property Type="Int32" Name="Completadas" Nullable="true" />
+    <Property Type="Int32" Name="Canceladas" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="SPE_LASTSIXMONTHS_Result">
+    <Property Type="Int32" Name="MES" Nullable="true" />
+    <Property Type="Int32" Name="Agendadas" Nullable="true" />
+    <Property Type="Int32" Name="Completadas" Nullable="true" />
+    <Property Type="Int32" Name="Canceladas" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="SPR_Ganancia_Mes_Result">
+    <Property Type="String" Name="name" Nullable="true" MaxLength="100" />
+    <Property Type="Int32" Name="y" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="SPR_GetLastDataThisMonth_Result">
+    <Property Type="DateTime" Name="fecha" Nullable="true" Precision="23" />
+    <Property Type="Int32" Name="ncitas" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="SPR_Servicio_Cantidad_Result">
+    <Property Type="String" Name="name" Nullable="true" MaxLength="255" />
+    <Property Type="Int32" Name="total" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="SPR_TotalCYGanancia_Result">
+    <Property Type="DateTime" Name="fecha" Nullable="true" Precision="23" />
+    <Property Type="String" Name="status" Nullable="true" MaxLength="100" />
+    <Property Type="Int32" Name="status_id" Nullable="true" />
+    <Property Type="String" Name="observaciones" Nullable="false" />
+    <Property Type="String" Name="observaciones_asistente" Nullable="false" />
+    <Property Type="Decimal" Name="precio" Nullable="true" Precision="19" />
+  </ComplexType>
+  <EntityType Name="Consultory">
+    <Key>
+      <PropertyRef Name="uId" />
+    </Key>
+    <Property Name="uId" Type="Guid" Nullable="false" />
+    <Property Name="name" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+    <Property Name="description" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="office_uId" Type="Guid" />
+    <Property Name="alias" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="status_id" Type="Int32" />
+    <Property Name="image_url" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="create_date" Type="DateTime" Precision="3" />
+    <Property Name="update_date" Type="DateTime" Precision="3" />
+    <Property Name="serie" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Name="allow_citas" Type="Boolean" />
+    <Property Name="allow_turn" Type="Boolean" />
+    <Property Name="time_prom" Type="Int32" />
+    <NavigationProperty Name="Offices" Relationship="VL_CitasModel.FK__Departame__offic__5EBF139D" FromRole="Consultory" ToRole="Offices" />
+    <NavigationProperty Name="Consultory_Status" Relationship="VL_CitasModel.FK__Departame__statu__5FB337D6" FromRole="Consultory" ToRole="Consultory_Status" />
+    <NavigationProperty Name="Users" Relationship="VL_CitasModel.Users_Consultories" FromRole="Consultory" ToRole="Users" />
+    <NavigationProperty Name="Citas" Relationship="VL_CitasModel.fk_cita_departament" FromRole="Consultory" ToRole="Citas" />
+    <Property Name="allow_multiple" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="Consultory_Status">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="description" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Consultory" Relationship="VL_CitasModel.FK__Departame__statu__5FB337D6" FromRole="Consultory_Status" ToRole="Consultory" />
+  </EntityType>
+  <EntityType Name="Customers">
+    <Key>
+      <PropertyRef Name="uId" />
+    </Key>
+    <Property Name="uId" Type="Guid" Nullable="false" />
+    <Property Name="name" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+    <Property Name="address" Type="String" MaxLength="75" FixedLength="false" Unicode="false" />
+    <Property Name="alias" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="image_url" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="website" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="phone" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="status_id" Type="Int32" />
+    <Property Name="create_date" Type="DateTime" Precision="3" />
+    <Property Name="update_date" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Customers_Status" Relationship="VL_CitasModel.FK__Customers__statu__5DCAEF64" FromRole="Customers" ToRole="Customers_Status" />
+    <NavigationProperty Name="Offices" Relationship="VL_CitasModel.FK__Offices__custome__6383C8BA" FromRole="Customers" ToRole="Offices" />
+    <NavigationProperty Name="Users" Relationship="VL_CitasModel.Users_Customers" FromRole="Customers" ToRole="Users" />
+  </EntityType>
+  <EntityType Name="Customers_Status">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="description" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Customers" Relationship="VL_CitasModel.FK__Customers__statu__5DCAEF64" FromRole="Customers_Status" ToRole="Customers" />
+  </EntityType>
+  <EntityType Name="Doctor_Configs">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="professional_license" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="resume" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="job_description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="logo1" Type="Int32" />
+    <Property Name="logo2" Type="Int32" />
+    <Property Name="logo3" Type="Int32" />
+    <Property Name="logo4" Type="Int32" />
+    <Property Name="facebook" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="twitter" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="instagram" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="webpage" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="has_attachements" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Users" Relationship="VL_CitasModel.FK_Users_Doctor_id" FromRole="Doctor_Configs" ToRole="Users" />
+    <NavigationProperty Name="Specialties" Relationship="VL_CitasModel.Doctor_Specialties" FromRole="Doctor_Configs" ToRole="Specialties" />
+  </EntityType>
+  <EntityType Name="Module">
+    <Key>
+      <PropertyRef Name="idmodules" />
+    </Key>
+    <Property Name="idmodules" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="codemodules" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="namemodules" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="parentmenuid" Type="Int32" Nullable="false" />
+    <Property Name="ordernumber" Type="Int32" Nullable="false" />
+    <Property Name="menuurl" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="menuicon" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="menuaction" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="menucontrolador" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Roles" Relationship="VL_CitasModel.Roles_Module" FromRole="Module" ToRole="Roles" />
+  </EntityType>
+  <EntityType Name="Offices">
+    <Key>
+      <PropertyRef Name="uId" />
+    </Key>
+    <Property Name="uId" Type="Guid" Nullable="false" />
+    <Property Name="name" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+    <Property Name="address" Type="String" MaxLength="75" FixedLength="false" Unicode="false" />
+    <Property Name="status_id" Type="Int32" />
+    <Property Name="customer_uId" Type="Guid" />
+    <Property Name="image_url" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="alias" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="create_date" Type="DateTime" Precision="3" />
+    <Property Name="update_date" Type="DateTime" Precision="3" />
+    <Property Name="latitud" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="longitud" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="configuration_id" Type="Int32" Nullable="false" />
+    <Property Name="phone" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="phone_2" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Consultory" Relationship="VL_CitasModel.FK__Departame__offic__5EBF139D" FromRole="Offices" ToRole="Consultory" />
+    <NavigationProperty Name="Customers" Relationship="VL_CitasModel.FK__Offices__custome__6383C8BA" FromRole="Offices" ToRole="Customers" />
+    <NavigationProperty Name="Schedule" Relationship="VL_CitasModel.FK__Departame__ofici__60A75C0F" FromRole="Offices" ToRole="Schedule" />
+    <NavigationProperty Name="Offices_Status" Relationship="VL_CitasModel.FK__Offices__status___6477ECF3" FromRole="Offices" ToRole="Offices_Status" />
+    <NavigationProperty Name="Offices_Configuration" Relationship="VL_CitasModel.Fk_office_configuration_id" FromRole="Offices" ToRole="Offices_Configuration" />
+    <NavigationProperty Name="Offices_Users" Relationship="VL_CitasModel.FK_office_user_uid" FromRole="Offices" ToRole="Offices_Users" />
+  </EntityType>
+  <EntityType Name="Offices_Configuration">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="time_zone_id" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Offices" Relationship="VL_CitasModel.Fk_office_configuration_id" FromRole="Offices_Configuration" ToRole="Offices" />
+    <NavigationProperty Name="TimeZones" Relationship="VL_CitasModel.FK_config_time_zone_id" FromRole="Offices_Configuration" ToRole="TimeZones" />
+  </EntityType>
+  <EntityType Name="Offices_Status">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="description" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Offices" Relationship="VL_CitasModel.FK__Offices__status___6477ECF3" FromRole="Offices_Status" ToRole="Offices" />
+  </EntityType>
+  <EntityType Name="Offices_Users">
+    <Key>
+      <PropertyRef Name="uid" />
+    </Key>
+    <Property Name="office_uid" Type="Guid" />
+    <Property Name="user_uid" Type="Guid" />
+    <Property Name="prescription_id" Type="Int32" Nullable="false" />
+    <Property Name="medical_appointment_duration" Type="Int32" />
+    <Property Name="uid" Type="Guid" Nullable="false" />
+    <Property Name="price_per_appoinment" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+    <NavigationProperty Name="Offices" Relationship="VL_CitasModel.FK_office_user_uid" FromRole="Offices_Users" ToRole="Offices" />
+    <NavigationProperty Name="Prescriptions" Relationship="VL_CitasModel.FK_prescription_id" FromRole="Offices_Users" ToRole="Prescriptions" />
+    <NavigationProperty Name="Users" Relationship="VL_CitasModel.FK_user_office_uid" FromRole="Offices_Users" ToRole="Users" />
+    <NavigationProperty Name="Schedule" Relationship="VL_CitasModel.Office_Users_Schedules" FromRole="Offices_Users" ToRole="Schedule" />
+    <NavigationProperty Name="Roles" Relationship="VL_CitasModel.Roles_Office_Users" FromRole="Offices_Users" ToRole="Roles" />
+  </EntityType>
+  <EntityType Name="Paciente">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="apellidos" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="telefono" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="curp" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="fecha_nacimiento" Type="DateTime" Precision="3" />
+    <Property Name="alergias" Type="String" MaxLength="600" FixedLength="false" Unicode="false" />
+    <Property Name="cirugias" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="email" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="sex_id" Type="Int32" />
+    <Property Name="heredofamiliares" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="antecedentes_patologicos" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="antecedentes_no_patologicos" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="created_date" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Patient_Prescriptions" Relationship="VL_CitasModel.FK_Patient_Prescription" FromRole="Paciente" ToRole="Patient_Prescriptions" />
+    <NavigationProperty Name="Sex" Relationship="VL_CitasModel.fk_sex_patient" FromRole="Paciente" ToRole="Sex" />
+    <NavigationProperty Name="Citas" Relationship="VL_CitasModel.FK_Citas_Paciente_id" FromRole="Paciente" ToRole="Citas" />
+    <Property Name="doctor_uid" Type="Guid" />
+    <NavigationProperty Name="Users" Relationship="VL_CitasModel.fk_pd_user_uid" FromRole="Paciente" ToRole="Users" />
+  </EntityType>
+  <EntityType Name="Patient_Prescriptions">
+    <Key>
+      <PropertyRef Name="uid" />
+    </Key>
+    <Property Name="uid" Type="Guid" Nullable="false" />
+    <Property Name="patient_id" Type="Int32" />
+    <Property Name="date" Type="DateTime" Precision="3" />
+    <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="user_uid" Type="Guid" />
+    <NavigationProperty Name="Paciente" Relationship="VL_CitasModel.FK_Patient_Prescription" FromRole="Patient_Prescriptions" ToRole="Paciente" />
+    <NavigationProperty Name="Users" Relationship="VL_CitasModel.FK_User_Prescription" FromRole="Patient_Prescriptions" ToRole="Users" />
+  </EntityType>
+  <EntityType Name="Prescriptions">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="path" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="is_template" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Offices_Users" Relationship="VL_CitasModel.FK_prescription_id" FromRole="Prescriptions" ToRole="Offices_Users" />
+  </EntityType>
+  <EntityType Name="Reports">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="description" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="rol_id" Type="Int32" />
+    <NavigationProperty Name="Roles" Relationship="VL_CitasModel.fk_repotrs_roles" FromRole="Reports" ToRole="Roles" />
+  </EntityType>
+  <EntityType Name="Roles">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="status_id" Type="Int32" />
+    <NavigationProperty Name="Reports" Relationship="VL_CitasModel.fk_repotrs_roles" FromRole="Roles" ToRole="Reports" />
+    <NavigationProperty Name="Roles_Status" Relationship="VL_CitasModel.FK__Roles__status_id__656C112C" FromRole="Roles" ToRole="Roles_Status" />
+    <NavigationProperty Name="Module" Relationship="VL_CitasModel.Roles_Module" FromRole="Roles" ToRole="Module" />
+    <NavigationProperty Name="Offices_Users" Relationship="VL_CitasModel.Roles_Office_Users" FromRole="Roles" ToRole="Offices_Users" />
+  </EntityType>
+  <EntityType Name="Roles_Status">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="description" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Roles" Relationship="VL_CitasModel.FK__Roles__status_id__656C112C" FromRole="Roles_Status" ToRole="Roles" />
+  </EntityType>
+  <EntityType Name="Schedule">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="lunes" Type="Boolean" />
+    <Property Name="martes" Type="Boolean" />
+    <Property Name="miercoles" Type="Boolean" />
+    <Property Name="jueves" Type="Boolean" />
+    <Property Name="viernes" Type="Boolean" />
+    <Property Name="sabado" Type="Boolean" />
+    <Property Name="domingo" Type="Boolean" />
+    <Property Name="start_hour" Type="Time" Precision="7" />
+    <Property Name="end_hour" Type="Time" Precision="7" />
+    <Property Name="oficina_uId" Type="Guid" />
+    <Property Name="status" Type="Int32" />
+    <Property Name="schedule_name" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Offices" Relationship="VL_CitasModel.FK__Departame__ofici__60A75C0F" FromRole="Schedule" ToRole="Offices" />
+    <NavigationProperty Name="Offices_Users" Relationship="VL_CitasModel.Office_Users_Schedules" FromRole="Schedule" ToRole="Offices_Users" />
+  </EntityType>
+  <EntityType Name="Sex">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Paciente" Relationship="VL_CitasModel.fk_sex_patient" FromRole="Sex" ToRole="Paciente" />
+  </EntityType>
+  <EntityType Name="Specialties">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="council_medical_specialty_id" Type="Int32" />
+    <NavigationProperty Name="Doctor_Configs" Relationship="VL_CitasModel.Doctor_Specialties" FromRole="Specialties" ToRole="Doctor_Configs" />
+  </EntityType>
+  <EntityType Name="Status_Citas">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="status" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="color" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="translate" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Citas" Relationship="VL_CitasModel.FK__Citas__status_id__06CD04F7" FromRole="Status_Citas" ToRole="Citas" />
+  </EntityType>
+  <EntityType Name="TimeZones">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TimeZoneId" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="DaylightName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="DisplayName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="StandardName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="BaseUtcOffset" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Offices_Configuration" Relationship="VL_CitasModel.FK_config_time_zone_id" FromRole="TimeZones" ToRole="Offices_Configuration" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="uId" />
+    </Key>
+    <Property Name="uId" Type="Guid" Nullable="false" />
+    <Property Name="first_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="last_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="email" Type="String" MaxLength="70" FixedLength="false" Unicode="false" />
+    <Property Name="password" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="status_id" Type="Int32" />
+    <Property Name="address" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="phone" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="profile_picture" Type="Int32" />
+    <Property Name="doctor_id" Type="Int32" />
+    <NavigationProperty Name="Doctor_Configs" Relationship="VL_CitasModel.FK_Users_Doctor_id" FromRole="Users" ToRole="Doctor_Configs" />
+    <NavigationProperty Name="Offices_Users" Relationship="VL_CitasModel.FK_user_office_uid" FromRole="Users" ToRole="Offices_Users" />
+    <NavigationProperty Name="Patient_Prescriptions" Relationship="VL_CitasModel.FK_User_Prescription" FromRole="Users" ToRole="Patient_Prescriptions" />
+    <NavigationProperty Name="Users_Status" Relationship="VL_CitasModel.FK__Users__status_id__73BA3083" FromRole="Users" ToRole="Users_Status" />
+    <NavigationProperty Name="Vacations" Relationship="VL_CitasModel.fk_vacations_usr" FromRole="Users" ToRole="Vacations" />
+    <NavigationProperty Name="Consultory" Relationship="VL_CitasModel.Users_Consultories" FromRole="Users" ToRole="Consultory" />
+    <NavigationProperty Name="Customers" Relationship="VL_CitasModel.Users_Customers" FromRole="Users" ToRole="Customers" />
+    <NavigationProperty Name="Citas" Relationship="VL_CitasModel.fk_citas_uiddoctor" FromRole="Users" ToRole="Citas" />
+    <NavigationProperty Name="Servicios" Relationship="VL_CitasModel.FK_servicios_usuario" FromRole="Users" ToRole="Servicios" />
+    <NavigationProperty Name="Paciente" Relationship="VL_CitasModel.fk_pd_user_uid" FromRole="Users" ToRole="Paciente" />
+  </EntityType>
+  <EntityType Name="Users_Status">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="description" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Users" Relationship="VL_CitasModel.FK__Users__status_id__73BA3083" FromRole="Users_Status" ToRole="Users" />
+  </EntityType>
+  <EntityType Name="Vacations">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="user_uid" Type="Guid" />
+    <Property Name="start_date" Type="DateTime" Precision="3" />
+    <Property Name="end_date" Type="DateTime" Precision="3" />
+    <Property Name="reason" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Users" Relationship="VL_CitasModel.fk_vacations_usr" FromRole="Vacations" ToRole="Users" />
+  </EntityType>
+  <EntityType Name="Vw_Doctor_Information">
+    <Key>
+      <PropertyRef Name="uId" />
+      <PropertyRef Name="consultory_uid" />
+    </Key>
+    <Property Name="uId" Type="Guid" Nullable="false" />
+    <Property Name="first_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="last_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="email" Type="String" MaxLength="70" FixedLength="false" Unicode="false" />
+    <Property Name="professional_license" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="resume" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="job_description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="consultory_uid" Type="Guid" Nullable="false" />
+    <Property Name="name" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+    <Property Name="office_uId" Type="Guid" />
+  </EntityType>
+  <EntityType Name="VW_Doctor_Schedules">
+    <Key>
+      <PropertyRef Name="uId" />
+      <PropertyRef Name="schedule_id" />
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="uId" Type="Guid" Nullable="false" />
+    <Property Name="first_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="last_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="office_uid" Type="Guid" />
+    <Property Name="name" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+    <Property Name="schedule_id" Type="Int32" Nullable="false" />
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="lunes" Type="Boolean" />
+    <Property Name="martes" Type="Boolean" />
+    <Property Name="miercoles" Type="Boolean" />
+    <Property Name="jueves" Type="Boolean" />
+    <Property Name="viernes" Type="Boolean" />
+    <Property Name="sabado" Type="Boolean" />
+    <Property Name="domingo" Type="Boolean" />
+    <Property Name="start_hour" Type="Time" Precision="7" />
+    <Property Name="end_hour" Type="Time" Precision="7" />
+    <Property Name="status" Type="Int32" />
+    <Property Name="schedule_name" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="VW_User_Office_Rol">
+    <Key>
+      <PropertyRef Name="roles_id" />
+      <PropertyRef Name="office_users_uid" />
+    </Key>
+    <Property Name="user_uid" Type="Guid" />
+    <Property Name="first_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="last_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="office_uid" Type="Guid" />
+    <Property Name="office_name" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+    <Property Name="roles_id" Type="Int32" Nullable="false" />
+    <Property Name="office_users_uid" Type="Guid" Nullable="false" />
+    <Property Name="rol_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="VW_User_Roles">
+    <Key>
+      <PropertyRef Name="uId" />
+      <PropertyRef Name="rol_id" />
+    </Key>
+    <Property Name="uId" Type="Guid" Nullable="false" />
+    <Property Name="name" Type="String" MaxLength="101" FixedLength="false" Unicode="false" />
+    <Property Name="email" Type="String" MaxLength="70" FixedLength="false" Unicode="false" />
+    <Property Name="office_uid" Type="Guid" />
+    <Property Name="rol_id" Type="Int32" Nullable="false" />
+    <Property Name="office_name" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+    <Property Name="address" Type="String" MaxLength="75" FixedLength="false" Unicode="false" />
+    <Property Name="rol_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <Association Name="FK__Departame__offic__5EBF139D">
+    <End Type="VL_CitasModel.Offices" Role="Offices" Multiplicity="0..1" />
+    <End Type="VL_CitasModel.Consultory" Role="Consultory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Offices">
+        <PropertyRef Name="uId" />
+      </Principal>
+      <Dependent Role="Consultory">
+        <PropertyRef Name="office_uId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Departame__statu__5FB337D6">
+    <End Type="VL_CitasModel.Consultory_Status" Role="Consultory_Status" Multiplicity="0..1" />
+    <End Type="VL_CitasModel.Consultory" Role="Consultory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Consultory_Status">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Consultory">
+        <PropertyRef Name="status_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Customers__statu__5DCAEF64">
+    <End Type="VL_CitasModel.Customers_Status" Role="Customers_Status" Multiplicity="0..1" />
+    <End Type="VL_CitasModel.Customers" Role="Customers" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customers_Status">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Customers">
+        <PropertyRef Name="status_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Offices__custome__6383C8BA">
+    <End Type="VL_CitasModel.Customers" Role="Customers" Multiplicity="0..1" />
+    <End Type="VL_CitasModel.Offices" Role="Offices" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customers">
+        <PropertyRef Name="uId" />
+      </Principal>
+      <Dependent Role="Offices">
+        <PropertyRef Name="customer_uId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Users_Doctor_id">
+    <End Type="VL_CitasModel.Doctor_Configs" Role="Doctor_Configs" Multiplicity="0..1" />
+    <End Type="VL_CitasModel.Users" Role="Users" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Doctor_Configs">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Users">
+        <PropertyRef Name="doctor_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Departame__ofici__60A75C0F">
+    <End Type="VL_CitasModel.Offices" Role="Offices" Multiplicity="0..1" />
+    <End Type="VL_CitasModel.Schedule" Role="Schedule" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Offices">
+        <PropertyRef Name="uId" />
+      </Principal>
+      <Dependent Role="Schedule">
+        <PropertyRef Name="oficina_uId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Offices__status___6477ECF3">
+    <End Type="VL_CitasModel.Offices_Status" Role="Offices_Status" Multiplicity="0..1" />
+    <End Type="VL_CitasModel.Offices" Role="Offices" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Offices_Status">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Offices">
+        <PropertyRef Name="status_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Fk_office_configuration_id">
+    <End Type="VL_CitasModel.Offices_Configuration" Role="Offices_Configuration" Multiplicity="1" />
+    <End Type="VL_CitasModel.Offices" Role="Offices" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Offices_Configuration">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Offices">
+        <PropertyRef Name="configuration_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_office_user_uid">
+    <End Type="VL_CitasModel.Offices" Role="Offices" Multiplicity="0..1" />
+    <End Type="VL_CitasModel.Offices_Users" Role="Offices_Users" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Offices">
+        <PropertyRef Name="uId" />
+      </Principal>
+      <Dependent Role="Offices_Users">
+        <PropertyRef Name="office_uid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_config_time_zone_id">
+    <End Type="VL_CitasModel.TimeZones" Role="TimeZones" Multiplicity="1" />
+    <End Type="VL_CitasModel.Offices_Configuration" Role="Offices_Configuration" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TimeZones">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Offices_Configuration">
+        <PropertyRef Name="time_zone_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_prescription_id">
+    <End Type="VL_CitasModel.Prescriptions" Role="Prescriptions" Multiplicity="1" />
+    <End Type="VL_CitasModel.Offices_Users" Role="Offices_Users" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Prescriptions">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Offices_Users">
+        <PropertyRef Name="prescription_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_user_office_uid">
+    <End Type="VL_CitasModel.Users" Role="Users" Multiplicity="0..1" />
+    <End Type="VL_CitasModel.Offices_Users" Role="Offices_Users" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="uId" />
+      </Principal>
+      <Dependent Role="Offices_Users">
+        <PropertyRef Name="user_uid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Patient_Prescription">
+    <End Type="VL_CitasModel.Paciente" Role="Paciente" Multiplicity="0..1" />
+    <End Type="VL_CitasModel.Patient_Prescriptions" Role="Patient_Prescriptions" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Paciente">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Patient_Prescriptions">
+        <PropertyRef Name="patient_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_sex_patient">
+    <End Type="VL_CitasModel.Sex" Role="Sex" Multiplicity="0..1" />
+    <End Type="VL_CitasModel.Paciente" Role="Paciente" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sex">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Paciente">
+        <PropertyRef Name="sex_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_User_Prescription">
+    <End Type="VL_CitasModel.Users" Role="Users" Multiplicity="0..1" />
+    <End Type="VL_CitasModel.Patient_Prescriptions" Role="Patient_Prescriptions" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="uId" />
+      </Principal>
+      <Dependent Role="Patient_Prescriptions">
+        <PropertyRef Name="user_uid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_repotrs_roles">
+    <End Type="VL_CitasModel.Roles" Role="Roles" Multiplicity="0..1" />
+    <End Type="VL_CitasModel.Reports" Role="Reports" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Roles">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Reports">
+        <PropertyRef Name="rol_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Roles__status_id__656C112C">
+    <End Type="VL_CitasModel.Roles_Status" Role="Roles_Status" Multiplicity="0..1" />
+    <End Type="VL_CitasModel.Roles" Role="Roles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Roles_Status">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Roles">
+        <PropertyRef Name="status_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Users__status_id__73BA3083">
+    <End Type="VL_CitasModel.Users_Status" Role="Users_Status" Multiplicity="0..1" />
+    <End Type="VL_CitasModel.Users" Role="Users" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users_Status">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Users">
+        <PropertyRef Name="status_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_vacations_usr">
+    <End Type="VL_CitasModel.Users" Role="Users" Multiplicity="0..1" />
+    <End Type="VL_CitasModel.Vacations" Role="Vacations" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="uId" />
+      </Principal>
+      <Dependent Role="Vacations">
+        <PropertyRef Name="user_uid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Office_Users_Schedules">
+    <End Type="VL_CitasModel.Schedule" Role="Schedule" Multiplicity="*" />
+    <End Type="VL_CitasModel.Offices_Users" Role="Offices_Users" Multiplicity="*" />
+  </Association>
+  <Association Name="Roles_Module">
+    <End Type="VL_CitasModel.Roles" Role="Roles" Multiplicity="*" />
+    <End Type="VL_CitasModel.Module" Role="Module" Multiplicity="*" />
+  </Association>
+  <Association Name="Roles_Office_Users">
+    <End Type="VL_CitasModel.Roles" Role="Roles" Multiplicity="*" />
+    <End Type="VL_CitasModel.Offices_Users" Role="Offices_Users" Multiplicity="*" />
+  </Association>
+  <Association Name="Users_Consultories">
+    <End Type="VL_CitasModel.Consultory" Role="Consultory" Multiplicity="*" />
+    <End Type="VL_CitasModel.Users" Role="Users" Multiplicity="*" />
+  </Association>
+  <Association Name="Users_Customers">
+    <End Type="VL_CitasModel.Customers" Role="Customers" Multiplicity="*" />
+    <End Type="VL_CitasModel.Users" Role="Users" Multiplicity="*" />
+  </Association>
+  <Association Name="Doctor_Specialties">
+    <End Type="VL_CitasModel.Specialties" Role="Specialties" Multiplicity="*" />
+    <End Type="VL_CitasModel.Doctor_Configs" Role="Doctor_Configs" Multiplicity="*" />
+  </Association>
+  <EntityType Name="Citas">
+    <Key>
+      <PropertyRef Name="uId" />
+    </Key>
+    <Property Name="uId" Type="Guid" Nullable="false" />
+    <Property Name="consultory_uId" Type="Guid" />
+    <Property Name="create_date" Type="DateTime" Precision="3" />
+    <Property Name="cita_date" Type="DateTime" Precision="3" />
+    <Property Name="status_id" Type="Int32" />
+    <Property Name="Code" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="title" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="telefono" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="razon" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="precio" Type="Decimal" Precision="10" Scale="2" />
+    <Property Name="observaciones" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="id_paciente" Type="Int32" />
+    <Property Name="observaciones_asistente" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="peso" Type="Double" />
+    <Property Name="temperatura" Type="Double" />
+    <Property Name="presion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="receta" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="cancel_date" Type="DateTime" Precision="3" />
+    <Property Name="complete_date" Type="DateTime" Precision="3" />
+    <Property Name="confirm_date" Type="DateTime" Precision="3" />
+    <Property Name="doctor_uid" Type="Guid" />
+    <Property Name="altura" Type="Double" />
+    <Property Name="observacion_doctor" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="glucosa" Type="Double" />
+    <Property Name="motivo" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="diagnostico" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="ritmo_cardiaco" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Status_Citas" Relationship="VL_CitasModel.FK__Citas__status_id__06CD04F7" FromRole="Citas" ToRole="Status_Citas" />
+    <NavigationProperty Name="Consultory" Relationship="VL_CitasModel.fk_cita_departament" FromRole="Citas" ToRole="Consultory" />
+    <NavigationProperty Name="Paciente" Relationship="VL_CitasModel.FK_Citas_Paciente_id" FromRole="Citas" ToRole="Paciente" />
+    <NavigationProperty Name="Users" Relationship="VL_CitasModel.fk_citas_uiddoctor" FromRole="Citas" ToRole="Users" />
+    <NavigationProperty Name="Medicine_citas" Relationship="VL_CitasModel.fk_mc_cita" FromRole="Citas" ToRole="Medicine_citas" />
+    <NavigationProperty Name="Servicios" Relationship="VL_CitasModel.Citas_servicios" FromRole="Citas" ToRole="Servicios" />
+    <Property Name="assitant_uid" Type="Guid" />
+    <NavigationProperty Name="payments" Relationship="VL_CitasModel.fk_pc_cita" FromRole="Citas" ToRole="payments" />
+  </EntityType>
+  <EntityType Name="Medicine_citas">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="cita_uid" Type="Guid" />
+    <Property Name="medicine" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="dose" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="sentence" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="frequency" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="duration" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="extra" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Citas" Relationship="VL_CitasModel.fk_mc_cita" FromRole="Medicine_citas" ToRole="Citas" />
+  </EntityType>
+  <EntityType Name="Servicios">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="precio" Type="Double" />
+    <Property Name="descripcion" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="activo" Type="Boolean" />
+    <Property Name="user_uId" Type="Guid" />
+    <Property Name="default" Type="Boolean" />
+    <NavigationProperty Name="Users" Relationship="VL_CitasModel.FK_servicios_usuario" FromRole="Servicios" ToRole="Users" />
+    <NavigationProperty Name="Citas" Relationship="VL_CitasModel.Citas_servicios" FromRole="Servicios" ToRole="Citas" />
+  </EntityType>
+  <Association Name="FK__Citas__status_id__06CD04F7">
+    <End Type="VL_CitasModel.Status_Citas" Role="Status_Citas" Multiplicity="0..1" />
+    <End Type="VL_CitasModel.Citas" Role="Citas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Status_Citas">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Citas">
+        <PropertyRef Name="status_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_cita_departament">
+    <End Type="VL_CitasModel.Consultory" Role="Consultory" Multiplicity="0..1" />
+    <End Type="VL_CitasModel.Citas" Role="Citas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Consultory">
+        <PropertyRef Name="uId" />
+      </Principal>
+      <Dependent Role="Citas">
+        <PropertyRef Name="consultory_uId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Citas_Paciente_id">
+    <End Type="VL_CitasModel.Paciente" Role="Paciente" Multiplicity="0..1" />
+    <End Type="VL_CitasModel.Citas" Role="Citas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Paciente">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Citas">
+        <PropertyRef Name="id_paciente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_citas_uiddoctor">
+    <End Type="VL_CitasModel.Users" Role="Users" Multiplicity="0..1" />
+    <End Type="VL_CitasModel.Citas" Role="Citas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="uId" />
+      </Principal>
+      <Dependent Role="Citas">
+        <PropertyRef Name="doctor_uid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_mc_cita">
+    <End Type="VL_CitasModel.Citas" Role="Citas" Multiplicity="0..1" />
+    <End Type="VL_CitasModel.Medicine_citas" Role="Medicine_citas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Citas">
+        <PropertyRef Name="uId" />
+      </Principal>
+      <Dependent Role="Medicine_citas">
+        <PropertyRef Name="cita_uid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_servicios_usuario">
+    <End Type="VL_CitasModel.Users" Role="Users" Multiplicity="0..1" />
+    <End Type="VL_CitasModel.Servicios" Role="Servicios" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="uId" />
+      </Principal>
+      <Dependent Role="Servicios">
+        <PropertyRef Name="user_uId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Citas_servicios">
+    <End Type="VL_CitasModel.Citas" Role="Citas" Multiplicity="*" />
+    <End Type="VL_CitasModel.Servicios" Role="Servicios" Multiplicity="*" />
+  </Association>
+  <ComplexType Name="GetCitasByDoctor_Result">
+    <Property Type="Guid" Name="id" Nullable="false" />
+    <Property Type="String" Name="title" Nullable="true" MaxLength="263" />
+    <Property Type="DateTime" Name="start" Nullable="true" Precision="23" />
+    <Property Type="DateTime" Name="end" Nullable="true" Precision="23" />
+    <Property Type="Decimal" Name="precio" Nullable="true" Precision="19" />
+    <Property Type="Int32" Name="status_id" Nullable="true" />
+    <Property Type="String" Name="color" Nullable="true" MaxLength="255" />
+    <Property Type="Guid" Name="office_uId" Nullable="false" />
+    <Property Type="Guid" Name="consultory_uid" Nullable="false" />
+    <Property Type="Guid" Name="assitant_uid" Nullable="true" />
+    <Property Type="String" Name="doctor_name" Nullable="true" MaxLength="101" />
+  </ComplexType>
+  <ComplexType Name="GetCitasByConsultory_Result">
+    <Property Type="Guid" Name="id" Nullable="false" />
+    <Property Type="String" Name="title" Nullable="true" MaxLength="255" />
+    <Property Type="DateTime" Name="start" Nullable="true" Precision="23" />
+    <Property Type="DateTime" Name="end" Nullable="true" Precision="23" />
+    <Property Type="Decimal" Name="precio" Nullable="true" Precision="19" />
+    <Property Type="Int32" Name="status_id" Nullable="true" />
+    <Property Type="String" Name="color" Nullable="true" MaxLength="255" />
+    <Property Type="Guid" Name="doctor_uid" Nullable="true" />
+    <Property Type="Guid" Name="assitant_uid" Nullable="true" />
+    <Property Type="String" Name="doctor_name" Nullable="true" MaxLength="101" />
+  </ComplexType>
+  <EntityType Name="payment_types">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="name" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="codigo_sat" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="payments" Relationship="VL_CitasModel.fk_pc_type" FromRole="payment_types" ToRole="payments" />
+  </EntityType>
+  <EntityType Name="payments">
+    <Key>
+      <PropertyRef Name="uid" />
+    </Key>
+    <Property Name="uid" Type="Guid" Nullable="false" />
+    <Property Name="date" Type="DateTime" Nullable="false" Precision="7" />
+    <Property Name="cita_uid" Type="Guid" Nullable="false" />
+    <Property Name="payment_type_id" Type="Int32" Nullable="false" />
+    <Property Name="notes" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Citas" Relationship="VL_CitasModel.fk_pc_cita" FromRole="payments" ToRole="Citas" />
+    <NavigationProperty Name="payment_types" Relationship="VL_CitasModel.fk_pc_type" FromRole="payments" ToRole="payment_types" />
+  </EntityType>
+  <Association Name="fk_pc_cita">
+    <End Type="VL_CitasModel.Citas" Role="Citas" Multiplicity="1" />
+    <End Type="VL_CitasModel.payments" Role="payments" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Citas">
+        <PropertyRef Name="uId" />
+      </Principal>
+      <Dependent Role="payments">
+        <PropertyRef Name="cita_uid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_pc_type">
+    <End Type="VL_CitasModel.payment_types" Role="payment_types" Multiplicity="1" />
+    <End Type="VL_CitasModel.payments" Role="payments" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="payment_types">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="payments">
+        <PropertyRef Name="payment_type_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <ComplexType Name="SPR_HistorialAsistente_Result">
+    <Property Type="Guid" Name="uId" Nullable="false" />
+    <Property Type="Guid" Name="consultory_uId" Nullable="true" />
+    <Property Type="DateTime" Name="create_date" Nullable="true" Precision="23" />
+    <Property Type="DateTime" Name="cita_date" Nullable="true" Precision="23" />
+    <Property Type="Int32" Name="status_id" Nullable="true" />
+    <Property Type="String" Name="Code" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="title" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="telefono" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="razon" Nullable="true" MaxLength="255" />
+    <Property Type="Decimal" Name="precio" Nullable="true" Precision="19" />
+    <Property Type="String" Name="observaciones" Nullable="true" />
+    <Property Type="Int32" Name="id_paciente" Nullable="true" />
+    <Property Type="String" Name="observaciones_asistente" Nullable="true" />
+    <Property Type="Double" Name="peso" Nullable="true" />
+    <Property Type="Double" Name="temperatura" Nullable="true" />
+    <Property Type="String" Name="presion" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="receta" Nullable="true" />
+    <Property Type="DateTime" Name="cancel_date" Nullable="true" Precision="23" />
+    <Property Type="DateTime" Name="complete_date" Nullable="true" Precision="23" />
+    <Property Type="DateTime" Name="confirm_date" Nullable="true" Precision="23" />
+    <Property Type="Guid" Name="doctor_uid" Nullable="true" />
+    <Property Type="Double" Name="altura" Nullable="true" />
+    <Property Type="String" Name="observacion_doctor" Nullable="true" />
+    <Property Type="Double" Name="glucosa" Nullable="true" />
+    <Property Type="String" Name="motivo" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="diagnostico" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="ritmo_cardiaco" Nullable="true" MaxLength="255" />
+    <Property Type="Guid" Name="assitant_uid" Nullable="true" />
+    <Property Type="String" Name="consultorio" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="doctor" Nullable="true" MaxLength="101" />
+    <Property Type="String" Name="asistente" Nullable="true" MaxLength="101" />
+    <Property Type="String" Name="status" Nullable="true" MaxLength="100" />
+  </ComplexType>
+  <ComplexType Name="Reports_GetSummaryHeaderAsistente_Result">
+    <Property Type="Decimal" Name="revenue" Nullable="true" Precision="38" Scale="2" />
+    <Property Type="Int32" Name="citas" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="SP_Reportes_AdmByStatus_Result">
+    <Property Type="String" Name="status" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="color" Nullable="true" MaxLength="255" />
+    <Property Type="Int32" Name="quantity" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="SP_Reportes_AdmSumamry_Result">
+    <Property Type="Decimal" Name="revenue" Nullable="true" Precision="38" Scale="2" />
+    <Property Type="Int32" Name="citas" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="SP_Reportes_AdmByAsistente_Result">
+    <Property Type="String" Name="doctor" Nullable="true" MaxLength="101" />
+    <Property Type="Int32" Name="quantity" Nullable="true" />
+    <Property Type="Decimal" Name="revenue" Nullable="true" Precision="38" Scale="2" />
+  </ComplexType>
+  <ComplexType Name="SP_Reportes_AdmByDoctor_Result">
+    <Property Type="String" Name="doctor" Nullable="true" MaxLength="101" />
+    <Property Type="Int32" Name="quantity" Nullable="true" />
+    <Property Type="Decimal" Name="revenue" Nullable="true" Precision="38" Scale="2" />
+  </ComplexType>
+  <Association Name="fk_pd_user_uid">
+    <End Type="VL_CitasModel.Users" Role="Users" Multiplicity="0..1" />
+    <End Type="VL_CitasModel.Paciente" Role="Paciente" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="uId" />
+      </Principal>
+      <Dependent Role="Paciente">
+        <PropertyRef Name="doctor_uid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <ComplexType Name="SP_Reportes_RevenueAssistByDoctor_Result">
+    <Property Type="String" Name="doctor" Nullable="true" MaxLength="101" />
+    <Property Type="Int32" Name="quantity" Nullable="true" />
+    <Property Type="Decimal" Name="revenue" Nullable="true" Precision="38" Scale="2" />
+  </ComplexType>
+  <ComplexType Name="SP_Reportes_RevenueAssistByPaymentMethod_Result">
+    <Property Type="String" Name="tipo_pago" Nullable="false" MaxLength="255" />
+    <Property Type="Int32" Name="quantity" Nullable="true" />
+    <Property Type="Decimal" Name="revenue" Nullable="true" Precision="38" Scale="2" />
+  </ComplexType>
+</Schema>
